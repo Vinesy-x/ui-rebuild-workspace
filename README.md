@@ -21,7 +21,7 @@
 4. 用户筛选 → 50 张关键屏                ✅
 5. 拷到 design-brief/analysis/(高清)    ✅
 6. 风格参考图(宋朝)→ style-reference/   ⏳ 等用户
-7. Phase A 风格定档屏:fps_0001 技能/主页 ⏳ 等用户风格参考图后启动
+7. Phase A 风格定档屏:fps_0035 主菜单 ⏳ 等用户风格参考图后启动
 8. 三件套 flows(info-arch / interaction / topology)— 跟着 Phase B 推进
 9. design 出 Vite Vue 工程
 10. 数据接入(待加策划表)
@@ -40,7 +40,7 @@ projectE/
 │   └── _grid_part1.png / 2.png     ✅ 缩略图 grid
 ├── design-brief/
 │   ├── analysis/                   ✅ 50 张高清(给 design)
-│   ├── reference-frames/0001_home.png  ✅ Phase A 候选屏
+│   ├── reference-frames/0035_main-menu.png  ✅ Phase A 候选屏
 │   ├── style-reference/            ⏳ 宋朝风格参考图(用户传)
 │   ├── data-source/                — 暂无策划表
 │   ├── flows/                      — 跟 Phase A 一起推进

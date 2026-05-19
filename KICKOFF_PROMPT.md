@@ -33,14 +33,14 @@ projectE · 大掌柜 — 视频 UI 重建任务
 
 【Phase A 任务】
 
-T-A1:fps_0001 主页(技能 / 属性 list 屏)+ 风格定档
+T-A1:fps_0035 主菜单(街景 + NPC + 任务 CTA + 底部 5 Tab)+ 风格定档
 
 输入:
-1. design-brief/analysis/projectE_fps_0001.png — 布局 / 内容结构
+1. design-brief/analysis/projectE_fps_0035.png — 布局 / 内容结构
 2. design-brief/style-reference/*.png — 宋朝视觉风格
 
 要做:
-- 布局 = fps_0001(顶部 4 货币 HUD + 用户头像 + 技能列表 + "升级"按钮 + 锁定项)
+- 布局 = fps_0035(顶部 4 货币 HUD + 街景背景 + 2 NPC + 头顶名字 + 中央任务 CTA + 底部 5 Tab)
 - 视觉 = 宋朝古风(从 style-reference 提炼色板 / 装饰元素 / 字体感)
 - 文字内容 = 改成宋朝语境(看是否要古风化技能名)
 
@@ -65,7 +65,7 @@ T-A1:fps_0001 主页(技能 / 属性 list 屏)+ 风格定档
 
 1. README.md(projectE 总览)
 2. design-brief/TASKS.md(任务清单 + 强约束)
-3. design-brief/analysis/projectE_fps_0001.png(Phase A 布局)
+3. design-brief/analysis/projectE_fps_0035.png(Phase A 布局)
 4. design-brief/style-reference/(宋朝视觉参考图,用户已传)
 
 然后告诉用户:

@@ -18,13 +18,13 @@
 
 ## Phase A — 风格测试屏(1 task)
 
-### 🔒 T-A1: fps_0001 主页(技能 / 属性 list 屏)+ 风格定档
+### 🔒 T-A1: fps_0035 主菜单(街景 + NPC + 任务 CTA + 底部 5 Tab)+ 风格定档
 
 - 输入:
-  1. `design-brief/analysis/projectE_fps_0001.png` — 布局 / 内容结构来源
+  1. `design-brief/analysis/projectE_fps_0035.png` — 布局 / 内容结构来源
   2. `design-brief/style-reference/*.png` — 视觉风格来源(待用户提供宋朝参考图)
 - 要做:
-  - 布局 = fps_0001(顶部 4 货币 HUD + 用户头像 + 技能列表 + "升级"按钮 + 锁定项)
+  - 布局 = fps_0035(顶部 4 货币 HUD + 街景背景 + 2 NPC + 头顶名字 + 中央任务 CTA + 底部 5 Tab)
   - 视觉 = 宋朝古风(从 style-reference 提炼)
   - 文字内容 = 改成宋朝语境(智略 / 魅力 / 吸引力 / 运气 / 耐力 / 抗能力 / 创造力 等技能名 — 看是否要古风化)
 - 同时交付风格定档:
@@ -42,7 +42,7 @@
 待 Phase A 风格定档后,按"通用组件复用度"重排 Wave 1-8。
 
 50 张筛选后的 view types(粗分):
-- 主页 / 技能属性 list(fps_0001 类)
+- 主菜单 / 街景 NPC 类(fps_0035 类)
 - 任务列表(❤+xx% 奖励)
 - 角色对话 + 选项 list(大角色立绘)
 - 商店 / 道具 / 礼物网格
