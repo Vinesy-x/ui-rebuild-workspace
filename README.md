@@ -1,73 +1,61 @@
-# projectE — 视频 UI 重建项目
+# projectE · 大掌柜 — 视频 UI 重建项目
 
 ## 这是什么
 
-一个**可复用的视频 UI 提取模板** + 当前实例(分析 `input/projectE.mp4`)。
+**视频版 UI 重建**: 把现代版互动养成手游的 50 张抽帧 → 转换成 **宋朝古风**(中国古代)的 Vue + Vite 工程实现。
 
-通过 11 步流程,把一段录屏转成可供 Claude Design 重建 UI 的"原料包"。范式:**原料供应**(不是规约驱动)— 让 Design 看高清 PNG 自主提炼风格,而不是按详细规约填空。
+- 游戏名: **大掌柜**
+- 类型: 模拟、互动剧情
+- 核心机制: 各种文字互动情景对话 + 事件经营
+- **布局参考**: input/projectE.mp4 (现代版,488×960 竖屏,4分23秒,HEVC)
+- **视觉风格**: 宋朝古风 (待用户提供风格参考图到 `design-brief/style-reference/`)
 
-## 快速使用
+## 流程
 
-### 作为模板复用(新项目)
+按 [`METHODOLOGY.md`](METHODOLOGY.md) 11 步:
 
-```bash
-cp -r "claude code/projectE" "claude code/<new-project>"
-cd "claude code/<new-project>"
-rm -rf input/* frames/raw/* frames/dedup/* frames/selected/* design-brief/analysis/* design-brief/reference-frames/*
-# 把新视频放进 input/
-# 按 METHODOLOGY.md 跑 11 步流程
+```
+1. 视频 input/projectE.mp4              ✅
+2. ffmpeg @ 1/2 fps 抽帧 → 131 张        ✅
+3. dedup.py (phash) → 83 张              ✅
+4. 用户筛选 → 50 张关键屏                ✅
+5. 拷到 design-brief/analysis/(高清)    ✅
+6. 风格参考图(宋朝)→ style-reference/   ⏳ 等用户
+7. Phase A 风格定档屏:fps_0001 技能/主页 ⏳ 等用户风格参考图后启动
+8. 三件套 flows(info-arch / interaction / topology)— 跟着 Phase B 推进
+9. design 出 Vite Vue 工程
+10. 数据接入(待加策划表)
+11. 部署 / 演示
 ```
 
-### 作为当前实例(继续这次)
+## 当前状态
 
-```bash
-# Step 4 人工筛选后:
-./preview.sh                # 启动本地 HTTP 服务器看 Design 产物 final/
+```
+projectE/
+├── input/projectE.mp4              ✅ 视频原料
+├── frames/
+│   ├── raw/                        ✅ 131 张抽帧
+│   ├── dedup/                      ✅ 83 张去重
+│   ├── selected/                   ✅ 50 张筛选后
+│   └── _grid_part1.png / 2.png     ✅ 缩略图 grid
+├── design-brief/
+│   ├── analysis/                   ✅ 50 张高清(给 design)
+│   ├── reference-frames/0001_home.png  ✅ Phase A 候选屏
+│   ├── style-reference/            ⏳ 宋朝风格参考图(用户传)
+│   ├── data-source/                — 暂无策划表
+│   ├── flows/                      — 跟 Phase A 一起推进
+│   ├── tokens/                     — design 沉淀
+│   └── interactions/
+├── scripts/                        ✅ 通用工具(import-design.sh / extract_palette / dedup / make_grid)
+└── final/                          — 等 design Phase A 后建
 ```
 
 ## 入口文档
 
-- [`METHODOLOGY.md`](METHODOLOGY.md) — **方法论**:11 步流程 / 范式对比 / 工程经验 / 踩坑
-- [`KICKOFF_PROMPT.md`](KICKOFF_PROMPT.md) — **启动提示词**:给 Claude Design 的 prompt 模板
-- [`design-brief/`](design-brief/) — **最终交付物**(给 Design 的原料包,Step 8 产出)
+- [`METHODOLOGY.md`](METHODOLOGY.md) - 11 步流程方法论
+- [`KICKOFF_PROMPT.md`](KICKOFF_PROMPT.md) - 给 design 的 starter prompt(等宋朝参考图后启动)
+- [`design-brief/TASKS.md`](design-brief/TASKS.md) - 任务清单(Phase A + Wave 1-8 待拆解)
 
-## 目录结构
+## 跟 projectB 的关系
 
-```
-projectE/
-├── README.md                  # 本文档
-├── METHODOLOGY.md             # 11 步流程方法论(可复用)
-├── KICKOFF_PROMPT.md          # 给 Design 的 starter prompt 模板
-├── preview.sh                 # 启动本地 HTTP 服务器(看 final/)
-├── input/                     # 原视频
-├── frames/                    # 抽帧 / 去重 / 筛选产物
-│   ├── raw/                   # Step 2 抽帧
-│   ├── dedup/                 # Step 3 去重
-│   └── selected/              # Step 4 人工筛选
-├── scripts/                   # 流程脚本
-│   ├── dedup.py
-│   ├── build_preview.py
-│   ├── make_grid.py
-│   ├── extract_palette.py
-│   └── lib/                   # 共享 helper
-├── design-brief/              # ★ 给 Design 的原料包(Step 8 产出)
-│   ├── README.md
-│   ├── TASKS.md
-│   ├── analysis/              # 关键帧高清 PNG
-│   ├── reference-frames/      # 精选 PNG
-│   ├── tokens/                # 色板事实
-│   ├── flows/                 # 屏跳转
-│   └── interactions/          # 动效时序
-└── final/                     # Design 产出的 HTML(由 Design 生成)
-```
-
-## 关键原则
-
-| 这样做 | 不这样做 |
-|---|---|
-| 给 Design 高清 PNG | 给 Design JSON elements 描述 |
-| Design 主导命名 / 风格 | 我们规定 ButtonStyles.md 等组件名 |
-| 强约束 3 条(禁占位 / 禁 emoji / 跨屏一致) | 详细任务卡序列规定每步做什么 |
-| 浏览器实测交互 | 静态 grep 源码 |
-
-详见 [`METHODOLOGY.md`](METHODOLOGY.md)。
+projectB 是另一个游戏的 UI 重建项目,**已有的工程模板**(scripts / ENGINEERING_TEMPLATE / KICKOFF / METHODOLOGY)从那里复用。两个项目数据独立。
