@@ -24,6 +24,10 @@ import JobDetailModal       from './JobDetailModal.vue'
 import SkillAccelerateModal from './SkillAccelerateModal.vue'
 import BizHireModal         from './BizHireModal.vue'
 import BizUpgradeModal      from './BizUpgradeModal.vue'
+import SettingsModal        from './SettingsModal.vue'
+import CharacterModal       from './CharacterModal.vue'
+import GoalsModal           from './GoalsModal.vue'
+import ShopModal            from './ShopModal.vue'
 
 const store = useModalStore()
 const open = computed(() => store.currentModal !== null)
@@ -41,7 +45,12 @@ const map: Record<string, any> = {
   'job-detail':       JobDetailModal,      // 校正后: 0037 + 0040 同 widget
   'skill-accelerate': SkillAccelerateModal,// T-B1 fps_0007 · 每技能各自一个实例
   'biz-hire':         BizHireModal,        // T-B4 fps_0050 · 雇掌櫃
-  'biz-upgrade':      BizUpgradeModal      // T-B4 fps_0053 · 興擴
+  'biz-upgrade':      BizUpgradeModal,     // T-B4 fps_0053 · 興擴
+  // Phase A globals · HudBar + MainMenu 触发
+  'settings':         SettingsModal,       // ⚙ 齿轮
+  'character':        CharacterModal,      // 王掌柜头像 · 心 / 玉 cell · 名条 (alias: rename / income)
+  'goals':            GoalsModal,          // cal · 红包 / task-card / 堆叠 / pouch (alias: bonus / multi-task / work-detail / cur-pouch / date)
+  'shop':             ShopModal            // 銅 / 玉 cell (props: tab=money/jade)
 }
 const current = computed(() => store.currentModal ? map[store.currentModal] : null)
 </script>

@@ -18,9 +18,9 @@ const store = useModalStore()
 
     <HudBar v-bind="data.hud" :charName="data.character.name" />
 
-    <!-- 名条 -->
+    <!-- 名条 (HTML alias: rename → character) -->
     <div class="name-strip">
-      <span class="name-pill" @click="store.open('rename')">
+      <span class="name-pill" @click="store.open('character')">
         {{ data.character.name }}<span class="edit">改 ✎</span>
       </span>
       <span class="name-meta">{{ data.character.ageLabel }}</span>
@@ -30,8 +30,8 @@ const store = useModalStore()
       </div>
     </div>
 
-    <!-- 红包气泡 -->
-    <div class="bonus-bubble" @click="store.open('bonus')">
+    <!-- 红包气泡 (HTML alias: bonus → goals) -->
+    <div class="bonus-bubble" @click="store.open('goals')">
       <div class="pkt"></div>
       <span class="pkt-tag">{{ data.bonus }}</span>
     </div>
@@ -84,16 +84,16 @@ const store = useModalStore()
       <div class="scene-ph">背景 placeholder · Phase B 替换为水墨彩绘插画</div>
     </main>
 
-    <!-- 任务卡 + 三堆叠 -->
+    <!-- 任务卡 + 三堆叠 (HTML alias: cur-pouch / work-detail / multi-task → goals) -->
     <div class="task-row">
-      <div class="pouch">玉</div>
-      <div class="task-card" @click="store.open('job-detail', {jobKey: data.task.jobKey})">
+      <div class="pouch" @click="store.open('goals')">玉</div>
+      <div class="task-card" @click="store.open('goals')">
         <div class="play"></div>
         <div class="label">{{ data.task.title }} <span class="reward">{{ data.task.reward }}</span></div>
         <div class="bar"></div>
         <div class="ratio">{{ data.task.progress * data.task.total }}／{{ data.task.total }}</div>
       </div>
-      <div class="stack" @click="store.open('multi-task')">
+      <div class="stack" @click="store.open('goals')">
         <div class="card c1"></div><div class="card c2"></div><div class="card c3"></div>
         <span class="badge-bang">!</span>
       </div>
