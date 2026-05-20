@@ -41,6 +41,17 @@
 </div>
 
 <div class="warn">
+<strong>⚠️⚠️ 2026-05-20 用户补图重大校正(目标进度 modal)</strong>:
+<ul>
+  <li>目标进度 modal 底部 sub-tab 实为 <strong>3 个</strong>(canonical 之前推测的"目标 / 字符"错):<strong>目标 / 每日任务 / 成就</strong></li>
+  <li><strong>每日任务</strong>(<code>0092_daily-tasks.jpg</code>):4 任务 24h 刷新(⏰ 倒计时)+ "去"按钮跳对应屏</li>
+  <li><strong>成就</strong>(<code>0092_achievements.jpg</code>):8+ 跨 Tab 长线成就 + ⭐ 星级 + <strong>奖励 +1 紫晶 +1 黄星 / 项</strong></li>
+  <li>⭐⭐ <strong>黄星 + 紫晶的真实来源 = 成就奖励</strong>(canonical 之前不知道这两个稀缺货币的产出渠道)</li>
+  <li>声望可涨到 36+(日期 2030-02-28),canonical 之前仅见 22-23</li>
+</ul>
+</div>
+
+<div class="warn">
 <strong>⚠️ 本轮重大重新分类(基于深度分析)</strong>:
 <ul>
   <li><code>0097/0098/0099/0100</code> 全部是 <strong>商店 modal</strong>(金钱/门票/水/芯片/特别优惠)— 不是月度结算 / 不是目标进度</li>
@@ -405,10 +416,20 @@ graph TB
     end
 
     subgraph "主屏内容触发"
-      Goal2["目标进度<br/>fps_0092/0094<br/>声望实时刷新"]:::modal
+      Goal2["目标进度<br/>fps_0092/0094<br/>3 sub-tab"]:::modal
       JobReq2["焊工要求 modal<br/>fps_0037<br/>tap NPC 触发"]:::modal
       Event2["随机事件<br/>fps_0117 空 → 0118 字+选项 → 0119 结果"]:::modal
     end
+
+    subgraph "目标进度 3 sub-tab"
+      GoalTab["目标<br/>fps_0092/0094<br/>11 任务 + 声望"]:::full
+      DailyTab["每日任务<br/>0092_daily-tasks<br/>4 任务 + 24h 刷新"]:::full
+      AchieveTab["成就<br/>0092_achievements<br/>跨 Tab 长线<br/>领取 → +1 紫晶 +1 黄星"]:::full
+    end
+    Goal2 --> GoalTab
+    Goal2 --> DailyTab
+    Goal2 --> AchieveTab
+    DailyTab -->|"每项'去'按钮 跳对应屏"| Home2
 
     Home2 -.->|顶部头像 click| Char2
     Home2 -.->|顶部黄星| Happy2
@@ -454,11 +475,11 @@ graph TB
   <thead><tr><th>货币</th><th>用途</th><th>典型档</th></tr></thead>
   <tbody>
     <tr><td>💵 钞票</td><td>升级业务 / 月费(食物/住房基础)/ 礼物 / 幸福健康行为 / 衣服</td><td>月费 60-400 / 单次 350-15k</td></tr>
-    <tr><td>💎 紫晶/钻石</td><td>雇佣经理(8K)/ 加速技能(6)/ 高级住房(15)/ 运输(30)</td><td>6-30</td></tr>
+    <tr><td>💎 紫晶/钻石</td><td>雇佣经理(8K)/ 加速技能(6)/ 高级住房(15)/ 运输(30) — **来源 = 成就 +1/项**</td><td>6-30</td></tr>
     <tr><td>🟢 砖(绿)</td><td>月入 / 投资组合 / 卖车收入</td><td>965 组合 / 2.2K 卖价</td></tr>
     <tr><td>❤ 红心</td><td>健康度 0-100</td><td>当前 75-92</td></tr>
     <tr><td>😊 黄笑</td><td>幸福度 0-100</td><td>当前 62-78</td></tr>
-    <tr><td>⭐ 黄星</td><td>收集解锁(级别 N)</td><td>★24 / ★25 / ★40</td></tr>
+    <tr><td>⭐ 黄星</td><td>收集解锁(技能 ⭐25/40/70 + 物品级别 ★24)— <strong>来源 = 成就 +1/项</strong></td><td>★24 / ★25 / ★40 / ★70</td></tr>
     <tr><td>🪙 黄币</td><td>备用资源(文具/职业)</td><td>—</td></tr>
     <tr><td>🎫 门票 / 🃏 芯片</td><td>抽卡 / 赌场</td><td>1.99-12.99 USD</td></tr>
     <tr><td>USD 美元</td><td>IAP 真钱</td><td>3.99 / 12.99 / 19.99 / 59.99</td></tr>
@@ -527,7 +548,7 @@ graph TB
     <tr><td><code>0082</code> <span class="new">证实</span></td><td><strong>食物详情 modal</strong></td><td>modal / 食物</td><td>canonical "购买物品 modal" ✓</td></tr>
     <tr><td><code>0087</code></td><td>物品 → 衣服 → 帽子(2nd sub-tab)</td><td>fullscreen with nested sub-tab</td><td>试衣间 + 装备槽 + 网格 + 🛒 购物车</td></tr>
     <tr><td><code>0088</code></td><td>物品 → 衣服 → 上衣(2nd sub-tab)</td><td>fullscreen with nested sub-tab</td><td>4 ✓/购 + 4 锁(细粒物品级锁)</td></tr>
-    <tr><td><code>0092 / 0094</code></td><td>目标进度 modal</td><td>modal / 主菜单</td><td>声望 22 → 23(实时刷新)/ 11 任务 9 完成</td></tr>
+    <tr><td><code>0092 / 0094</code> + <code>0092_daily-tasks</code> + <code>0092_achievements</code> <span class="new">补图</span></td><td><strong>目标进度 modal · 3 sub-tab</strong></td><td>modal / 主菜单</td><td><strong>3 sub-tab</strong>:目标(11 任务,声望 22→36)/ 每日任务(4 任务,24h 刷新)/ 成就(8+ 跨 Tab 长线,奖励 +1 紫晶 +1 黄星)— 用户补图揭示</td></tr>
     <tr><td><code>0097</code> <span class="new">校正</span></td><td><strong>商店 modal · 特别优惠 + 奖金</strong></td><td>modal / 主菜单</td><td>9.99 USD / 9.49 USD IAP — 不是目标进度</td></tr>
     <tr><td><code>0098 / 0099</code> <span class="new">校正</span></td><td><strong>商店 modal · 金钱区</strong></td><td>modal / 主菜单</td><td>6 货币档 + 没有广告 — 不是月度结算</td></tr>
     <tr><td><code>0100</code> <span class="new">校正</span></td><td><strong>商店 modal · 门票 / 水 / 芯片</strong></td><td>modal / 主菜单</td><td>3 子分区 IAP — 不是月度结算</td></tr>
