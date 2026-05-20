@@ -12,12 +12,12 @@ __pycache__/
 .idea/
 *.swp
 
-# Claude Design tool internal caches (redundant with /design-brief/ at repo root)
-final/uploads/
-final/design-brief/
+# Claude Design tool 沙箱内部缓存(redundant with design-brief/)
+**/final/uploads/
+**/final/design-brief/
 
 # Vite / npm 本地产物(npm install + vite build 后才出现,不入仓)
-final/node_modules/
-final/dist/
-final/.vite/
-final/package-lock.json
+**/node_modules/
+**/dist/
+**/.vite/
+**/package-lock.json
