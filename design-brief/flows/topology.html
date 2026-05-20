@@ -97,7 +97,7 @@ graph TB
     Home -.->|顶部黄星 click| Happy0
     Home -.->|顶部❤ click| Health0
     Home -.->|右上 ⚙ click| Setting
-    Home -.->|随机时间点 自动弹| Event
+    Home -.->|时间到 自动弹| Event
 
     Char -.->|关闭 X| Home
     Goal -.->|关闭 X| Home
@@ -209,18 +209,33 @@ graph TB
     Shop["商店<br/>顶部 4 sub-tab<br/>衣食住行"]:::full
 
     Food["食物 sub-tab<br/>fps_0080"]:::full
-    House["住房 sub-tab<br/>fps_0087 / 0088"]:::full
+    House["住房 sub-tab<br/>未观察 ⚠️"]:::unknown
+    Cloth["衣服 sub-tab<br/>fps_0087/0088<br/>嵌套 2nd sub-tab"]:::full
     Trans["运输 sub-tab<br/>fps_0072"]:::full
-    Cloth["衣服 sub-tab<br/>(未观察)"]:::unknown
+
+    Hat["帽子"]:::full
+    Top["上衣"]:::full
+    Pants["裤子"]:::full
+    Shoes["鞋"]:::full
+    Acc["配饰"]:::full
 
     Buy["购买 modal<br/>(未观察)"]:::unknown
 
     Shop --> Food
     Shop --> House
-    Shop --> Trans
     Shop --> Cloth
+    Shop --> Trans
+
+    Cloth --> Hat
+    Cloth --> Top
+    Cloth --> Pants
+    Cloth --> Shoes
+    Cloth --> Acc
+
     Food -->|点物品| Buy
     Trans -->|点车| Buy
+    Hat -->|点物品| Buy
+    Top -->|点物品| Buy
 
     classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
     classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
@@ -244,7 +259,7 @@ graph TB
     Home2 -.->|顶部黄星 click| Happy
     Home2 -.->|顶部❤ click| Health
     Home2 -.->|右上 ⚙ click| Setting2
-    Home2 -.->|随机时间点 自动弹| Event2
+    Home2 -.->|时间到 自动弹| Event2
 
     Char2 -.->|关闭 X| Home2
     Goal2 -.->|关闭 X| Home2
