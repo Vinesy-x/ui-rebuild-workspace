@@ -12,6 +12,7 @@ design 沙箱产出的 HTML 真值放这里(不要放沙箱根 / 项目根)。
 
 ## 当前文件
 
-- `Phase A · 主菜单 大掌柜.html` — fps_0035 主菜单视觉真值
-- `Style Lock · 风格定档.html` — 风格规约文档
-- `大掌柜.html` — Phase A + T-B1~T-B4 合并预演
+- `大掌柜.html` — ⭐ canonical 全集(Phase A 主菜单 + T-B1~T-B4)· 唯一真值
+- `Style Lock · 风格定档.html` — 风格规约速查(15 色 / 8 字阶 / 9 货币 / 7 角标 / 27 古风对照 / motion)
+
+> 2026-05-21:`Phase A · 主菜单 大掌柜.html` 已删 — 100% 被 `大掌柜.html` 涵盖。
