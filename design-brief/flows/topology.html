@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>projectE · 大掌柜 — 屏拓扑(初版)</title>
+<title>projectE · 大掌柜 — 屏拓扑</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <style>
   body { font-family: -apple-system, sans-serif; background: #1a1530; color: #e8e3f0; max-width: 1200px; margin: 0 auto; padding: 24px; line-height: 1.6; }
@@ -10,7 +10,6 @@
   h2 { font-size: 18px; color: #a4d9ff; margin-top: 28px; padding-bottom: 6px; border-bottom: 1px solid #3a3155; }
   h3 { font-size: 14px; color: #c9b3ff; margin-top: 18px; }
   .note { background: #2a1d4e; border-left: 3px solid #f6c66e; padding: 10px 14px; margin: 12px 0; font-size: 13px; }
-  .warn { background: #4e2030; border-left: 3px solid #ff7090; padding: 10px 14px; margin: 12px 0; font-size: 13px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
   th, td { border: 1px solid #3a3155; padding: 6px 10px; text-align: left; }
   th { background: #2a1d4e; }
@@ -19,7 +18,7 @@
   ul { padding-left: 22px; }
   .toc { background: #2a1d4e; border-radius: 6px; padding: 12px 20px; font-size: 13px; }
   .uncertain { color: #ff9090; font-weight: bold; }
-  .legend { display: flex; gap: 16px; font-size: 12px; margin: 8px 0; }
+  .legend { display: flex; gap: 16px; font-size: 12px; margin: 8px 0; flex-wrap: wrap; }
   .legend span { display: inline-flex; align-items: center; gap: 4px; }
   .legend span::before { content: ""; width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
   .legend .hub::before { background: #f6c66e; }
@@ -31,86 +30,87 @@
 </head>
 <body>
 
-<h1>projectE · 大掌柜 — 屏拓扑(初版,基于时序证据)</h1>
+<h1>projectE · 大掌柜 — 屏拓扑(用户确认版)</h1>
 
 <div class="note">
-本文档基于 50 张 PNG 抽帧的 <strong>时序证据 + 视觉识别</strong>。屏映射和行为契约的 canonical 在
-<code>info-architecture.md</code> 和 <code>interaction-spec.md</code>;本 HTML 是可视化总图,跟它们互补。
-</div>
-
-<div class="warn">
-⚠️ 大量节点带 <span class="uncertain">⚠️</span> 标记:跳转关系是<strong>推断</strong>(基于游戏类型常识),实际跳转得跟 design 做完 view 后用浏览器 click 验证才能锁定。视觉权威是 PNG,本图只是辅助。
+本文档基于 50 张 PNG 抽帧的 <strong>时序证据 + 用户确认</strong>。屏映射和行为契约的 canonical 在
+<code>info-architecture.md</code> 和 <code>interaction-spec.md</code>。视觉权威仍是 PNG。
 </div>
 
 <div class="legend">
-  <span class="hub">hub(主菜单 / 街景)</span>
+  <span class="hub">hub(主菜单)</span>
   <span class="full">fullscreen 屏</span>
   <span class="modal">modal 浮层</span>
-  <span class="trans">transition / 过场</span>
-  <span class="unknown">未观察 / 推测</span>
+  <span class="trans">transition</span>
+  <span class="unknown">未观察 / ⚠️</span>
 </div>
 
 <div class="toc">
 <strong>导航</strong>
 <ul>
-  <li><a href="#main">A. 主菜单 + 底栏 5 Tab 总览</a></li>
-  <li><a href="#business">B. 经营 / 业务流(技能 + 工作)</a></li>
-  <li><a href="#happiness">C. 心情 / 幸福流</a></li>
-  <li><a href="#finance">D. 财富 / 投资流</a></li>
-  <li><a href="#shop">E. 商店流(4 sub-tab)</a></li>
-  <li><a href="#relations">F. 关系 / 人际流(送礼)</a></li>
-  <li><a href="#character">G. 字符 / 任务屏</a></li>
-  <li><a href="#screens">H. 完整屏映射表(50 张)</a></li>
+  <li><a href="#main">A. 主菜单 + 底栏 6 Tab + 主屏 3 浮窗触发</a></li>
+  <li><a href="#tab1">B. Tab 1 技能</a></li>
+  <li><a href="#tab2">C. Tab 2 遇见(关系)</a></li>
+  <li><a href="#tab3">D. Tab 3 工作</a></li>
+  <li><a href="#tab4">E. Tab 4 业务</a></li>
+  <li><a href="#tab5">F. Tab 5 投资</a></li>
+  <li><a href="#tab6">G. Tab 6 物品(商店)</a></li>
+  <li><a href="#popups">H. 主菜单 3 浮窗(字符 / 目标 / 随机事件)</a></li>
+  <li><a href="#screens">I. 完整屏映射表(50 张)</a></li>
 </ul>
 </div>
 
 <!-- =================================== -->
-<h2 id="main">A. 主菜单 + 底栏 5 Tab 总览</h2>
+<h2 id="main">A. 主菜单 + 底栏 6 Tab + 主屏 3 浮窗触发</h2>
 
 <div class="mermaid">
 graph TB
-    Home[主菜单 街景<br/><code>fps_0035</code>]:::hub
-    HomeDialog[对话场景 MOTEL<br/><code>fps_0117</code>]:::hub
+    Home["主菜单街景<br/>fps_0035"]:::hub
 
-    Tab1[Tab 1<br/>经营/业务]:::tab
-    Tab2[Tab 2<br/>心情/幸福]:::tab
-    Tab3[Tab 3<br/>财富/银行]:::tab
-    Tab4[Tab 4<br/>★主菜单中央]:::tab
-    Tab5[Tab 5<br/>关系/人际]:::tab
+    subgraph "底栏 6 Tab"
+      Skill["技能 list<br/>fps_0001"]:::full
+      Meet["遇见 list<br/>fps_0012"]:::full
+      Work["工作 list<br/>(底板待补)"]:::full
+      Biz["业务 list<br/>fps_0050"]:::full
+      Invest["投资屏<br/>fps_0061"]:::full
+      Shop["物品(商店)<br/>fps_0072 / 0080"]:::full
+    end
 
-    Home -->|底栏| Tab1
-    Home -->|底栏| Tab2
-    Home -->|底栏| Tab3
-    Home -->|底栏 active| Tab4
-    Home -->|底栏| Tab5
-    Home -.->|对话过场| HomeDialog
-    Home -.->|顶部头像?| Character[字符窗口<br/><code>fps_0105</code>]:::full
-    Home -->|中央 CTA<br/>"去做一个赚钱工作"| Business[业务 list<br/><code>fps_0050</code>]:::full
+    subgraph "主屏触发的 modal"
+      Char["字符窗口<br/>fps_0105"]:::modal
+      Goal["目标进度<br/>fps_0094"]:::modal
+      Event["随机事件<br/>fps_0117"]:::modal
+    end
+
+    Home -->|Tab 1 技能| Skill
+    Home -->|Tab 2 遇见| Meet
+    Home -->|Tab 3 工作| Work
+    Home -->|Tab 4 业务| Biz
+    Home -->|Tab 5 投资| Invest
+    Home -->|Tab 6 物品| Shop
+
+    Home -.->|顶部头像 click| Char
+    Home -.->|右侧黄按钮 click| Goal
+    Home -.->|街景闲逛随机| Event
+
+    Char -.->|关闭 X| Home
+    Goal -.->|关闭 X| Home
+    Event -.->|完成事件| Home
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
     classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
-    classDef tab fill:#a4d9ff,stroke:#000,color:#1F1530;
+    classDef modal fill:#a070ff,stroke:#000,color:#fff;
 </div>
 
 <!-- =================================== -->
-<h2 id="business">B. 经营 / 业务流</h2>
+<h2 id="tab1">B. Tab 1 技能</h2>
 
 <div class="mermaid">
-graph TB
-    Business[业务 list<br/><code>fps_0050</code>]:::full
-    Mgr[经理 modal<br/><code>fps_0050</code> inline]:::modal
-    Job[工作详情<br/><code>fps_0040</code>]:::modal
+graph LR
+    Skill["技能 list<br/>fps_0001"]:::full
+    Accel["加速 modal<br/>fps_0007"]:::modal
+    Up["升级动画<br/>fps_0002"]:::trans
 
-    Skill[技能 list<br/><code>fps_0001</code>]:::full
-    Accel[加速 modal<br/><code>fps_0007</code>]:::modal
-    Up[力量+2 升级动画<br/><code>fps_0002</code>]:::trans
-
-    Business -->|右下经理图| Mgr
-    Business -->|点工作卡| Job
-    Mgr -.->|关闭 X| Business
-    Job -.->|关闭 X / 接受| Business
-
-    Business -.->|⚠️ 入口未观察| Skill
     Skill -->|点加速按钮| Accel
     Skill -->|点 ▶ 升级| Up
     Up -.->|动画完| Skill
@@ -122,50 +122,89 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="happiness">C. 心情 / 幸福流</h2>
+<h2 id="tab2">C. Tab 2 遇见(关系)</h2>
 
 <div class="mermaid">
 graph LR
-    Happy[幸福 list<br/><code>fps_0123</code>]:::full
-    Activity[休闲活动<br/>赛车/啤酒/电影/台球]:::trans
+    Meet["遇见 list<br/>fps_0012"]:::full
+    Detail["关系详情<br/>fps_0020"]:::full
+    Gift["送礼 modal<br/>fps_0020 弹窗"]:::modal
+    Up2["亲疏度升级"]:::trans
 
-    Happy -->|点活动 + 扣钱| Activity
-    Activity -.->|倒计时完 +幸福%| Happy
+    Meet -->|点 NPC| Detail
+    Detail -->|点送礼任务| Gift
+    Gift -.->|接受 扣钱| Detail
+    Detail -.->|完成全任务| Up2
 
     classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
+    classDef modal fill:#a070ff,stroke:#000,color:#fff;
     classDef trans fill:#9CA3AF,stroke:#000,color:#1F1530;
 </div>
 
 <!-- =================================== -->
-<h2 id="finance">D. 财富 / 投资流</h2>
+<h2 id="tab3">D. Tab 3 工作</h2>
+
+<div class="mermaid">
+graph LR
+    Work["工作 list<br/>(底板未观察)"]:::unknown
+    Job["工作详情 modal<br/>fps_0040"]:::modal
+
+    Work -->|点工作卡| Job
+    Job -.->|接受 / 关闭| Work
+
+    classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
+    classDef modal fill:#a070ff,stroke:#000,color:#fff;
+</div>
+
+<!-- =================================== -->
+<h2 id="tab4">E. Tab 4 业务</h2>
+
+<div class="mermaid">
+graph LR
+    Biz["业务 list<br/>fps_0050"]:::full
+    Mgr["经理 modal<br/>fps_0050 inline"]:::modal
+    BizDet["业务详情 modal<br/>(未观察)"]:::unknown
+
+    Biz -->|右下经理图| Mgr
+    Biz -->|点业务卡| BizDet
+    Mgr -.->|雇佣 / 关闭| Biz
+    BizDet -.->|关闭| Biz
+
+    classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
+    classDef modal fill:#a070ff,stroke:#000,color:#fff;
+    classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
+</div>
+
+<!-- =================================== -->
+<h2 id="tab5">F. Tab 5 投资</h2>
 
 <div class="mermaid">
 graph TB
-    Invest[投资屏<br/><code>fps_0061</code><br/>sub-tab: 银行/股票]:::full
-    Auto[自动交易 modal<br/>未观察]:::unknown
-    Free[免费礼包 modal<br/>未观察]:::unknown
+    Invest["投资屏<br/>fps_0061<br/>sub-tab: 银行/股票"]:::full
+    Auto["自动交易 modal<br/>(未观察)"]:::unknown
+    Free["免费礼包 modal<br/>(未观察)"]:::unknown
 
     Invest -->|点购买股票| Invest
-    Invest -->|点自动交易 3.99 USD| Auto
-    Invest -->|点免费礼包"领取"| Free
+    Invest -->|点自动交易| Auto
+    Invest -->|点免费礼包| Free
 
     classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
     classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
 </div>
 
 <!-- =================================== -->
-<h2 id="shop">E. 商店流</h2>
+<h2 id="tab6">G. Tab 6 物品(商店)</h2>
 
 <div class="mermaid">
 graph TB
-    Shop[商店<br/>顶部 4 sub-tab]:::full
+    Shop["商店<br/>顶部 4 sub-tab"]:::full
 
-    Food[食物 sub-tab<br/><code>fps_0080</code>]:::full
-    House[住房 sub-tab<br/>未观察]:::unknown
-    Trans[运输 sub-tab<br/><code>fps_0072</code>]:::full
-    Cloth[衣服 sub-tab<br/>未观察]:::unknown
+    Food["食物 sub-tab<br/>fps_0080"]:::full
+    House["住房 sub-tab<br/>fps_0087 / 0088"]:::full
+    Trans["运输 sub-tab<br/>fps_0072"]:::full
+    Cloth["衣服 sub-tab<br/>(未观察)"]:::unknown
 
-    Buy[购买物品 modal<br/>未观察]:::unknown
+    Buy["购买 modal<br/>(未观察)"]:::unknown
 
     Shop --> Food
     Shop --> House
@@ -179,70 +218,58 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="relations">F. 关系 / 人际流</h2>
+<h2 id="popups">H. 主菜单 3 浮窗(用户确认入口)</h2>
 
 <div class="mermaid">
 graph TB
-    Rel[关系 list<br/><code>fps_0012</code><br/>萝拉/贝拉/米丝/克西]:::full
-    Detail[关系详情 贝拉<br/><code>fps_0020</code>底板]:::full
-    Gift[做出选择 礼物 modal<br/><code>fps_0020</code> 弹窗]:::modal
+    Home2["主菜单<br/>fps_0035"]:::hub
+    Char2["字符窗口<br/>fps_0105"]:::modal
+    Goal2["目标进度<br/>fps_0094"]:::modal
+    Event2["随机事件<br/>fps_0117"]:::modal
+    Happy["幸福/休闲 list<br/>fps_0123 ⚠️ 入口"]:::unknown
 
-    Rel -->|点 NPC| Detail
-    Detail -->|点送礼任务| Gift
-    Gift -.->|点接受 扣钱| Detail
-    Gift -.->|关闭 X| Detail
-    Detail -.->|完成全部任务| LevelUp[亲疏度升级<br/>冷漠→熟人→好友→恋人]:::trans
+    Home2 -.->|顶部头像 click| Char2
+    Home2 -.->|右侧黄按钮 click| Goal2
+    Home2 -.->|街景闲逛触发| Event2
+    Home2 -.->|⚠️ 入口未定| Happy
 
-    classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
-    classDef modal fill:#a070ff,stroke:#000,color:#fff;
-    classDef trans fill:#9CA3AF,stroke:#000,color:#1F1530;
-</div>
+    Char2 -.->|关闭 X| Home2
+    Goal2 -.->|关闭 X| Home2
+    Event2 -.->|完成事件| Home2
 
-<!-- =================================== -->
-<h2 id="character">G. 字符 / 任务屏</h2>
-
-<div class="mermaid">
-graph TB
-    Char[字符窗口<br/><code>fps_0105</code><br/>sub-tab: 交易/升级]:::full
-    Goal[目标 list<br/><code>fps_0094</code><br/>sub-tab: 目标/字符]:::full
-
-    Home2[主菜单<br/><code>fps_0035</code>]:::hub
-    Home2 -.->|⚠️ 顶部头像点?| Char
-    Char -.->|底栏 sub-tab 字符| Goal
-    Goal -.->|底栏 sub-tab 目标| Goal
-
-    classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
+    classDef modal fill:#a070ff,stroke:#000,color:#fff;
+    classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
 </div>
 
 <!-- =================================== -->
-<h2 id="screens">H. 完整屏映射表(50 张 PNG)</h2>
+<h2 id="screens">I. 完整屏映射表(50 张 PNG)</h2>
 
 <table>
   <thead><tr><th>帧</th><th>屏类</th><th>类型 / 底板</th><th>备注</th></tr></thead>
   <tbody>
-    <tr><td><code>fps_0001 / 0002</code></td><td>技能 list</td><td>fullscreen / 无</td><td>0002 是"力量+2"升级动画过场</td></tr>
-    <tr><td><code>fps_0007</code></td><td>加速 modal</td><td>modal / 底板:技能 list</td><td>提升 6 倍训练速度,扣 6 紫水晶</td></tr>
-    <tr><td><code>fps_0012/0013/0014</code></td><td>关系 list</td><td>fullscreen / 无</td><td>4 NPC 卡(萝拉/贝拉/米丝/克西)+ 亲疏度</td></tr>
-    <tr><td><code>fps_0020/0021/0022/0025</code></td><td>关系详情 + 礼物 modal</td><td>fullscreen + modal</td><td>顶部 NPC + 任务 list + 弹"做出选择"</td></tr>
-    <tr><td><code>fps_0035</code> ⭐</td><td>主菜单(街景)</td><td>hub / 无</td><td>Phase A 锁定屏。2 NPC + ❤ + 中央 CTA + 底栏 5 Tab</td></tr>
+    <tr><td><code>fps_0001 / 0002</code></td><td>技能 list / 升级动画</td><td>fullscreen / 无</td><td>Tab 1 落点。0002 是 +2 飘字 trans</td></tr>
+    <tr><td><code>fps_0007</code></td><td>加速 modal</td><td>modal / 底板:技能 list</td><td>6 紫水晶买永久训练 6x</td></tr>
+    <tr><td><code>fps_0012/0013/0014</code></td><td>遇见(关系)list</td><td>fullscreen / 无</td><td>Tab 2 落点。4 NPC 卡 + 亲疏度</td></tr>
+    <tr><td><code>fps_0020/0021/0022/0025</code></td><td>关系详情 + 礼物 modal</td><td>fullscreen + modal</td><td>顶部 NPC + 任务 list + "做出选择"</td></tr>
+    <tr><td><code>fps_0035</code> ⭐</td><td>主菜单街景</td><td>hub / 无</td><td>Phase A 锁定屏</td></tr>
     <tr><td><code>fps_0036/0037</code></td><td>主菜单变体</td><td>hub variant</td><td>NPC 位置 / 对话气泡过场</td></tr>
-    <tr><td><code>fps_0040/0041</code></td><td>工作详情 modal</td><td>modal / 底板:业务 list</td><td>工作要求 + 立绘 + 接受</td></tr>
-    <tr><td><code>fps_0046/0048/0049/0050/0053</code></td><td>业务 list + 经理 modal</td><td>fullscreen + modal</td><td>多业务卡 + 月入 + 经理自动收集</td></tr>
-    <tr><td><code>fps_0058/0059/0061/0062/0065/0067/0068/0069</code></td><td>投资屏(银行/股票)+ modal</td><td>fullscreen with sub-tab</td><td>自动交易 + 免费礼包</td></tr>
-    <tr><td><code>fps_0072/0073/0075/0077</code></td><td>商店 - 运输</td><td>fullscreen with sub-tab</td><td>跑车 + 锁定项</td></tr>
-    <tr><td><code>fps_0080/0082</code></td><td>商店 - 食物</td><td>fullscreen with sub-tab</td><td>餐点 / 偷牛奶</td></tr>
-    <tr><td><code>fps_0087/0088</code></td><td>商店 - 其他 sub-tab</td><td>fullscreen with sub-tab</td><td>住房 / 衣服 待确认</td></tr>
-    <tr><td><code>fps_0092/0094/0097</code></td><td>目标 list + 完成动画</td><td>fullscreen with sub-tab</td><td>"你的声望 + 任务完成"</td></tr>
-    <tr><td><code>fps_0098/0099/0100</code></td><td>字符 / 月度结算</td><td>fullscreen / trans</td><td>过场屏</td></tr>
-    <tr><td><code>fps_0105/0108/0111</code></td><td>字符窗口(交易/升级)</td><td>fullscreen with sub-tab</td><td>属性 + 每月收支</td></tr>
-    <tr><td><code>fps_0117/0118/0119</code></td><td>对话场景(MOTEL)</td><td>hub variant</td><td>底栏灰(对话中)</td></tr>
-    <tr><td><code>fps_0123/0126</code></td><td>幸福 / 休闲 list</td><td>fullscreen / 无</td><td>赛车/啤酒/电影/台球等</td></tr>
+    <tr><td><code>fps_0040/0041</code></td><td>工作详情 modal</td><td>modal / 底板:工作 list</td><td>Tab 3 落点子页。工作要求 + 立绘 + 接受</td></tr>
+    <tr><td><code>fps_0046/0048/0049/0050/0053</code></td><td>业务 list + 经理 modal</td><td>fullscreen + modal</td><td>Tab 4 落点</td></tr>
+    <tr><td><code>fps_0058/0059/0061/0062/0065/0067/0068/0069</code></td><td>投资屏(银行/股票)+ modal</td><td>fullscreen with sub-tab</td><td>Tab 5 落点</td></tr>
+    <tr><td><code>fps_0072/0073/0075/0077</code></td><td>商店 - 运输</td><td>fullscreen with sub-tab</td><td>Tab 6 物品落点 sub-tab</td></tr>
+    <tr><td><code>fps_0080/0082</code></td><td>商店 - 食物</td><td>fullscreen with sub-tab</td><td>同上</td></tr>
+    <tr><td><code>fps_0087/0088</code></td><td>商店 - 住房 / 衣服</td><td>fullscreen with sub-tab</td><td>同上 ⚠️ 待确认</td></tr>
+    <tr><td><code>fps_0092/0094/0097</code></td><td><strong>目标进度弹窗</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 主屏右侧黄按钮触发</td></tr>
+    <tr><td><code>fps_0098/0099/0100</code></td><td>字符 / 月度结算弹窗</td><td>modal / 底板:主菜单</td><td>月底自动弹</td></tr>
+    <tr><td><code>fps_0105/0108/0111</code></td><td><strong>字符窗口</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部头像触发,sub-tab 交易/升级</td></tr>
+    <tr><td><code>fps_0117/0118/0119</code></td><td><strong>随机事件弹窗</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 街景闲逛触发,MOTEL 等场景</td></tr>
+    <tr><td><code>fps_0123/0126</code></td><td>幸福 / 休闲 list</td><td>⚠️ 待校准</td><td>赛车/啤酒/电影/台球</td></tr>
   </tbody>
 </table>
 
 <script>
-mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { background: '#2a1d4e', primaryColor: '#6cc24a' }});
+mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { background: '#2a1d4e' }});
 </script>
 
 </body>
