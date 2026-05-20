@@ -10,15 +10,38 @@
 - raw URL 仍按 GitHub 完整路径拉:`https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/projects/projectE/<path>`
 - 不要在 repo 根、不要在 `projects/` 根创建文件 · 一切产出必须在 `projects/projectE/` 之内
 
-## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
+## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值 · 每一份都必拉)
 
-按 PROGRESS.md 顶部「项目快照」表 + `docs/SYNC_PROTOCOL.md` 拉:
+raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/`
 
-- `projects/projectE/PROGRESS.md`(全局状态 · 必拉)
-- `projects/projectE/design-brief/flows/`(canonical 6 文档)
-- `projects/projectE/preview/大掌柜.html`(HTML 真值全集)
-- `projects/projectE/preview/Style Lock · 风格定档.html`(15 色 / 8 字阶 / 9 货币 / 7 角标 / 27 古风对照速查)
-- `projects/projectE/final/`(Vite + Vue 3 工程层 · 递归)
+**全局状态(1 份 · 顶部「项目快照」一表知全局)**
+- `projects/projectE/PROGRESS.md`
+
+**canonical 真值 6 文档**(design-brief/flows/ · 5 条已废清单 / 9 共享 modal / 屏映射 / 交互规范都在这里 · ⚠️ **不拉这 6 份必出错**)
+- `projects/projectE/design-brief/flows/info-architecture.md`
+- `projects/projectE/design-brief/flows/interaction-spec.md`
+- `projects/projectE/design-brief/flows/screen-details.md`
+- `projects/projectE/design-brief/flows/screen-details-extras.md`
+- `projects/projectE/design-brief/flows/screen-details-extras2.md`
+- `projects/projectE/design-brief/flows/topology.html`
+
+**视觉真值(2 份)**
+- `projects/projectE/preview/大掌柜.html`(HTML 全集 · 4847 行)
+- `projects/projectE/preview/Style Lock · 风格定档.html`(风格速查 · 1116 行)
+
+**Vue 工程层**(`projects/projectE/final/src/` 整个递归拉)
+- 顶层:`main.ts` / `App.vue` / `router.ts`
+- `styles/`:`tokens.css` / `components.css`
+- `components/`:13 个(HudBar / BottomTabBar / ModalShell + 11 modal)
+- `views/`:8 个(MainMenu / SkillList / MeetList / RelationDetail / WorkDAG / BusinessList / InvestBank 占位 / ShopItems 占位)
+- `stores/useModalStore.ts`
+- `data/`:mainMenu.json / skillList.json / relations.json / workList.json / businessList.json
+
+**Pre-flight checklist · 拉完逐项打勾再开干**:
+- [ ] PROGRESS.md ✓
+- [ ] 6 份 canonical 真值(design-brief/flows/) ✓
+- [ ] 2 份 HTML(大掌柜.html + Style Lock) ✓
+- [ ] final/src/ 递归全套 ✓
 
 沙箱与 GitHub 不一致的全部覆盖 → 以 GitHub 为准。
 
