@@ -8,15 +8,15 @@ import { useModalStore } from '../stores/useModalStore'
 interface Props {
   level: number
   coin: number
-  coinDelta: string         // "+1.2k/旬"
+  coinDelta: string
   mood: number
-  moodDelta: string         // "-5.2/月"
+  moodDelta: string
   jade: number
   health: number
   healthDelta: string
   star: number
   date: { era: string; day: string; m: string }
-  charName: string
+  charName?: string
 }
 defineProps<Props>()
 const store = useModalStore()
@@ -24,14 +24,12 @@ const store = useModalStore()
 
 <template>
   <header class="hud">
-    <!-- 头像 (双行) -->
     <div class="avatar-wrap" @click="store.open('character')">
       <div class="avatar-frame">王</div>
       <div class="avatar-dot"></div>
       <div class="avatar-lv">Lv {{ level }}</div>
     </div>
 
-    <!-- 行1 -->
     <div class="hud-cell" @click="store.open('shop', {tab:'money'})">
       <span class="ic-seal ic-coin">銅</span>
       <span class="num">{{ coin.toLocaleString() }}</span>
@@ -47,7 +45,6 @@ const store = useModalStore()
     </div>
     <button class="gear-btn" @click="store.open('settings')"></button>
 
-    <!-- 行2 -->
     <div class="hud-cell">
       <span class="ic-seal ic-coin2">寳</span>
       <span class="pill pill--income">{{ coinDelta }}</span>
@@ -68,3 +65,173 @@ const store = useModalStore()
     </div>
   </header>
 </template>
+
+<style scoped>
+.hud {
+    position: relative;
+    z-index: 30;
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--paper-edge);
+    box-shadow: 0 1px 0 rgba(0,0,0,.04), inset 0 -2px 0 var(--gold-1);
+    padding: 8px 10px 8px;
+    display: grid;
+    grid-template-columns: 54px 1.15fr 1.05fr .95fr 38px;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 6px;
+    row-gap: 4px;
+    align-items: center;
+  }
+
+.avatar-wrap {
+    grid-row: 1 / span 2;
+    width: 52px; height: 52px;
+    position: relative;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+
+.avatar-frame {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 30%, var(--paper-1) 0%, var(--paper-3) 80%);
+    border: 2px solid var(--gold-1);
+    box-shadow: inset 0 0 0 1px var(--paper-1);
+    overflow: hidden;
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    color: var(--ink-2);
+    font-size: 30px;
+  }
+
+.avatar-lv {
+    position: absolute;
+    bottom: -3px; left: 50%; transform: translateX(-50%);
+    background: var(--ink-1); color: var(--paper-1);
+    font-family: var(--font-num);
+    font-size: 15px;
+    padding: 1px 6px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--gold-1);
+    white-space: nowrap;
+    letter-spacing: .02em;
+    line-height: 1.2;
+  }
+
+.avatar-dot {
+    position: absolute; top: -2px; right: -2px;
+    width: 10px; height: 10px;
+    background: var(--cinnabar-2);
+    border: 1.5px solid var(--paper-1);
+    border-radius: 50%;
+  }
+
+.hud-cell {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-num);
+    font-size: 18px;
+    color: var(--ink-1);
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+.hud-cell .num { font-weight: var(--fw-medium); letter-spacing: -.02em; }
+
+.hud-cell .sub {
+    font-size: 15px;
+    color: var(--ink-3);
+    font-family: var(--font-num);
+  }
+
+.ic { width: 22px; height: 22px; display: inline-grid; place-items: center; flex: none; }
+
+.ic-seal {
+    width: 22px; height: 22px;
+    border-radius: 3px;
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    color: var(--paper-1);
+    font-size: 17px;
+    line-height: 1;
+    position: relative;
+    flex: none;
+  }
+
+.ic-seal::after {
+    content: "";
+    position: absolute; inset: 1px;
+    border: 1px solid rgba(245,235,214,.3);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+.ic-coin   { background: var(--cur-coin); }
+
+.ic-jade   { background: var(--cur-jade); }
+
+.ic-heart  { background: var(--cur-heart); }
+
+.ic-mood   { background: var(--cur-mood);  color: var(--ink-1); }
+
+.ic-star   { background: var(--cur-star);  color: var(--ink-1); }
+
+.ic-coin2  { background: var(--cur-coin2); color: var(--ink-1); }
+
+.ic-brick  { background: var(--cur-brick); }
+
+.gear-btn {
+    grid-row: 1 / 2;
+    grid-column: 5;
+    width: 30px; height: 30px;
+    border: 1.5px solid var(--ink-2);
+    background: var(--paper-1);
+    border-radius: 6px;
+    display: grid; place-items: center;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+  }
+
+.gear-btn::before {
+    content: "";
+    width: 14px; height: 14px;
+    background:
+      conic-gradient(var(--ink-2) 0 12.5%, transparent 0 25%,
+                     var(--ink-2) 0 37.5%, transparent 0 50%,
+                     var(--ink-2) 0 62.5%, transparent 0 75%,
+                     var(--ink-2) 0 87.5%, transparent 0 100%);
+    border-radius: 50%;
+    -webkit-mask: radial-gradient(circle, transparent 3px, #000 4px);
+            mask: radial-gradient(circle, transparent 3px, #000 4px);
+  }
+
+.cal {
+    grid-row: 2;
+    grid-column: 5;
+    width: 38px; height: 38px;
+    border: 1.5px solid var(--ink-2);
+    background: var(--paper-1);
+    border-radius: 4px;
+    text-align: center;
+    font-family: var(--font-num);
+    line-height: 1;
+    padding: 2px 0;
+    margin-left: auto;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.cal .y { font-size: 14px; color: var(--ink-3); letter-spacing:.05em; line-height:1; }
+
+.cal .d { font-size: 20px; font-weight: var(--fw-bold); color: var(--ink-1); line-height:1; margin: 2px 0; white-space: nowrap; letter-spacing: -.05em; }
+
+.cal .m { font-size: 14px; color: var(--cinnabar-1); font-weight: var(--fw-bold); letter-spacing:.05em; line-height:1; }
+</style>

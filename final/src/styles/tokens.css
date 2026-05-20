@@ -71,18 +71,18 @@
   --cur-ticket:#6A4583;   /* 票引   · 门票          */
   --cur-chip:  #547395;   /* 骰碼   · 赌场芯片      */
 
-  /* ───────── 字号 (size) ───────── */
-  --fs-overlay:  30px;    /* UpgradeOverlay 全屏段位大字         */
-  --fs-display:  22px;    /* hero 数值大字 / 声望数            */
-  --fs-h1:       18px;    /* modal title bar / 屏标题            */
-  --fs-h2:       16px;    /* section heading / NPC名·人物名     */
-  --fs-h3:       15px;    /* card title / list item header        */
-  --fs-body:     14px;    /* 正文 / list item name / 属性名       */
-  --fs-num:      15px;    /* 列表数值 / 价格 / 加成             */
-  --fs-num-bold: 17px;    /* HUD 数据 / modal 价格头            */
-  --fs-label:    13px;    /* tab / button / pill / 辅助标签       */
-  --fs-meta:     12px;    /* cost / cd / sub info                 */
-  --fs-micro:    10px;    /* 微角标 / +N% / FAIL                 */
+  /* ───────── 字号 (size · v3 · 游戏向 · 锁定) ─────────
+   *  游戏 UI 字号要明显大于软件 UI。最小正文 16px。
+   *  v2 (11档) → v3 (8档)：h3 并入 h2 / num 并入 body / micro 并入 meta
+   */
+  --fs-overlay:  40px;    /* UpgradeOverlay 全屏段位大字              */
+  --fs-display:  32px;    /* hero 大数字 / 声望数 / 数据强高亮         */
+  --fs-h1:       26px;    /* modal title bar · HUD 主数据             */
+  --fs-h2:       20px;    /* section heading · NPC 名 · 卡片标题       */
+  --fs-body:     18px;    /* 正文 · list name · 价格 · 列表值 · 默认   */
+  --fs-label:    17px;    /* tab · button · pill · 辅助标签            */
+  --fs-meta:     15px;    /* cost · cd · sub info · 时间               */
+  --fs-mono:     14px;    /* placeholder 监督贴字（mono 字族独占）      */
 
   /* ───────── 字重 ───────── */
   --fw-light:   300;
@@ -227,23 +227,21 @@ body {
 .pill--promo  { background: var(--amber);     color: var(--ink-1); }
 
 /* ============================================================
- *  排版工具类 (typography utility · 全局 · v2)
+ *  排版工具类 (typography utility · 全局 · v3)
  *  规则：能用 .t-X / .c-X 就用，不要在 HTML 写 inline font-size
+ *  v3 · 8 档（游戏向）· 中文最小 16px
  * ============================================================ */
 .t-overlay   { font-family: var(--font-display); font-size: var(--fs-overlay);   color: var(--paper-1); letter-spacing: .15em; line-height: 1; }
-.t-display   { font-family: var(--font-display); font-size: var(--fs-display);   color: var(--ink-1);   line-height: 1.1; }
+.t-display   { font-family: var(--font-display); font-size: var(--fs-display);   color: var(--ink-1);   line-height: 1.1; font-weight: 700; }
 .t-h1        { font-family: var(--font-display); font-size: var(--fs-h1);        color: var(--ink-1);   letter-spacing: .04em; line-height: 1.2; }
 .t-h2        { font-family: var(--font-display); font-size: var(--fs-h2);        color: var(--ink-1);   letter-spacing: .02em; line-height: 1.3; }
-.t-h3        { font-family: var(--font-display); font-size: var(--fs-h3);        color: var(--ink-1);   line-height: 1.3; }
 .t-body      { font-family: var(--font-serif);   font-size: var(--fs-body);      color: var(--ink-2);   line-height: 1.6; }
 .t-name      { font-family: var(--font-display); font-size: var(--fs-body);      color: var(--ink-1); }
-.t-num       { font-family: var(--font-num);     font-size: var(--fs-num);       color: var(--ink-1); }
-.t-num-bold  { font-family: var(--font-display); font-size: var(--fs-num-bold);  color: var(--ink-1);   font-weight: 700; }
+.t-num       { font-family: var(--font-num);     font-size: var(--fs-body);      color: var(--ink-1); }
 .t-num-hl    { font-family: var(--font-display); font-size: var(--fs-display);   color: var(--cinnabar-1); font-weight: 700; }
 .t-label     { font-family: var(--font-display); font-size: var(--fs-label);     color: var(--ink-2);   letter-spacing: .06em; }
 .t-meta      { font-family: var(--font-num);     font-size: var(--fs-meta);      color: var(--ink-3); }
-.t-micro     { font-family: var(--font-num);     font-size: var(--fs-micro);     color: var(--ink-4); }
-.t-mono      { font-family: ui-monospace, "SF Mono", monospace; font-size: var(--fs-micro); color: var(--ink-3); letter-spacing: .02em; }
+.t-mono      { font-family: ui-monospace, "SF Mono", monospace; font-size: var(--fs-mono); color: var(--ink-3); letter-spacing: .02em; }
 
 .c-red    { color: var(--cinnabar-1) !important; }
 .c-jade   { color: var(--jade) !important; }

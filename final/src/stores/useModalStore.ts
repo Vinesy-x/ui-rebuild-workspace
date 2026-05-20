@@ -18,17 +18,17 @@ export type ModalName =
   | 'bonus'
   | 'date'
   | 'random-event'
-  // NPC tap
-  | 'npc-req'
   // Tab 1
   | 'skill-accelerate'
   // Tab 2
   | 'gift-picker'        // OptionPickerModal
   | 'date-picker'        // OptionPickerModal
   | 'upgrade-overlay'    // UpgradeOverlay
-  // Tab 3
-  | 'job-detail'
-  | 'job-promo'          // JobPromoSplash
+  // Tab 3 工作 · 0036 工作 list → 点工作卡触发
+  // ⚠️ v2 canonical 校正：fps_0037 实为 JobDetail modal "焊工"（与 0040 汽车修理工 / 0041 promo 同 widget 不同工种）
+  // 旧推测的「主菜单 NPC tap → 焊工要求 modal」边作废
+  | 'job-detail'         // JobDetailModal · 0037 + 0040
+  | 'job-promo'          // JobPromoSplash · 0041
   // Tab 4
   | 'biz-hire'
   | 'biz-upgrade'

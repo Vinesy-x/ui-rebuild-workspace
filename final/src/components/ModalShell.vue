@@ -1,20 +1,26 @@
 <!--
-  ModalShell · 全屋 modal 根容器
+  ModalShell · 全局 modal 根容器
   挂在根 layout，根据 useModalStore.currentModal 渲染对应 modal
   scrim rgba(0,0,0,.65) + backdrop-filter blur(8px)
+
+  Modal 尺寸 3 档锁定：
+    .modal--sm  420px  · 短列表 / 信息 modal
+    .modal--md  560px  · hero+6 行 / req 列表 (default)
+    .modal--lg  740px  · 长列表 / 商店 / 设置 / 人物卷
+  锚点：top 64px (HUD 下) · left/right 16px · 居中偏上
+  默认 overflow:hidden，仅列表型 modal 加 .modal-body.scroll
 -->
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useModalStore } from '../stores/useModalStore'
-
-// 7 共享组件 + 屏特有 modal
-import ProgressListDialog from './ProgressListDialog.vue'
-import OptionPickerModal  from './OptionPickerModal.vue'
+import ProgressListDialog   from './ProgressListDialog.vue'
+import OptionPickerModal    from './OptionPickerModal.vue'
 import PurchaseConfirmModal from './PurchaseConfirmModal.vue'
-import AsyncWaitModal     from './AsyncWaitModal.vue'
-import CinematicScene     from './CinematicScene.vue'
-import UpgradeOverlay     from './UpgradeOverlay.vue'
-import JobPromoSplash     from './JobPromoSplash.vue'
+import AsyncWaitModal       from './AsyncWaitModal.vue'
+import CinematicScene       from './CinematicScene.vue'
+import UpgradeOverlay       from './UpgradeOverlay.vue'
+import JobPromoSplash       from './JobPromoSplash.vue'
+import JobDetailModal       from './JobDetailModal.vue'
 
 const store = useModalStore()
 const open = computed(() => store.currentModal !== null)
@@ -28,25 +34,103 @@ const map: Record<string, any> = {
   'sell-vehicle':     AsyncWaitModal,
   'cinematic':        CinematicScene,
   'upgrade-overlay':  UpgradeOverlay,
-  'job-promo':        JobPromoSplash
+  'job-promo':        JobPromoSplash,
+  'job-detail':       JobDetailModal       // 校正后: 0037 + 0040 同 widget
 }
 const current = computed(() => store.currentModal ? map[store.currentModal] : null)
 </script>
 
 <template>
   <Teleport to="body">
-    <div v-if="open" class="modal-root">
+    <div v-if="open" class="modal-root open">
       <div class="scrim" @click="store.close()"></div>
       <component v-if="current" :is="current" v-bind="store.props" />
     </div>
   </Teleport>
 </template>
 
-<style scoped>
-.modal-root { position: fixed; inset: 0; z-index: 60; }
+<style>
+/* 非 scoped: modal 系列样式跨组件共享 */
+.modal-root {
+    position: absolute; inset: 0;
+    z-index: 60;
+    display: none;
+  }
+
+.modal-root.open { display: block; }
+
 .scrim {
-  position: absolute; inset: 0;
-  background: var(--scrim);
-  backdrop-filter: var(--scrim-blur);
-}
+    position: absolute; inset: 0;
+    background: var(--scrim);
+    backdrop-filter: var(--scrim-blur);
+    -webkit-backdrop-filter: var(--scrim-blur);
+  }
+
+.modal {
+    position: absolute;
+    left: 16px; right: 16px;
+    top: 64px;                       /* 锁定顶部锚点 (HUD下 64px) · 居中偏上 */
+    background: var(--paper-1);
+    border: 1.5px solid var(--paper-edge);
+    border-radius: 10px;
+    box-shadow: var(--sh-modal);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    isolation: isolate;
+    height: 560px;                   /* default = md */
+  }
+
+.modal--sm { height: 420px; }
+
+.modal--md { height: 560px; }
+
+.modal--lg { height: 740px; }
+
+.modal-bar {
+    background: var(--celadon-3);
+    color: var(--paper-1);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-display);
+    font-size: 20px;
+    border-bottom: 1px solid var(--wood-2);
+    position: relative;
+  }
+
+.modal-bar::after {  /* 飞檐 */
+    content: "";
+    position: absolute;
+    bottom: -6px; left: 50%; transform: translateX(-50%);
+    width: 70%; height: 6px;
+    background: var(--wood-1);
+    clip-path: polygon(0 0, 10% 100%, 90% 100%, 100% 0);
+  }
+
+.modal-bar .close {
+    width: 24px; height: 24px;
+    border: 1px solid var(--paper-1);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    background: transparent;
+    color: var(--paper-1);
+  }
+
+.modal-body {
+    flex: 1 1 auto;
+    overflow: hidden;            /* 默认不滚动 · 内容超出裁切 */
+    padding: 16px;
+  }
+
+.modal-body.scroll {           /* 仅列表类 modal 加 .scroll */
+    overflow-y: auto;
+  }
+
+.modal-body h3 { margin: 12px 0 8px; font-family: var(--font-display); font-size: var(--fs-h3); color: var(--ink-1); letter-spacing: .02em; }
+
+.modal-body p  { margin: 4px 0; font-size: var(--fs-body); color: var(--ink-2); line-height: 1.6; }
 </style>

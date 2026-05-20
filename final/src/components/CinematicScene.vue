@@ -1,31 +1,22 @@
 <!--
-  CinematicScene · 共享组件
+  CinematicScene · 共享组件 (5/8)
   出现帧: 0077 购房成功过场
-  无 UI chrome、全屏插画、自动播放后返回 (default 2500ms)
+  全屏插画 · 无 UI chrome · 自动播放后返回
 -->
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useModalStore } from '../stores/useModalStore'
-interface Props {
-  illu?: string
-  actors?: string[]
-  item?: string
-  setting?: string
-  duration?: number
-}
+interface Props { illu?: string; actors?: string[]; item?: string; setting?: string; duration?: number }
 const props = withDefaults(defineProps<Props>(), { duration: 2500 })
 const store = useModalStore()
-
-onMounted(() => {
-  setTimeout(() => store.close(), props.duration)
-})
+onMounted(() => { setTimeout(() => store.close(), props.duration) })
 </script>
 
 <template>
   <div class="cinematic-full">
-    <img v-if="illu" :src="illu" class="bg"/>
+    <img v-if="illu" :src="illu" class="bg" alt=""/>
     <div v-else class="placeholder">
-      <p>购买成功 · {{ item }}</p>
+      <p class="title">购买成功 · {{ item }}</p>
       <p class="ph">cinematic placeholder · Phase B 替换全屏插画</p>
     </div>
   </div>
@@ -40,6 +31,7 @@ onMounted(() => {
   color: var(--paper-1);
 }
 .bg { width: 100%; height: 100%; object-fit: cover; }
-.placeholder { text-align: center; font-family: var(--font-display); font-size: 24px; }
-.placeholder .ph { font-size: 11px; opacity: .5; font-family: monospace; margin-top: 8px; }
+.placeholder { text-align: center; }
+.title { font-family: var(--font-display); font-size: 36px; color: var(--gold-2); margin: 0; }
+.ph { font-family: monospace; font-size: 14px; color: var(--ink-4); margin-top: 12px; }
 </style>

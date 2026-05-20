@@ -1,5 +1,5 @@
 {
-  "_source": "fps_0035 PNG 真实提取 + 古风化",
+  "_source": "fps_0035 PNG 真实提取 + 古风化 · v2 canonical 校正 2026-05",
   "character": {
     "name": "王掌櫃",
     "ageLabel": "廿一·六十"
@@ -25,7 +25,6 @@
     "bgIllu": "/assets/illu-main-bg.png",
     "npcName": "紅巾娘子"
   },
-  "npcJobRequirement": "tongHanJiang",
   "task": {
     "jobKey": "lockMaster11",
     "title": "覓得正八品差事",
@@ -34,8 +33,10 @@
     "total": 1
   },
   "_notes": [
-    "急聘銀作開鎖匠 = canonical 工作要求 modal (fps_0037 等价) → 红巾娘子 tap 触发",
+    "v2 canonical 校正：fps_0037 实为工作详情 modal『焊工』（与 0040 汽车修理工 / 0041 promo 同 widget 不同工种），不是主菜单 NPC tap 触发。",
+    "主菜单 NPC 改为纯装饰，无交互入口。",
     "Bonus 4x 红包 红字泡 = 主菜单顶部右侧悬浮",
-    "三堆叠卡 = 多任务列表入口 (Phase B 补完)"
+    "三堆叠卡 = 多任务列表入口 (Phase B 补完)",
+    "工作详情 modal 走新组件 JobDetailModal (props: jobKey, requirements[])，建议作 7 共享组件之 8"
   ]
 }

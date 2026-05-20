@@ -1,32 +1,28 @@
 <!--
-  JobPromoSplash · 共享组件
+  JobPromoSplash · 共享组件 (7/8)
   出现帧: 0041 工作促销
-  黄字标题 + 立绘 + 月薪高亮，无 CTA
-  tap 黄 ⚠ 工作卡触发，splash 后跳 0040 工作详情 modal
+  黑徽 '促销' + 黄字标题 + 立绘 + 月薪高亮 · 无 CTA
+  tap 触发跳 JobDetailModal (0037/0040 同 widget)
 -->
 <script setup lang="ts">
 import { useModalStore } from '../stores/useModalStore'
-interface Props {
-  jobName: string
-  illu?: string
-  monthlyWage: number
-  nextModalName?: string   // 默认: job-detail
-}
+interface Props { jobName: string; illu?: string; monthlyWage: number; nextModalName?: string }
 const props = withDefaults(defineProps<Props>(), { nextModalName: 'job-detail' })
 const store = useModalStore()
-function tap() {
-  store.open(props.nextModalName as any, { jobName: props.jobName })
-}
+function tap() { store.open(props.nextModalName as any, { jobName: props.jobName }) }
 </script>
 
 <template>
   <div class="promo" @click="tap">
-    <div class="badge">促销</div>
+    <div class="badge">促 销</div>
     <h1>{{ jobName }}</h1>
-    <div class="illu"><img v-if="illu" :src="illu"/></div>
+    <div class="illu">
+      <img v-if="illu" :src="illu" alt=""/>
+      <span v-else class="ph">立绘 placeholder</span>
+    </div>
     <div class="wage">
       <span class="seal">銅</span>
-      <span class="num">{{ monthlyWage }}</span>
+      <span class="num">{{ monthlyWage.toLocaleString() }}</span>
       <span class="unit">/月</span>
     </div>
   </div>
@@ -39,24 +35,36 @@ function tap() {
   background: var(--paper-1);
   border: 2px solid var(--amber);
   border-radius: 10px;
-  padding: 24px;
+  padding: 28px;
   display: flex; flex-direction: column;
-  align-items: center; gap: 16px;
+  align-items: center; gap: 18px;
+  cursor: pointer;
 }
 .badge {
   background: var(--ink-1); color: var(--amber);
-  padding: 4px 14px; border-radius: 4px;
-  font-family: var(--font-display); letter-spacing: .2em;
+  padding: 6px 18px; border-radius: 4px;
+  font-family: var(--font-display); letter-spacing: .3em; font-size: 17px;
 }
 h1 {
   font-family: var(--font-display);
   color: var(--amber);
-  font-size: 32px; margin: 0;
+  font-size: 40px; margin: 0;
   text-shadow: 0 2px 0 var(--ink-1);
 }
-.illu { width: 200px; height: 200px; background: var(--paper-2); border: 1px solid var(--paper-edge); border-radius: 6px; }
-.wage { display: flex; align-items: baseline; gap: 6px; }
-.wage .seal { background: var(--cur-coin); color: var(--paper-1); padding: 2px 8px; border-radius: 3px; font-family: var(--font-display); }
-.wage .num { font-family: var(--font-display); font-size: 36px; color: var(--ink-1); }
-.wage .unit { color: var(--ink-3); font-size: 14px; }
+.illu {
+  width: 220px; height: 220px;
+  background: var(--paper-2); border: 1px solid var(--paper-edge);
+  border-radius: 6px;
+  display: grid; place-items: center;
+  background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
+}
+.illu .ph { font-family: monospace; font-size: 14px; color: var(--ink-3); }
+.wage { display: flex; align-items: baseline; gap: 8px; }
+.wage .seal {
+  background: var(--cur-coin); color: var(--paper-1);
+  padding: 4px 10px; border-radius: 3px;
+  font-family: var(--font-display); font-size: 22px;
+}
+.wage .num { font-family: var(--font-display); font-size: 44px; color: var(--ink-1); font-weight: 700; }
+.wage .unit { color: var(--ink-3); font-size: 17px; }
 </style>
