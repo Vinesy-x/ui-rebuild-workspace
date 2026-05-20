@@ -418,18 +418,18 @@ graph TB
     subgraph "主屏内容触发"
       Goal2["目标进度<br/>fps_0092/0094<br/>3 sub-tab"]:::modal
       JobReq2["焊工要求 modal<br/>fps_0037<br/>tap NPC 触发"]:::modal
-      Event2["随机事件<br/>fps_0117 空 → 0118 字+选项 → 0119 结果"]:::modal
+      Event2["随机事件<br/>fps_0117 空 -- 0118 字+选项 -- 0119 结果"]:::modal
     end
 
     subgraph "目标进度 3 sub-tab"
       GoalTab["目标<br/>fps_0092/0094<br/>11 任务 + 声望"]:::full
       DailyTab["每日任务<br/>0092_daily-tasks<br/>4 任务 + 24h 刷新"]:::full
-      AchieveTab["成就<br/>0092_achievements<br/>跨 Tab 长线<br/>领取 → +1 紫晶 +1 黄星"]:::full
+      AchieveTab["成就<br/>0092_achievements<br/>跨 Tab 长线<br/>领取 +1 紫晶 +1 黄星"]:::full
     end
     Goal2 --> GoalTab
     Goal2 --> DailyTab
     Goal2 --> AchieveTab
-    DailyTab -->|"每项'去'按钮 跳对应屏"| Home2
+    DailyTab -->|每项 去 按钮 跳对应屏| Home2
 
     Home2 -.->|顶部头像 click| Char2
     Home2 -.->|顶部黄星| Happy2
@@ -443,13 +443,14 @@ graph TB
     Char2 -.->|关闭 X| Home2
     Happy2 -.->|关闭 X| Home2
     Health2 -.->|关闭 X| Home2
-    Setting2 -.->|关闭 X / "新游戏"| Home2
+    Setting2 -.->|关闭 X 或 新游戏| Home2
     ShopM -.->|关闭 X| Home2
     Goal2 -.->|关闭 X| Home2
     JobReq2 -.->|关闭 X| Home2
-    Event2 -.->|"选完 → 结果 → tap dismiss"| Home2
+    Event2 -.->|选完 结果 tap dismiss| Home2
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
+    classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
     classDef modal fill:#a070ff,stroke:#000,color:#fff;
 </div>
 
