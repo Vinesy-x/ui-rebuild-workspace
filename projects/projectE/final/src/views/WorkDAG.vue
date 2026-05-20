@@ -178,11 +178,12 @@ function progressPct (j: Job) {
 
 .wk-level {
   display: grid;
-  grid-template-columns: 44px repeat(3, 1fr);
-  gap: 14px 12px;
+  grid-template-columns: 44px repeat(3, 150px);  /* 固定 150px · 3 卡 + 44px 级标 + gap = ≈540px > 448 viewport → 横滑 */
+  gap: 14px 16px;
   align-items: stretch;
   padding: 10px 6px;
   position: relative;
+  min-width: 540px;                              /* 强制溢出 · .wk-page overflow:auto 接管双向滚动 */
 }
 .wk-level-lab {
   align-self: center;
