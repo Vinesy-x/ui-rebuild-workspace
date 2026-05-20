@@ -1451,8 +1451,10 @@
           </div>
         </div>
 
-        <!-- NPCs -->
-        <div class="npcs" data-act="open:npc-req">
+        <!-- NPC 装饰 · canonical v2 (2026-05-20 校正): 不再 click → npc-req
+             fps_0037 实为工作详情 modal "焊工" (底板 = 工作 list, 同 0040 同类),
+             不是主菜单 NPC tap 触发。NPC 改纯装饰,无交互。 -->
+        <div class="npcs" aria-hidden="true">
           <div class="npc npc-1">
             <div class="head"></div>
             <div class="body"></div>
@@ -1589,24 +1591,10 @@ const MODALS = {
       <div class="ver">大掌柜 · v1.9.540 11.2_STAGE<br/>UUID CC9A37BB-97DA-45D0-B322-FBC97F3FDB48</div>
     `
   },
-  'npc-req': {
-    size: 'md',
-    title: '銅銲匠之約',
-    html: () => `
-      <div class="req-illu">立绘 placeholder · 工坊+紅柄工具 (Phase B 替换)</div>
-      <div class="req-title">铜銲匠 · 月入 千四百零四</div>
-      <div class="req-sub">齊備諸條，可入此行</div>
-      <div class="reqs">
-        <div class="req"><span class="picon">心</span><span class="name">心境 <span class="num">≥ 八十</span></span><span class="state-go">前往</span></div>
-        <div class="req"><span class="picon">宅</span><span class="name">居所 <span class="num">≥ 三品</span></span><span class="state-ok">✓</span></div>
-        <div class="req"><span class="picon">膳</span><span class="name">膳食 <span class="num">≥ 二品</span></span><span class="state-ok">✓</span></div>
-        <div class="req"><span class="picon">輦</span><span class="name">车马 <span class="num">≥ 一品</span></span><span class="state-ok">✓</span></div>
-        <div class="req"><span class="picon">藝</span><span class="name">已习: 锁匠之艺</span><span class="state-ok">✓</span></div>
-        <div class="req"><span class="picon">力</span><span class="name">膂力 <span class="num">六</span></span><span class="state-ok">✓</span></div>
-      </div>
-      <button class="accept-cta" data-act="close">受 · 立此为约</button>
-    `
-  },
+  // 'npc-req' modal 已作废 (canonical v2 校正 2026-05-20):
+  // fps_0037 实为工作详情 modal "焊工" (底板 = 工作 list fps_0036, 同 0040 同类),
+  // 触发 = Tab 3 工作 list 点焊工卡, 不是主菜单 NPC tap。
+  // 此处保留注释作历史记录, modal 定义已删。
   'happiness': {
     size: 'md',
     title: '心境 · 七十／百',
@@ -1850,7 +1838,7 @@ document.addEventListener('click', (e) => {
     const key = act.slice(5);
     const map = {
       'settings':'settings',
-      'npc-req':'npc-req',
+      // 'npc-req' 路由表项作废 (canonical v2): fps_0037 实为工作详情 modal
       'happiness':'happiness',
       'health':'health',
       'star':'happiness',
@@ -1870,8 +1858,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// 主动绑定一下街景 NPC click → npc-req
-document.querySelector('.npcs').addEventListener('click', () => openModal('npc-req'));
+// NPC click 绑定已作废 (canonical v2): NPC 改纯装饰, 无交互
 // HUD ❤ → health
 document.querySelectorAll('[data-act="open:health"]').forEach(e => e.addEventListener('click', () => openModal('health')));
 // HUD ⭐ / 心境 → 心境(幸福) modal
