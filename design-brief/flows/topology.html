@@ -74,7 +74,7 @@
   <li><a href="#tab4">E. Tab 4 业务 — 含升级 modal(5 帧)</a></li>
   <li><a href="#tab5">F. Tab 5 投资 — 银行/股票(4 帧)</a></li>
   <li><a href="#tab6">G. Tab 6 物品(商店)— 衣食住行 + 卖车流(12 帧)</a></li>
-  <li><a href="#popups">H. 主菜单 modal — 字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店(8 帧)</a></li>
+  <li><a href="#popups">H. 主菜单 modal — 字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店 / 焊工要求(8 类,15 帧)</a></li>
   <li><a href="#patterns">I. 共享组件 / 货币体系 / 角标系统</a></li>
   <li><a href="#screens">J. 完整屏映射表(50 张,本轮校正后)</a></li>
 </ul>
@@ -365,7 +365,6 @@ graph TB
     HouseDet -.->|"购买 扣紫晶"| Cine
     Cine -.->|"自动播放完"| House
 
-    Trans -->|tap 卡 详情| Trans
     Trans -->|"卖"按钮 已拥有车| SellCar1
     SellCar1 -.->|"搜索 CTA"| SellCar2
     SellCar2 -.->|"找到买家"| SellCar3
@@ -391,7 +390,7 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="popups">H. 主菜单 modal — 7 类 + 货币商店(8 帧)</h2>
+<h2 id="popups">H. 主菜单 modal — 8 类(字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店 / 焊工要求,共 15 帧)</h2>
 
 <div class="mermaid">
 graph TB
@@ -410,11 +409,6 @@ graph TB
       JobReq2["焊工要求 modal<br/>fps_0037<br/>tap NPC 触发"]:::modal
       Event2["随机事件<br/>fps_0117 空 → 0118 字+选项 → 0119 结果"]:::modal
     end
-
-    Char2 -->|sub-tab 切换| Char2
-    Happy2 -.->|"行 click 扣钞票 + 加% / cd"| Happy2
-    Health2 -.->|"行 click 扣钞票 + 加%"| Health2
-    Event2 -.->|"3 选项分支"| Event2
 
     Home2 -.->|顶部头像 click| Char2
     Home2 -.->|顶部黄星| Happy2
@@ -537,7 +531,7 @@ graph TB
     <tr><td><code>0097</code> <span class="new">校正</span></td><td><strong>商店 modal · 特别优惠 + 奖金</strong></td><td>modal / 主菜单</td><td>9.99 USD / 9.49 USD IAP — 不是目标进度</td></tr>
     <tr><td><code>0098 / 0099</code> <span class="new">校正</span></td><td><strong>商店 modal · 金钱区</strong></td><td>modal / 主菜单</td><td>6 货币档 + 没有广告 — 不是月度结算</td></tr>
     <tr><td><code>0100</code> <span class="new">校正</span></td><td><strong>商店 modal · 门票 / 水 / 芯片</strong></td><td>modal / 主菜单</td><td>3 子分区 IAP — 不是月度结算</td></tr>
-    <tr><td><code>0105</code> ⭐</td><td>字符窗口 · 交易 sub-tab</td><td>modal / 主菜单</td><td>2 sub-tab(canonical 写 3,实际见 2)+ 10 属性槽(5 解锁)</td></tr>
+    <tr><td><code>0105</code> ⭐</td><td>字符窗口 · 交易 sub-tab</td><td>modal / 主菜单</td><td>目前仅观察到 2 sub-tab(交易/升级)+ 10 属性槽(5 解锁)</td></tr>
     <tr><td><code>0108</code></td><td>字符窗口 · 升级 sub-tab</td><td>modal / 主菜单</td><td>7+ 升级条目(紫晶购)</td></tr>
     <tr><td><code>0111</code> ⭐</td><td>设置 modal</td><td>modal / 主菜单</td><td>v1.9.540 11.2_STAGE / UUID 完整</td></tr>
     <tr><td><code>0117 / 0118 / 0119</code></td><td>随机事件 3 帧时序</td><td>modal / 主菜单</td><td>空泡 → 字+3 选项 → 结果</td></tr>
