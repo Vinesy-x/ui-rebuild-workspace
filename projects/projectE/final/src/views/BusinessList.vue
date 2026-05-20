@@ -48,7 +48,7 @@ function purchase (biz: any, e: Event) {
 </script>
 
 <template>
-  <div class="biz" data-screen-label="业务 list · fps_0046">
+  <div class="screen" data-screen-label="业务 list · fps_0046">
     <HudBar v-bind="hud" :charName="mainMenu.character.name" />
 
     <div class="screen-bar">
@@ -148,14 +148,7 @@ function purchase (biz: any, e: Event) {
 </template>
 
 <style scoped>
-.biz {
-  position: absolute; inset: 0;
-  display: grid;
-  grid-template-rows: 80px 44px 1fr 90px;
-  background: var(--paper-1);
-}
-
-/* .screen-bar / .sb-title / .sb-close 走全局 components.css */
+/* .screen / .screen-bar / .sb-title / .sb-close 走全局 components.css */
 
 .bz-page { overflow-y: auto; padding: 12px 12px 24px; background: var(--paper-1); }
 

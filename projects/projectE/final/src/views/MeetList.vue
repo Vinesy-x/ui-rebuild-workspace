@@ -20,7 +20,7 @@ function stageOf (stageKey: string) { return (relData.stages as any)[stageKey] }
 </script>
 
 <template>
-  <div class="meet" data-screen-label="缘份 list · fps_0012">
+  <div class="screen" data-screen-label="缘份 list · fps_0012">
     <HudBar v-bind="hud" :charName="mainMenu.character.name" />
 
     <div class="screen-bar">
@@ -48,13 +48,7 @@ function stageOf (stageKey: string) { return (relData.stages as any)[stageKey] }
 </template>
 
 <style scoped>
-/* .screen-bar / .sb-* / .npc-card / .nl-* / .red-bang 走全局 components.css */
-.meet {
-  position: absolute; inset: 0;
-  display: grid;
-  grid-template-rows: 80px 44px 1fr 90px;
-  background: var(--paper-1);
-}
+/* .screen / .screen-bar / .sb-* / .npc-card / .nl-* / .red-bang 走全局 components.css */
 .page { overflow-y: auto; padding: 14px 12px 24px; }
 .bottom-fade { height: 24px; }
 </style>

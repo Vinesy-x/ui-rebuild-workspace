@@ -56,7 +56,6 @@ const store = useModalStore()
   margin: 0;
   letter-spacing: .04em;
 }
-.pane-cta.primary :deep(.seal-jade),
 .pane-cta.primary .seal-jade {
   background: var(--cur-jade); color: var(--paper-1);
   width: 22px; height: 22px; font-size: var(--fs-mono);

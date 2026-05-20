@@ -79,7 +79,7 @@ function progressPct (j: Job) {
 </script>
 
 <template>
-  <div class="work" data-screen-label="工作 DAG · fps_0036">
+  <div class="screen" data-screen-label="工作 DAG · fps_0036">
     <HudBar v-bind="hud" :charName="mainMenu.character.name" />
 
     <div class="screen-bar">
@@ -137,14 +137,7 @@ function progressPct (j: Job) {
 </template>
 
 <style scoped>
-.work {
-  position: absolute; inset: 0;
-  display: grid;
-  grid-template-rows: 80px 44px 1fr 90px;
-  background: var(--paper-1);
-}
-
-/* .screen-bar / .sb-title / .sb-close 走全局 components.css */
+/* .screen / .screen-bar / .sb-title / .sb-close 走全局 components.css */
 
 .wk-page {
   overflow: auto;

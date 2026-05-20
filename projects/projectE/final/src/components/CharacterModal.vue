@@ -70,21 +70,21 @@ const upgrades = [
         <h3>月度收支 · 三柱</h3>
         <div class="budget-grid">
           <div class="budget-col">
-            <div class="budget-seal seal-coin">銅</div>
+            <div class="ic-seal ic-coin budget-seal">銅</div>
             <div class="budget-rows">
               <div v-for="r in moneyRows" :key="r">{{ r }}</div>
             </div>
             <div class="budget-total">+1.5k</div>
           </div>
           <div class="budget-col">
-            <div class="budget-seal seal-mood">心</div>
+            <div class="ic-seal ic-mood budget-seal">心</div>
             <div class="budget-rows">
               <div v-for="r in moodRows" :key="r">{{ r }}</div>
             </div>
             <div class="budget-total">+2</div>
           </div>
           <div class="budget-col">
-            <div class="budget-seal seal-heart">壽</div>
+            <div class="ic-seal ic-heart budget-seal">壽</div>
             <div class="budget-rows">
               <div v-for="r in heartRows" :key="r">{{ r }}</div>
             </div>
@@ -162,18 +162,8 @@ h3:first-of-type { margin-top: 0; }
   padding: 10px 8px;
   border-radius: 6px;
 }
-.budget-seal {
-  display: block;
-  margin: 0 auto 8px;
-  width: 28px; height: 28px;
-  color: var(--paper-1);
-  border-radius: 4px;
-  font-family: var(--font-display); font-size: 16px;
-  display: grid; place-items: center;
-}
-.seal-coin  { background: var(--cur-coin); }
-.seal-mood  { background: var(--cur-mood); color: var(--ink-1); }
-.seal-heart { background: var(--cur-heart); }
+/* budget-seal = ic-seal 上下文修饰 · 颜色 & 字符 走全局 .ic-seal.ic-coin/ic-mood/ic-heart */
+.budget-seal { margin: 0 auto 8px; width: 28px; height: 28px; }
 .budget-rows {
   font-family: var(--font-num);
   font-size: 18px;

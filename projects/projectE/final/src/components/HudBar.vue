@@ -150,17 +150,9 @@ const store = useModalStore()
 
 .ic { width: 22px; height: 22px; display: inline-grid; place-items: center; flex: none; }
 
-.ic-seal {
-    width: 22px; height: 22px;
-    border-radius: 3px;
-    display: grid; place-items: center;
-    font-family: var(--font-display);
-    color: var(--paper-1);
-    font-size: 17px;
-    line-height: 1;
-    position: relative;
-    flex: none;
-  }
+/* .ic-seal + .ic-coin/jade/heart/mood/star/coin2/brick 走全局 components.css
+   HudBar 仅覆盖字号 (17 > 全局 14) + 加 1px 内边描金高光 */
+.ic-seal { font-size: var(--fs-label); position: relative; flex: none; }
 
 .ic-seal::after {
     content: "";
@@ -169,20 +161,6 @@ const store = useModalStore()
     border-radius: 2px;
     pointer-events: none;
   }
-
-.ic-coin   { background: var(--cur-coin); }
-
-.ic-jade   { background: var(--cur-jade); }
-
-.ic-heart  { background: var(--cur-heart); }
-
-.ic-mood   { background: var(--cur-mood);  color: var(--ink-1); }
-
-.ic-star   { background: var(--cur-star);  color: var(--ink-1); }
-
-.ic-coin2  { background: var(--cur-coin2); color: var(--ink-1); }
-
-.ic-brick  { background: var(--cur-brick); }
 
 .gear-btn {
     grid-row: 1 / 2;

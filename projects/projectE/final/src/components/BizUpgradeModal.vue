@@ -5,6 +5,7 @@
   触发自 BusinessList 业务卡 click 或 "興擴" 按钮 click
 -->
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useModalStore } from '../stores/useModalStore'
 interface Props {
   bizKey: string; name: string; lv: string;
@@ -13,7 +14,7 @@ interface Props {
 }
 const props = defineProps<Props>()
 const store = useModalStore()
-const gainPct = Math.min(100, Math.round(props.gain * 2))
+const gainPct = computed(() => Math.min(100, Math.round(props.gain * 2)))
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const gainPct = Math.min(100, Math.round(props.gain * 2))
         <div class="up-progress-row">
           <div class="up-arrow">↑</div>
           <div class="up-progress">
-            <i :style="{ width: gainPct + '%' }"></i>
+            <i :style="{ width: gainPct + '%' }" />
             <span class="up-progress-tag"><span class="ic-seal">銅</span>{{ gain.toFixed(1) }}</span>
           </div>
         </div>

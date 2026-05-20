@@ -98,7 +98,7 @@ function actClick (key: string) {
 </script>
 
 <template>
-  <div class="rel" :data-screen-label="`关系详情 · fps_0013 (${npc.name} · ${stage.label})`">
+  <div class="screen" :data-screen-label="`关系详情 · fps_0013 (${npc.name} · ${stage.label})`">
     <HudBar v-bind="hud" :charName="mainMenu.character.name" />
 
     <div class="screen-bar">
@@ -195,14 +195,7 @@ function actClick (key: string) {
 </template>
 
 <style scoped>
-.rel {
-  position: absolute; inset: 0;
-  display: grid;
-  grid-template-rows: 80px 44px 1fr 90px;
-  background: var(--paper-1);
-}
-
-/* .screen-bar / .sb-title / .sb-close / .sb-back 走全局 components.css */
+/* .screen / .screen-bar / .sb-title / .sb-close / .sb-back 走全局 components.css */
 
 /* page */
 .rel-page {

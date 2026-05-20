@@ -38,7 +38,7 @@ function fmtTime (sec: number) {
 </script>
 
 <template>
-  <div class="skill" data-screen-label="技能 list · fps_0001">
+  <div class="screen" data-screen-label="技能 list · fps_0001">
     <HudBar v-bind="hud" :charName="mainMenu.character.name" />
 
     <!-- 屏标 -->
@@ -136,14 +136,7 @@ function fmtTime (sec: number) {
 </template>
 
 <style scoped>
-.skill {
-  position: absolute; inset: 0;
-  display: grid;
-  grid-template-rows: 80px 44px 1fr 90px;
-  background: var(--paper-1);
-}
-
-/* .screen-bar / .sb-title / .sb-close 走全局 components.css */
+/* .screen / .screen-bar / .sb-title / .sb-close 走全局 components.css */
 
 /* 滚动区 */
 .page {

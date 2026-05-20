@@ -1,9 +1,10 @@
 /* ============================================================
  * components.css · canonical 共享 class · 1:1 复刻 大掌柜.html 真值
  * 所有 Vue 组件 / view 都不应在 scoped style 里重写这些类。
- * 含:.sub-tabs · .modal-pane / .pane-cta · .star · .set-row · .toggle · .ver
- *   .reputation · .goal-row · .gicon · .gbang · .gact · .gdone · .goal-tabs
+ * 含:.screen · .sub-tabs · .modal-pane / .pane-cta · .star · .set-row · .toggle · .ver
+ *   .reputation · .goal-row · .gicon · .gbang · .gact · .gdone
  *   .screen-bar · .sb-title · .sb-close · .sb-back · .tx-press · .red-bang
+ *   .npc-card · .nl-avatar · .nl-stage · .ic-seal + 9 货币变体
  * ============================================================ */
 
 /* ─── tx-press 厚下边 CTA 通用 (HTML L1607-1610) ─── */
@@ -109,6 +110,14 @@
 .star--md::before { font-size: 22px; }
 .star--lg { width: 28px; height: 28px; }
 .star--lg::before { font-size: 28px; }
+
+/* ─── .screen 5 view 共享布局(80 HUD + 44 屏标 + 1fr 内容 + 90 底栏)─── */
+.screen {
+  position: absolute; inset: 0;
+  display: grid;
+  grid-template-rows: 80px 44px 1fr 90px;
+  background: var(--paper-1);
+}
 
 /* ─── screen-bar (共 5 屏:Skill/Meet/Work/Biz/RelationDetail)─── */
 .screen-bar {
