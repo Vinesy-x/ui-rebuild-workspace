@@ -10,42 +10,54 @@
 fps_{{帧号}} {{短描述}}
 
 
-⚠️⚠️⚠️ 开工前同步(必做)— 避免 canonical 漂移 ⚠️⚠️⚠️
+⚠️⚠️⚠️ 开工前同步(必做)⚠️⚠️⚠️
 
-你的沙箱状态 ≠ GitHub 真值。你能主动从 GitHub 拉任何文件,但不会自动
-拉。请你主动从 GitHub 拉下列文件最新版,覆盖你沙箱里对应文件:
+你的沙箱状态 ≠ GitHub 真值。每次新 task 必须主动拉 GitHub 最新版
+覆盖沙箱旧版,否则会出现 canonical 漂移(已发生 2 次回滚事故)。
 
 repo = https://github.com/{{owner}}/{{repo}}  branch = main
 raw URL 模板 = https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/<path>
 
-必拉清单:
 
-  进度跟踪(每次必拉):
-  - projects/{{name}}/PROGRESS.md
+【步骤 1 — 第一时间拉项目全局(新会话 / 新沙箱必做)】
 
-  canonical 演进:
-  - projects/{{name}}/design-brief/SYNC_PROTOCOL.md
-  - projects/{{name}}/design-brief/flows/info-architecture.md
-  - projects/{{name}}/design-brief/flows/interaction-spec.md
-  - projects/{{name}}/design-brief/flows/screen-details.md
-  - projects/{{name}}/design-brief/flows/screen-details-extras.md
-  - projects/{{name}}/design-brief/flows/screen-details-extras2.md
-  - projects/{{name}}/design-brief/flows/topology.html
+主动拉:
+- projects/{{name}}/PROGRESS.md  ⭐⭐⭐
+  → 看顶部「项目快照」一表知全局:游戏 / 视觉风格 / viewport / 工程栈 /
+     Modal 模式 / 底栏 Tab / 文字古风化对照入口 / 5 条已废清单 /
+     9 共享 modal 状态 / 当前阶段。
 
-  HTML 真值(在 preview/):
-  - projects/{{name}}/preview/{{所有 .html}}
+如果是首次接触这个项目(沙箱里没有任何文件),还要拉:
+- projects/{{name}}/KICKOFF.md
+  → 完整项目背景 + Phase A 起步说明(只首次需要,后续靠 PROGRESS 即可)
 
-  Vue 工程层:
-  - projects/{{name}}/final/(整个目录递归)
 
-  workspace 级目录约定(可选):
-  - docs/DIRECTORY_CONVENTION.md
-  - docs/COLLABORATION_PROTOCOL.md
+【步骤 2 — 拉 canonical 演进最新版】
 
-拉取完成 → 沙箱跟 GitHub 不一致的全部覆盖 → 以 GitHub 为准。
+- projects/{{name}}/design-brief/flows/info-architecture.md
+- projects/{{name}}/design-brief/flows/interaction-spec.md
+- projects/{{name}}/design-brief/flows/screen-details.md
+- projects/{{name}}/design-brief/flows/screen-details-extras.md
+- projects/{{name}}/design-brief/flows/screen-details-extras2.md
+- projects/{{name}}/design-brief/flows/topology.html
 
-⚠️ 已知废弃项(每个项目维护自己的 PROGRESS.md 里有完整列表,
-开工前必看):
+
+【步骤 3 — 拉视觉真值 + 工程层】
+
+- projects/{{name}}/preview/(整个目录,所有 .html)
+- projects/{{name}}/final/(整个目录递归)
+
+
+【步骤 4 — workspace 级规约(可选)】
+
+- docs/DIRECTORY_CONVENTION.md      (目录约定)
+- docs/SYNC_PROTOCOL.md              (同步规约)
+- docs/COLLABORATION_PROTOCOL.md     (三方协作总规约)
+
+
+拉完 → 沙箱里跟 GitHub 不一致的全部覆盖 → 以 GitHub 为准。
+
+⚠️ 已知废弃项(从 PROGRESS.md 复制最新版,严格遵循不要重新引入):
 {{从 PROGRESS.md 复制当前的 5 条已废清单}}
 
 

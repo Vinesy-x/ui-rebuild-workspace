@@ -1,12 +1,31 @@
 # {{游戏名}} — 实时进度
 
-> ⚠️ design 沙箱开工前必拉这个文件,知道当前进度后继续推进。
+> ⚠️ **design 沙箱开工前必拉这一份**(每个 task 都要)。一文知全局:项目快照 + 当前阶段 + 已废清单 + 共享 modal 状态。
 >
 > raw URL: `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/PROGRESS.md`
 
 ---
 
-## 项目元信息
+## 📋 项目快照(design 第一眼看这里就知道全局)
+
+| 项 | 值 |
+|---|---|
+| **游戏** | {{游戏名}}({{类型}})|
+| **视觉** | {{风格}} |
+| **viewport** | {{宽}}×{{高}} {{竖屏/横屏}} |
+| **抽帧** | {{N}} 帧视频(`input/{{视频}}`)|
+| **风格定档** | `preview/Style Lock · 风格定档.html` — Phase A 锁定不再变 |
+| **工程栈** | Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router |
+| **Modal 模式** | N 共享 modal + `useModalStore` + `<ModalShell>` + router.afterEach 自动 reset |
+| **完整 KICKOFF** | `projects/{{name}}/KICKOFF.md`(只 Phase A 首次启动需要)|
+
+文字内容**全部 {{语境}} 化**(详见 Style Lock N 项对照)。
+
+底栏 N Tab(canonical 锁定):{{Tab 列表}}。
+
+---
+
+## 项目元信息(详细)
 
 - **游戏名**:{{游戏名}}
 - **类型**:{{类型}}
