@@ -19,12 +19,12 @@ const store = useModalStore()
 </script>
 
 <template>
-  <div class="modal modal--md">
+  <div class="modal modal--lg">
     <div class="modal-bar">
       <span>{{ jobName }}</span>
       <button class="close" @click="store.close()">✕</button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body scroll">
       <div class="req-illu">
         <img v-if="illu" :src="illu" alt=""/>
         <template v-else>立绘 placeholder · 工坊+红柄工具 (Phase B 替换)</template>
@@ -130,147 +130,6 @@ const store = useModalStore()
 
 .accept-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
 
-.reputation {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 12px;
-    background: var(--paper-2);
-    border: 1px solid var(--paper-edge);
-    border-radius: 6px;
-    margin-bottom: 10px;
-  }
-
-.reputation .repnum {
-    font-family: var(--font-display);
-    font-size: 32px;
-    color: var(--cinnabar-1);
-    line-height: 1;
-  }
-
-.reputation .replab { font-family: var(--font-display); font-size: 17px; color: var(--ink-3); margin-top: 2px; }
-
-.reputation .repprog { font-family: var(--font-num); font-size: 18px; color: var(--ink-1); }
-
-.goal-tabs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--paper-edge);
-    padding-bottom: 6px;
-  }
-
-.goal-tabs .gt {
-    flex: 1;
-    text-align: center;
-    padding: 6px;
-    font-family: var(--font-display);
-    font-size: 17px;
-    color: var(--ink-3);
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-  }
-
-.goal-tabs .gt.active {
-    color: var(--cinnabar-1);
-    border-bottom-color: var(--cinnabar-1);
-  }
-
-.goal-row {
-    display: grid;
-    grid-template-columns: 32px 1fr auto;
-    gap: 10px;
-    align-items: center;
-    padding: 8px;
-    background: var(--paper-2);
-    border: 1px solid var(--paper-edge);
-    border-radius: 6px;
-    margin-bottom: 6px;
-    position: relative;
-  }
-
-.goal-row.done { opacity: .6; }
-
-.goal-row .gicon { width: 28px; height: 28px; }
-
-.goal-row .gname { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-
-.goal-row .greward { font-family: var(--font-num); font-size: 16px; color: var(--ink-3); margin-top: 2px; }
-
-.goal-row .gact {
-    background: var(--amber);
-    color: var(--ink-1);
-    font-family: var(--font-display);
-    font-size: 17px;
-    padding: 5px 14px;
-    border-radius: var(--r-pill);
-    border: 1px solid var(--ink-1);
-  }
-
-.goal-row .gdone {
-    width: 24px; height: 24px;
-    background: var(--jade);
-    color: var(--paper-1);
-    border-radius: 50%;
-    display: grid; place-items: center;
-  }
-
-.goal-row .gbang {
-    position: absolute;
-    top: -4px; right: -4px;
-    width: 16px; height: 16px;
-    background: var(--cinnabar-1);
-    color: var(--paper-1);
-    border-radius: 50%;
-    font-family: var(--font-display);
-    font-size: 15px;
-    display: grid; place-items: center;
-    border: 1.5px solid var(--paper-1);
-    z-index: 4;
-  }
-
-.set-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 10px;
-    border-bottom: 1px solid var(--paper-edge);
-    font-family: var(--font-display);
-    font-size: 18px;
-    color: var(--ink-1);
-  }
-
-.set-row .ico {
-    width: 28px; height: 28px;
-    background: var(--celadon-2);
-    border: 1px solid var(--celadon-3);
-    border-radius: 4px;
-    display: grid; place-items: center;
-    margin-right: 8px;
-    font-size: 17px;
-    color: var(--ink-1);
-  }
-
-.toggle {
-    width: 36px; height: 20px;
-    background: var(--jade);
-    border-radius: var(--r-pill);
-    border: 1px solid var(--ink-1);
-    position: relative;
-    cursor: pointer;
-  }
-
-.toggle::after {
-    content: "";
-    position: absolute;
-    top: 1px; right: 1px;
-    width: 16px; height: 16px;
-    background: var(--paper-1);
-    border-radius: 50%;
-    box-shadow: 0 1px 2px rgba(0,0,0,.3);
-  }
-
-.toggle.off { background: var(--ink-4); }
-
-.toggle.off::after { right: auto; left: 1px; }
-
-.ver { text-align: center; font-family: var(--font-num); font-size: 15px; color: var(--ink-4); padding: 12px 8px; line-height: 1.6; }
+/* .reputation / .goal-row / .gicon / .gbang / .gact / .gdone / .set-row / .toggle / .ver 等
+   全部走全局 styles/components.css(原 JobDetailModal 的全局泄漏已收紧) */
 </style>

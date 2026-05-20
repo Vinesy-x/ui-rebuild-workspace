@@ -58,7 +58,7 @@ const gainPct = Math.min(100, Math.round(props.gain * 2))
 </template>
 
 <style scoped>
-.modal-pane { display: flex; flex-direction: column; height: 100%; gap: 12px; }
+/* .modal-pane / .pane-cta / .star / .star-row 走全局 components.css */
 
 .up-illu {
   width: 160px; height: 160px;
@@ -122,14 +122,8 @@ const gainPct = Math.min(100, Math.round(props.gain * 2))
   font-family: var(--font-display);
 }
 
-/* ⭐ row 居中 */
-.star-row { display: inline-flex; gap: 3px; justify-content: center; }
-.up-stars-row { width: 100%; }
-.star { width: 18px; height: 18px; display: inline-grid; place-items: center; font-family: var(--font-display); line-height: 1; }
-.star::before { content: "★"; font-size: 18px; color: var(--ink-4); }
-.star.is-on::before { color: var(--gold-2); }
-.star--md { width: 22px; height: 22px; }
-.star--md::before { font-size: 22px; }
+/* ⭐ row 居中(.star-row / .star / .star--md 走全局) */
+.up-stars-row { width: 100%; justify-content: center; }
 
 .up-income {
   background: var(--paper-1);
@@ -159,26 +153,7 @@ const gainPct = Math.min(100, Math.round(props.gain * 2))
   margin-top: 1px;
 }
 
-.pane-cta-row {
-  margin-top: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.pane-cta {
-  padding: 13px;
-  border-radius: 10px;
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: .12em;
-  cursor: pointer;
-  border: 1.5px solid var(--ink-1);
-  box-shadow: 0 3px 0 var(--ink-1);
-  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--jade); color: var(--paper-1);
-}
-.pane-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+/* .pane-cta-row / .pane-cta 基础走全局 · 这里只补本 modal 的 ad-cta 装饰 */
 
 .ad-tag {
   background: var(--amber);
@@ -196,10 +171,10 @@ const gainPct = Math.min(100, Math.round(props.gain * 2))
 
 .pane-cta .seal-coin {
   background: var(--cur-coin); color: var(--paper-1);
-  width: 22px; height: 22px; font-size: 14px;
+  width: 22px; height: 22px; font-size: var(--fs-mono);
   border-radius: 3px;
   display: grid; place-items: center;
   font-family: var(--font-display);
 }
-.pane-cta .num { font-family: var(--font-num); letter-spacing: 0; font-size: 18px; }
+.pane-cta .num { font-family: var(--font-num); letter-spacing: 0; font-size: var(--fs-body); }
 </style>

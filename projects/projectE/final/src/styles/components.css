@@ -1,0 +1,365 @@
+/* ============================================================
+ * components.css · canonical 共享 class · 1:1 复刻 大掌柜.html 真值
+ * 所有 Vue 组件 / view 都不应在 scoped style 里重写这些类。
+ * 含:.sub-tabs · .modal-pane / .pane-cta · .star · .set-row · .toggle · .ver
+ *   .reputation · .goal-row · .gicon · .gbang · .gact · .gdone · .goal-tabs
+ *   .screen-bar · .sb-title · .sb-close · .sb-back · .tx-press · .red-bang
+ * ============================================================ */
+
+/* ─── tx-press 厚下边 CTA 通用 (HTML L1607-1610) ─── */
+.tx-press {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    filter var(--dur-fast);
+}
+.tx-press:hover  { filter: brightness(1.05); }
+.tx-press:active { transform: translateY(2px); filter: brightness(.95); }
+
+/* ─── sub-tabs (HTML L1578-1605) · paper-2 容器 + 内 pill ─── */
+.sub-tabs {
+  display: flex; gap: 6px;
+  background: var(--paper-2);
+  border: 1px solid var(--paper-edge);
+  border-radius: 8px;
+  padding: 4px;
+  margin-bottom: 14px;
+}
+.sub-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 10px;
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  color: var(--ink-3);
+  cursor: pointer;
+  border-radius: 6px;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+  border: 1px solid transparent;            /* active 态接边,避免 1px jitter */
+}
+.sub-tab:active { transform: scale(.94); }
+.sub-tab.is-active {
+  background: var(--paper-1);
+  color: var(--ink-1);
+  border: 1px solid var(--gold-1);
+  box-shadow: inset 0 -2px 0 var(--paper-edge);
+}
+
+/* ─── 通用 modal-pane (CTA 置底 flex column) ─── */
+.modal-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+}
+.modal-pane .pane-cta-row {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.modal-pane .pane-cta {
+  padding: 13px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  letter-spacing: .12em;
+  cursor: pointer;
+  border: 1.5px solid var(--ink-1);
+  box-shadow: 0 3px 0 var(--ink-1);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.modal-pane .pane-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+.modal-pane .pane-cta.ghost   { background: var(--paper-1); color: var(--azure); }
+.modal-pane .pane-cta.primary { background: var(--jade);    color: var(--paper-1); }
+
+/* ─── canonical star (HTML L2511-2540) ─── */
+.star-row { display: inline-flex; gap: 3px; }
+.star {
+  width: 18px; height: 18px;
+  display: inline-grid; place-items: center;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+.star::before {
+  content: "★";
+  font-size: 18px;
+  color: var(--ink-4);
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+}
+.star.is-on::before {
+  color: var(--gold-2);
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+.star.is-half::before {
+  background: linear-gradient(90deg, var(--gold-2) 50%, var(--ink-4) 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.star--sm { width: 14px; height: 14px; }
+.star--sm::before { font-size: 14px; }
+.star--md { width: 22px; height: 22px; }
+.star--md::before { font-size: 22px; }
+.star--lg { width: 28px; height: 28px; }
+.star--lg::before { font-size: 28px; }
+
+/* ─── screen-bar (共 5 屏:Skill/Meet/Work/Biz/RelationDetail)─── */
+.screen-bar {
+  background: var(--celadon-3);
+  color: var(--paper-1);
+  display: grid; grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid var(--wood-2);
+  box-shadow: 0 1px 0 var(--gold-1);
+}
+.screen-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 6px;
+  background: var(--wood-1);
+  clip-path: polygon(0 0, 10% 100%, 90% 100%, 100% 0);
+}
+.sb-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  letter-spacing: .35em;
+  text-align: center;
+  padding-left: .35em;
+}
+.sb-close,
+.sb-back {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--paper-1); border-radius: 50%;
+  background: transparent; color: var(--paper-1);
+  font-size: var(--fs-label); cursor: pointer; justify-self: center;
+  font-family: var(--font-display);
+}
+
+/* ─── npc-card / nl-* (Meet list · HTML L1617-1671) ─── */
+.npc-card {
+  background: var(--paper-2);
+  border: 1.5px solid var(--paper-edge);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 60px 1fr 36px;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px 8px 8px;
+  margin-bottom: 8px;
+  box-shadow: var(--sh-card);
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.npc-card:active { transform: scale(.985); }
+.nl-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--paper-1) 0%, var(--paper-3) 80%);
+  border: 2px solid var(--gold-1);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  color: var(--ink-2);
+  font-size: var(--fs-h1);
+  box-shadow: inset 0 0 0 1px var(--paper-1);
+}
+.nl-info { min-width: 0; }
+.nl-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  color: var(--ink-1);
+  letter-spacing: .04em;
+}
+.nl-stage {
+  font-family: var(--font-num);
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.nl-stage.is-stranger { color: var(--ink-3); }
+.nl-stage.is-known    { color: var(--celadon-3); }
+.nl-stage.is-friend   { color: var(--jade); }
+.nl-stage.is-close,
+.nl-stage.is-main     { color: var(--cinnabar-1); }
+.nl-arrow {
+  width: 32px; height: 32px;
+  border: 1.5px solid var(--ink-3);
+  border-radius: 50%;
+  background: var(--paper-1);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--ink-2);
+}
+.npc-card .red-bang {
+  position: absolute; top: -4px; right: 30px;
+  width: 18px; height: 18px;
+  background: var(--cinnabar-1); color: var(--paper-1);
+  border: 1.5px solid var(--paper-1); border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 13px;
+  display: grid; place-items: center; line-height: 1;
+  box-shadow: 0 0 0 1px var(--cinnabar-3);
+  animation: popIn var(--dur-modal) var(--ease-pop) both;
+}
+
+/* ─── set-row (Settings + Character settings rows) ─── */
+.set-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--paper-edge);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  color: var(--ink-1);
+}
+.set-row .ico {
+  width: 28px; height: 28px;
+  background: var(--celadon-2);
+  border: 1px solid var(--celadon-3);
+  border-radius: 4px;
+  display: grid; place-items: center;
+  margin-right: 8px;
+  font-size: var(--fs-label);
+  color: var(--ink-1);
+}
+.toggle {
+  width: 36px; height: 20px;
+  background: var(--jade);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--ink-1);
+  position: relative;
+  cursor: pointer;
+}
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 1px; right: 1px;
+  width: 16px; height: 16px;
+  background: var(--paper-1);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+.toggle.off          { background: var(--ink-4); }
+.toggle.off::after   { right: auto; left: 1px; }
+.ver {
+  text-align: center;
+  font-family: var(--font-num);
+  font-size: var(--fs-meta);
+  color: var(--ink-4);
+  padding: 12px 8px;
+  line-height: 1.6;
+}
+
+/* ─── reputation (Goals modal 顶部声望 chip) ─── */
+.reputation {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--paper-2);
+  border: 1px solid var(--paper-edge);
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.reputation .repnum {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  color: var(--cinnabar-1);
+  line-height: 1;
+}
+.reputation .replab {
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.reputation .repprog {
+  font-family: var(--font-num);
+  font-size: var(--fs-body);
+  color: var(--ink-1);
+}
+
+/* ─── goal-row + 状态徽 ─── */
+.goal-row {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  background: var(--paper-2);
+  border: 1px solid var(--paper-edge);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  position: relative;
+}
+.goal-row.done   { opacity: .6; }
+.goal-row .gicon { width: 28px; height: 28px; }
+.goal-row .gname {
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  color: var(--ink-1);
+}
+.goal-row .greward {
+  font-family: var(--font-num);
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.goal-row .gact {
+  background: var(--amber);
+  color: var(--ink-1);
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  padding: 5px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--ink-1);
+  cursor: pointer;
+}
+.goal-row .gdone {
+  width: 24px; height: 24px;
+  background: var(--jade);
+  color: var(--paper-1);
+  border-radius: 50%;
+  display: grid; place-items: center;
+}
+.goal-row .gbang {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 16px; height: 16px;
+  background: var(--cinnabar-1);
+  color: var(--paper-1);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  display: grid; place-items: center;
+  border: 1.5px solid var(--paper-1);
+  z-index: 4;
+}
+
+/* ─── ic-seal 货币印章通用 (与 HudBar 共用 var) ─── */
+.ic-seal {
+  width: 22px; height: 22px;
+  border-radius: 3px;
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--paper-1);
+  background: var(--cur-coin);                 /* default */
+}
+.ic-seal.ic-coin  { background: var(--cur-coin);  }
+.ic-seal.ic-coin2 { background: var(--cur-coin2); }
+.ic-seal.ic-jade  { background: var(--cur-jade);  }
+.ic-seal.ic-mood  { background: var(--cur-mood); color: var(--ink-1); }
+.ic-seal.ic-heart { background: var(--cur-heart); }
+.ic-seal.ic-star  { background: var(--cur-star);  }
+.ic-seal.ic-brick { background: var(--cur-brick); }
+.ic-seal.ic-ticket{ background: var(--cur-ticket); }
+.ic-seal.ic-chip  { background: var(--cur-chip);  }

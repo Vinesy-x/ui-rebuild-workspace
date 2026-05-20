@@ -70,29 +70,7 @@ const goals: Goal[] = [
 </template>
 
 <style scoped>
-.sub-tabs {
-  display: flex; gap: 6px;
-  margin-bottom: 12px;
-  border-bottom: 1px solid var(--paper-edge);
-  padding-bottom: 6px;
-}
-.sub-tab {
-  flex: 1; text-align: center;
-  padding: 6px;
-  font-family: var(--font-display);
-  font-size: 17px;
-  color: var(--ink-3);
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-}
-.sub-tab.is-active {
-  color: var(--cinnabar-1);
-  border-bottom-color: var(--cinnabar-1);
-}
-
-.gicon {
-  width: 28px !important; height: 28px !important; font-size: 16px !important;
-}
+/* sub-tabs / .sub-tab / .reputation / .goal-row / .gicon / .gbang / .gact / .gdone 走全局 components.css · 不重复定义 */
 
 .empty-pane {
   text-align: center;

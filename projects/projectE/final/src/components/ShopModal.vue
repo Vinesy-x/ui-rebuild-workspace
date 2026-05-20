@@ -43,9 +43,9 @@ const jadeOptions = [
         <span class="phase-notice-sub">完整 4 分区(金钱 / 门票 / 水 / 芯片)由 Phase B 补</span>
       </div>
 
-      <div class="tab-toggle">
-        <button :class="{ 'is-active': tab === 'money' }" @click="tab = 'money'">銅 錢</button>
-        <button :class="{ 'is-active': tab === 'jade' }"  @click="tab = 'jade'">紫 玉</button>
+      <div class="sub-tabs">
+        <div class="sub-tab" :class="{ 'is-active': tab === 'money' }" @click="tab = 'money'">銅&nbsp;錢</div>
+        <div class="sub-tab" :class="{ 'is-active': tab === 'jade' }"  @click="tab = 'jade'">紫&nbsp;玉</div>
       </div>
 
       <div class="shop-grid">
@@ -75,27 +75,7 @@ const jadeOptions = [
   color: var(--ink-3);
 }
 
-.tab-toggle {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.tab-toggle button {
-  padding: 7px;
-  background: var(--paper-1);
-  border: 1.5px solid var(--paper-edge);
-  border-radius: 6px;
-  font-family: var(--font-display);
-  font-size: 16px;
-  color: var(--ink-3);
-  letter-spacing: .15em;
-  cursor: pointer;
-}
-.tab-toggle button.is-active {
-  background: var(--cinnabar-1);
-  color: var(--paper-1);
-  border-color: var(--cinnabar-3);
-}
+/* .sub-tabs / .sub-tab 走全局 components.css */
 
 .shop-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);

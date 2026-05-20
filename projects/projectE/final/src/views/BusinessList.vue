@@ -155,27 +155,7 @@ function purchase (biz: any, e: Event) {
   background: var(--paper-1);
 }
 
-.screen-bar {
-  background: var(--celadon-3);
-  color: var(--paper-1);
-  display: grid; grid-template-columns: 44px 1fr 44px;
-  align-items: center;
-  position: relative;
-  border-bottom: 1px solid var(--wood-2);
-  box-shadow: 0 1px 0 var(--gold-1);
-}
-.screen-bar::after {
-  content: ""; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
-  width: 60%; height: 6px; background: var(--wood-1);
-  clip-path: polygon(0 0, 10% 100%, 90% 100%, 100% 0);
-}
-.sb-title { font-family: var(--font-display); font-size: 22px; letter-spacing: .35em; text-align: center; padding-left: .35em; }
-.sb-close {
-  width: 28px; height: 28px;
-  border: 1.5px solid var(--paper-1); border-radius: 50%;
-  background: transparent; color: var(--paper-1);
-  font-size: 16px; cursor: pointer; justify-self: center;
-}
+/* .screen-bar / .sb-title / .sb-close 走全局 components.css */
 
 .bz-page { overflow-y: auto; padding: 12px 12px 24px; background: var(--paper-1); }
 
@@ -305,11 +285,7 @@ function purchase (biz: any, e: Event) {
 .bz-section-head::before { left: calc(50% - 110px); }
 .bz-section-head::after  { right: calc(50% - 110px); }
 
-/* canonical 5⭐ */
-.star-row { display: inline-flex; gap: 3px; }
-.star { width: 18px; height: 18px; display: inline-grid; place-items: center; font-family: var(--font-display); line-height: 1; }
-.star::before { content: "★"; font-size: 18px; color: var(--ink-4); text-shadow: 0 1px 0 rgba(0,0,0,.1); }
-.star.is-on::before { color: var(--gold-2); text-shadow: 0 1px 0 rgba(0,0,0,.15); }
+/* .star / .star-row 走全局 components.css */
 
 /* 业务卡 · 3-col */
 .bz-card {

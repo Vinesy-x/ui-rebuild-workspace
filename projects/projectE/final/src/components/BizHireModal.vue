@@ -33,7 +33,8 @@ const store = useModalStore()
 </template>
 
 <style scoped>
-.modal-pane { display: flex; flex-direction: column; height: 100%; gap: 12px; }
+/* .modal-pane / .pane-cta / .pane-cta-row / .pane-cta.ghost / .pane-cta.primary 走全局 components.css */
+
 .mg-hero {
   height: 300px;
   background: var(--paper-2);
@@ -43,7 +44,7 @@ const store = useModalStore()
   display: grid; place-items: center;
   color: var(--ink-3);
   font-family: ui-monospace, monospace;
-  font-size: 13px;
+  font-size: var(--fs-mono);
   text-align: center;
   padding: 8px;
 }
@@ -55,33 +56,13 @@ const store = useModalStore()
   margin: 0;
   letter-spacing: .04em;
 }
-.pane-cta-row {
-  margin-top: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-.pane-cta {
-  padding: 13px;
-  border-radius: 10px;
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: .12em;
-  cursor: pointer;
-  border: 1.5px solid var(--ink-1);
-  box-shadow: 0 3px 0 var(--ink-1);
-  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-}
-.pane-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
-.pane-cta.ghost   { background: var(--paper-1); color: var(--azure); }
-.pane-cta.primary { background: var(--jade);    color: var(--paper-1); }
+.pane-cta.primary :deep(.seal-jade),
 .pane-cta.primary .seal-jade {
   background: var(--cur-jade); color: var(--paper-1);
-  width: 22px; height: 22px; font-size: 14px;
+  width: 22px; height: 22px; font-size: var(--fs-mono);
   border-radius: 3px;
   display: grid; place-items: center;
   font-family: var(--font-display);
 }
-.pane-cta.primary .num { font-family: var(--font-num); letter-spacing: 0; font-size: 18px; }
+.pane-cta.primary .num { font-family: var(--font-num); letter-spacing: 0; font-size: var(--fs-body); }
 </style>
