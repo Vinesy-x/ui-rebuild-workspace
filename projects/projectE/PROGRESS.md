@@ -3,6 +3,8 @@
 > ⚠️ **design 沙箱开工前必拉这一份**(每个 task 都要)。一文知全局:项目快照 + 当前阶段 + 5 条已废清单 + 9 共享 modal 状态。
 >
 > raw URL: `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/projectE/PROGRESS.md`
+>
+> ⚠️ **沙箱目录结构**:repo 根 = `ui-rebuild-workspace/`(多游戏 workspace · 同根下还会有 `projects/projectF/` 等);**你的项目根 = `projects/projectE/`** — 任何项目内相对路径(`design-brief/` / `final/` / `preview/`)以此为根 · 一切产出必须在 `projects/projectE/` 之内 · 不要在 repo 根或 `projects/` 根创建文件
 
 ---
 

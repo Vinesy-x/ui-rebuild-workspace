@@ -2,6 +2,14 @@
 
 > design 新会话/新沙箱开工设计前的必做 audit。两件事 + 出报告 + 停。
 
+## ⚠️ 沙箱目录结构(多项目 workspace)
+
+- repo 根 = `ui-rebuild-workspace/`(多游戏并行 · 同根下还会有 `projects/projectF/` 等)
+- **你的项目根 = `projects/projectE/`** · 沙箱里看到的 `projects/projectE/` 这一层就是你的工作目录
+- 任何「项目内相对路径」(如 `design-brief/flows/...`、`final/src/...`、`preview/...`)以 `projects/projectE/` 为根
+- raw URL 仍按 GitHub 完整路径拉:`https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/projects/projectE/<path>`
+- 不要在 repo 根、不要在 `projects/` 根创建文件 · 一切产出必须在 `projects/projectE/` 之内
+
 ## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
 
 按 PROGRESS.md 顶部「项目快照」表 + `docs/SYNC_PROTOCOL.md` 拉:
