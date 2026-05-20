@@ -1,0 +1,113 @@
+{
+  "_source": "fps_0001 主屏 + fps_0011 滚动到底 + 古风化对照 (Style Lock v2)",
+  "_canonical": "5 解锁 + 8 锁定 = 13 技能 · 3 档解锁价 ⭐25 / 40 / 70 · 月费 50-200 銅 · 加速 6 玉 永久生效",
+  "_naming": "古风名 = SkillList.vue 显示用 · canonical = 原英文/通用名 (sub-agent 文档/QA 对照)",
+  "_phaseB_note": "T-B1: extras.md 文中称 8 锁定但只列 7 (耐力/抗能力/创造力/雄心/决心/共情力/领导力)。我按 PNG fps_0011 滚动到底 = 8 锁定推断,补第 8 个 = 毅力 (⭐40 档)。如不符 PNG 请反馈,我换字。",
+
+  "boosters": [
+    {
+      "key": "qi",
+      "glyph": "氣",
+      "tone": "jade",
+      "tip": "丹氣加持",
+      "desc": "全技能临时加速 30 分钟"
+    },
+    {
+      "key": "dan",
+      "glyph": "丹",
+      "tone": "jade",
+      "tip": "丹丸進階",
+      "desc": "选一技能直接 +1 级"
+    }
+  ],
+
+  "skills": [
+    {
+      "key": "li",
+      "name": "膂力",
+      "canonical": "力量",
+      "glyph": "力",
+      "tone": "wood",
+      "level": 7,
+      "monthly": 50,
+      "duration": 26,
+      "elapsed": 26,
+      "progress": 1.0,
+      "state": "leveling",
+      "locked": false
+    },
+    {
+      "key": "zhi",
+      "name": "智略",
+      "canonical": "智略",
+      "glyph": "智",
+      "tone": "celadon",
+      "level": 12,
+      "monthly": 100,
+      "duration": 2053,
+      "elapsed": 0,
+      "progress": 0.42,
+      "state": "training",
+      "locked": false
+    },
+    {
+      "key": "yi",
+      "name": "風儀",
+      "canonical": "魅力",
+      "glyph": "儀",
+      "tone": "azure",
+      "level": 7,
+      "monthly": 100,
+      "duration": 311,
+      "elapsed": 0,
+      "progress": 0.68,
+      "state": "training",
+      "locked": false
+    },
+    {
+      "key": "shen",
+      "name": "神采",
+      "canonical": "吸引力",
+      "glyph": "采",
+      "tone": "cinnabar",
+      "level": 2,
+      "monthly": 100,
+      "duration": 3,
+      "elapsed": 0,
+      "progress": 0.96,
+      "state": "training",
+      "locked": false
+    },
+    {
+      "key": "yuan",
+      "name": "天緣",
+      "canonical": "运气",
+      "glyph": "緣",
+      "tone": "jade",
+      "level": 1,
+      "monthly": 200,
+      "duration": 41,
+      "elapsed": 0,
+      "progress": 0.32,
+      "state": "training",
+      "locked": false
+    },
+
+    { "key": "nai",  "name": "耐勞", "canonical": "耐力",   "glyph": "耐", "locked": true, "starCost": 25 },
+    { "key": "ren",  "name": "韌性", "canonical": "抗能力", "glyph": "韌", "locked": true, "starCost": 25 },
+    { "key": "qiao", "name": "巧思", "canonical": "创造力", "glyph": "巧", "locked": true, "starCost": 40 },
+    { "key": "xiong","name": "雄心", "canonical": "雄心",   "glyph": "雄", "locked": true, "starCost": 40 },
+    { "key": "yi2",  "name": "毅志", "canonical": "毅力 (补全 13)", "glyph": "毅", "locked": true, "starCost": 40 },
+    { "key": "jue",  "name": "決斷", "canonical": "决心",   "glyph": "決", "locked": true, "starCost": 70 },
+    { "key": "tong", "name": "共情", "canonical": "共情力", "glyph": "情", "locked": true, "starCost": 70 },
+    { "key": "yu",   "name": "馭眾", "canonical": "领导力", "glyph": "馭", "locked": true, "starCost": 70 }
+  ],
+
+  "accelerate": {
+    "multiplier": 6,
+    "permanent": true,
+    "currency": "jade",
+    "cost": 6,
+    "copy": "丹氣相助,「{name}」修為速進六倍,功成永世不墜。"
+  }
+}

@@ -21,6 +21,7 @@ import CinematicScene       from './CinematicScene.vue'
 import UpgradeOverlay       from './UpgradeOverlay.vue'
 import JobPromoSplash       from './JobPromoSplash.vue'
 import JobDetailModal       from './JobDetailModal.vue'
+import SkillAccelerateModal from './SkillAccelerateModal.vue'
 
 const store = useModalStore()
 const open = computed(() => store.currentModal !== null)
@@ -35,7 +36,8 @@ const map: Record<string, any> = {
   'cinematic':        CinematicScene,
   'upgrade-overlay':  UpgradeOverlay,
   'job-promo':        JobPromoSplash,
-  'job-detail':       JobDetailModal       // 校正后: 0037 + 0040 同 widget
+  'job-detail':       JobDetailModal,      // 校正后: 0037 + 0040 同 widget
+  'skill-accelerate': SkillAccelerateModal // T-B1 fps_0007 · 每技能各自一个实例
 }
 const current = computed(() => store.currentModal ? map[store.currentModal] : null)
 </script>
@@ -57,7 +59,14 @@ const current = computed(() => store.currentModal ? map[store.currentModal] : nu
     display: none;
   }
 
-.modal-root.open { display: block; }
+.modal-root.open {
+    /* 三档尺寸统一垂直居中 + 上偏 5% (~ 视觉中心 47%·canonical「居中偏上」)
+       padding 60/16/120 = 上 60 留 HUD,下 120 留底栏 + 上偏配重 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 16px 120px;
+  }
 
 .scrim {
     position: absolute; inset: 0;
@@ -67,9 +76,9 @@ const current = computed(() => store.currentModal ? map[store.currentModal] : nu
   }
 
 .modal {
-    position: absolute;
-    left: 16px; right: 16px;
-    top: 64px;                       /* 锁定顶部锚点 (HUD下 64px) · 居中偏上 */
+    position: relative;
+    width: 100%;
+    max-width: 416px;
     background: var(--paper-1);
     border: 1.5px solid var(--paper-edge);
     border-radius: 10px;
@@ -130,7 +139,7 @@ const current = computed(() => store.currentModal ? map[store.currentModal] : nu
     overflow-y: auto;
   }
 
-.modal-body h3 { margin: 12px 0 8px; font-family: var(--font-display); font-size: var(--fs-h3); color: var(--ink-1); letter-spacing: .02em; }
+.modal-body h3 { margin: 12px 0 8px; font-family: var(--font-display); font-size: var(--fs-h2); color: var(--ink-1); letter-spacing: .02em; }
 
 .modal-body p  { margin: 4px 0; font-size: var(--fs-body); color: var(--ink-2); line-height: 1.6; }
 </style>
