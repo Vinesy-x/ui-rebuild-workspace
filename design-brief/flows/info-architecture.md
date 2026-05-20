@@ -21,6 +21,19 @@
 | `0097` | 目标进度变体 | **商店 modal · 特别优惠 + 奖金分区** | 商店有 4 大区 |
 | `0098/0099/0100` | ~~字符/月度结算~~ | **商店 modal · 金钱 + 门票 + 水 + 芯片** | 月度结算 modal **机制不存在**(本游戏 passive HUD-only 月度推进,extras2 第 2 项确认)|
 
+## ⭐ T-B2 Vue 工程落实(2026-05-20)
+
+- `final/src/views/MeetList.vue` 填实 — fps_0012 关系 list,4 NPC 卡(蘿姐/阿桃/小蘭/阿希)
+- `final/src/views/RelationDetail.vue` 新增 — fps_0013/0021/0025 三态合一
+  - 5 互动按钮(canonical v2 校正后):戲談/贈禮/約期/催情(▶ 看广告)/立為主
+  - 三段亲疏度(識/友/主)+ 段位颜色 + 任务集随段位变
+  - 飘心粒子 inline(戲談 click 触发 Vue `<transition-group>`)
+  - 约会进行中 overlay(白卡覆盖按钮区 + 倒计时)
+  - 朋友區段额外按钮(約 + 邀請,canonical v2 0033 揭示)
+- `final/src/data/relations.json` 新增 — 4 NPC + 6 礼物 + 4 约会地点 + 三段配置
+- `router.ts` 加 `/meet/:npcKey` 路由 → RelationDetail
+- 复用既有共享:`OptionPickerModal`(礼物/约会)+ `UpgradeOverlay`(升段)
+
 ## ⭐⭐⭐ 48 张 raw 备用帧深度分析 8 项重大校正(2026-05-20 详见 `screen-details-extras2.md`)
 
 | # | 发现 | 帧 | canonical 影响 |

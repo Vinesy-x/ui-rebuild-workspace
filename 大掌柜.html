@@ -3509,10 +3509,12 @@
               立绘 placeholder<br/>
               <span style="opacity:.6">桃 · 唐妝 (Phase B 替换)</span>
             </div>
+            <!-- canonical v2 校正:5 互动按钮(原 4 按钮 漏 加速看广告 monetization)-->
             <div class="rel-actions">
               <button class="rel-act tx-press" data-act="rel-chat">戲&nbsp;談</button>
               <button class="rel-act tx-press" data-act="rel-gift">贈&nbsp;禮</button>
               <button class="rel-act tx-press" data-act="rel-date">約&nbsp;期</button>
+              <button class="rel-act tx-press rel-act-ad" data-act="rel-ad" title="看廣告 跳过 CD" style="background:var(--amber);color:var(--ink-1)">催&nbsp;情&nbsp;▶</button>
               <button class="rel-act tx-press" data-act="rel-promote">立&nbsp;為&nbsp;主</button>
             </div>
           </div>
@@ -4729,11 +4731,12 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('[data-act="opt-accept"]')) {
     return closeModal();
   }
-  // 关系详情 4 按钮
-  if (e.target.closest('[data-act="rel-chat"]'))    { /* 戲談: Phase B 待补 chat 系统 */ return; }
+  // 关系详情 5 按钮(canonical v2 校正)
+  if (e.target.closest('[data-act="rel-chat"]'))    { /* 戲談: 飘心粒子 inline,见 RelationDetail.vue */ return; }
   if (e.target.closest('[data-act="rel-gift"]'))    { return openModal('gift-picker'); }
   if (e.target.closest('[data-act="rel-date"]'))    { return openModal('date-picker'); }
-  if (e.target.closest('[data-act="rel-promote"]')) { return triggerUpgrade('熟人'); }
+  if (e.target.closest('[data-act="rel-ad"]'))      { /* 催情: 看广告占位,跳过 CD,monetization */ return; }
+  if (e.target.closest('[data-act="rel-promote"]')) { return triggerUpgrade('友'); /* canonical v2:識→友→主 */ }
 
   // sub-tab 切换 (canonical .sub-tab + data-tab-group + data-pane)
   const subTab = e.target.closest('.sub-tab[data-tab-group]');

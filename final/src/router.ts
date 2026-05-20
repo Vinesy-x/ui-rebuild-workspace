@@ -7,6 +7,7 @@ const routes = [
   // Phase B 占位（按 info-architecture.md 屏映射）
   { path: '/skill',        name: 'skill',      component: () => import('./views/SkillList.vue') },    // 0001
   { path: '/meet',         name: 'meet',       component: () => import('./views/MeetList.vue') },     // 0012
+  { path: '/meet/:npcKey', name: 'meet-detail',component: () => import('./views/RelationDetail.vue') }, // 0013/0021/0025
   { path: '/work',         name: 'work',       component: () => import('./views/WorkDAG.vue') },      // 0036
   { path: '/business',     name: 'business',   component: () => import('./views/BusinessList.vue') },// 0046
   { path: '/invest',       name: 'invest',     component: () => import('./views/InvestBank.vue') },   // 0058
