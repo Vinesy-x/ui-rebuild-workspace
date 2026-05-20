@@ -41,6 +41,20 @@
 </div>
 
 <div class="warn">
+<strong>⚠️⚠️⚠️ 2026-05-20 48 张 raw 备用帧深度分析 8 项重大校正</strong>:
+<ul>
+  <li><strong>关系详情按钮实为 5 个</strong>(canonical 写 4 错):约 / 送礼物 / <strong>互聊</strong>(新) / <strong>加速(看广告 ▶ monetization)</strong>(新) / 變為主要 — fps_0034 揭示</li>
+  <li><strong>月度结算 modal 不存在</strong>(机制问题,passive HUD-only 月度推进,跨月 2029→2030 始终主屏)</li>
+  <li><strong>字符窗口第 3 sub-tab 🔒 推测作废</strong>(0105-0110 全部仅见 2 sub-tab)</li>
+  <li><strong>行为子 modal 不存在</strong>(幸福/健康行为 inline cd + 主屏飘字,不弹独立 modal)</li>
+  <li><strong>加速 modal 有 2 个变体</strong>:紫晶版(0007 6 紫晶)+ IAP 版(0009 4.99 USD 跳过)平行入口</li>
+  <li><strong>衣服 5 个 2nd sub-tab 实为</strong>:帽子 / 上衣 / 包 / 戒指(配饰)/ 口红(美妆) — canonical "裤子/鞋" 误读,0089 核实</li>
+  <li><strong>关系 5 按钮全部独立 CD</strong>(0019 "开个玩笑" CD 00:01,不只送礼物)</li>
+  <li><strong>业务卡新角标</strong>:42% 红折扣(限时优惠,0047)+ "+" 加号库存数字(0052)</li>
+</ul>
+</div>
+
+<div class="warn">
 <strong>⚠️⚠️ 2026-05-20 用户补图重大校正(目标进度 modal)</strong>:
 <ul>
   <li>目标进度 modal 底部 sub-tab 实为 <strong>3 个</strong>(canonical 之前推测的"目标 / 字符"错):<strong>目标 / 每日任务 / 成就</strong></li>
@@ -200,18 +214,22 @@ graph TB
     Gift["送礼 modal<br/>fps_0020<br/>6 礼物 + 推荐 ✓"]:::modal
     Date["约会地点 modal<br/>fps_0022<br/>月光散步/海滩/滑雪/游轮"]:::modal
     DateRun["约会进行中 overlay<br/>fps_0025 内嵌<br/>00:15 倒计时"]:::trans
-    Hire["雇佣 modal<br/>(未观察)"]:::unknown
-    Main["变为主要 modal<br/>(未观察)"]:::unknown
+    Chat["互聊 inline 序列<br/>fps_0015-0019<br/>飘心累积 + CD"]:::trans
+    AdAccel["加速看广告<br/>(未观察 modal)<br/>monetization 边"]:::unknown
+    Main["變為主要 modal<br/>(未观察)"]:::unknown
 
     Meet -->|点 NPC| Detail
+    Detail -->|约 button| Date
     Detail -->|送礼物 button| Gift
-    Detail -->|点任务行 → 箭头| Gift
+    Detail -->|互聊 button| Chat
+    Detail -->|加速看广告 button| AdAccel
+    Detail -->|變為主要 button| Main
+    Detail -->|点任务行 箭头| Gift
     Gift -.->|"接受 扣钱 / 关闭"| Detail
-    Detail -->|打个招呼 button| Date
     Date -.->|"接受 扣钱 / 关闭"| DateRun
-    DateRun -.->|"倒计时完"| DetailFriend
-    Detail -->|雇佣 button| Hire
-    Detail -->|变为主要 button| Main
+    DateRun -.->|"倒计时完 心 tick 每 5s 加 10"| DetailFriend
+    Chat -.->|"CD 完"| Detail
+    AdAccel -.->|"看广告完 跳过 CD"| Detail
     Detail -.->|"任务全完成 触发"| UpOver
     UpOver -.->|"1-2 秒自动消失"| DetailFriend
     DetailFriend -.->|"返回 X"| Meet
