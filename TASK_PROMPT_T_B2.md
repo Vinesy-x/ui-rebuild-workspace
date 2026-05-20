@@ -19,14 +19,39 @@ fps_0012-0025 关系 Tab 2(7+ 帧,含约会子流)
 
 ⚠️⚠️⚠️ 开工前同步(必做)— 避免 canonical 漂移 ⚠️⚠️⚠️
 
-GitHub https://github.com/Vinesy-x/projectE main HEAD = 唯一真值。
-你的沙箱状态 ≠ GitHub 真值。你的沙箱里如果有跟 GitHub 不一致的旧版
-文件,以 GitHub 为准更新沙箱,不要复制粘贴沙箱里旧版代码到新产出。
+你的沙箱状态 ≠ GitHub 真值。沙箱默认是上次工作结束的快照,不会自动
+跟 GitHub 同步。你能主动从 GitHub 拉任何文件,但不会自动拉。
 
-详细同步规约:design-brief/SYNC_PROTOCOL.md(必读)
+请你**主动从 GitHub 拉**下列文件最新版,覆盖你沙箱里对应文件
+(repo = https://github.com/Vinesy-x/projectE,branch = main):
 
-T-B1 import 后已发生 2 次 canonical 漂移(8 处 NPC click 反复回滚),
-本轮严格遵循以下 5 条已知废弃项,不要重新引入:
+  必拉(canonical 演进 + 已知废弃项):
+  - design-brief/SYNC_PROTOCOL.md
+  - design-brief/flows/info-architecture.md
+  - design-brief/flows/interaction-spec.md
+  - design-brief/flows/screen-details.md
+  - design-brief/flows/screen-details-extras.md
+  - design-brief/flows/screen-details-extras2.md
+  - design-brief/flows/topology.html
+
+  必拉(HTML 真值,我本地清过 8 处 NPC click + 字号 v3.1 同步):
+  - final/Phase A · 主菜单 大掌柜.html
+  - final/Style Lock · 风格定档.html
+  - final/大掌柜.html
+
+  必拉(Vue 工程层,T-B1 已落实):
+  - final/src/(整个目录递归)
+  - final/README.md
+
+  raw URL 模板:
+  https://raw.githubusercontent.com/Vinesy-x/projectE/main/<path>
+
+拉取完成 → **以 GitHub 版为准**,沙箱里跟 GitHub 不一致的全部覆盖,
+然后继续读 design-brief/SYNC_PROTOCOL.md 严格执行其中 5 条废弃项。
+
+T-B1 import 后已发生 2 次 canonical 漂移(8 处 NPC click 反复回滚)。
+**根因 = 你没主动拉 GitHub 最新版,复制粘贴沙箱里 v1/v2 旧代码到新
+产出**。本轮严格遵循以下 5 条已知废弃项,不要重新引入:
 
 【已废弃项 1】关系详情 4 按钮 → 5 按钮(canonical v2 校正后):
 - 旧 4 按钮:打个招呼 / 送礼物 / 雇佣 / 变为主要 ⚠️ 已废

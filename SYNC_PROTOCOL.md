@@ -14,40 +14,56 @@
 
 1. **沙箱状态 ≠ GitHub 真值**
    - design 你在沙箱里做改动 → 沙箱 snapshot tarball → 用户 `import-design.sh` rsync 到本地 → push GitHub
-   - **但反方向不通**:GitHub 上有变动(用户手动改 / 别的 task 改的 canonical)→ 你沙箱不会自动拉到
-   - 直到下次用户给你新 task,**你沙箱里的旧文件会被你"复制粘贴" 到新产出 → 用户 import 时 rsync --delete 覆盖本地 → canonical 漂移**
+   - **反方向不自动**:GitHub 上有变动(用户手动改 / 别的 task 改的 canonical)→ **你沙箱不会自动拉到**
+   - **你能主动从 GitHub 拉任何文件**(用 raw URL `https://raw.githubusercontent.com/Vinesy-x/projectE/main/<path>`),**但不会自动拉,必须 prompt 明确指令你拉**
+   - 如果不拉,你沙箱里的旧文件会被你"复制粘贴" 到新产出 → 用户 import 时 rsync --delete 覆盖本地 → canonical 漂移
 
 2. **GitHub = 唯一真值**
    - 任何冲突以 GitHub main 分支当前 HEAD 为准
-   - 沙箱里如果有跟 GitHub 不一致的文件,**以 GitHub 为准更新沙箱**
+   - 沙箱里如果有跟 GitHub 不一致的文件,**主动拉 GitHub 最新版覆盖沙箱**
    - 不要复制粘贴沙箱里的"旧版" 内容到新产出
 
 3. **canonical 演进**
    - canonical 文档(`design-brief/flows/*.md` + `design-brief/flows/*.html`)由 Claude 维护,Push 到 GitHub
-   - 每次新 task 开始前,你必须 fetch 这些文件的**当前 GitHub 状态**作为依据
+   - 每次新 task 开始前,**主动从 GitHub raw URL 拉 canonical 最新版**作为依据
    - 看到任何 ⚠️ "校正" / "作废" / "废弃" 标注 → 严格遵循,不要重新引入
 
 ---
 
-## 给 design 的"开工前同步" 指令(每个 task prompt 顶部 ref)
+## 给 design 的"开工前同步" 指令(每个 task prompt 顶部 inline)
+
+⚠️ 这一段必须 inline 在每个 task prompt 文本里,不能用"读 SYNC_PROTOCOL.md"这种 ref(沙箱默认状态没拉就读不到):
 
 ```
 开工前同步(必做):
 
-1. 检查 GitHub https://github.com/Vinesy-x/projectE main HEAD 最新 commit
-2. 把你沙箱里下列文件跟 GitHub 对齐(沙箱里如果有旧版,以 GitHub 为准覆盖):
-   - Phase A · 主菜单 大掌柜.html
-   - 大掌柜.html
-   - Style Lock · 风格定档.html
-   - final/src/views/*.vue
-   - final/src/components/*.vue
-   - final/src/stores/useModalStore.ts
-   - final/src/data/*.json
-   - design-brief/flows/*.md (canonical 唯一真值)
-3. 看 BUG_REPORT_*.md 和 SYNC_PROTOCOL.md 里标 ⚠️ "已作废 / 校正 / 废弃" 的项
-4. 不要复制粘贴沙箱里的"旧版"代码到新产出
-5. 如果你看到 npc-req modal / data-act="open:npc-req" / .npcs click listener,
-   它已经在 canonical v2 校正中被废,**任何新产出都不应包含这些**
+repo = https://github.com/Vinesy-x/projectE  branch = main
+raw URL 模板 = https://raw.githubusercontent.com/Vinesy-x/projectE/main/<path>
+
+1. 主动从 GitHub raw URL 拉下列文件最新版,覆盖你沙箱里对应文件:
+
+   canonical 演进 + 已知废弃项:
+   - design-brief/SYNC_PROTOCOL.md
+   - design-brief/flows/info-architecture.md
+   - design-brief/flows/interaction-spec.md
+   - design-brief/flows/screen-details.md
+   - design-brief/flows/screen-details-extras.md
+   - design-brief/flows/screen-details-extras2.md
+   - design-brief/flows/topology.html
+
+   HTML 真值(已清过 8 处 NPC click + 字号 v3.1):
+   - final/Phase A · 主菜单 大掌柜.html
+   - final/Style Lock · 风格定档.html
+   - final/大掌柜.html
+
+   Vue 工程层(T-B1 已落实):
+   - final/src/(整个目录递归)
+   - final/README.md
+
+2. 拉取完成 → 沙箱里跟 GitHub 不一致的全部覆盖 → 以 GitHub 为准
+3. 读 design-brief/SYNC_PROTOCOL.md(刚拉到的最新版)
+4. 严格执行 5 条已知废弃项,不要重新引入
+5. 写新产出时,从 GitHub 最新版作基底开始,不要复制沙箱里旧版代码
 
 具体已知废弃项(2026-05-20 canonical v2 + follow-up 后):
 - 'npc-req' modal:作废(fps_0037 实为工作详情 modal,跟 0040 同类,
