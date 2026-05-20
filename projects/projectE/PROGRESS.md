@@ -35,16 +35,16 @@
 
 ---
 
-## 当前阶段:**Phase B 进行中**(T-B1 / T-B2 完成,T-B3 待启动)
+## 当前阶段:**Phase B 进行中**(T-B1/T-B2/T-B3/T-B4 完成,T-B5 待启动)
 
 | 阶段 | 状态 | 备注 |
 |---|---|---|
 | Phase A T-A1(fps_0035 主菜单 + 风格定档)| ✅ 完成 | Style Lock 锁定:15 色 + 8 字阶 v3.1 + 9 货币 + 7 角标 + 27 古风对照 + motion 体系 |
 | Phase B T-B1(fps_0001/02/07 技能 Tab 1)| ✅ 完成 | SkillList.vue 468 行 + SkillAccelerateModal 209 行 + skillList.json 13 技能 |
-| **Phase B T-B2(fps_0012-0025 关系 Tab 2)** | ✅ **完成** | MeetList + RelationDetail 5 按钮 + 飘心 + 约会 overlay + relations.json |
-| Phase B T-B3(fps_0036+0037+0040+0041 工作 DAG)| ⏳ **待启动** | 涉及 JobDetailModal(已建)+ JobPromoSplash(已建)+ 5 状态卡 + DAG 拓扑视觉 |
-| Phase B T-B4(fps_0046-0053 业务 Tab 4)| 待 | BizHire / BizUpgrade modal |
-| Phase B T-B5(fps_0058-0062 投资 Tab 5)| 待 | Bank info modal |
+| Phase B T-B2(fps_0012-0025 关系 Tab 2) | ✅ 完成 | MeetList + RelationDetail 5 按钮 + 飘心 + 约会 overlay + relations.json |
+| **Phase B T-B3(fps_0036+0037+0040+0041 工作 DAG)**| ✅ **完成** | WorkDAG.vue 13 岗位 5 状态 + DAG 拓扑 + JobDetail/Promo 挂入口 + workList.json |
+| **Phase B T-B4(fps_0046-0053 业务 Tab 4)** | ✅ **完成** | BusinessList.vue 5 业务 + IAP banner + mgr 环形 widget + BizHire/BizUpgrade modal + businessList.json |
+| Phase B T-B5(fps_0058-0062 投资 Tab 5)| ⏳ **待启动** | Bank info modal |
 | Phase B T-B6(fps_0065-0088 物品 Tab 6)| 待 | PurchaseConfirm / AsyncWait / Cinematic 联动 |
 | Phase B T-B7+(全局 modal:字符/目标/设置/幸福/健康/事件/商店货币)| 待 | 复用既有共享 modal |
 
@@ -74,7 +74,7 @@
 
 ---
 
-## 9 共享 modal 组件(全部就位)
+## 11 共享 modal 组件(全部就位)
 
 | # | 组件 | 用途 | 复用屏 |
 |---|---|---|---|
@@ -84,9 +84,11 @@
 | 4 | `AsyncWaitModal` | 卖车 3 步链 | fps_0067/68/69 |
 | 5 | `CinematicScene` | 大件购买过场 | fps_0077 |
 | 6 | `UpgradeOverlay` | 亲疏度升级 | fps_0014 |
-| 7 | `JobPromoSplash` | 工作促销 | fps_0041 |
-| 8 | `JobDetailModal` | 工作详情(0037 焊工/0040 汽车修理工 同 widget)| canonical v2 校正后新增 |
+| 7 | `JobPromoSplash` | 工作促销 / 換職事 | fps_0041(車坊匠 换业) |
+| 8 | `JobDetailModal` | 工作详情(0037 銅銲匠/0040 車坊匠 同 widget)| canonical v2 校正后新增 |
 | 9 | `SkillAccelerateModal` | 技能加速(每技能各一实例)| fps_0007 |
+| 10 | `BizHireModal` | 雇掌櫃 | fps_0050(花坊 +) |
+| 11 | `BizUpgradeModal` | 興擴 (升级) | fps_0053(茶肆/客棧/香鋪/花坊)|
 
 ---
 
@@ -103,10 +105,10 @@
 
 - ✅ Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router
 - ✅ `npm install && npm run dev` 可起
-- ✅ `vite build` 实测通过(MainMenu css 15kB / SkillList 8.5kB / RelationDetail 7.9kB)
-- ✅ 8 view(MainMenu / SkillList / MeetList / RelationDetail / 4 占位)
-- ✅ 11 共享 component(9 modal + HudBar + BottomTabBar + ModalShell)
-- ✅ 3 data(mainMenu.json / skillList.json / relations.json)
+- ✅ `vite build` 实测通过(MainMenu 15kB / BusinessList 10.4kB / SkillList 8.5kB / RelationDetail 7.9kB / WorkDAG 6.6kB · 102 modules)
+- ✅ 8 view(MainMenu / SkillList / MeetList / RelationDetail / **WorkDAG / BusinessList** / 2 占位 InvestBank+ShopItems)
+- ✅ 13 共享 component(11 modal + HudBar + BottomTabBar + ModalShell)
+- ✅ 5 data(mainMenu.json / skillList.json / relations.json / **workList.json / businessList.json**)
 - ✅ router 7 路由(/main /skill /meet /meet/:npcKey /work /business /invest /items)
 
 ---
@@ -135,8 +137,14 @@
 
 ## 下一步
 
-**T-B3 工作 DAG**(`fps_0036` + `0037` + `0040` + `0041`):
-- Vue:WorkDAG.vue 填实 + JobDetailModal(已建)挂入口 + JobPromoSplash(已建)挂入口
-- 5 状态卡(可接/完成/FAIL/锁定/促销 ⚠ 黄角标)
-- DAG 拓扑视觉:级 7→12 树状(每级 ≈3 卡 + 细灰斜/竖连线)
-- 数据:7 个完整岗位(箱包工/直升机/焊工/服务员/汽车修理工/汽车检查员/代驾人)
+**T-B5 投资 Tab 5**(`fps_0058-0062`):
+- Vue:InvestBank.vue 填实(当前 15 行占位)
+- 新增 modal:bank-info(储户对账/利息说明)
+- 数据:investments.json(若干银号 + 利率档位 + 当前余额)
+
+> T-B3 + T-B4 完成于 2026-05-20:
+> - WorkDAG.vue 13 岗位 5 状态 + DAG 拓扑 + JobDetail/Promo 挂入口
+> - BusinessList.vue 5 业务 + 大掌櫃 IAP banner + mgr 环形进度 widget + BizHire/BizUpgrade modal 2 件新增
+> - workList.json + businessList.json 数据层完整
+> - 古风名 13 岗位:拾穗童 / 樵夫 / 挑夫 / 役夫 / 學徒 / 行販 / 流商FAIL / 軒輿匠 / 釉藝匠 / 銀作 / 文牘吏FAIL / 銅銲匠(=焊工) / 車坊匠(=汽车修理工)
+> - 古风名 5 业务:茶肆 / 客棧(42红角标) / 香鋪 / 花坊(无掌櫃,60s 红环) / 酒坊(未购入 玉 2.5K)

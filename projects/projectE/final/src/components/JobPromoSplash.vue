@@ -6,10 +6,21 @@
 -->
 <script setup lang="ts">
 import { useModalStore } from '../stores/useModalStore'
-interface Props { jobName: string; illu?: string; monthlyWage: number; nextModalName?: string }
+interface Props {
+  jobName: string
+  illu?: string
+  monthlyWage: number
+  nextModalName?: string
+  // 二次 tap 后转 detail 用的完整 props (自 WorkDAG promo 路径传入)
+  nextProps?: Record<string, any>
+}
 const props = withDefaults(defineProps<Props>(), { nextModalName: 'job-detail' })
 const store = useModalStore()
-function tap() { store.open(props.nextModalName as any, { jobName: props.jobName }) }
+function tap() {
+  // 优先用 nextProps · 否则回落到 jobName 单字段
+  const fwd = props.nextProps || { jobName: props.jobName, monthlyWage: props.monthlyWage }
+  store.open(props.nextModalName as any, fwd)
+}
 </script>
 
 <template>

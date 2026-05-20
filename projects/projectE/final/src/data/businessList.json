@@ -1,0 +1,111 @@
+{
+  "_source": "fps_0046 商號 list + fps_0050 BizHire (掌櫃) + fps_0053 BizUpgrade (興擴) · 大掌柜.html L3779-3970 + L4517-4523",
+  "_canonical": "5 商號:茶肆/客棧/香鋪/花坊 (4 已购) + 酒坊 (未购 2.5K 玉) + 未啟 (23:17 倒计时锁) · IAP 大掌櫃 banner top",
+  "_mgr_widget": "环形 SVG 进度条:has-mgr 3s 自动收銀循环 + 飘字 / no-mgr 60s 红环 + 手动'領取'按钮 + 灰虚框'+'雇掌櫃",
+
+  "screen": {
+    "title": "商　號",
+    "date": { "era": "崇寧", "day": "廿七", "m": "秋" },
+    "hudOverrides": { "coin": 11140, "mood": 63, "moodDelta": "−5.2/月", "health": 76, "healthDelta": "+0.4/月", "coinDelta": "+1.1k/旬" }
+  },
+
+  "totalIncome": { "seal": "銅", "value": "1.1k", "unit": "／月" },
+
+  "iap": {
+    "name": "大　掌　櫃",
+    "illu": "立绘\\n大掌櫃",
+    "buffs": ["×2 商號收益", "代管所有商號", "離身時亦運作"],
+    "price": "12.99 USD"
+  },
+
+  "sectionHead": "小　型　商　號",
+
+  "businesses": [
+    {
+      "key": "cha",
+      "name": "茶肆",
+      "illu": "茶",
+      "lv": "十五",
+      "income": 246,
+      "delta": 12,
+      "gain": 18.0,
+      "stars": 3,
+      "hasMgr": true,
+      "mgrTick": "+8",
+      "ringPeriod": 3,
+      "hireCost": "8K",
+      "upgradeCost": "6.5k",
+      "redBang": null,
+      "owned": true
+    },
+    {
+      "key": "ke",
+      "name": "客棧",
+      "illu": "客",
+      "lv": "五",
+      "income": 166,
+      "delta": 8,
+      "gain": 14.0,
+      "stars": 1,
+      "hasMgr": true,
+      "mgrTick": "+11",
+      "ringPeriod": 3,
+      "hireCost": "10K",
+      "upgradeCost": "4.2k",
+      "redBang": "42",
+      "owned": true
+    },
+    {
+      "key": "xiang",
+      "name": "香鋪",
+      "illu": "香",
+      "lv": "五",
+      "income": 250,
+      "delta": 14,
+      "gain": 20.0,
+      "stars": 2,
+      "hasMgr": true,
+      "mgrTick": "+17",
+      "ringPeriod": 3,
+      "hireCost": "12K",
+      "upgradeCost": "7.8k",
+      "redBang": null,
+      "owned": true
+    },
+    {
+      "key": "hua",
+      "name": "花坊",
+      "illu": "花",
+      "lv": "三",
+      "income": 544,
+      "delta": 46,
+      "gain": 40.0,
+      "stars": 0,
+      "hasMgr": false,
+      "mgrTick": null,
+      "ringPeriod": 60,
+      "hireCost": "8K",
+      "upgradeCost": "11k",
+      "redBang": null,
+      "owned": true,
+      "_notes": "无掌櫃 = 60s 红环 + 手动'領取' + 灰虚框 '+'click → biz-hire modal"
+    },
+    {
+      "key": "jiu",
+      "name": "酒坊",
+      "illu": "酒",
+      "lv": "未　購　入",
+      "owned": false,
+      "purchaseCost": "2.5K",
+      "purchaseCur": "玉"
+    },
+    {
+      "key": "locked1",
+      "name": "未　啟",
+      "illu": "?",
+      "lv": "廿三時 一十七刻 後",
+      "owned": false,
+      "locked": true
+    }
+  ]
+}

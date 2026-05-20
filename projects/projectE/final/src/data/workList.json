@@ -1,0 +1,146 @@
+{
+  "_source": "fps_0036 工作 DAG + fps_0037 銅銲匠 detail + fps_0040 車坊匠 detail + fps_0041 換職事 (重定义后) · 大掌柜.html L3558-3776 + L4525-4596",
+  "_canonical": "13 岗位 5 状态(可接/完成/FAIL/锁定/进行中) · DAG 父子关系级 1→11 · 级 7+ 有平行节点 · 古风化命名继承 Phase A",
+  "_naming": "汉字 jobName 为视觉显示 · jobKey 拼音用于 props.jobKey 路由",
+  "_state_map": {
+    "done":   "✓ 绿 + 'is-done' · 已通过保留作解锁源",
+    "accept": "亮 + 价 + 蓝绿 '接受' CTA · 点 → JobDetailModal",
+    "active": "深青 + 进度条 · 进行中工种",
+    "fail":   "红 FAIL 角标 + '重用' 按钮 · 重启入口",
+    "locked": "❓ + ??? · 前置未达成",
+    "promo":  "黄 ⚠ 角标 · 点 → JobPromoSplash"
+  },
+
+  "screen": {
+    "title": "差　事",
+    "date": { "era": "崇寧", "day": "廿五", "m": "秋" },
+    "hudOverrides": { "coin": 10790, "mood": 68, "moodDelta": "−5.2/月" }
+  },
+
+  "_dagNotes": [
+    "级 1→6 = 早期 6 完成 (剧情铺垫 · 拾穗童→行販)",
+    "级 7 = 第一个分叉:流商 (FAIL,行販 fail 分支) + 軒輿匠 / 釉藝匠 (双 accept 选项)",
+    "级 8 = 三卡:左锁/中 銀作 active 35/100/右锁",
+    "级 9 = 三卡:左锁/中 文牘吏 FAIL/右 銅銲匠 done (=促成级 10 解锁)",
+    "级 10 = 車坊匠 单卡 accept (canonical promo 触发点 · 0041 換職事)",
+    "级 11+ = 全 locked"
+  ],
+
+  "dagLevels": [
+    { "level": 1,  "label": "級<br/>一",  "slots": [null, "zhuixui", null] },
+    { "level": 2,  "label": "級<br/>二",  "slots": [null, "qiaofu",  null] },
+    { "level": 3,  "label": "級<br/>三",  "slots": [null, "tiaofu",  null] },
+    { "level": 4,  "label": "級<br/>四",  "slots": [null, "yifu",    null] },
+    { "level": 5,  "label": "級<br/>五",  "slots": [null, "xuetu",   null] },
+    { "level": 6,  "label": "級<br/>六",  "slots": [null, "xingfan", null] },
+    { "level": 7,  "label": "級<br/>七",  "slots": ["liushan", "xuanyu", "youyi"] },
+    { "level": 8,  "label": "級<br/>八",  "slots": ["lk_8a", "yinzuo", "lk_8b"] },
+    { "level": 9,  "label": "級<br/>九",  "slots": ["lk_9a", "wendu",  "tongha"] },
+    { "level": 10, "label": "級<br/>十",  "slots": [null, "chefang", null] },
+    { "level": 11, "label": "級<br/>十一","slots": [null, "lk_11", null] }
+  ],
+
+  "jobs": {
+    "zhuixui": {
+      "name": "拾穗童", "illu": "穗", "level": 1, "price": "120",   "priceVal": 120,   "status": "done", "prereq": null
+    },
+    "qiaofu": {
+      "name": "樵夫",   "illu": "薪", "level": 2, "price": "200",   "priceVal": 200,   "status": "done", "prereq": "zhuixui"
+    },
+    "tiaofu": {
+      "name": "挑夫",   "illu": "擔", "level": 3, "price": "320",   "priceVal": 320,   "status": "done", "prereq": "qiaofu"
+    },
+    "yifu": {
+      "name": "役夫",   "illu": "役", "level": 4, "price": "460",   "priceVal": 460,   "status": "done", "prereq": "tiaofu"
+    },
+    "xuetu": {
+      "name": "學徒",   "illu": "學", "level": 5, "price": "620",   "priceVal": 620,   "status": "done", "prereq": "yifu"
+    },
+    "xingfan": {
+      "name": "行販",   "illu": "販", "level": 6, "price": "720",   "priceVal": 720,   "status": "done", "prereq": "xuetu"
+    },
+    "liushan": {
+      "name": "流商",   "illu": "×", "level": 7, "price": "",      "priceVal": 0,     "status": "fail", "prereq": "xingfan",
+      "illuHint": "挑擔 · 風雨歸途",
+      "reqs": [
+        { "ic": "失", "lbl": "前次失利", "num": "可重啟", "ok": false },
+        { "ic": "宅", "lbl": "居所",     "num": "≥ 一品", "ok": true }
+      ]
+    },
+    "xuanyu": {
+      "name": "軒輿匠", "illu": "輿", "level": 7, "price": "840",   "priceVal": 840,   "status": "accept", "prereq": "xingfan",
+      "illuHint": "輪轂 + 木輿",
+      "reqs": [
+        { "ic": "宅", "lbl": "居所", "num": "≥ 二品", "ok": true },
+        { "ic": "膳", "lbl": "膳食", "num": "≥ 一品", "ok": true },
+        { "ic": "力", "lbl": "膂力", "num": "四",     "ok": true }
+      ]
+    },
+    "youyi": {
+      "name": "釉藝匠", "illu": "釉", "level": 7, "price": "900",   "priceVal": 900,   "status": "accept", "prereq": "xingfan",
+      "illuHint": "青瓷窯火",
+      "reqs": [
+        { "ic": "宅", "lbl": "居所", "num": "≥ 二品", "ok": true },
+        { "ic": "膳", "lbl": "膳食", "num": "≥ 一品", "ok": true },
+        { "ic": "智", "lbl": "智略", "num": "四",     "ok": true }
+      ]
+    },
+    "lk_8a": {
+      "name": "?", "illu": "?", "level": 8, "price": "975", "priceVal": 975, "status": "locked", "prereq": "liushan"
+    },
+    "yinzuo": {
+      "name": "銀作", "illu": "銀", "level": 8, "price": "1K", "priceVal": 1000, "status": "active", "prereq": "xuanyu",
+      "progress": { "cur": 35, "total": 100 },
+      "illuHint": "銀爐 + 鏨刀",
+      "reqs": [
+        { "ic": "宅", "lbl": "居所", "num": "≥ 二品", "ok": true },
+        { "ic": "膳", "lbl": "膳食", "num": "≥ 一品", "ok": true },
+        { "ic": "藝", "lbl": "已习 · 銅銲匠之艺", "ok": true },
+        { "ic": "智", "lbl": "智略", "num": "五", "ok": true }
+      ]
+    },
+    "lk_8b": {
+      "name": "?", "illu": "?", "level": 8, "price": "", "priceVal": 0, "status": "locked", "prereq": "youyi"
+    },
+    "lk_9a": {
+      "name": "?", "illu": "?", "level": 9, "price": "", "priceVal": 0, "status": "locked", "prereq": "lk_8a"
+    },
+    "wendu": {
+      "name": "文牘吏", "illu": "FAIL", "level": 9, "price": "", "priceVal": 0, "status": "fail", "prereq": "yinzuo",
+      "illuHint": "案牘 · 朱筆",
+      "reqs": [
+        { "ic": "失", "lbl": "前次失利", "num": "可重啟", "ok": false },
+        { "ic": "智", "lbl": "智略",     "num": "七",     "ok": true }
+      ]
+    },
+    "tongha": {
+      "name": "銅銲匠", "illu": "銲", "level": 9, "price": "1.40K", "priceVal": 1400, "status": "done", "prereq": "yinzuo",
+      "illuHint": "工坊 + 鎚鉆 · 火光",
+      "_canonicalMap": "= 焊工 (fps_0037 JobDetailModal)",
+      "reqs": [
+        { "ic": "心", "lbl": "心境", "num": "≥ 八十", "ok": false },
+        { "ic": "宅", "lbl": "居所", "num": "≥ 三品", "ok": true },
+        { "ic": "膳", "lbl": "膳食", "num": "≥ 二品", "ok": true },
+        { "ic": "輿", "lbl": "车马", "num": "≥ 一品", "ok": true },
+        { "ic": "藝", "lbl": "已习 · 鎖匠之艺", "ok": true },
+        { "ic": "力", "lbl": "膂力", "num": "六", "ok": true }
+      ]
+    },
+    "chefang": {
+      "name": "車坊匠", "illu": "車", "level": 10, "price": "1.43K", "priceVal": 1430, "status": "accept", "prereq": "tongha",
+      "illuHint": "工坊 + 紅柄工具",
+      "_canonicalMap": "= 汽车修理工 (fps_0040 JobDetailModal · fps_0041 換職事 promo target)",
+      "promo": { "prevWage": 1200, "wage": 1404, "delta": "+204 銅／月" },
+      "reqs": [
+        { "ic": "宅", "lbl": "居所", "num": "≥ 三品", "ok": true },
+        { "ic": "膳", "lbl": "膳食", "num": "≥ 二品", "ok": true },
+        { "ic": "輿", "lbl": "车马", "num": "≥ 二品", "ok": true },
+        { "ic": "藝", "lbl": "已习 · 銅銲匠之艺", "ok": true },
+        { "ic": "智", "lbl": "智略", "num": "六", "ok": true }
+      ]
+    },
+    "lk_11": {
+      "name": "?", "illu": "?", "level": 11, "price": "", "priceVal": 0, "status": "locked", "prereq": "chefang"
+    }
+  }
+}
