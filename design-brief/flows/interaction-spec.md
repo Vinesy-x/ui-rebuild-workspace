@@ -675,7 +675,11 @@
    - "在外赛车" → "蹴鞠"或"跑马";"喝啤酒" → "饮酒";"看电影" → "听说书";"玩台球" → "玩骰子"
    - "毒品窝点 MOTEL" → "私贩 / 黑店 / 客栈"
 3. **底栏 6 Tab label** = **技能 / 遇见 / 工作 / 业务 / 投资 / 物品**(用户已确认)
-4. **modal 浮层**用 useModalStore + DialogShell 共享外壳(参照 projectB final/src/stores/useModalStore.ts + components/CardDetailDialog.vue 模式)
+4. **modal 浮层**用 Pinia `useModalStore` + `<ModalShell>` 共享外壳:
+   - store API:`open(name: string, props?: object)` / `close()` / `currentModal: { name, props } | null`
+   - `<ModalShell>` 挂在根 layout,根据 `currentModal.name` 渲染对应 modal 组件
+   - `router.afterEach` 切屏自动 `close()`(避免跨屏残留)
+   - 全部 modal 用同一 scrim:`rgba(0,0,0,.65)` + `backdrop-filter: blur(8px)`
 5. **7 个共享组件**(8 agent 识别后必须复用,不允许各屏单独实现):
    - `ProgressListDialog`(幸福 0123 + 健康 0126)
    - `OptionPickerModal`(礼物 0020 + 约会 0022)

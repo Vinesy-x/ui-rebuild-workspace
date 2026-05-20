@@ -25,14 +25,21 @@ projectE · 大掌柜 — 视频 UI 重建任务
 
 【工程格式】
 
-按 projectB 工程模板,Vite + Vue 3 + TS + Pinia + Vue Router。
+Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router。
 
-产出 4 类:
-- final/src/styles/tokens.css      全局 token(宋朝色板 / 字号 / 间距 / 圆角)
-- final/src/components/*.vue        共享组件(7 个,见下)
-- final/src/views/*.vue             屏组件(每帧 1 个)
-- final/src/data/*.json             真实数据(从 PNG 提取)
-- final/src/stores/useModalStore.ts modal 浮层管理(参照 projectB)
+产出目录结构(放在仓库 `final/` 下):
+- final/src/styles/tokens.css       全局 token(宋朝色板 / 字号 / 间距 / 圆角)
+- final/src/components/*.vue         共享组件(7 个,见下)
+- final/src/views/*.vue              屏组件(每帧 1 个,跟 router 一一对应)
+- final/src/data/*.json              真实数据(从 PNG 提取)
+- final/src/stores/useModalStore.ts  Pinia store 管 modal 浮层
+- final/src/router.ts                Vue Router 路由表
+
+Modal 模式(避免嵌套 router):
+- 全部 modal 走 Pinia store(`open(name, props)` / `close()` / `currentModal`)
+- 一个 <ModalShell> 组件挂在根 layout,根据 currentModal 渲染对应 modal
+- `router.afterEach` 切屏自动 reset modal(避免跨屏残留)
+- modal 底板可见:scrim `rgba(0,0,0,.65)` + `backdrop-filter: blur(8px)`
 
 【Phase A 任务】
 
@@ -154,7 +161,7 @@ T-A1:fps_0035 主菜单(街景 hub)+ 风格定档
 - [ ] 然后把上面 ``` 括起来的那段 prompt 发给 design
 - [ ] design 出 link → 用户跑 `./scripts/import-design.sh <link>` 拉本地
 
-## Phase B 工作流(跟 projectB 一样)
+## Phase B 工作流
 
 - 每屏 1 task
 - design 沙箱出 link → import → verify → commit → bug 报告 → 新 link

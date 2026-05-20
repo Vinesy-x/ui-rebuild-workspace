@@ -60,4 +60,4 @@
 2. 图标用 SVG 或 PNG(不用 emoji),宋朝风格统一
 3. 跨屏组件 + token 命名一致(Phase A 锁定后 Phase B 沿用)
 4. 交互行为按 design-brief/flows/interaction-spec.md(后续补)
-5. 产出 = Vite Vue 3 SFC(参照 projectB/ENGINEERING_TEMPLATE.md)
+5. 产出 = Vite Vue 3 SFC(`<script setup>` + TS + Pinia + Vue Router,详见 `ENGINEERING_TEMPLATE.md`)

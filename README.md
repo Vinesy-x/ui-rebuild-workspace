@@ -56,6 +56,8 @@ projectE/
 - [`KICKOFF_PROMPT.md`](KICKOFF_PROMPT.md) - 给 design 的 starter prompt(等宋朝参考图后启动)
 - [`design-brief/TASKS.md`](design-brief/TASKS.md) - 任务清单(Phase A + Wave 1-8 待拆解)
 
-## 跟 projectB 的关系
+## 工程栈
 
-projectB 是另一个游戏的 UI 重建项目,**已有的工程模板**(scripts / ENGINEERING_TEMPLATE / KICKOFF / METHODOLOGY)从那里复用。两个项目数据独立。
+Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router。
+
+`scripts/` 通用工具(import-design / extract_palette / dedup / make_grid)从其他 UI 重建项目沉淀过来,跟本项目数据独立。

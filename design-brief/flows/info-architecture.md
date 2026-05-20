@@ -337,10 +337,10 @@ fps_0092 → fps_0094    主屏完成动作 → 声望 22 → 23(数字实时变
 | 商店运输更多车款 | 滚动 | 入口 0065/0072 已确认 |
 | 工作 FAIL "重用" 重试 modal | 工作 list FAIL 卡 | 入口 0036 已确认 |
 
-## 跟 projectB 的关系
+## 工程实现要点
 
-projectE 独立游戏("大掌柜"宋朝换皮 + 现代视频布局),工程结构复用 projectB:
-- Vite Vue 3 + TS + Pinia + Vue Router
-- Pinia store 控制 modal 浮层
-- `router.afterEach` 切屏自动 reset modal
-- 数据独立(待加策划表)
+- Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router
+- Pinia `useModalStore` 控制 modal 浮层(`open(name, props)` / `close()` / `currentModal`),一个 `<ModalShell>` 组件挂在根 layout 根据 `currentModal` 渲染对应 modal
+- `router.afterEach` 切屏自动 reset modal(避免跨屏残留)
+- modal 底板可见:scrim `rgba(0,0,0,.65)` + `backdrop-filter: blur(8px)`
+- 数据从 PNG 提取(`final/src/data/*.json`),策划表待加
