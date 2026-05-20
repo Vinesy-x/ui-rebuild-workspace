@@ -25,7 +25,7 @@ fps_0012-0025 关系 Tab 2(7+ 帧,含约会子流)
 请你**主动从 GitHub 拉**下列文件最新版,覆盖你沙箱里对应文件
 (repo = https://github.com/Vinesy-x/projectE,branch = main):
 
-  必拉(canonical 演进 + 已知废弃项):
+  必拉(canonical 演进 + 已知废弃项,6 个 flows 文件 + 同步规约):
   - design-brief/SYNC_PROTOCOL.md
   - design-brief/flows/info-architecture.md
   - design-brief/flows/interaction-spec.md
@@ -34,10 +34,10 @@ fps_0012-0025 关系 Tab 2(7+ 帧,含约会子流)
   - design-brief/flows/screen-details-extras2.md
   - design-brief/flows/topology.html
 
-  必拉(HTML 真值,我本地清过 8 处 NPC click + 字号 v3.1 同步):
-  - final/Phase A · 主菜单 大掌柜.html
-  - final/Style Lock · 风格定档.html
-  - final/大掌柜.html
+  必拉(HTML 真值在仓库根,不是 final/ 下):
+  - Phase A · 主菜单 大掌柜.html
+  - Style Lock · 风格定档.html
+  - 大掌柜.html
 
   必拉(Vue 工程层,T-B1 已落实):
   - final/src/(整个目录递归)
@@ -140,10 +140,10 @@ canonical 文档(spec / 数据 / 行为):
   - design-brief/flows/interaction-spec.md (Tab 2 关系段)
   - design-brief/SYNC_PROTOCOL.md (同步规约)
 
-视觉真值(Phase A 锁定 + T-B1 风格延续):
-  - final/Style Lock · 风格定档.html (色板 + 字号 v3.1 + 古风对照表)
-  - final/Phase A · 主菜单 大掌柜.html (HUD / BottomTabBar 视觉真值)
-  - final/大掌柜.html (T-B1 关系/工作/业务合并 HTML 真值预演,本轮 Vue 落实)
+视觉真值(Phase A 锁定 + T-B1 风格延续,HTML 真值在仓库根):
+  - Style Lock · 风格定档.html (色板 + 字号 v3.1 + 古风对照表,仓库根)
+  - Phase A · 主菜单 大掌柜.html (HUD / BottomTabBar 视觉真值,仓库根)
+  - 大掌柜.html (T-B1 关系/工作/业务合并 HTML 真值预演,本轮 Vue 落实,仓库根)
   - final/README.md (Phase A 锁定项 + 9 共享 modal 清单)
   - final/src/styles/tokens.css (色板 / 字号 / motion utility)
   - final/src/views/SkillList.vue (T-B1 已做,模仿其结构)

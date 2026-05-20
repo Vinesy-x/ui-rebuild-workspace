@@ -51,10 +51,10 @@ raw URL 模板 = https://raw.githubusercontent.com/Vinesy-x/projectE/main/<path>
    - design-brief/flows/screen-details-extras2.md
    - design-brief/flows/topology.html
 
-   HTML 真值(已清过 8 处 NPC click + 字号 v3.1):
-   - final/Phase A · 主菜单 大掌柜.html
-   - final/Style Lock · 风格定档.html
-   - final/大掌柜.html
+   HTML 真值(已清过 8 处 NPC click + 字号 v3.1,在仓库根不是 final/ 下):
+   - Phase A · 主菜单 大掌柜.html
+   - Style Lock · 风格定档.html
+   - 大掌柜.html
 
    Vue 工程层(T-B1 已落实):
    - final/src/(整个目录递归)
