@@ -2,11 +2,13 @@
 
 > 解决问题:design 沙箱跟 GitHub repo 是**两套独立状态**,不会自动同步。
 >
+> 更宏观的三方协作规约见 `COLLABORATION_PROTOCOL.md`(仓库根)。本文件只聚焦"沙箱 ↔ GitHub 同步"这一块。
+>
 > 已观察的回滚事故 2 次:
 > - commit `3a81c3b`:我清 Phase A.html 4 处 NPC click → T-B1 import 后又回来(沙箱版本覆盖)
 > - commit `592b62c`:再清一次 + 大掌柜.html 4 处共 8 处 → 如果不立规,T-B2 import 后还会回滚
 >
-> 此规约写入仓库根,**每个 Phase B task prompt 顶部必须 ref 这个文件**,让 design 在做之前先同步。
+> 此规约 2 份:仓库根 `SYNC_PROTOCOL.md`(用户 + Claude 看)+ `design-brief/SYNC_PROTOCOL.md`(design 拉到沙箱看)。两份内容同步,Claude 维护。
 
 ---
 
@@ -111,5 +113,7 @@ raw URL 模板 = https://raw.githubusercontent.com/Vinesy-x/projectE/main/<path>
 | 2026-05-20 | `3a81c3b` | 清 Phase A.html 4 处 NPC click |
 | 2026-05-20 | T-B1 import (`68d7850`) | 4 处全回滚(沙箱里 design 没修)|
 | 2026-05-20 | `592b62c` | 再清 8 处(Phase A.html 4 + 大掌柜.html 4)|
-| 待发生 | T-B2 import | 如不立 SYNC_PROTOCOL,还会再回滚 |
+| 2026-05-20 | `552bdfb` | SYNC_PROTOCOL 改"主动拉取"模型 + raw URL |
+| 2026-05-20 | T-B2 sync | ✅ design 主动拉了 37 个文件,无漂移 |
+| 待观察 | T-B2 import | 看 design 出 link 后 grep 是否仍 0 漂移 |
 
