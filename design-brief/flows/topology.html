@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>projectE · 大掌柜 — 屏拓扑</title>
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.6/dist/mermaid.min.js"></script>
 <style>
   body { font-family: -apple-system, sans-serif; background: #1a1530; color: #e8e3f0; max-width: 1200px; margin: 0 auto; padding: 24px; line-height: 1.6; }
   h1 { font-size: 26px; color: #f6c66e; }
@@ -27,7 +27,7 @@
   .legend .full::before { background: #6cc24a; }
   .legend .modal::before { background: #a070ff; }
   .legend .trans::before { background: #9CA3AF; }
-  .legend .cinematic::before { background: #ff7eb3; }
+  .legend .cine::before { background: #ff7eb3; }
   .legend .unknown::before { background: #E84B4B; }
 </style>
 </head>
@@ -157,7 +157,7 @@ graph TB
 
 <div class="mermaid">
 graph LR
-    Skill["技能 list<br/>fps_0001<br/>8 技能(5 解锁 + 3 锁)"]:::full
+    Skill["技能 list<br/>fps_0001<br/>13 技能(5 解锁 + 8 锁)"]:::full
     Up["升级飘字<br/>fps_0002<br/>+2 天松 + 金奖杯"]:::trans
     Accel["加速 modal<br/>fps_0007<br/>6× 永久 / 6 紫晶"]:::modal
     Potion["属性药水<br/>(未观察)"]:::unknown
@@ -330,7 +330,7 @@ graph TB
 
 <div class="mermaid">
 graph TB
-    Shop["商店<br/>顶部 sub-tab: 食物 / 住房 / 运输 / 衣服"]:::full
+    Shop["商店<br/>顶部 sub-tab: 食物 / 住房 / 衣服 / 运输"]:::full
 
     Food["食物 sub-tab<br/>fps_0080"]:::full
     House["住房 sub-tab<br/>fps_0073<br/>基础(月费) + 高级(紫晶)"]:::full
@@ -501,7 +501,7 @@ graph TB
 <table>
   <thead><tr><th>帧</th><th>屏类</th><th>类型 / 底板</th><th>本轮校正</th></tr></thead>
   <tbody>
-    <tr><td><code>0001 / 0002</code></td><td>技能 list / 升级飘字</td><td>fullscreen + trans</td><td>8 技能(5 解锁 + 3 锁)</td></tr>
+    <tr><td><code>0001 / 0002</code></td><td>技能 list / 升级飘字</td><td>fullscreen + trans</td><td>13 技能(5 解锁 + 8 锁,备用帧 0011 揭示新增 4)</td></tr>
     <tr><td><code>0007</code></td><td>加速 modal</td><td>modal / 技能 list</td><td>每技能各自 modal,6 紫晶永久 6×</td></tr>
     <tr><td><code>0012</code></td><td>遇见 list</td><td>fullscreen</td><td>4 NPC 固定</td></tr>
     <tr><td><code>0013</code></td><td>关系详情(熟人段)</td><td>fullscreen</td><td>4 段式 + 4 互动按钮</td></tr>
@@ -547,7 +547,7 @@ graph TB
 </table>
 
 <script>
-mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { background: '#2a1d4e' }});
+mermaid.initialize({ startOnLoad: true, theme: 'dark' });
 </script>
 
 </body>
