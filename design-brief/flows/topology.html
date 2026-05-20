@@ -48,20 +48,20 @@
 <div class="toc">
 <strong>导航</strong>
 <ul>
-  <li><a href="#main">A. 主菜单 + 底栏 6 Tab + 主屏 5 浮窗触发</a></li>
+  <li><a href="#main">A. 主菜单 + 底栏 6 Tab + 主屏 6 浮窗触发</a></li>
   <li><a href="#tab1">B. Tab 1 技能</a></li>
   <li><a href="#tab2">C. Tab 2 遇见(关系)</a></li>
   <li><a href="#tab3">D. Tab 3 工作</a></li>
   <li><a href="#tab4">E. Tab 4 业务</a></li>
   <li><a href="#tab5">F. Tab 5 投资</a></li>
   <li><a href="#tab6">G. Tab 6 物品(商店)</a></li>
-  <li><a href="#popups">H. 主菜单 5 浮窗(字符 / 目标 / 幸福 / 健康 / 随机事件)</a></li>
+  <li><a href="#popups">H. 主菜单 6 浮窗(字符 / 目标 / 幸福 / 健康 / 设置 / 随机事件)</a></li>
   <li><a href="#screens">I. 完整屏映射表(50 张)</a></li>
 </ul>
 </div>
 
 <!-- =================================== -->
-<h2 id="main">A. 主菜单 + 底栏 6 Tab + 主屏 5 浮窗触发</h2>
+<h2 id="main">A. 主菜单 + 底栏 6 Tab + 主屏 6 浮窗触发</h2>
 
 <div class="mermaid">
 graph TB
@@ -76,11 +76,12 @@ graph TB
       Shop["物品(商店)<br/>fps_0072 / 0080"]:::full
     end
 
-    subgraph "主屏触发的 5 modal"
+    subgraph "主屏触发的 6 modal"
       Char["字符窗口<br/>fps_0105"]:::modal
       Goal["目标进度<br/>fps_0094"]:::modal
       Happy0["幸福值<br/>fps_0123"]:::modal
       Health0["健康值<br/>fps_0126"]:::modal
+      Setting["设置<br/>fps_0111"]:::modal
       Event["随机事件<br/>fps_0117"]:::modal
     end
 
@@ -95,12 +96,14 @@ graph TB
     Home -.->|右侧黄按钮 click| Goal
     Home -.->|顶部黄星 click| Happy0
     Home -.->|顶部❤ click| Health0
-    Home -.->|顶部某图标 click| Event
+    Home -.->|右上 ⚙ click| Setting
+    Home -.->|随机时间点 自动弹| Event
 
     Char -.->|关闭 X| Home
     Goal -.->|关闭 X| Home
     Happy0 -.->|关闭 X| Home
     Health0 -.->|关闭 X| Home
+    Setting -.->|关闭 X| Home
     Event -.->|完成事件| Home
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
@@ -199,11 +202,11 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="tab6">G. Tab 6 物品(商店)</h2>
+<h2 id="tab6">G. Tab 6 物品(商店 — 衣食住行)</h2>
 
 <div class="mermaid">
 graph TB
-    Shop["商店<br/>顶部 4 sub-tab"]:::full
+    Shop["商店<br/>顶部 4 sub-tab<br/>衣食住行"]:::full
 
     Food["食物 sub-tab<br/>fps_0080"]:::full
     House["住房 sub-tab<br/>fps_0087 / 0088"]:::full
@@ -224,7 +227,7 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="popups">H. 主菜单 5 浮窗(用户确认入口)</h2>
+<h2 id="popups">H. 主菜单 6 浮窗(用户确认入口)</h2>
 
 <div class="mermaid">
 graph TB
@@ -233,18 +236,21 @@ graph TB
     Goal2["目标进度<br/>fps_0094"]:::modal
     Happy["幸福值<br/>fps_0123"]:::modal
     Health["健康值<br/>fps_0126"]:::modal
+    Setting2["设置<br/>fps_0111"]:::modal
     Event2["随机事件<br/>fps_0117"]:::modal
 
     Home2 -.->|顶部头像 click| Char2
     Home2 -.->|右侧黄按钮 click| Goal2
     Home2 -.->|顶部黄星 click| Happy
     Home2 -.->|顶部❤ click| Health
-    Home2 -.->|顶部某图标 click ⚠️| Event2
+    Home2 -.->|右上 ⚙ click| Setting2
+    Home2 -.->|随机时间点 自动弹| Event2
 
     Char2 -.->|关闭 X| Home2
     Goal2 -.->|关闭 X| Home2
     Happy -.->|关闭 X| Home2
     Health -.->|关闭 X| Home2
+    Setting2 -.->|关闭 X| Home2
     Event2 -.->|完成事件| Home2
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
@@ -272,7 +278,8 @@ graph TB
     <tr><td><code>fps_0087/0088</code></td><td>商店 - 住房 / 衣服</td><td>fullscreen with sub-tab</td><td>同上 ⚠️ 待确认</td></tr>
     <tr><td><code>fps_0092/0094/0097</code></td><td><strong>目标进度弹窗</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 主屏右侧黄按钮触发</td></tr>
     <tr><td><code>fps_0098/0099/0100</code></td><td>字符 / 月度结算弹窗</td><td>modal / 底板:主菜单</td><td>月底自动弹</td></tr>
-    <tr><td><code>fps_0105/0108/0111</code></td><td><strong>字符窗口</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部头像触发,sub-tab 交易/升级</td></tr>
+    <tr><td><code>fps_0105/0108</code></td><td><strong>字符窗口</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部头像触发,sub-tab 交易/升级</td></tr>
+    <tr><td><code>fps_0111</code> ⭐</td><td><strong>设置 modal</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 右上 ⚙ click 触发。4 开关 + 语言 + Discord + 新游戏 + 版本号</td></tr>
     <tr><td><code>fps_0117/0118/0119</code></td><td><strong>随机事件弹窗</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 街景闲逛触发,MOTEL 等场景</td></tr>
     <tr><td><code>fps_0123</code></td><td><strong>幸福值 modal</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部黄色小图标触发。赛车/啤酒/电影/台球等休闲项</td></tr>
     <tr><td><code>fps_0126</code></td><td><strong>健康值 modal</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部❤ 图标触发。锻炼/药片/医生/体检等健康项</td></tr>
