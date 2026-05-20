@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 #
-# import-design.sh — 把 Claude Design 沙箱里的 final/ 工程同步到本地 projectB/final/
+# import-design.sh — 把 Claude Design 沙箱整个工程同步到本地
 #
 # 用法:
 #   ./scripts/import-design.sh <design-link>
 #
 # 示例:
-#   ./scripts/import-design.sh "https://api.anthropic.com/v1/design/h/g60YM4PxNTDNfIKFIWEllQ"
+#   ./scripts/import-design.sh "https://api.anthropic.com/v1/design/h/XXXX"
 #
 # 行为:
 #   1. fetch design link → 拿到 tarball(design 沙箱整个工程的 snapshot)
 #   2. 解到临时目录
-#   3. 自动定位 tarball 里的 final/ 路径(通常是 projectb/project/final/)
-#   4. rsync 同步到本地 final/(保留你本地的 node_modules / dist / package-lock.json)
+#   3. 自动定位 tarball 里的 final/ 路径(支持 projectb/projecte/通用)
+#   4. rsync final/ 到本地 final/(保留 node_modules / dist / package-lock.json)
+#   4.5. rsync 沙箱项目根的 *.html 真值文件到本地仓库根(Style Lock / Phase A 等)
 #   5. 显示 git diff 概要,等你 review 后手动 commit
 
 set -euo pipefail
@@ -61,10 +62,11 @@ echo "==> Extracting"
 tar -xzf "$TARBALL" -C "$WORK_DIR"
 
 # ---------- 3. 定位 final/ ----------
-# 已知路径(从我之前 webfetch 的 tarball 看到的)是 projectb/project/final/
+# 已知路径:projectb/project/final/ 或 projecte/project/final/ (按项目)
 # 用 find fallback 以防 design 改了打包结构
 SRC_FINAL=""
 for candidate in \
+  "$WORK_DIR/projecte/project/final" \
   "$WORK_DIR/projectb/project/final" \
   "$WORK_DIR/project/final" \
   "$WORK_DIR/final"
@@ -89,10 +91,10 @@ fi
 
 echo "    Found: ${SRC_FINAL#$WORK_DIR/}"
 
-# ---------- 4. rsync 同步 ----------
+# ---------- 4. rsync 同步 final/ ----------
 # --delete:design 删的文件本地也删(让本地跟 design 完全一致)
 # --exclude:保留本地的 node_modules / dist / package-lock.json(install 是本地行为)
-echo "==> Syncing to $FINAL_DIR/"
+echo "==> Syncing final/ to $FINAL_DIR/"
 mkdir -p "$FINAL_DIR"
 rsync -a --delete \
   --exclude='node_modules/' \
@@ -101,15 +103,27 @@ rsync -a --delete \
   --exclude='package-lock.json' \
   "$SRC_FINAL/" "$FINAL_DIR/"
 
+# ---------- 4.5. rsync 沙箱项目根的 *.html 真值文件到仓库根 ----------
+# design 把 Style Lock / Phase A 主菜单等 HTML 真值放在 final/ 的兄弟目录
+# 用户没这些真值文件 Phase B 实做没视觉参考 → 一并拉下来
+SRC_PROJECT_ROOT="$(dirname "$SRC_FINAL")"
+if ls "$SRC_PROJECT_ROOT"/*.html >/dev/null 2>&1; then
+  HTML_COUNT=$(ls "$SRC_PROJECT_ROOT"/*.html | wc -l | tr -d ' ')
+  echo "==> Syncing $HTML_COUNT root html truth file(s) to $REPO_ROOT/"
+  rsync -a "$SRC_PROJECT_ROOT"/*.html "$REPO_ROOT/"
+fi
+
 # ---------- 5. 总结 + 提示 ----------
 echo ""
 echo "==> Done. Changes:"
 cd "$REPO_ROOT"
-if git diff --quiet final/ && git diff --cached --quiet final/ && [ -z "$(git status --porcelain final/)" ]; then
-  echo "    (no changes — local final/ was already in sync)"
+# 含 final/ + 根 *.html
+CHANGED_FILES=$(git status --porcelain final/ '*.html' 2>/dev/null)
+if [ -z "$CHANGED_FILES" ]; then
+  echo "    (no changes — local already in sync)"
 else
-  git status --short final/ | head -30
-  CHANGED=$(git status --porcelain final/ | wc -l | tr -d ' ')
+  echo "$CHANGED_FILES" | head -30
+  CHANGED=$(echo "$CHANGED_FILES" | wc -l | tr -d ' ')
   if [ "$CHANGED" -gt 30 ]; then
     echo "    ... +$((CHANGED - 30)) more"
   fi
