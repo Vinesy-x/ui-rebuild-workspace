@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>Style Lock · 大掌柜 风格定档</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700;900&family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="final/src/styles/tokens.css" />
+<style>
+  body {
+    background: var(--paper-1);
+    background-image:
+      repeating-linear-gradient(45deg, transparent 0 4px, rgba(139,111,71,.025) 4px 5px);
+    color: var(--ink-1);
+    padding: 40px 6vw 80px;
+    font-family: var(--font-serif);
+  }
+  .doc { max-width: 1100px; margin: 0 auto; }
+
+  .seal-title {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 8px;
+    flex-wrap: nowrap;
+  }
+  .seal-title .big-seal {
+    flex: none;
+    width: 72px; height: 72px;
+    background: var(--cinnabar-1);
+    color: var(--gold-2);
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    font-size: 38px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 2px 0 var(--cinnabar-3);
+  }
+  .seal-title .big-seal::after {
+    content: ""; position: absolute; inset: 3px;
+    border: 1.5px solid rgba(245,235,214,.4);
+    border-radius: 3px;
+  }
+  .seal-title h1 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    margin: 0;
+    color: var(--ink-1);
+    letter-spacing: .08em;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .seal-title h1 small {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--ink-3);
+    letter-spacing: .08em;
+    margin-top: 6px;
+    font-weight: var(--fw-normal);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    margin: 48px 0 4px;
+    color: var(--ink-1);
+    border-bottom: 1px solid var(--paper-edge);
+    padding-bottom: 8px;
+    letter-spacing: .1em;
+  }
+  h2 small {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-left: 12px;
+    letter-spacing: .04em;
+    font-weight: var(--fw-normal);
+  }
+  h3 { font-family: var(--font-display); font-size: 16px; margin: 24px 0 8px; color: var(--celadon-3); letter-spacing: .06em; }
+  p, li { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
+  code { font-family: ui-monospace, "SF Mono", monospace; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; font-size: 12px; color: var(--ink-1); }
+
+  /* ─── color grid ─── */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .sw {
+    background: var(--paper-2);
+    border: 1px solid var(--paper-edge);
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: var(--font-num);
+  }
+  .sw .chip { height: 60px; }
+  .sw .meta { padding: 6px 8px 8px; }
+  .sw .name { font-family: var(--font-display); font-size: 13px; color: var(--ink-1); }
+  .sw .hex  { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+  .sw .var  { font-size: 10px; color: var(--ink-4); }
+
+  /* ─── tier ─── */
+  .tier-row { display: flex; gap: 10px; margin: 12px 0 24px; flex-wrap: wrap; }
+  .tier {
+    flex: 1; min-width: 120px;
+    padding: 14px;
+    border-radius: 6px;
+    text-align: center;
+    color: var(--paper-1);
+    font-family: var(--font-display);
+    border: 1.5px solid var(--ink-1);
+  }
+  .tier small { display: block; font-family: var(--font-serif); font-size: 11px; margin-top: 4px; opacity: .85; }
+
+  /* ─── type scale ─── */
+  .type-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--paper-edge);
+    align-items: baseline;
+  }
+  .type-row .meta { font-family: ui-monospace, monospace; font-size: 11px; color: var(--ink-3); }
+  .type-row .sample { color: var(--ink-1); }
+
+  /* ─── currency rail ─── */
+  .cur-rail {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .cur-cell {
+    background: var(--paper-2);
+    border: 1px solid var(--paper-edge);
+    border-radius: 6px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+  }
+  .cur-cell .cseal {
+    width: 36px; height: 36px;
+    border-radius: 4px;
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    color: var(--paper-1);
+    font-size: 20px;
+    position: relative;
+  }
+  .cur-cell .cseal::after { content:""; position:absolute; inset:2px; border:1px solid rgba(245,235,214,.35); border-radius:3px; }
+  .cur-cell .cname { font-family: var(--font-display); font-size: 13px; color: var(--ink-1); }
+  .cur-cell .cuse  { font-size: 10px; color: var(--ink-3); line-height: 1.4; font-family: var(--font-num); }
+
+  /* ─── badge gallery ─── */
+  .badges {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin: 16px 0;
+  }
+  .badge-demo {
+    display: flex; flex-direction: column; gap: 6px;
+    align-items: center;
+    width: 110px;
+    text-align: center;
+  }
+  .badge-demo .pic {
+    width: 48px; height: 48px;
+    background: var(--celadon-2);
+    border: 1.5px solid var(--celadon-3);
+    border-radius: 50%;
+    position: relative;
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    color: var(--ink-1);
+  }
+  .b-bang, .b-warn, .b-ok, .b-lock, .b-fail {
+    position: absolute;
+    top: -4px; right: -4px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    color: var(--paper-1);
+    border: 1.5px solid var(--paper-1);
+    display: grid; place-items: center;
+    font-family: var(--font-display);
+    font-size: 12px;
+    line-height: 1;
+  }
+  .b-bang { background: var(--cinnabar-1); }
+  .b-warn { background: var(--amber); color: var(--ink-1); }
+  .b-ok   { background: var(--jade); }
+  .b-lock { background: var(--ink-3); }
+  .b-fail { background: var(--fail-red); width: auto; padding: 0 6px; border-radius: 6px; font-size: 9px; }
+  .badge-demo small { font-size: 10px; color: var(--ink-3); font-family: var(--font-num); }
+  .badge-demo .lab  { font-family: var(--font-display); font-size: 12px; color: var(--ink-1); }
+
+  /* ─── component frame ─── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .comp {
+    background: var(--paper-1);
+    border: 1.5px solid var(--wood-1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .comp .hd {
+    background: var(--celadon-3);
+    color: var(--paper-1);
+    padding: 8px 12px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: .06em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .comp .hd code { background: rgba(255,255,255,.18); color: var(--gold-2); }
+  .comp .body { padding: 12px; }
+  .comp .body p { margin: 0 0 6px; font-size: 12px; color: var(--ink-2); }
+  .comp .body .frames {
+    font-family: var(--font-num);
+    font-size: 10px;
+    color: var(--ink-3);
+    background: var(--paper-2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  /* ─── asset checklist ─── */
+  .asset-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 12px;
+    margin: 12px 0;
+  }
+  .asset-table th, .asset-table td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  .asset-table th {
+    background: var(--paper-2);
+    font-family: var(--font-display);
+    color: var(--ink-1);
+    border-bottom: 1.5px solid var(--ink-2);
+  }
+  .asset-table td { color: var(--ink-2); font-family: var(--font-serif); }
+  .asset-table .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: var(--font-num);
+    font-size: 10px;
+  }
+  .asset-table .tag-svg { background: var(--celadon-2); color: var(--celadon-3); }
+  .asset-table .tag-png { background: var(--gold-2); color: var(--ink-1); }
+
+  /* ─── glossary ─── */
+  .glossary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 18px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .glossary .from { color: var(--ink-3); font-family: var(--font-num); }
+  .glossary .from::after { content: " →"; color: var(--ink-4); }
+  .glossary .to { font-family: var(--font-display); color: var(--cinnabar-1); }
+
+  hr.flourish {
+    border: none;
+    height: 8px;
+    margin: 48px 0;
+    background:
+      linear-gradient(var(--paper-edge), var(--paper-edge)) center / 100% 1px no-repeat,
+      radial-gradient(circle, var(--gold-1) 2px, transparent 2.5px) center / 16px 100% repeat-x;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    background: var(--paper-1);
+    border-bottom: 1px solid var(--paper-edge);
+    padding: 12px 6vw;
+    margin: -40px -6vw 24px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    font-family: var(--font-display);
+    font-size: 13px;
+    z-index: 50;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  }
+  .nav a { color: var(--ink-2); text-decoration: none; padding: 4px 8px; border-radius: 4px; }
+  .nav a:hover { background: var(--celadon-2); color: var(--celadon-3); }
+  .nav .home {
+    margin-left: auto;
+    background: var(--cinnabar-1);
+    color: var(--paper-1);
+    padding: 4px 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <nav class="nav">
+    <a href="#palette">色板</a>
+    <a href="#type">字体</a>
+    <a href="#currency">货币</a>
+    <a href="#badges">角标</a>
+    <a href="#components">组件</a>
+    <a href="#assets">资产清单</a>
+    <a href="#glossary">古风对照</a>
+    <a class="home" href="Phase A · 主菜单 大掌柜.html">← 主菜单</a>
+  </nav>
+
+  <header class="seal-title">
+    <div class="big-seal">掌</div>
+    <h1>大掌柜 · 风格定档
+      <small>PHASE A 锁定 · 宋朝古风 · viewport 448×960</small>
+    </h1>
+  </header>
+
+  <p style="font-size:13px;color:var(--ink-3);line-height:1.8">
+    本页是 fps_0035 主菜单同期产出的风格定档（Style Lock）。
+    Phase A 通过后 → Phase B 49 张屏沿用，不再变。
+    色 / 字 / 角标 / 货币 / 组件 命名 = canonical。<br/>
+    <strong style="color:var(--cinnabar-1)">v2 校准 · 2026-05-20</strong>：
+    根据用户上传的 <code>design-brief/style-reference/风格参考.png</code>（
+    江南水乡 · 水墨彩绘风）重校了整套调色·起雾青底 + 江南瓦屋顶 + 印泥赭收。
+  </p>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       5 关键词
+       ============================================================ -->
+  <h2 id="keywords">五字定调 <small>v2 · 江南水乡版·以参考图为准</small></h2>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0">
+    <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--celadon-1);border-radius:6px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:22px;color:var(--celadon-1);letter-spacing:.1em">雾天起青</div>
+      <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">冷调背景天青 / 远山薄雾 / 低饱和、不于鲜艳</p>
+    </div>
+    <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--celadon-3);border-radius:6px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:22px;color:var(--celadon-3);letter-spacing:.1em">江南黑瓦</div>
+      <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">白粉墙 + 冷靛灰飞檐 / 取代茶褐木框</p>
+    </div>
+    <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--cinnabar-1);border-radius:6px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:22px;color:var(--cinnabar-1);letter-spacing:.1em">印泥赭收</div>
+      <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">主红 = 书画印泥 #8A4533 / 杀死亮朱砂 / 极克制</p>
+    </div>
+    <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--gold-1);border-radius:6px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:22px;color:var(--gold-1);letter-spacing:.1em">細金均线</div>
+      <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">金棕 hairline 边 / 不用宽木框 / 轻盈透</p>
+    </div>
+    <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--ink-2);border-radius:6px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:22px;color:var(--ink-1);letter-spacing:.1em">水墨留白</div>
+      <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">大留白 / 远近暍望 / 克制阴影、拒纯白、拒渐变</p>
+    </div>
+  </div>
+
+  <div style="background:var(--paper-2);border:1px dashed var(--gold-1);border-radius:6px;padding:12px 14px;margin:12px 0;font-size:12px;color:var(--ink-2);line-height:1.7">
+    <strong style="color:var(--cinnabar-1)">v1 → v2 重点变动</strong>：
+    <ul style="margin:4px 0 0;padding-left:18px;font-size:12px">
+      <li>主 CTA / 角标红 <code>#C0392B</code> → 印泥赭 <code>#8A4533</code></li>
+      <li>深调 / 屋顶色 茶褐木 <code>#5C4630</code> → 江南瓦 <code>#3D4A52</code>（冷靛灰）</li>
+      <li>背景 暖米黄 → 雾天青 + 米黄 + 麻紙 三段渐变</li>
+      <li>新增 <code>--sky-1/2</code> + <code>--water-1/2</code> 色 token（準参考图运河场景）</li>
+      <li>边框 粗木框 → 金棕 hairline（1px）</li>
+      <li>底栏图标：Phase B 外包依参考图画“微插画库”（府邸/店铺/伙计/背包/马）代替印章汉字</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================
+       色板
+       ============================================================ -->
+  <h2 id="palette">色板 <small>15 主 + 5 档品质 + 9 货币专色 = canonical</small></h2>
+
+  <h3>宣纸 · 底 (paper) · v2</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#F3E9D0"></div><div class="meta"><div class="name">宣纸白</div><div class="hex">#F3E9D0</div><div class="var">--paper-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#EAD9B5"></div><div class="meta"><div class="name">米黄</div><div class="hex">#EAD9B5</div><div class="var">--paper-2</div></div></div>
+    <div class="sw"><div class="chip" style="background:#D9C49A"></div><div class="meta"><div class="name">麻纸</div><div class="hex">#D9C49A</div><div class="var">--paper-3</div></div></div>
+    <div class="sw"><div class="chip" style="background:#A88B5A"></div><div class="meta"><div class="name">细金棕</div><div class="hex">#A88B5A</div><div class="var">--paper-edge</div></div></div>
+  </div>
+
+  <h3>雾天 + 运河 (sky / water) — v2 新增</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#D6DEE2"></div><div class="meta"><div class="name">雾天青</div><div class="hex">#D6DEE2</div><div class="var">--sky-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#BFCBCF"></div><div class="meta"><div class="name">远山青</div><div class="hex">#BFCBCF</div><div class="var">--sky-2</div></div></div>
+    <div class="sw"><div class="chip" style="background:#A8BFB0"></div><div class="meta"><div class="name">水墨翠</div><div class="hex">#A8BFB0</div><div class="var">--water-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#C4D2C5"></div><div class="meta"><div class="name">淺翠</div><div class="hex">#C4D2C5</div><div class="var">--water-2</div></div></div>
+  </div>
+
+  <h3>墨 · 文字 (ink)</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#1F1B14"></div><div class="meta"><div class="name" style="color:var(--paper-1)">—</div><div class="name">墨黑</div><div class="hex">#1F1B14</div><div class="var">--ink-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#3D332A"></div><div class="meta"><div class="name">茶墨</div><div class="hex">#3D332A</div><div class="var">--ink-2</div></div></div>
+    <div class="sw"><div class="chip" style="background:#6B5D4A"></div><div class="meta"><div class="name">淡墨</div><div class="hex">#6B5D4A</div><div class="var">--ink-3</div></div></div>
+    <div class="sw"><div class="chip" style="background:#A6967C"></div><div class="meta"><div class="name">淡灰墨</div><div class="hex">#A6967C</div><div class="var">--ink-4</div></div></div>
+  </div>
+
+  <h3>宋瓷 + 江南瓦 (celadon) · v2</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#8DA89E"></div><div class="meta"><div class="name">宋瓷青 主</div><div class="hex">#8DA89E</div><div class="var">--celadon-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#C2D2CB"></div><div class="meta"><div class="name">影青 浅</div><div class="hex">#C2D2CB</div><div class="var">--celadon-2</div></div></div>
+    <div class="sw"><div class="chip" style="background:#3D4A52"></div><div class="meta"><div class="name" style="color:var(--paper-1)">江南瓦 深</div><div class="hex">#3D4A52</div><div class="var">--celadon-3</div></div></div>
+    <div class="sw"><div class="chip" style="background:#DDE5DF"></div><div class="meta"><div class="name">釉色 极浅</div><div class="hex">#DDE5DF</div><div class="var">--celadon-4</div></div></div>
+  </div>
+
+  <h3>印泥 · 赭 (cinnabar) · v2 — 仿书画印泥·仅作 seal / 角标 / destructive</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#8A4533"></div><div class="meta"><div class="name" style="color:var(--paper-1)">印泥赭 主</div><div class="hex">#8A4533</div><div class="var">--cinnabar-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#A85F45"></div><div class="meta"><div class="name">升莔 高亮</div><div class="hex">#A85F45</div><div class="var">--cinnabar-2</div></div></div>
+    <div class="sw"><div class="chip" style="background:#6B3422"></div><div class="meta"><div class="name" style="color:var(--paper-1)">黑漆赭 按下</div><div class="hex">#6B3422</div><div class="var">--cinnabar-3</div></div></div>
+  </div>
+
+  <h3>老金 · 木 (gold / wood)</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#B89968"></div><div class="meta"><div class="name">老金</div><div class="hex">#B89968</div><div class="var">--gold-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#D4B884"></div><div class="meta"><div class="name">淡金</div><div class="hex">#D4B884</div><div class="var">--gold-2</div></div></div>
+    <div class="sw"><div class="chip" style="background:#8B6F47"></div><div class="meta"><div class="name">茶褐 木</div><div class="hex">#8B6F47</div><div class="var">--wood-1</div></div></div>
+    <div class="sw"><div class="chip" style="background:#5C4630"></div><div class="meta"><div class="name">深木</div><div class="hex">#5C4630</div><div class="var">--wood-2</div></div></div>
+  </div>
+
+  <h3>状态色 (status)</h3>
+  <div class="swatch-grid">
+    <div class="sw"><div class="chip" style="background:#5A8A6F"></div><div class="meta"><div class="name">翠 ✓ 成功</div><div class="hex">#5A8A6F</div><div class="var">--jade</div></div></div>
+    <div class="sw"><div class="chip" style="background:#C89B3B"></div><div class="meta"><div class="name">琥 ⚠ 促销</div><div class="hex">#C89B3B</div><div class="var">--amber</div></div></div>
+    <div class="sw"><div class="chip" style="background:#4A7BA8"></div><div class="meta"><div class="name">黛 ⓘ 信息</div><div class="hex">#4A7BA8</div><div class="var">--azure</div></div></div>
+    <div class="sw"><div class="chip" style="background:#9B3A2C"></div><div class="meta"><div class="name">FAIL 失败</div><div class="hex">#9B3A2C</div><div class="var">--fail-red</div></div></div>
+  </div>
+
+  <h3>五档品质 (rarity tier)</h3>
+  <div class="tier-row">
+    <div class="tier" style="background:#8C8475">凡品 <small>common</small></div>
+    <div class="tier" style="background:#5A8A6F">良品 <small>uncommon</small></div>
+    <div class="tier" style="background:#4A7BA8">上品 <small>rare</small></div>
+    <div class="tier" style="background:#8E5BA0">珍品 <small>epic</small></div>
+    <div class="tier" style="background:#B89968">神品 <small>legendary</small></div>
+  </div>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       字号体系
+       ============================================================ -->
+  <h2 id="type">字号体系 <small>4 字族 · 11 档 · v2 语义锁定</small></h2>
+
+  <h3>字族</h3>
+  <p style="font-size:14px">
+    <strong style="font-family:var(--font-serif);font-weight:700">Noto Serif SC</strong>
+    （正文，宋體类 serif）+
+    <strong style="font-family:var(--font-ui)">ZCOOL XiaoWei</strong>
+    （UI 标签 / 数字，仿宋窄）+
+    <strong style="font-family:var(--font-display)">Ma Shan Zheng</strong>
+    （装饰大标题，毛笔楷）。<br/>
+    数字（HUD / 价 / 进度）默认仿宋阿拉伯。
+  </p>
+
+  <h3>11 档字阶 (v2 · 锁定)</h3>
+  <div class="type-row"><div class="meta">--fs-overlay<br/>30 / 1.0</div><div class="sample t-overlay" style="background:var(--ink-1);padding:6px 14px;display:inline-block;border-radius:4px">熟 人</div></div>
+  <div class="type-row"><div class="meta">--fs-display<br/>22 / 1.1</div><div class="sample t-display c-red">廿三</div></div>
+  <div class="type-row"><div class="meta">--fs-num-bold<br/>17 / 1.0</div><div class="sample t-num-bold">10,760</div></div>
+  <div class="type-row"><div class="meta">--fs-h1<br/>18 / 1.2</div><div class="sample t-h1">心境 · 七十／百</div></div>
+  <div class="type-row"><div class="meta">--fs-h2<br/>16 / 1.3</div><div class="sample t-h2">紅巾娘子</div></div>
+  <div class="type-row"><div class="meta">--fs-h3<br/>15 / 1.3</div><div class="sample t-h3">市場行情</div></div>
+  <div class="type-row"><div class="meta">--fs-num<br/>15 / 1.3</div><div class="sample t-num">+5%</div></div>
+  <div class="type-row"><div class="meta">--fs-body<br/>14 / 1.6</div><div class="sample t-body">所有支出均可获得返现。花得越多，返现越多。</div></div>
+  <div class="type-row"><div class="meta">--fs-label<br/>13 / 1.3</div><div class="sample t-label">技能 · 緣份 · 工作 · 商號 · 票號 · 物事</div></div>
+  <div class="type-row"><div class="meta">--fs-meta<br/>12 / 1.4</div><div class="sample t-meta">崇寧二年 仲秋廿四 · 00:02</div></div>
+  <div class="type-row"><div class="meta">--fs-micro<br/>10 / 1.2</div><div class="sample t-micro">FAIL · 42% · +3</div></div>
+
+  <h3>位置 → 字阶 映射表</h3>
+  <table class="asset-table">
+    <thead><tr><th>位置</th><th>token</th><th>字族</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td>亲疏度升级 overlay 大字</td><td><code>--fs-overlay 30</code></td><td>display</td><td>熟人 / 朋友 / 正主</td></tr>
+      <tr><td>声望数 · hero 主数据</td><td><code>--fs-display 22</code></td><td>display</td><td>朱砂红高亮</td></tr>
+      <tr><td>HUD 主数据（钞票 / 健康 / 玉）</td><td><code>--fs-num-bold 17</code></td><td>display</td><td>足以远看</td></tr>
+      <tr><td>modal title bar</td><td><code>--fs-h1 18</code></td><td>display</td><td></td></tr>
+      <tr><td>section heading / NPC 名</td><td><code>--fs-h2 16</code></td><td>display</td><td></td></tr>
+      <tr><td>卡片标题 / sub-tab</td><td><code>--fs-h3 15</code></td><td>display</td><td></td></tr>
+      <tr><td>list item name / 属性名</td><td><code>--fs-body 14</code></td><td>display</td><td>用 .t-name</td></tr>
+      <tr><td>NPC 气泡台词 · 正文</td><td><code>--fs-body 14</code></td><td>serif</td><td>行高 1.6</td></tr>
+      <tr><td>列表数值（+5% / 价）</td><td><code>--fs-num 15</code></td><td>num</td><td>高亮色底</td></tr>
+      <tr><td>tab 标签 · button · pill</td><td><code>--fs-label 13</code></td><td>display</td><td>spacing .06em</td></tr>
+      <tr><td>cost / cd / sub-info</td><td><code>--fs-meta 12</code></td><td>num</td><td>c-muted</td></tr>
+      <tr><td>角标贴字（FAIL / +3 / 42%）</td><td><code>--fs-micro 10</code></td><td>num</td><td>加粗</td></tr>
+      <tr><td>placeholder 监督 · 占位</td><td><code>--fs-micro 10</code></td><td>mono</td><td>.t-mono</td></tr>
+    </tbody>
+  </table>
+
+  <h3>排版强约束</h3>
+  <ul style="font-size:14px;line-height:1.9;padding-left:20px">
+    <li><strong>能用 <code>.t-X / .c-X</code> 就用</strong> — 不要在 HTML 写 <code>style="font-size:NNpx"</code></li>
+    <li>中文正文最小字号 = <code>--fs-body 14px</code>，再小看不清</li>
+    <li>仿宋窄字 (tab / 标签 / 装饰) 加 letter-spacing .04-.06em</li>
+    <li>数字独立一档大于汉字 (num-bold 17 vs body 14) — 数字才耀眼</li>
+    <li>"micro 10" 仅作角标 / 贴字，禁用作正文</li>
+    <li>同屏字阶差 ≥ 2 档，相邻字阶差不超 1 档</li>
+  </ul>
+
+  <h3>Modal 尺寸 3 档 (v2 · 锁定)</h3>
+  <p style="font-size:14px">
+    弹框走 3 档固定尺寸，<strong>不随内容自适应</strong>。锚点统一：<code>top: 64px</code>（HUD 下方）+ <code>left/right: 16px</code>，居中偏上。
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0">
+    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:16px;color:var(--ink-1)">.modal--sm</div>
+      <div style="font-family:var(--font-num);font-size:24px;color:var(--cinnabar-1);margin:8px 0">420 px</div>
+      <p style="font-size:12px;margin:0">短列表 · 信息 modal</p>
+      <p style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--font-num)">银行 ⓘ / 改名 / 日期 / 倍数奖励</p>
+    </div>
+    <div style="background:var(--paper-2);border:1.5px solid var(--cinnabar-1);border-radius:6px;padding:14px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:16px;color:var(--ink-1)">.modal--md <span style="color:var(--cinnabar-1);font-size:11px">默认</span></div>
+      <div style="font-family:var(--font-num);font-size:24px;color:var(--cinnabar-1);margin:8px 0">560 px</div>
+      <p style="font-size:12px;margin:0">hero + 6 行 · req 列表</p>
+      <p style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--font-num)">心境 / 體魄 / NPC 要求 / 购买确认</p>
+    </div>
+    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px;text-align:center">
+      <div style="font-family:var(--font-display);font-size:16px;color:var(--ink-1)">.modal--lg</div>
+      <div style="font-family:var(--font-num);font-size:24px;color:var(--cinnabar-1);margin:8px 0">740 px</div>
+      <p style="font-size:12px;margin:0">长列表 · 商店 · 设置</p>
+      <p style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--font-num)">商店 / 设置 / 人物卷 / 目标</p>
+    </div>
+  </div>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       货币体系
+       ============================================================ -->
+  <h2 id="currency">货币 8 类 + USD 占位 <small>朱砂方印 + 楷书汉字</small></h2>
+  <p style="font-size:13px">
+    规则：emoji / unicode 禁用 → 全部货币以"印章 + 汉字"方块表达。
+    Phase A 用 CSS 实现，Phase B 替换为 SVG 切片以保证 retina 清晰。
+  </p>
+
+  <div class="cur-rail">
+    <div class="cur-cell"><div class="cseal" style="background:#B5852E">銅</div><div class="cname">銅錢</div><div class="cuse">升级业务 / 月费 / 礼物 / 行为成本</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#8E5BA0">玉</div><div class="cname">玉珏 / 紫晶</div><div class="cuse">雇经理 / 加速 / 高级居所 / 车马</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#5A8A6F">磚</div><div class="cname">青砖</div><div class="cuse">月入 / 投资组合 / 卖车收入</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#C0392B">壽</div><div class="cname">體魄</div><div class="cuse">健康度 0–100</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#C89B3B;color:#1F1B14">心</div><div class="cname">心境</div><div class="cuse">幸福度 0–100</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#B89968;color:#1F1B14">星</div><div class="cname">文星</div><div class="cuse">收集解锁 · 成就奖励</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#C9A861;color:#1F1B14">寳</div><div class="cname">通寶</div><div class="cuse">备用资源（HUD 月涨）</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#7A4FA0">引</div><div class="cname">票引</div><div class="cuse">抽卡门票</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#5C7CB8">骰</div><div class="cname">骰碼</div><div class="cuse">赌场芯片</div></div>
+    <div class="cur-cell"><div class="cseal" style="background:#3D332A">$</div><div class="cname">USD IAP</div><div class="cuse">真钱占位 · 不实现</div></div>
+  </div>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       角标系统
+       ============================================================ -->
+  <h2 id="badges">角标系统 <small>6 种 + 锁 + 五档品质</small></h2>
+  <div class="badges">
+    <div class="badge-demo">
+      <div class="pic">工<span class="b-bang">!</span></div>
+      <span class="lab">红 !</span>
+      <small>新通知 / 待领</small>
+    </div>
+    <div class="badge-demo">
+      <div class="pic">差<span class="b-warn">⚠</span></div>
+      <span class="lab">琥珀 ⚠</span>
+      <small>促销 / 限时</small>
+    </div>
+    <div class="badge-demo">
+      <div class="pic" style="background:var(--celadon-2)">居<span class="b-ok">✓</span></div>
+      <span class="lab">翠 ✓</span>
+      <small>已完成 / 已购</small>
+    </div>
+    <div class="badge-demo">
+      <div class="pic" style="background:var(--paper-3);color:var(--ink-3)">??<span class="b-lock">🔒</span></div>
+      <span class="lab">灰 🔒</span>
+      <small>锁定 / ★N 解锁</small>
+    </div>
+    <div class="badge-demo">
+      <div class="pic">工<span class="b-fail">FAIL</span></div>
+      <span class="lab">FAIL</span>
+      <small>工作失败 · 可重来</small>
+    </div>
+    <div class="badge-demo">
+      <div class="pic">42<span class="b-bang" style="font-size:9px;width:24px;height:18px;border-radius:6px">42%</span></div>
+      <span class="lab">折扣 %</span>
+      <small>红折扣角标</small>
+    </div>
+    <div class="badge-demo">
+      <div class="pic">物<span class="b-bang" style="font-family:var(--font-num);font-size:11px">+3</span></div>
+      <span class="lab">"+" 库存</span>
+      <small>商品库存倒计</small>
+    </div>
+  </div>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       7 共享组件
+       ============================================================ -->
+  <h2 id="components">7 共享组件 <small>canonical 锁定 · Phase B 必须复用</small></h2>
+
+  <div class="comp-grid">
+    <div class="comp">
+      <div class="hd">ProgressListDialog <code>0123 + 0126</code></div>
+      <div class="body">
+        <p>hero 图 + +50% 按钮 + 6 行 list (name / cost / +% / cd)</p>
+        <p>幸福(心境) + 健康(體魄) 共享，gain pill 染色不同。</p>
+        <div class="frames">props: kind: 'mood' | 'health' / hero / boost / rows[]</div>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="hd">OptionPickerModal <code>0020 + 0022</code></div>
+      <div class="body">
+        <p>list + 推荐 ✓ (可选) + 绿"接受" CTA</p>
+        <p>送礼(带推荐) + 约会(无推荐) 共享 widget。</p>
+        <div class="frames">props: title / items[] / showRecommend / acceptLabel</div>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="hd">PurchaseConfirmModal <code>0075 + 0082</code></div>
+      <div class="body">
+        <p>大图 + 价 + 加成 + 绿"购买/接受" CTA + ✕</p>
+        <p>食物 / 居所 / 大件商品确认共用。</p>
+        <div class="frames">props: title / illu / price / currency / bonuses[] / cta</div>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="hd">AsyncWaitModal <code>0067 → 0068 → 0069</code></div>
+      <div class="body">
+        <p>3 步链：启动 → loading ∞ → 出价(接受/重搜)</p>
+        <p>卖车 / 卖业务 / 寻买家 类异步流。</p>
+        <div class="frames">props: title / steps[] / onAccept / onResearch</div>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="hd">CinematicScene <code>0077</code></div>
+      <div class="body">
+        <p>全屏过场 · 无 UI chrome · 角色+物品+场景</p>
+        <p>大件购买触发（房 / 车），自动播放后返回。</p>
+        <div class="frames">props: actors[] / item / setting / duration ms</div>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="hd">UpgradeOverlay <code>0014</code></div>
+      <div class="body">
+        <p>全屏粉心 ✨ + 段位大字 (1-2 秒自动消失)</p>
+        <p>亲疏度升段、声望升级、工作晋升通用。</p>
+        <div class="frames">props: motif: 'heart'|'crown'|'star' / label / autoMs</div>
+      </div>
+    </div>
+
+    <div class="comp">
+      <div class="hd">JobPromoSplash <code>0041</code></div>
+      <div class="body">
+        <p>黑徽"促销" + 黄字标题 + 立绘 + 月薪高亮 (无 CTA)</p>
+        <p>tap 黄 ⚠ 工作卡触发，纯营销 splash。</p>
+        <div class="frames">props: jobName / illu / monthlyWage</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       图标 / 资产清单
+       ============================================================ -->
+  <h2 id="assets">SVG / PNG 资产清单 <small>Phase B 起出图</small></h2>
+  <table class="asset-table">
+    <thead>
+      <tr><th>资产</th><th>类型</th><th>尺寸 (px)</th><th>用途 / 描述</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>seal-coin · seal-jade · seal-brick · seal-heart · seal-mood · seal-star · seal-coin2 · seal-ticket · seal-chip</td><td><span class="tag tag-svg">SVG</span></td><td>22×22 / 28×28 / 36×36</td><td>9 货币印章（朱砂方印 + 楷书汉字）</td></tr>
+      <tr><td>illu-main-bg</td><td><span class="tag tag-png">PNG @2x</span></td><td>896×640</td><td>主菜单街景背景（木构商街+远山+灯笼+牌坊）</td></tr>
+      <tr><td>npc-wang-zhanggui / npc-hongjin-niangzi</td><td><span class="tag tag-png">PNG @2x</span></td><td>200×440</td><td>男主立绘 / 红巾娘子立绘（多套装支持剧情切换）</td></tr>
+      <tr><td>cart-carved · cart-pickup · cart-luxury</td><td><span class="tag tag-png">PNG @2x</span></td><td>260×150</td><td>雕花马车 3 档（运输系统）</td></tr>
+      <tr><td>house-room · house-loft · house-mansion</td><td><span class="tag tag-png">PNG @2x</span></td><td>320×200</td><td>居所档位插画（hud 背景+购买详情共用）</td></tr>
+      <tr><td>icon-pause · icon-fast · icon-edit · icon-info · icon-recycle · icon-cart · icon-bell · icon-vol · icon-music · icon-haptic · icon-discord · icon-apple</td><td><span class="tag tag-svg">SVG</span></td><td>24×24</td><td>UI 通用 icon（24 套）</td></tr>
+      <tr><td>tab-skill · tab-meet · tab-work · tab-biz · tab-invest · tab-shop</td><td><span class="tag tag-svg">SVG</span></td><td>40×40</td><td>底栏 6 Tab 主图标（已用印章字暂代）</td></tr>
+      <tr><td>cinematic-housewarming · cinematic-newcar</td><td><span class="tag tag-png">PNG @2x</span></td><td>896×1280</td><td>大件购买过场全屏插画</td></tr>
+      <tr><td>floater-heart · floater-petal</td><td><span class="tag tag-svg">SVG</span></td><td>24×24</td><td>飘心 / 桃花瓣粒子（街景循环）</td></tr>
+      <tr><td>badge-bang · badge-warn · badge-ok · badge-lock · badge-fail</td><td><span class="tag tag-svg">SVG</span></td><td>18×18</td><td>5 种角标 atom</td></tr>
+      <tr><td>tier-frame-fan/liang/shang/zhen/shen</td><td><span class="tag tag-svg">SVG</span></td><td>120×120</td><td>5 档品质卡框（描边 + 角饰）</td></tr>
+      <tr><td>archway-banner</td><td><span class="tag tag-png">PNG @2x</span></td><td>360×80</td><td>"宋都" 牌坊牌匾（主菜单顶饰）</td></tr>
+      <tr><td>shop-banner-tea / wine / silver / pawn / inn / cloth</td><td><span class="tag tag-png">PNG @2x</span></td><td>40×120</td><td>商街招幌 6 款</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       古风对照表
+       ============================================================ -->
+  <h2 id="glossary">文字古风化对照 <small>canonical + 本档扩展</small></h2>
+  <div class="glossary">
+    <span class="from">John Doyle</span><span class="to">王掌櫃</span>
+    <span class="from">21 年份 / 60 左边</span><span class="to">弱冠廿一 / 桑榆六十</span>
+    <span class="from">钞票 10.76k</span><span class="to">銅錢 一萬七百六</span>
+    <span class="from">月入 / 笑脸</span><span class="to">心境</span>
+    <span class="from">紫晶</span><span class="to">玉珏</span>
+    <span class="from">黄星</span><span class="to">文星</span>
+    <span class="from">健康度 ❤</span><span class="to">體魄 / 壽</span>
+    <span class="from">幸福度 😊</span><span class="to">心境</span>
+    <span class="from">24 SEP 2029</span><span class="to">崇寧二年 仲秋廿四</span>
+    <span class="from">Bonus 4x +4.2k</span><span class="to">紅包 · 四倍 · +4.2k</span>
+    <span class="from">急需翻锁工作</span><span class="to">急聘銀作開鎖匠</span>
+    <span class="from">汽车修理工</span><span class="to">马车工匠 / 修车坊</span>
+    <span class="from">服务员</span><span class="to">跑堂</span>
+    <span class="from">焊工 / 銀匠</span><span class="to">銅銲匠 / 銀匠</span>
+    <span class="from">投资 - 股票</span><span class="to">票号 - 商号股本</span>
+    <span class="from">银行 - cashback</span><span class="to">钱庄 - 回返银</span>
+    <span class="from">MOTEL 旅馆</span><span class="to">客棧</span>
+    <span class="from">在外赛车</span><span class="to">蹴鞠 / 跑马</span>
+    <span class="from">喝啤酒</span><span class="to">饮酒</span>
+    <span class="from">看电影</span><span class="to">听说书</span>
+    <span class="from">玩台球</span><span class="to">玩骰子</span>
+    <span class="from">STARBUX / STREAMLIX</span><span class="to">茶肆 / 戏班 / 食肆</span>
+    <span class="from">关系：约</span><span class="to">缘份：约</span>
+    <span class="from">关系：送礼</span><span class="to">缘份：送礼</span>
+    <span class="from">关系：互聊</span><span class="to">缘份：閑話</span>
+    <span class="from">关系：變為主要</span><span class="to">缘份：認作正主</span>
+    <span class="from">蓝色跑车</span><span class="to">雕花馬車</span>
+    <span class="from">公寓楼</span><span class="to">木構商街</span>
+  </div>
+
+  <hr class="flourish"/>
+
+  <p style="text-align:center;font-family:var(--font-display);font-size:14px;color:var(--ink-3);letter-spacing:.2em">
+    — Phase A 风格定档 · 待用户验收 —
+  </p>
+
+</div>
+
+</body>
+</html>

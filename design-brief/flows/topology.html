@@ -41,6 +41,16 @@
 </div>
 
 <div class="warn">
+<strong>⚠️⚠️⚠️⚠️ 2026-05-20 fps_0037 归属重大校正(用户审视 Phase A 设计稿后发现)</strong>:
+<ul>
+  <li><strong>fps_0037 实为工作详情 modal "焊工"</strong>(底板 = 工作 list <code>fps_0036</code>),跟 0040 汽车修理工 / 0041 promo 是同 widget 不同工种 / 状态</li>
+  <li>canonical 早期 8 agent 推测的"主菜单 tap NPC → 焊工要求 modal"<strong>完全错</strong>:从未真正核实 0037 底板,看到 6 项要求就推测是"工作要求 modal",看到主菜单可点 NPC 就推测是"NPC 触发"</li>
+  <li>核实证据:0037 PNG 底板可见<strong>"级 11" 标签 + 锁定"???"卡</strong>(工作 list DAG 树元素),不是街景</li>
+  <li>影响:删除"主菜单 tap NPC"入口边;主菜单 NPC 可能纯装饰或触发别的(未观察);Phase A <code>final/</code> 的 <code>npc-req</code> modal name + <code>mainMenu.json.npcJobRequirement</code> + <code>MainMenu.vue</code> NPC click 处理 <strong>都得删/改</strong>(将在 bug 报告中跟 design 提出)</li>
+</ul>
+</div>
+
+<div class="warn">
 <strong>⚠️⚠️⚠️ 2026-05-20 48 张 raw 备用帧深度分析 8 项重大校正</strong>:
 <ul>
   <li><strong>关系详情按钮实为 5 个</strong>(canonical 写 4 错):约 / 送礼物 / <strong>互聊</strong>(新) / <strong>加速(看广告 ▶ monetization)</strong>(新) / 變為主要 — fps_0034 揭示</li>
@@ -99,7 +109,7 @@
   <li><a href="#tab4">E. Tab 4 业务 — 含升级 modal(5 帧)</a></li>
   <li><a href="#tab5">F. Tab 5 投资 — 银行/股票(4 帧)</a></li>
   <li><a href="#tab6">G. Tab 6 物品(商店)— 衣食住行 + 卖车流(12 帧)</a></li>
-  <li><a href="#popups">H. 主菜单 modal — 字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店 / 焊工要求(8 类,15 帧)</a></li>
+  <li><a href="#popups">H. 主菜单 modal — 字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店(7 类,14 帧)</a></li>
   <li><a href="#patterns">I. 共享组件 / 货币体系 / 角标系统</a></li>
   <li><a href="#screens">J. 完整屏映射表(50 张,本轮校正后)</a></li>
 </ul>
@@ -135,7 +145,6 @@ graph TB
     subgraph "主屏内容触发"
       Goal["目标进度<br/>fps_0092/0094"]:::modal
       Bonus["Bonus 4x 奖励<br/>(未观察)"]:::unknown
-      JobReq["焊工要求 modal<br/>fps_0037"]:::modal
       TaskCard["任务卡详情<br/>(未观察)"]:::unknown
       Event["随机事件 3 帧<br/>fps_0117→0118→0119"]:::modal
     end
@@ -158,7 +167,6 @@ graph TB
     Home -.->|黄星数值 click| Star
     Home -.->|右侧黄按钮 click| Goal
     Home -.->|顶右 Bonus 4x 红包| Bonus
-    Home -.->|tap NPC 红帽女| JobReq
     Home -.->|底部任务卡 click| TaskCard
     Home -.->|时间到 自动弹| Event
 
@@ -168,7 +176,6 @@ graph TB
     Goal -.->|关闭 X| Home
     Happy -.->|关闭 X| Home
     Health -.->|关闭 X| Home
-    JobReq -.->|关闭 X| Home
     Event -.->|完成事件| Home
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
@@ -254,7 +261,7 @@ graph TB
       S5["促销(黄 ⚠)"]:::full
     end
 
-    JobDet["工作详情 modal<br/>fps_0040<br/>5 项要求 + 建筑立绘"]:::modal
+    JobDet["工作详情 modal<br/>fps_0037 焊工 / fps_0040 汽车修理工<br/>6 项要求 + 建筑/工具立绘"]:::modal
     Promo["促销 splash<br/>fps_0041<br/>黄字标题 + 月薪 1404"]:::trans
     Retry["重试 失败工作<br/>(未观察 modal)"]:::unknown
 
@@ -419,7 +426,7 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="popups">H. 主菜单 modal — 8 类(字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店 / 焊工要求,共 15 帧)</h2>
+<h2 id="popups">H. 主菜单 modal — 7 类(字符 / 目标 / 幸福 / 健康 / 设置 / 事件 / 商店,共 14 帧)</h2>
 
 <div class="mermaid">
 graph TB
@@ -435,7 +442,6 @@ graph TB
 
     subgraph "主屏内容触发"
       Goal2["目标进度<br/>fps_0092/0094<br/>3 sub-tab"]:::modal
-      JobReq2["焊工要求 modal<br/>fps_0037<br/>tap NPC 触发"]:::modal
       Event2["随机事件<br/>fps_0117 空 -- 0118 字+选项 -- 0119 结果"]:::modal
     end
 
@@ -455,7 +461,6 @@ graph TB
     Home2 -.->|右上 ⚙| Setting2
     Home2 -.->|钞票/紫晶 click| ShopM
     Home2 -.->|右侧黄按钮| Goal2
-    Home2 -.->|tap NPC| JobReq2
     Home2 -.->|时间到 自动| Event2
 
     Char2 -.->|关闭 X| Home2
@@ -464,7 +469,6 @@ graph TB
     Setting2 -.->|关闭 X 或 新游戏| Home2
     ShopM -.->|关闭 X| Home2
     Goal2 -.->|关闭 X| Home2
-    JobReq2 -.->|关闭 X| Home2
     Event2 -.->|选完 结果 tap dismiss| Home2
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
@@ -544,9 +548,9 @@ graph TB
     <tr><td><code>0021</code></td><td>关系详情(送礼后)</td><td>fullscreen</td><td>好感 914/1.7k + 送礼 CD 00:02</td></tr>
     <tr><td><code>0022</code> <span class="new">校正</span></td><td><strong>约会地点 modal</strong></td><td>modal / 关系详情</td><td>4 地点 1k/10k/100k/1m</td></tr>
     <tr><td><code>0025</code> <span class="new">校正</span></td><td><strong>朋友段 + 约会进行中 overlay</strong></td><td>fullscreen + overlay</td><td>新任务集 + 00:15 倒计时</td></tr>
-    <tr><td><code>0035</code> ⭐</td><td>主菜单街景</td><td>hub</td><td>Phase A 锁定屏,新边:NPC tap / 货币 / 任务卡</td></tr>
+    <tr><td><code>0035</code> ⭐</td><td>主菜单街景</td><td>hub</td><td>Phase A 锁定屏。新边:HUD 货币 click / 角色名 ✏ / Bonus 4x / 任务卡 / 日历 / 黄星(<del>tap NPC</del> 已作废 2026-05-20)</td></tr>
     <tr><td><code>0036</code> ⭐</td><td>工作 list DAG 拓扑</td><td>fullscreen</td><td>级 7→11,5 种工作卡状态</td></tr>
-    <tr><td><code>0037</code> <span class="new">校正</span></td><td><strong>焊工要求 modal</strong></td><td>modal / 主菜单</td><td>tap NPC 触发,6 项要求</td></tr>
+    <tr><td><code>0037</code> <span class="new">2次校正</span></td><td><strong>工作详情 modal "焊工"</strong></td><td>modal / <strong>工作 list</strong></td><td>2026-05-20 用户校正:底板可见"级 11" + 锁定"???"卡 = 工作 list,不是主菜单。跟 0040 汽车修理工 / 0041 promo 同 widget 不同工种</td></tr>
     <tr><td><code>0040</code></td><td>工作详情 modal "汽车修理工"</td><td>modal / 工作 list</td><td>建筑立绘(非人像)+ 5 要求</td></tr>
     <tr><td><code>0041</code> <span class="new">校正</span></td><td><strong>同工作 promo splash 态</strong></td><td>trans / 工作 list</td><td>"促销"黑标 + 月薪 1404</td></tr>
     <tr><td><code>0046</code></td><td>业务 list(顶部)</td><td>fullscreen</td><td>含高级经理 banner 12.99 USD</td></tr>

@@ -1,0 +1,254 @@
+/* ============================================================
+ *  大掌柜 · Phase A 风格定档 tokens (v2 · 参考图校准 2026-05)
+ *  ------------------------------------------------------------
+ *  色板 v1 → v2:
+ *    朱砂亮红 → 印泥赭 #8A4533     (主 CTA / seal)
+ *    暖茶褐木框 → 蜀锦褐 + 江南瓦  (屋顶/深色 = 冷靛灰 #3D4A52)
+ *    新增 sky/water 系 = 雾天青 + 水墨翠
+ *  字体 = Noto Serif SC + ZCOOL XiaoWei + Ma Shan Zheng
+ *  Phase A 锁定，Phase B 沿用，禁单屏自创新色 / 新字
+ * ============================================================ */
+
+:root {
+  /* ───────── 宣纸 · 底 (paper · 参考图校准) ───────── */
+  --paper-1:   #F3E9D0;   /* 宣紙白 · 主背景        */
+  --paper-2:   #EAD9B5;   /* 米黃   · 次级面板      */
+  --paper-3:   #D9C49A;   /* 麻紙   · 深一档        */
+  --paper-edge:#A88B5A;   /* 細金棕 · hairline 边   */
+
+  /* ───────── 雾天 · 冷调 (sky) ───────── */
+  --sky-1:     #D6DEE2;   /* 雾天青 · 街景顶 sky    */
+  --sky-2:     #BFCBCF;   /* 远山青 · 远雾          */
+
+  /* ───────── 水墨 · 运河 (water) ───────── */
+  --water-1:   #A8BFB0;   /* 水墨翠 · 运河          */
+  --water-2:   #C4D2C5;   /* 淺翠   · 水边          */
+
+  /* ───────── 墨 · 文字 (ink) ───────── */
+  --ink-1:     #1F1B14;   /* 墨黑   · 主文字        */
+  --ink-2:     #3D332A;   /* 茶墨   · 次文字        */
+  --ink-3:     #6B5D4A;   /* 淡墨   · 辅助 / 占位   */
+  --ink-4:     #A6967C;   /* 淡灰墨 · 锁定 / disabled */
+
+  /* ───────── 宋瓷 · 雅青 + 江南瓦 (celadon · 参考图校准) ───────── */
+  --celadon-1: #8DA89E;   /* 宋瓷青 · 主调          */
+  --celadon-2: #C2D2CB;   /* 影青   · 浅 / 选中底   */
+  --celadon-3: #3D4A52;   /* 江南瓦 · 冷靛灰 (屋顶 / 深调) */
+  --celadon-4: #DDE5DF;   /* 釉色   · 极浅          */
+
+  /* ───────── 印泥 · 赭红 (cinnabar · 参考图校准 #8A4533) ───────── */
+  --cinnabar-1:#8A4533;   /* 印泥赭 · 主 CTA / seal · 不再用亮朱砂 */
+  --cinnabar-2:#A85F45;   /* 升莔   · 高亮 / 角标   */
+  --cinnabar-3:#6B3422;   /* 黑漆赭 · 按下态        */
+
+  /* ───────── 老金 / 蜀锦 (gold & wood · 参考图校准) ───────── */
+  --gold-1:    #A88B5A;   /* 淺金棕 · hairline 边框 */
+  --gold-2:    #C9A974;   /* 淑金   · 浅装饰        */
+  --wood-1:    #7D5D3E;   /* 蜀錦褐 · 木框 / 袍褐   */
+  --wood-2:    #4E3823;   /* 深木   · 深边 / 墨棕   */
+
+  /* ───────── 状态色 (status · 全降饱和) ───────── */
+  --jade:      #5E8A6B;   /* 翠绿 ✓ · 已购 / success */
+  --amber:     #B58A3A;   /* 琥珀 ⚠ · 促销 / warn   */
+  --azure:     #4F7494;   /* 黛青 ⓘ · info / GO    */
+  --fail-red:  #8A3D2C;   /* 失败 FAIL              */
+
+  /* ───────── 5 档品质 (rarity tier) ───────── */
+  --tier-fan:  #8C8475;   /* 凡品 · 灰              */
+  --tier-liang:#5A8A6F;   /* 良品 · 绿              */
+  --tier-shang:#4A7BA8;   /* 上品 · 蓝              */
+  --tier-zhen: #8E5BA0;   /* 珍品 · 紫              */
+  --tier-shen: #B89968;   /* 神品 · 金              */
+
+  /* ───────── 货币专色 (currency · 全降饱和) ───────── */
+  --cur-coin:  #A88143;   /* 銅錢   · 钞票          */
+  --cur-jade:  #7B5294;   /* 玉珏   · 紫晶 / 钻石   */
+  --cur-brick: #5E8A6B;   /* 青砖   · 月入收益      */
+  --cur-heart: #8A4533;   /* 體魄   · ❤             */
+  --cur-mood:  #B58A3A;   /* 心境   · 幸福          */
+  --cur-star:  #A88B5A;   /* 文星   · 黄星          */
+  --cur-coin2: #B59B5E;   /* 通寶   · 备用黄币      */
+  --cur-ticket:#6A4583;   /* 票引   · 门票          */
+  --cur-chip:  #547395;   /* 骰碼   · 赌场芯片      */
+
+  /* ───────── 字号 (size) ───────── */
+  --fs-overlay:  30px;    /* UpgradeOverlay 全屏段位大字         */
+  --fs-display:  22px;    /* hero 数值大字 / 声望数            */
+  --fs-h1:       18px;    /* modal title bar / 屏标题            */
+  --fs-h2:       16px;    /* section heading / NPC名·人物名     */
+  --fs-h3:       15px;    /* card title / list item header        */
+  --fs-body:     14px;    /* 正文 / list item name / 属性名       */
+  --fs-num:      15px;    /* 列表数值 / 价格 / 加成             */
+  --fs-num-bold: 17px;    /* HUD 数据 / modal 价格头            */
+  --fs-label:    13px;    /* tab / button / pill / 辅助标签       */
+  --fs-meta:     12px;    /* cost / cd / sub info                 */
+  --fs-micro:    10px;    /* 微角标 / +N% / FAIL                 */
+
+  /* ───────── 字重 ───────── */
+  --fw-light:   300;
+  --fw-normal:  400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  /* ───────── 字体族 ───────── */
+  --font-serif:  "Noto Serif SC", "Source Han Serif SC", "STSong", serif;
+  --font-ui:     "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  --font-display:"Ma Shan Zheng", "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  --font-num:    "ZCOOL XiaoWei", "Noto Serif SC", serif;
+
+  /* ───────── 间距 (4 base) ───────── */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+
+  /* ───────── 圆角 (宋朝偏方正，圆角克制) ───────── */
+  --r-0: 0px;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 6px;
+  --r-4: 10px;          /* 卡片最大圆角           */
+  --r-pill: 999px;      /* pill 胶囊（CD 倒计时）  */
+
+  /* ───────── 描边 / hairline ───────── */
+  --hair: 1px solid var(--paper-edge);
+  --hair-ink: 1px solid var(--ink-3);
+  --hair-gold: 1px solid var(--gold-1);
+
+  /* ───────── 阴影 (克制；纸本无浓阴影) ───────── */
+  --sh-card:  0 1px 0 var(--paper-edge), 0 2px 6px rgba(31,27,20,.06);
+  --sh-modal: 0 8px 32px rgba(31,27,20,.22), 0 0 0 1px var(--paper-edge);
+  --sh-press: inset 0 1px 0 rgba(255,255,255,.4);
+
+  /* ───────── modal scrim ───────── */
+  --scrim:    rgba(31,27,20,.65);
+  --scrim-blur: blur(8px);
+
+  /* ───────── viewport ───────── */
+  --vp-w: 448px;
+  --vp-h: 960px;
+}
+
+/* ───────── 基础重置 ───────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-serif);
+  color: var(--ink-1);
+  background: #2a2419;       /* page bg outside phone frame */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ───────── 纸纹底 (paper grain) ───────── */
+.paper-grain {
+  background-color: var(--paper-1);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(139,111,71,.04) 0, transparent 30%),
+    radial-gradient(circle at 70% 80%, rgba(74,111,102,.04) 0, transparent 40%),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px, transparent 3px,
+      rgba(139,111,71,.012) 3px, rgba(139,111,71,.012) 4px
+    );
+}
+
+/* ───────── 朱砂方印 icon 容器 ───────── */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cinnabar-1);
+  color: var(--paper-1);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  border-radius: var(--r-1);
+  letter-spacing: -.05em;
+  user-select: none;
+  position: relative;
+  text-align: center;
+  line-height: 1;
+}
+.seal::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border: 1px solid rgba(245,235,214,.35);
+  border-radius: var(--r-1);
+  pointer-events: none;
+}
+.seal--sm { width: 22px; height: 22px; font-size: 14px; }
+.seal--md { width: 28px; height: 28px; font-size: 17px; }
+.seal--lg { width: 36px; height: 36px; font-size: 22px; }
+
+/* ───────── 木框 (wood frame) ───────── */
+.frame-wood {
+  background: var(--paper-2);
+  border: 1px solid var(--wood-1);
+  box-shadow:
+    inset 0 0 0 1px var(--paper-1),
+    inset 0 0 0 2px var(--wood-1),
+    var(--sh-card);
+  border-radius: var(--r-3);
+}
+
+/* ───────── 飞檐线（卡顶部装饰） ───────── */
+.eave-top {
+  position: relative;
+}
+.eave-top::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 60%; height: 4px;
+  background: linear-gradient(180deg, var(--wood-1), transparent);
+  clip-path: polygon(0 100%, 8% 0, 92% 0, 100% 100%);
+  pointer-events: none;
+}
+
+/* ───────── pill ───────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-num);
+  font-size: var(--fs-meta);
+  line-height: 1.3;
+}
+.pill--cd     { background: var(--ink-4);     color: var(--paper-1); }
+.pill--income { background: var(--cur-brick); color: var(--paper-1); }
+.pill--loss   { background: var(--fail-red);  color: var(--paper-1); }
+.pill--owned  { background: var(--jade);      color: var(--paper-1); }
+.pill--promo  { background: var(--amber);     color: var(--ink-1); }
+
+/* ============================================================
+ *  排版工具类 (typography utility · 全局 · v2)
+ *  规则：能用 .t-X / .c-X 就用，不要在 HTML 写 inline font-size
+ * ============================================================ */
+.t-overlay   { font-family: var(--font-display); font-size: var(--fs-overlay);   color: var(--paper-1); letter-spacing: .15em; line-height: 1; }
+.t-display   { font-family: var(--font-display); font-size: var(--fs-display);   color: var(--ink-1);   line-height: 1.1; }
+.t-h1        { font-family: var(--font-display); font-size: var(--fs-h1);        color: var(--ink-1);   letter-spacing: .04em; line-height: 1.2; }
+.t-h2        { font-family: var(--font-display); font-size: var(--fs-h2);        color: var(--ink-1);   letter-spacing: .02em; line-height: 1.3; }
+.t-h3        { font-family: var(--font-display); font-size: var(--fs-h3);        color: var(--ink-1);   line-height: 1.3; }
+.t-body      { font-family: var(--font-serif);   font-size: var(--fs-body);      color: var(--ink-2);   line-height: 1.6; }
+.t-name      { font-family: var(--font-display); font-size: var(--fs-body);      color: var(--ink-1); }
+.t-num       { font-family: var(--font-num);     font-size: var(--fs-num);       color: var(--ink-1); }
+.t-num-bold  { font-family: var(--font-display); font-size: var(--fs-num-bold);  color: var(--ink-1);   font-weight: 700; }
+.t-num-hl    { font-family: var(--font-display); font-size: var(--fs-display);   color: var(--cinnabar-1); font-weight: 700; }
+.t-label     { font-family: var(--font-display); font-size: var(--fs-label);     color: var(--ink-2);   letter-spacing: .06em; }
+.t-meta      { font-family: var(--font-num);     font-size: var(--fs-meta);      color: var(--ink-3); }
+.t-micro     { font-family: var(--font-num);     font-size: var(--fs-micro);     color: var(--ink-4); }
+.t-mono      { font-family: ui-monospace, "SF Mono", monospace; font-size: var(--fs-micro); color: var(--ink-3); letter-spacing: .02em; }
+
+.c-red    { color: var(--cinnabar-1) !important; }
+.c-jade   { color: var(--jade) !important; }
+.c-azure  { color: var(--azure) !important; }
+.c-amber  { color: var(--amber) !important; }
+.c-muted  { color: var(--ink-3) !important; }
+.c-mute2  { color: var(--ink-4) !important; }
+.c-paper  { color: var(--paper-1) !important; }

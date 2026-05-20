@@ -1,0 +1,41 @@
+{
+  "_source": "fps_0035 PNG 真实提取 + 古风化",
+  "character": {
+    "name": "王掌櫃",
+    "ageLabel": "廿一·六十"
+  },
+  "hud": {
+    "level": 22,
+    "coin": 10760,
+    "coinDelta": "+1.2k/旬",
+    "mood": 68,
+    "moodDelta": "−5.2/月",
+    "jade": 19,
+    "health": 75,
+    "healthDelta": "+0.6/月",
+    "star": 0,
+    "date": {
+      "era": "崇寧",
+      "day": "廿四",
+      "m": "秋"
+    }
+  },
+  "bonus": "四倍 +4.2k",
+  "scene": {
+    "bgIllu": "/assets/illu-main-bg.png",
+    "npcName": "紅巾娘子"
+  },
+  "npcJobRequirement": "tongHanJiang",
+  "task": {
+    "jobKey": "lockMaster11",
+    "title": "覓得正八品差事",
+    "reward": "銅",
+    "progress": 0,
+    "total": 1
+  },
+  "_notes": [
+    "急聘銀作開鎖匠 = canonical 工作要求 modal (fps_0037 等价) → 红巾娘子 tap 触发",
+    "Bonus 4x 红包 红字泡 = 主菜单顶部右侧悬浮",
+    "三堆叠卡 = 多任务列表入口 (Phase B 补完)"
+  ]
+}
