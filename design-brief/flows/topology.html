@@ -48,20 +48,20 @@
 <div class="toc">
 <strong>导航</strong>
 <ul>
-  <li><a href="#main">A. 主菜单 + 底栏 6 Tab + 主屏 3 浮窗触发</a></li>
+  <li><a href="#main">A. 主菜单 + 底栏 6 Tab + 主屏 5 浮窗触发</a></li>
   <li><a href="#tab1">B. Tab 1 技能</a></li>
   <li><a href="#tab2">C. Tab 2 遇见(关系)</a></li>
   <li><a href="#tab3">D. Tab 3 工作</a></li>
   <li><a href="#tab4">E. Tab 4 业务</a></li>
   <li><a href="#tab5">F. Tab 5 投资</a></li>
   <li><a href="#tab6">G. Tab 6 物品(商店)</a></li>
-  <li><a href="#popups">H. 主菜单 3 浮窗(字符 / 目标 / 随机事件)</a></li>
+  <li><a href="#popups">H. 主菜单 5 浮窗(字符 / 目标 / 幸福 / 健康 / 随机事件)</a></li>
   <li><a href="#screens">I. 完整屏映射表(50 张)</a></li>
 </ul>
 </div>
 
 <!-- =================================== -->
-<h2 id="main">A. 主菜单 + 底栏 6 Tab + 主屏 3 浮窗触发</h2>
+<h2 id="main">A. 主菜单 + 底栏 6 Tab + 主屏 5 浮窗触发</h2>
 
 <div class="mermaid">
 graph TB
@@ -70,15 +70,17 @@ graph TB
     subgraph "底栏 6 Tab"
       Skill["技能 list<br/>fps_0001"]:::full
       Meet["遇见 list<br/>fps_0012"]:::full
-      Work["工作 list<br/>(底板待补)"]:::full
+      Work["工作 list 拓扑<br/>fps_0036"]:::full
       Biz["业务 list<br/>fps_0050"]:::full
       Invest["投资屏<br/>fps_0061"]:::full
       Shop["物品(商店)<br/>fps_0072 / 0080"]:::full
     end
 
-    subgraph "主屏触发的 modal"
+    subgraph "主屏触发的 5 modal"
       Char["字符窗口<br/>fps_0105"]:::modal
       Goal["目标进度<br/>fps_0094"]:::modal
+      Happy0["幸福值<br/>fps_0123"]:::modal
+      Health0["健康值<br/>fps_0126"]:::modal
       Event["随机事件<br/>fps_0117"]:::modal
     end
 
@@ -91,10 +93,14 @@ graph TB
 
     Home -.->|顶部头像 click| Char
     Home -.->|右侧黄按钮 click| Goal
-    Home -.->|街景闲逛随机| Event
+    Home -.->|顶部黄星 click| Happy0
+    Home -.->|顶部❤ click| Health0
+    Home -.->|顶部某图标 click| Event
 
     Char -.->|关闭 X| Home
     Goal -.->|关闭 X| Home
+    Happy0 -.->|关闭 X| Home
+    Health0 -.->|关闭 X| Home
     Event -.->|完成事件| Home
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
@@ -146,13 +152,13 @@ graph LR
 
 <div class="mermaid">
 graph LR
-    Work["工作 list<br/>(底板未观察)"]:::unknown
+    Work["工作 list 拓扑<br/>fps_0036<br/>级 7/8/9/10/11"]:::full
     Job["工作详情 modal<br/>fps_0040"]:::modal
 
-    Work -->|点工作卡| Job
+    Work -->|点工作卡 接受| Job
     Job -.->|接受 / 关闭| Work
 
-    classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
+    classDef full fill:#6cc24a,stroke:#000,color:#1F1530;
     classDef modal fill:#a070ff,stroke:#000,color:#fff;
 </div>
 
@@ -218,28 +224,31 @@ graph TB
 </div>
 
 <!-- =================================== -->
-<h2 id="popups">H. 主菜单 3 浮窗(用户确认入口)</h2>
+<h2 id="popups">H. 主菜单 5 浮窗(用户确认入口)</h2>
 
 <div class="mermaid">
 graph TB
     Home2["主菜单<br/>fps_0035"]:::hub
     Char2["字符窗口<br/>fps_0105"]:::modal
     Goal2["目标进度<br/>fps_0094"]:::modal
+    Happy["幸福值<br/>fps_0123"]:::modal
+    Health["健康值<br/>fps_0126"]:::modal
     Event2["随机事件<br/>fps_0117"]:::modal
-    Happy["幸福/休闲 list<br/>fps_0123 ⚠️ 入口"]:::unknown
 
     Home2 -.->|顶部头像 click| Char2
     Home2 -.->|右侧黄按钮 click| Goal2
-    Home2 -.->|街景闲逛触发| Event2
-    Home2 -.->|⚠️ 入口未定| Happy
+    Home2 -.->|顶部黄星 click| Happy
+    Home2 -.->|顶部❤ click| Health
+    Home2 -.->|顶部某图标 click ⚠️| Event2
 
     Char2 -.->|关闭 X| Home2
     Goal2 -.->|关闭 X| Home2
+    Happy -.->|关闭 X| Home2
+    Health -.->|关闭 X| Home2
     Event2 -.->|完成事件| Home2
 
     classDef hub fill:#f6c66e,stroke:#000,color:#1F1530;
     classDef modal fill:#a070ff,stroke:#000,color:#fff;
-    classDef unknown fill:#E84B4B,stroke:#000,color:#fff;
 </div>
 
 <!-- =================================== -->
@@ -253,7 +262,8 @@ graph TB
     <tr><td><code>fps_0012/0013/0014</code></td><td>遇见(关系)list</td><td>fullscreen / 无</td><td>Tab 2 落点。4 NPC 卡 + 亲疏度</td></tr>
     <tr><td><code>fps_0020/0021/0022/0025</code></td><td>关系详情 + 礼物 modal</td><td>fullscreen + modal</td><td>顶部 NPC + 任务 list + "做出选择"</td></tr>
     <tr><td><code>fps_0035</code> ⭐</td><td>主菜单街景</td><td>hub / 无</td><td>Phase A 锁定屏</td></tr>
-    <tr><td><code>fps_0036/0037</code></td><td>主菜单变体</td><td>hub variant</td><td>NPC 位置 / 对话气泡过场</td></tr>
+    <tr><td><code>fps_0036</code> ⭐</td><td><strong>工作 list 整屏</strong>(拓扑结构)</td><td>fullscreen / 无</td><td>Tab 3 工作落点。级 7-11 拓扑,FAIL/接受/完成/锁定 4 态</td></tr>
+    <tr><td><code>fps_0037</code></td><td>主菜单变体</td><td>hub variant</td><td>NPC 位置 / 对话气泡过场</td></tr>
     <tr><td><code>fps_0040/0041</code></td><td>工作详情 modal</td><td>modal / 底板:工作 list</td><td>Tab 3 落点子页。工作要求 + 立绘 + 接受</td></tr>
     <tr><td><code>fps_0046/0048/0049/0050/0053</code></td><td>业务 list + 经理 modal</td><td>fullscreen + modal</td><td>Tab 4 落点</td></tr>
     <tr><td><code>fps_0058/0059/0061/0062/0065/0067/0068/0069</code></td><td>投资屏(银行/股票)+ modal</td><td>fullscreen with sub-tab</td><td>Tab 5 落点</td></tr>
@@ -264,7 +274,8 @@ graph TB
     <tr><td><code>fps_0098/0099/0100</code></td><td>字符 / 月度结算弹窗</td><td>modal / 底板:主菜单</td><td>月底自动弹</td></tr>
     <tr><td><code>fps_0105/0108/0111</code></td><td><strong>字符窗口</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部头像触发,sub-tab 交易/升级</td></tr>
     <tr><td><code>fps_0117/0118/0119</code></td><td><strong>随机事件弹窗</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 街景闲逛触发,MOTEL 等场景</td></tr>
-    <tr><td><code>fps_0123/0126</code></td><td>幸福 / 休闲 list</td><td>⚠️ 待校准</td><td>赛车/啤酒/电影/台球</td></tr>
+    <tr><td><code>fps_0123</code></td><td><strong>幸福值 modal</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部黄色小图标触发。赛车/啤酒/电影/台球等休闲项</td></tr>
+    <tr><td><code>fps_0126</code></td><td><strong>健康值 modal</strong></td><td><strong>modal</strong> / 底板:主菜单</td><td>⭐ 顶部❤ 图标触发。锻炼/药片/医生/体检等健康项</td></tr>
   </tbody>
 </table>
 
