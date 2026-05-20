@@ -220,11 +220,10 @@ graph TB
 
     Meet -->|点 NPC| Detail
     Detail -->|约 button| Date
-    Detail -->|送礼物 button| Gift
+    Detail -->|"送礼物 button 或 点任务行箭头"| Gift
     Detail -->|互聊 button| Chat
     Detail -->|加速看广告 button| AdAccel
     Detail -->|變為主要 button| Main
-    Detail -->|点任务行 箭头| Gift
     Gift -.->|"接受 扣钱 / 关闭"| Detail
     Date -.->|"接受 扣钱 / 关闭"| DateRun
     DateRun -.->|"倒计时完 心 tick 每 5s 加 10"| DetailFriend
@@ -364,7 +363,7 @@ graph TB
     Food["食物 sub-tab<br/>fps_0080"]:::full
     House["住房 sub-tab<br/>fps_0073<br/>基础(月费) + 高级(紫晶)"]:::full
     Trans["运输 sub-tab<br/>fps_0065 list / 0072 详情"]:::full
-    Cloth["衣服 sub-tab<br/>fps_0087/0088<br/>5 2nd sub-tab"]:::full
+    Cloth["衣服 sub-tab<br/>fps_0087/0088/0086<br/>5 2nd sub-tab:<br/>帽/上衣/包/戒/口红"]:::full
 
     FoodDet["食物详情 modal ⭐<br/>fps_0082"]:::modal
     HouseDet["住房详情 modal ⭐<br/>fps_0075"]:::modal
@@ -376,9 +375,9 @@ graph TB
 
     Hat["帽子<br/>fps_0087"]:::full
     Top["上衣<br/>fps_0088"]:::full
-    Pants["裤子<br/>(未观察)"]:::unknown
-    Shoes["鞋<br/>(未观察)"]:::unknown
-    Acc["配饰<br/>(未观察)"]:::unknown
+    Bag["包<br/>(未观察)"]:::unknown
+    Ring["戒指 配饰<br/>fps_0086"]:::full
+    Lipstick["口红 美妆<br/>(未观察)"]:::unknown
     Cart["购物车 🛒<br/>批量结算<br/>(未观察)"]:::unknown
     Recycle["♻ 回收 卖衣服<br/>(未观察)"]:::unknown
 
@@ -402,12 +401,13 @@ graph TB
 
     Cloth --> Hat
     Cloth --> Top
-    Cloth --> Pants
-    Cloth --> Shoes
-    Cloth --> Acc
+    Cloth --> Bag
+    Cloth --> Ring
+    Cloth --> Lipstick
 
     Hat -->|tap 物品| Cart
     Top -->|tap 物品| Cart
+    Ring -->|tap 物品| Cart
     Cart -->|结算 CTA| Cine
 
     Cloth -->|♻ 左下| Recycle
