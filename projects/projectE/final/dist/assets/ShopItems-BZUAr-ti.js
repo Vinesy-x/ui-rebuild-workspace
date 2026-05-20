@@ -1,0 +1,1 @@
+import{_ as t,o as a,e as o,b as s}from"./index-BnxyS5uF.js";const n={},c={class:"stub","data-screen-label":"物品 · 0073/0080"};function r(l,e){return a(),o("div",c,[...e[0]||(e[0]=[s("h1",null,"物品 · 0073/0080",-1),s("p",null,"Phase B 实现中…",-1)])])}const d=t(n,[["render",r],["__scopeId","data-v-50233755"]]);export{d as default};

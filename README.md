@@ -1,63 +1,98 @@
-# projectE · 大掌柜 — 视频 UI 重建项目
+# ui-rebuild-workspace
 
-## 这是什么
+> 用户 ↔ Claude ↔ design 三方协作的 **UI 重建 workspace**。
+>
+> 适用场景:把现代版 / 现成游戏视频抽帧 → 风格换皮(古风 / 复古 / 其他)→ Vite Vue 3 工程实现。
 
-**视频版 UI 重建**: 把现代版互动养成手游的 50 张抽帧 → 转换成 **宋朝古风**(中国古代)的 Vue + Vite 工程实现。
+---
 
-- 游戏名: **大掌柜**
-- 类型: 模拟、互动剧情
-- 核心机制: 各种文字互动情景对话 + 事件经营
-- **布局参考**: input/projectE.mp4 (现代版,488×960 竖屏,4分23秒,HEVC)
-- **视觉风格**: 宋朝古风 (待用户提供风格参考图到 `design-brief/style-reference/`)
+## 当前项目
 
-## 流程
+| 项目 | 状态 | 风格 | 说明 |
+|---|---|---|---|
+| [projects/projectE/](projects/projectE/) | Phase B T-B2 ✅ / T-B3 待启动 | 宋朝古风(江南水乡水墨彩绘)| 大掌柜 — BitLife 类放置养成,448×960 |
 
-按 [`METHODOLOGY.md`](METHODOLOGY.md) 11 步:
-
-```
-1. 视频 input/projectE.mp4              ✅
-2. ffmpeg @ 1/2 fps 抽帧 → 131 张        ✅
-3. dedup.py (phash) → 83 张              ✅
-4. 用户筛选 → 50 张关键屏                ✅
-5. 拷到 design-brief/analysis/(高清)    ✅
-6. 风格参考图(宋朝)→ style-reference/   ⏳ 等用户
-7. Phase A 风格定档屏:fps_0035 主菜单 ⏳ 等用户风格参考图后启动
-8. 三件套 flows(info-arch / interaction / topology)— 跟着 Phase B 推进
-9. design 出 Vite Vue 工程
-10. 数据接入(待加策划表)
-11. 部署 / 演示
-```
-
-## 当前状态
+## workspace 结构
 
 ```
-projectE/
-├── input/projectE.mp4              ✅ 视频原料
-├── frames/
-│   ├── raw/                        ✅ 131 张抽帧
-│   ├── dedup/                      ✅ 83 张去重
-│   ├── selected/                   ✅ 50 张筛选后
-│   └── _grid_part1.png / 2.png     ✅ 缩略图 grid
-├── design-brief/
-│   ├── analysis/                   ✅ 50 张高清(给 design)
-│   ├── reference-frames/0035_main-menu.png  ✅ Phase A 候选屏
-│   ├── style-reference/            ⏳ 宋朝风格参考图(用户传)
-│   ├── data-source/                — 暂无策划表
-│   ├── flows/                      — 跟 Phase A 一起推进
-│   ├── tokens/                     — design 沉淀
-│   └── interactions/
-├── scripts/                        ✅ 通用工具(import-design.sh / extract_palette / dedup / make_grid)
-└── final/                          — 等 design Phase A 后建
+ui-rebuild-workspace/
+├── README.md                # 本文件,workspace 索引
+├── METHODOLOGY.md           # 11 步通用方法论
+│
+├── docs/                    # ⭐ 通用协作规约 + 模板(跨项目复用)
+│   ├── COLLABORATION_PROTOCOL.md  # 三方协作规约
+│   ├── SYNC_PROTOCOL.md           # 沙箱 ↔ GitHub 同步规约
+│   ├── DIRECTORY_CONVENTION.md    # 目录约定(给 design 看)
+│   ├── KICKOFF_TEMPLATE.md        # 新项目 KICKOFF 模板
+│   ├── TASK_PROMPT_TEMPLATE.md    # Phase B task 模板
+│   ├── PROGRESS_TEMPLATE.md       # PROGRESS.md 模板
+│   └── LESSONS.md                 # 跨项目经验沉淀
+│
+├── scripts/                 # ⭐ 通用工具(跨项目复用)
+│   ├── new-project.sh       # 一键新建项目脚手架
+│   ├── import-design.sh     # 从 design 沙箱 link 拉产出到本地
+│   ├── extract_palette.py   # 提取色板
+│   ├── dedup.py             # phash 抽帧去重
+│   ├── make_grid.py         # 抽帧 grid 缩略图
+│   └── preview.sh           # 跑本地 dev server
+│
+└── projects/                # 具体项目(可多个)
+    └── projectE/            # 当前项目
+        ├── README.md
+        ├── PROGRESS.md      # ⭐ 实时进度(design 必拉)
+        ├── KICKOFF.md       # 首次启动 prompt
+        ├── design-brief/    # 给 design 的资料
+        ├── preview/         # design HTML 真值产出
+        ├── final/           # Vite Vue 3 工程
+        ├── frames/          # ffmpeg 抽帧三层
+        ├── input/           # 视频原料
+        ├── tasks/           # 各屏 task prompt
+        └── bugs/            # bug 报告
 ```
 
-## 入口文档
+## 入口文档(读这些)
 
-- [`METHODOLOGY.md`](METHODOLOGY.md) - 11 步流程方法论
-- [`KICKOFF_PROMPT.md`](KICKOFF_PROMPT.md) - 给 design 的 starter prompt(等宋朝参考图后启动)
-- [`design-brief/TASKS.md`](design-brief/TASKS.md) - 任务清单(Phase A + Wave 1-8 待拆解)
+1. **新人**(刚接触本 workspace):`METHODOLOGY.md` 看 11 步方法论
+2. **新项目**:跑 `./scripts/new-project.sh <name>` → 编辑 `projects/<name>/KICKOFF.md`
+3. **复用经验**:`docs/LESSONS.md`(跨项目踩坑教训)
+4. **三方协作**:`docs/COLLABORATION_PROTOCOL.md` + `docs/SYNC_PROTOCOL.md`
 
-## 工程栈
+## 新项目开工(5 步)
 
-Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router。
+```bash
+# 1. 脚手架
+./scripts/new-project.sh projectF
 
-`scripts/` 通用工具(import-design / extract_palette / dedup / make_grid)从其他 UI 重建项目沉淀过来,跟本项目数据独立。
+# 2. 上传素材
+cp ~/Downloads/视频.mp4 projects/projectF/input/
+# 用户传风格参考图到 projects/projectF/design-brief/style-reference/
+
+# 3. 抽帧 + 筛选
+ffmpeg -i projects/projectF/input/视频.mp4 -vf "fps=1/2" projects/projectF/frames/raw/projectF_fps_%04d.png
+python3 scripts/dedup.py projects/projectF/frames/raw projects/projectF/frames/dedup
+# 用户筛 50 张关键屏到 frames/selected/
+
+# 4. 编辑 KICKOFF
+$EDITOR projects/projectF/KICKOFF.md   # 填 {{游戏名}} / {{风格}} / 等占位符
+
+# 5. commit + push + 给 design 发 KICKOFF
+git add projects/projectF/ && git commit -m "feat(projectF): 新项目脚手架" && git push
+# 在 design 沙箱整段复制粘贴 KICKOFF.md 的 ``` 块
+```
+
+## Phase B 各屏推进(每屏 1 task)
+
+```bash
+# 复制 task 模板
+cp docs/TASK_PROMPT_TEMPLATE.md projects/projectE/tasks/T-B3.md
+$EDITOR projects/projectE/tasks/T-B3.md   # 填 {{...}}
+
+# commit + push
+git add -A && git commit -m "feat(projectE): T-B3 task prompt" && git push
+
+# 给 design 发短指令 + raw URL,或者整段复制粘贴
+# design 出 link → 拉本地
+./scripts/import-design.sh "https://api.anthropic.com/v1/design/h/XXX"
+
+# Claude verify(grep 已废清单 + vite build)→ commit
+```

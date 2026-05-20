@@ -1,0 +1,1 @@
+import{_ as t,o as a,e as o,b as s}from"./index-BnxyS5uF.js";const c={},n={class:"stub","data-screen-label":"工作 · 0036"};function r(l,e){return a(),o("div",n,[...e[0]||(e[0]=[s("h1",null,"工作 · 0036",-1),s("p",null,"Phase B 实现中…",-1)])])}const d=t(c,[["render",r],["__scopeId","data-v-9594c900"]]);export{d as default};
