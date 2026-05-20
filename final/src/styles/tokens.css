@@ -130,6 +130,24 @@
   /* ───────── viewport ───────── */
   --vp-w: 448px;
   --vp-h: 960px;
+
+  /* ───────── 动效 (motion · v1 · 锁定) ─────────
+   *  原则：游戏 UI 要 snappy，不要 candy 过度。
+   *  - 短交互 (button/tab) 160-200ms
+   *  - 中等 (modal/选中) 240-280ms
+   *  - 长 (cinematic/overlay) 400ms+
+   *  - 反馈类用 overshoot ease；进入退出用 ease-out/in
+   */
+  --dur-instant: 80ms;
+  --dur-fast:    160ms;
+  --dur-base:    240ms;
+  --dur-modal:   280ms;
+  --dur-slow:    400ms;
+
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);     /* 强 ease-out · enter */
+  --ease-in:     cubic-bezier(.6, 0, .8, .2);      /* exit / disappear */
+  --ease-soft:   cubic-bezier(.4, 0, .2, 1);       /* material standard */
+  --ease-pop:    cubic-bezier(.34, 1.56, .64, 1);  /* overshoot · 反馈/突显 */
 }
 
 /* ───────── 基础重置 ───────── */
@@ -250,3 +268,62 @@ body {
 .c-muted  { color: var(--ink-3) !important; }
 .c-mute2  { color: var(--ink-4) !important; }
 .c-paper  { color: var(--paper-1) !important; }
+
+/* ============================================================
+ *  动效 utility · keyframes + 类 (v1 · 锁定)
+ * ============================================================ */
+@keyframes fadeIn       { from { opacity: 0 } to { opacity: 1 } }
+@keyframes fadeOut      { from { opacity: 1 } to { opacity: 0 } }
+@keyframes modalEnter   { from { opacity: 0; transform: translateY(16px) scale(.96) } to { opacity: 1; transform: translateY(0) scale(1) } }
+@keyframes modalExit    { from { opacity: 1; transform: translateY(0) scale(1) } to { opacity: 0; transform: translateY(8px) scale(.98) } }
+@keyframes popIn        { 0% { opacity: 0; transform: scale(.3) } 60% { opacity: 1; transform: scale(1.08) } 100% { transform: scale(1) } }
+@keyframes pulseGlow    { 0%,100% { box-shadow: 0 0 0 0 rgba(192,57,43,.4) } 50% { box-shadow: 0 0 0 6px rgba(192,57,43,0) } }
+@keyframes shake        { 0%,100% { transform: translateX(0) } 20% { transform: translateX(-4px) } 40% { transform: translateX(4px) } 60% { transform: translateX(-3px) } 80% { transform: translateX(3px) } }
+@keyframes numTick      { 0% { transform: translateY(0); opacity: 0 } 30% { opacity: 1 } 100% { transform: translateY(-28px); opacity: 0 } }
+@keyframes spinDot      { 50% { opacity: .25 } }
+
+/* 应用类 */
+.a-modal-enter  { animation: modalEnter var(--dur-modal) var(--ease-pop) both; }
+.a-modal-exit   { animation: modalExit  var(--dur-fast)  var(--ease-in)  both; }
+.a-scrim-in     { animation: fadeIn     var(--dur-base)  var(--ease-out) both; }
+.a-scrim-out    { animation: fadeOut    var(--dur-fast)  var(--ease-in)  both; }
+.a-pop          { animation: popIn      var(--dur-modal) var(--ease-pop) both; }
+.a-pulse        { animation: pulseGlow  1.6s ease-in-out infinite; }
+.a-shake        { animation: shake      var(--dur-modal) ease both; }
+.a-num-tick     { animation: numTick    1s var(--ease-out) forwards; pointer-events: none; }
+
+/* 按钮 / 卡片交互态 (transition only · 触发态由 :hover/:active 给) */
+.tx-press {
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out),
+    filter var(--dur-fast) var(--ease-out);
+}
+.tx-press:hover  { filter: brightness(1.05); }
+.tx-press:active { transform: translateY(1px); filter: brightness(.95); }
+
+/* 选中态 ring */
+.tx-select {
+  transition: border-color var(--dur-base) var(--ease-pop),
+              box-shadow   var(--dur-base) var(--ease-pop);
+}
+.tx-select.is-selected {
+  border-color: var(--cinnabar-1);
+  box-shadow: 0 0 0 2px var(--cinnabar-1);
+}
+
+/* tab 切换底色 ripple */
+.tx-tab {
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.tx-tab:active { transform: scale(.94); }
+
+/* 禁用 / 不可点 */
+.is-disabled {
+  opacity: .45;
+  pointer-events: none;
+  filter: saturate(.4);
+}

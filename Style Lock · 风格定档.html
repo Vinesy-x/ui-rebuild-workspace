@@ -41,7 +41,7 @@
   }
   .seal-title h1 {
     font-family: var(--font-display);
-    font-size: 36px;
+    font-size: 40px;
     margin: 0;
     color: var(--ink-1);
     letter-spacing: .08em;
@@ -52,7 +52,7 @@
   .seal-title h1 small {
     display: block;
     font-family: var(--font-serif);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--ink-3);
     letter-spacing: .08em;
     margin-top: 6px;
@@ -61,7 +61,7 @@
 
   h2 {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 24px;
     margin: 48px 0 4px;
     color: var(--ink-1);
     border-bottom: 1px solid var(--paper-edge);
@@ -76,8 +76,8 @@
     letter-spacing: .04em;
     font-weight: var(--fw-normal);
   }
-  h3 { font-family: var(--font-display); font-size: 16px; margin: 24px 0 8px; color: var(--celadon-3); letter-spacing: .06em; }
-  p, li { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
+  h3 { font-family: var(--font-display); font-size: 18px; margin: 24px 0 8px; color: var(--celadon-3); letter-spacing: .06em; }
+  p, li { font-size: 16px; color: var(--ink-2); line-height: 1.8; }
   code { font-family: ui-monospace, "SF Mono", monospace; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; font-size: 12px; color: var(--ink-1); }
 
   /* ─── color grid ─── */
@@ -96,7 +96,7 @@
   }
   .sw .chip { height: 60px; }
   .sw .meta { padding: 6px 8px 8px; }
-  .sw .name { font-family: var(--font-display); font-size: 13px; color: var(--ink-1); }
+  .sw .name { font-family: var(--font-display); font-size: 15px; color: var(--ink-1); }
   .sw .hex  { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
   .sw .var  { font-size: 10px; color: var(--ink-4); }
 
@@ -149,11 +149,11 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
     color: var(--paper-1);
-    font-size: 20px;
+    font-size: 22px;
     position: relative;
   }
   .cur-cell .cseal::after { content:""; position:absolute; inset:2px; border:1px solid rgba(245,235,214,.35); border-radius:3px; }
-  .cur-cell .cname { font-family: var(--font-display); font-size: 13px; color: var(--ink-1); }
+  .cur-cell .cname { font-family: var(--font-display); font-size: 15px; color: var(--ink-1); }
   .cur-cell .cuse  { font-size: 10px; color: var(--ink-3); line-height: 1.4; font-family: var(--font-num); }
 
   /* ─── badge gallery ─── */
@@ -215,7 +215,7 @@
     color: var(--paper-1);
     padding: 8px 12px;
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: .06em;
     display: flex; justify-content: space-between; align-items: center;
   }
@@ -266,7 +266,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 6px 18px;
     margin: 12px 0;
-    font-size: 13px;
+    font-size: 15px;
   }
   .glossary .from { color: var(--ink-3); font-family: var(--font-num); }
   .glossary .from::after { content: " →"; color: var(--ink-4); }
@@ -290,7 +290,7 @@
     margin: -40px -6vw 24px;
     display: flex; gap: 16px; flex-wrap: wrap;
     font-family: var(--font-display);
-    font-size: 13px;
+    font-size: 15px;
     z-index: 50;
     box-shadow: 0 2px 8px rgba(0,0,0,.04);
   }
@@ -313,6 +313,7 @@
     <a href="#type">字体</a>
     <a href="#currency">货币</a>
     <a href="#badges">角标</a>
+    <a href="#motion">动效</a>
     <a href="#components">组件</a>
     <a href="#assets">资产清单</a>
     <a href="#glossary">古风对照</a>
@@ -326,7 +327,7 @@
     </h1>
   </header>
 
-  <p style="font-size:13px;color:var(--ink-3);line-height:1.8">
+  <p style="font-size: 15px;color:var(--ink-3);line-height:1.8">
     本页是 fps_0035 主菜单同期产出的风格定档（Style Lock）。
     Phase A 通过后 → Phase B 49 张屏沿用，不再变。
     色 / 字 / 角标 / 货币 / 组件 命名 = canonical。<br/>
@@ -343,23 +344,23 @@
   <h2 id="keywords">五字定调 <small>v2 · 江南水乡版·以参考图为准</small></h2>
   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0">
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--celadon-1);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:22px;color:var(--celadon-1);letter-spacing:.1em">雾天起青</div>
+      <div style="font-family:var(--font-display);font-size: 24px;color:var(--celadon-1);letter-spacing:.1em">雾天起青</div>
       <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">冷调背景天青 / 远山薄雾 / 低饱和、不于鲜艳</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--celadon-3);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:22px;color:var(--celadon-3);letter-spacing:.1em">江南黑瓦</div>
+      <div style="font-family:var(--font-display);font-size: 24px;color:var(--celadon-3);letter-spacing:.1em">江南黑瓦</div>
       <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">白粉墙 + 冷靛灰飞檐 / 取代茶褐木框</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--cinnabar-1);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:22px;color:var(--cinnabar-1);letter-spacing:.1em">印泥赭收</div>
+      <div style="font-family:var(--font-display);font-size: 24px;color:var(--cinnabar-1);letter-spacing:.1em">印泥赭收</div>
       <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">主红 = 书画印泥 #8A4533 / 杀死亮朱砂 / 极克制</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--gold-1);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:22px;color:var(--gold-1);letter-spacing:.1em">細金均线</div>
+      <div style="font-family:var(--font-display);font-size: 24px;color:var(--gold-1);letter-spacing:.1em">細金均线</div>
       <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">金棕 hairline 边 / 不用宽木框 / 轻盈透</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--ink-2);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:22px;color:var(--ink-1);letter-spacing:.1em">水墨留白</div>
+      <div style="font-family:var(--font-display);font-size: 24px;color:var(--ink-1);letter-spacing:.1em">水墨留白</div>
       <p style="font-size:11px;margin-top:6px;color:var(--ink-3)">大留白 / 远近暍望 / 克制阴影、拒纯白、拒渐变</p>
     </div>
   </div>
@@ -450,84 +451,82 @@
   <!-- ============================================================
        字号体系
        ============================================================ -->
-  <h2 id="type">字号体系 <small>4 字族 · 11 档 · v2 语义锁定</small></h2>
+  <h2 id="type">字号体系 <small>4 字族 · 8 档 · v3.1 · 锁定（最小正文 18px）</small></h2>
 
   <h3>字族</h3>
-  <p style="font-size:14px">
-    <strong style="font-family:var(--font-serif);font-weight:700">Noto Serif SC</strong>
-    （正文，宋體类 serif）+
-    <strong style="font-family:var(--font-ui)">ZCOOL XiaoWei</strong>
-    （UI 标签 / 数字，仿宋窄）+
-    <strong style="font-family:var(--font-display)">Ma Shan Zheng</strong>
-    （装饰大标题，毛笔楷）。<br/>
+  <p style="font-size: 18px">
+    <strong style="font-family:var(--font-serif);font-weight:700">Noto Serif SC</strong>（正文，宋體类 serif）+
+    <strong style="font-family:var(--font-ui)">ZCOOL XiaoWei</strong>（UI 标签 / 数字，仿宋窄）+
+    <strong style="font-family:var(--font-display)">Ma Shan Zheng</strong>（装饰大标题，毛笔楷）。<br/>
     数字（HUD / 价 / 进度）默认仿宋阿拉伯。
   </p>
 
-  <h3>11 档字阶 (v2 · 锁定)</h3>
-  <div class="type-row"><div class="meta">--fs-overlay<br/>30 / 1.0</div><div class="sample t-overlay" style="background:var(--ink-1);padding:6px 14px;display:inline-block;border-radius:4px">熟 人</div></div>
-  <div class="type-row"><div class="meta">--fs-display<br/>22 / 1.1</div><div class="sample t-display c-red">廿三</div></div>
-  <div class="type-row"><div class="meta">--fs-num-bold<br/>17 / 1.0</div><div class="sample t-num-bold">10,760</div></div>
-  <div class="type-row"><div class="meta">--fs-h1<br/>18 / 1.2</div><div class="sample t-h1">心境 · 七十／百</div></div>
-  <div class="type-row"><div class="meta">--fs-h2<br/>16 / 1.3</div><div class="sample t-h2">紅巾娘子</div></div>
-  <div class="type-row"><div class="meta">--fs-h3<br/>15 / 1.3</div><div class="sample t-h3">市場行情</div></div>
-  <div class="type-row"><div class="meta">--fs-num<br/>15 / 1.3</div><div class="sample t-num">+5%</div></div>
-  <div class="type-row"><div class="meta">--fs-body<br/>14 / 1.6</div><div class="sample t-body">所有支出均可获得返现。花得越多，返现越多。</div></div>
-  <div class="type-row"><div class="meta">--fs-label<br/>13 / 1.3</div><div class="sample t-label">技能 · 緣份 · 工作 · 商號 · 票號 · 物事</div></div>
-  <div class="type-row"><div class="meta">--fs-meta<br/>12 / 1.4</div><div class="sample t-meta">崇寧二年 仲秋廿四 · 00:02</div></div>
-  <div class="type-row"><div class="meta">--fs-micro<br/>10 / 1.2</div><div class="sample t-micro">FAIL · 42% · +3</div></div>
+  <div style="background:var(--paper-2);border:1px dashed var(--gold-1);border-radius:6px;padding:14px;margin:16px 0;font-size: 17px;line-height:1.7">
+    <strong style="color:var(--cinnabar-1)">v2 → v3 校准：游戏 UI 不是软件 UI</strong><br/>
+    - 删档：<code>--fs-h3 / --fs-num / --fs-num-bold / --fs-micro</code><br/>
+    - 整体上调 +2~4px：<code>body 14→18 · h1 18→26 · display 22→32 · overlay 30→40</code><br/>
+    - 中文正文最小 <strong>18px</strong>（v2 的 14 太软（v3.1 再 +2））<br/>
+    - 11 档 → <strong>8 档</strong>，相邻档差 ≥ 2px，可读性优先
+  </div>
 
-  <h3>位置 → 字阶 映射表</h3>
+  <h3>8 档字阶 (v3.1 · 锁定)</h3>
+  <div class="type-row"><div class="meta">--fs-overlay<br/>40 / 1.0</div><div class="sample t-overlay" style="background:var(--ink-1);padding:8px 18px;display:inline-block;border-radius:4px">熟 人</div></div>
+  <div class="type-row"><div class="meta">--fs-display<br/>32 / 1.1</div><div class="sample t-display c-red">廿三</div></div>
+  <div class="type-row"><div class="meta">--fs-h1<br/>26 / 1.2</div><div class="sample t-h1">心境 · 七十／百</div></div>
+  <div class="type-row"><div class="meta">--fs-h2<br/>20 / 1.3</div><div class="sample t-h2">紅巾娘子</div></div>
+  <div class="type-row"><div class="meta">--fs-body<br/>18 / 1.6</div><div class="sample t-body">所有支出均可获得返现。花得越多，返现越多。</div></div>
+  <div class="type-row"><div class="meta">--fs-label<br/>17 / 1.3</div><div class="sample t-label">技能 · 緣份 · 工作 · 商號 · 票號 · 物事</div></div>
+  <div class="type-row"><div class="meta">--fs-meta<br/>15 / 1.4</div><div class="sample t-meta">崇寧二年 仲秋廿四 · 00:02</div></div>
+  <div class="type-row"><div class="meta">--fs-mono<br/>14 / 1.2</div><div class="sample t-mono">background placeholder · Phase B</div></div>
+
+  <h3>位置 → 字阶 映射</h3>
   <table class="asset-table">
-    <thead><tr><th>位置</th><th>token</th><th>字族</th><th>备注</th></tr></thead>
+    <thead><tr><th>位置</th><th>token</th><th>字族</th><th>类</th></tr></thead>
     <tbody>
-      <tr><td>亲疏度升级 overlay 大字</td><td><code>--fs-overlay 30</code></td><td>display</td><td>熟人 / 朋友 / 正主</td></tr>
-      <tr><td>声望数 · hero 主数据</td><td><code>--fs-display 22</code></td><td>display</td><td>朱砂红高亮</td></tr>
-      <tr><td>HUD 主数据（钞票 / 健康 / 玉）</td><td><code>--fs-num-bold 17</code></td><td>display</td><td>足以远看</td></tr>
-      <tr><td>modal title bar</td><td><code>--fs-h1 18</code></td><td>display</td><td></td></tr>
-      <tr><td>section heading / NPC 名</td><td><code>--fs-h2 16</code></td><td>display</td><td></td></tr>
-      <tr><td>卡片标题 / sub-tab</td><td><code>--fs-h3 15</code></td><td>display</td><td></td></tr>
-      <tr><td>list item name / 属性名</td><td><code>--fs-body 14</code></td><td>display</td><td>用 .t-name</td></tr>
-      <tr><td>NPC 气泡台词 · 正文</td><td><code>--fs-body 14</code></td><td>serif</td><td>行高 1.6</td></tr>
-      <tr><td>列表数值（+5% / 价）</td><td><code>--fs-num 15</code></td><td>num</td><td>高亮色底</td></tr>
-      <tr><td>tab 标签 · button · pill</td><td><code>--fs-label 13</code></td><td>display</td><td>spacing .06em</td></tr>
-      <tr><td>cost / cd / sub-info</td><td><code>--fs-meta 12</code></td><td>num</td><td>c-muted</td></tr>
-      <tr><td>角标贴字（FAIL / +3 / 42%）</td><td><code>--fs-micro 10</code></td><td>num</td><td>加粗</td></tr>
-      <tr><td>placeholder 监督 · 占位</td><td><code>--fs-micro 10</code></td><td>mono</td><td>.t-mono</td></tr>
+      <tr><td>亲疏度升级 overlay 大字</td><td><code>--fs-overlay 40</code></td><td>display</td><td>.t-overlay</td></tr>
+      <tr><td>HUD 主数据 · hero 大数字 · 声望数</td><td><code>--fs-display 32</code></td><td>display</td><td>.t-display</td></tr>
+      <tr><td>modal title bar · 屏标题</td><td><code>--fs-h1 26</code></td><td>display</td><td>.t-h1</td></tr>
+      <tr><td>section / NPC 名 / 卡片标题</td><td><code>--fs-h2 20</code></td><td>display</td><td>.t-h2</td></tr>
+      <tr><td>正文 · list name · 价格 · 列表值</td><td><code>--fs-body 18</code></td><td>display/num</td><td>.t-name / .t-num</td></tr>
+      <tr><td>tab 标签 · button · pill</td><td><code>--fs-label 17</code></td><td>display</td><td>.t-label</td></tr>
+      <tr><td>cost · cd · sub info · 时间</td><td><code>--fs-meta 15</code></td><td>num</td><td>.t-meta</td></tr>
+      <tr><td>placeholder 监督 · 占位贴字</td><td><code>--fs-mono 14</code></td><td>mono</td><td>.t-mono</td></tr>
     </tbody>
   </table>
 
   <h3>排版强约束</h3>
-  <ul style="font-size:14px;line-height:1.9;padding-left:20px">
+  <ul style="font-size: 18px;line-height:1.9;padding-left:20px">
     <li><strong>能用 <code>.t-X / .c-X</code> 就用</strong> — 不要在 HTML 写 <code>style="font-size:NNpx"</code></li>
-    <li>中文正文最小字号 = <code>--fs-body 14px</code>，再小看不清</li>
+    <li>中文正文最小 = <code>--fs-body 18px</code>（再小看不清）</li>
     <li>仿宋窄字 (tab / 标签 / 装饰) 加 letter-spacing .04-.06em</li>
-    <li>数字独立一档大于汉字 (num-bold 17 vs body 14) — 数字才耀眼</li>
-    <li>"micro 10" 仅作角标 / 贴字，禁用作正文</li>
     <li>同屏字阶差 ≥ 2 档，相邻字阶差不超 1 档</li>
+    <li>角标 / FAIL / +N% 用 <code>--fs-label 17</code>，绝不更小</li>
+    <li>placeholder mono 贴字仅作"监督"标，禁用作正文</li>
   </ul>
 
-  <h3>Modal 尺寸 3 档 (v2 · 锁定)</h3>
-  <p style="font-size:14px">
+  <h3>Modal 尺寸 3 档 (锁定)</h3>
+  <p style="font-size: 18px">
     弹框走 3 档固定尺寸，<strong>不随内容自适应</strong>。锚点统一：<code>top: 64px</code>（HUD 下方）+ <code>left/right: 16px</code>，居中偏上。
+    默认 <code>overflow: hidden</code>，仅列表型加 <code>.scroll</code>。
   </p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0">
-    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:16px;color:var(--ink-1)">.modal--sm</div>
-      <div style="font-family:var(--font-num);font-size:24px;color:var(--cinnabar-1);margin:8px 0">420 px</div>
-      <p style="font-size:12px;margin:0">短列表 · 信息 modal</p>
-      <p style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--font-num)">银行 ⓘ / 改名 / 日期 / 倍数奖励</p>
+    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:16px;text-align:center">
+      <div style="font-family:var(--font-display);font-size: 20px;color:var(--ink-1)">.modal--sm</div>
+      <div style="font-family:var(--font-num);font-size: 32px;color:var(--cinnabar-1);margin:8px 0;font-weight:700">420 px</div>
+      <p style="font-size: 16px;margin:0">短列表 · 信息 modal</p>
+      <p style="font-size: 15px;color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">银行 ⓘ / 改名 / 日期 / 倍数奖励</p>
     </div>
-    <div style="background:var(--paper-2);border:1.5px solid var(--cinnabar-1);border-radius:6px;padding:14px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:16px;color:var(--ink-1)">.modal--md <span style="color:var(--cinnabar-1);font-size:11px">默认</span></div>
-      <div style="font-family:var(--font-num);font-size:24px;color:var(--cinnabar-1);margin:8px 0">560 px</div>
-      <p style="font-size:12px;margin:0">hero + 6 行 · req 列表</p>
-      <p style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--font-num)">心境 / 體魄 / NPC 要求 / 购买确认</p>
+    <div style="background:var(--paper-2);border:1.5px solid var(--cinnabar-1);border-radius:6px;padding:16px;text-align:center">
+      <div style="font-family:var(--font-display);font-size: 20px;color:var(--ink-1)">.modal--md <span style="color:var(--cinnabar-1);font-size: 15px">默认</span></div>
+      <div style="font-family:var(--font-num);font-size: 32px;color:var(--cinnabar-1);margin:8px 0;font-weight:700">560 px</div>
+      <p style="font-size: 16px;margin:0">hero + 6 行 · req 列表</p>
+      <p style="font-size: 15px;color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">心境 / 體魄 / NPC 要求 / 购买确认</p>
     </div>
-    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px;text-align:center">
-      <div style="font-family:var(--font-display);font-size:16px;color:var(--ink-1)">.modal--lg</div>
-      <div style="font-family:var(--font-num);font-size:24px;color:var(--cinnabar-1);margin:8px 0">740 px</div>
-      <p style="font-size:12px;margin:0">长列表 · 商店 · 设置</p>
-      <p style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--font-num)">商店 / 设置 / 人物卷 / 目标</p>
+    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:16px;text-align:center">
+      <div style="font-family:var(--font-display);font-size: 20px;color:var(--ink-1)">.modal--lg <span style="font-size: 15px;color:var(--ink-3)">+ .scroll 可选</span></div>
+      <div style="font-family:var(--font-num);font-size: 32px;color:var(--cinnabar-1);margin:8px 0;font-weight:700">740 px</div>
+      <p style="font-size: 16px;margin:0">长列表 · 商店 · 设置</p>
+      <p style="font-size: 15px;color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">商店 / 设置 / 人物卷 / 目标</p>
     </div>
   </div>
 
@@ -537,7 +536,7 @@
        货币体系
        ============================================================ -->
   <h2 id="currency">货币 8 类 + USD 占位 <small>朱砂方印 + 楷书汉字</small></h2>
-  <p style="font-size:13px">
+  <p style="font-size: 15px">
     规则：emoji / unicode 禁用 → 全部货币以"印章 + 汉字"方块表达。
     Phase A 用 CSS 实现，Phase B 替换为 SVG 切片以保证 retina 清晰。
   </p>
@@ -598,6 +597,375 @@
       <small>商品库存倒计</small>
     </div>
   </div>
+
+  <hr class="flourish"/>
+
+  <!-- ============================================================
+       动效规范
+       ============================================================ -->
+  <h2 id="motion">动效规范 <small>5 token · 8 模式 · live demo</small></h2>
+  <p style="font-size:16px">
+    原则：游戏 UI 要 <strong>snappy</strong>，不要 candy 过度。短交互 160-200ms，中等 240-280ms，反馈类用 overshoot。
+    下面的 demo 都可以 hover/click 实际触发。
+  </p>
+
+  <h3>时长 · 昂函 token</h3>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:16px 0;font-size:15px">
+    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px">
+      <h4 style="margin:0 0 8px;font-family:var(--font-display);font-size:17px;color:var(--cinnabar-1)">时长 (duration)</h4>
+      <ul style="margin:0;padding-left:18px;line-height:1.9">
+        <li><code>--dur-instant 80ms</code> · 微反馈</li>
+        <li><code>--dur-fast 160ms</code> · button / tab / hover</li>
+        <li><code>--dur-base 240ms</code> · 选中 / 角标弹出</li>
+        <li><code>--dur-modal 280ms</code> · modal enter</li>
+        <li><code>--dur-slow 400ms</code> · overlay / cinematic</li>
+      </ul>
+    </div>
+    <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px">
+      <h4 style="margin:0 0 8px;font-family:var(--font-display);font-size:17px;color:var(--cinnabar-1)">昂函 (easing)</h4>
+      <ul style="margin:0;padding-left:18px;line-height:1.9">
+        <li><code>--ease-out</code> · enter · 走路入场</li>
+        <li><code>--ease-in</code> · exit · 退场</li>
+        <li><code>--ease-soft</code> · material 标准</li>
+        <li><code>--ease-pop</code> · overshoot·反馈突显</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>8 种交互模式 · 点击 / hover 实验</h3>
+
+  <div id="motion-demos" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;margin:16px 0">
+
+    <!-- 1 button press -->
+    <div class="demo-card">
+      <div class="demo-title">① 按钮按下 (tx-press)</div>
+      <div class="demo-stage">
+        <button class="btn-demo cta tx-press">收 · 立此为约</button>
+        <button class="btn-demo ghost tx-press">取消</button>
+      </div>
+      <div class="demo-meta"><code>:hover</code> brightness 105% · <code>:active</code> translateY(1) + brightness 95% · 160ms ease-out</div>
+    </div>
+
+    <!-- 2 selected ring -->
+    <div class="demo-card">
+      <div class="demo-title">② 选中 ring (tx-select)</div>
+      <div class="demo-stage">
+        <div class="opt-demo tx-select" data-select-group="a">🌹 玫瑰 · 350</div>
+        <div class="opt-demo tx-select is-selected" data-select-group="a">🍩 甜甜圈 · 900</div>
+        <div class="opt-demo tx-select" data-select-group="a">🍸 饮料 · 2.3k</div>
+      </div>
+      <div class="demo-meta">border + 2px ring 馅起 · 240ms ease-pop · 点击切换选中</div>
+    </div>
+
+    <!-- 3 modal enter/exit -->
+    <div class="demo-card">
+      <div class="demo-title">③ Modal 开关 (a-modal-enter / exit)</div>
+      <div class="demo-stage" id="modal-stage">
+        <button class="btn-demo cta tx-press" onclick="toggleModal()">弹 modal</button>
+        <div class="mock-modal-scrim" id="mockScrim" style="display:none">
+          <div class="mock-modal" id="mockModal">
+            <div class="mock-modal-bar">演示 modal</div>
+            <div class="mock-modal-body">scrim fade + modal translateY+scale<br/>280ms ease-pop 走入场、160ms ease-in 退场</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-meta">scrim <code>fadeIn 240ms</code> + modal <code>translateY 16→0 · scale .96→1</code></div>
+    </div>
+
+    <!-- 4 badge pop -->
+    <div class="demo-card">
+      <div class="demo-title">④ 角标弹出 (a-pop / a-pulse)</div>
+      <div class="demo-stage">
+        <button class="btn-demo cta tx-press" onclick="spawnBadge(this)">生成新角标</button>
+        <div class="badge-pulse-wrap">
+          <div class="badge-glyph">工</div>
+          <span class="badge-bang-demo a-pulse">!</span>
+        </div>
+      </div>
+      <div class="demo-meta"><code>popIn 280ms ease-pop</code> · 持续未读红点用 <code>pulseGlow 1.6s</code></div>
+    </div>
+
+    <!-- 5 number tick -->
+    <div class="demo-card">
+      <div class="demo-title">⑤ 数值飘字 (a-num-tick)</div>
+      <div class="demo-stage">
+        <button class="btn-demo cta tx-press" onclick="floatNum(this)">获得 銅錢</button>
+      </div>
+      <div class="demo-meta">妊裂 +500 / +5心 等奖励反馈 · 1s 上漂 + fade-in-out</div>
+    </div>
+
+    <!-- 6 shake disabled -->
+    <div class="demo-card">
+      <div class="demo-title">⑥ 不可点抖动 (a-shake)</div>
+      <div class="demo-stage">
+        <button class="btn-demo cta" onclick="shakeIt(this)">接受 (未满足)</button>
+        <div class="demo-meta" style="margin:0;font-family:var(--font-num);font-size:14px">状态 · 要求不足 心境 80</div>
+      </div>
+      <div class="demo-meta">280ms · 需求不达、资金不足、CD 未冷却时点击触发</div>
+    </div>
+
+    <!-- 7 tab switch -->
+    <div class="demo-card">
+      <div class="demo-title">⑦ Tab 切换 (tx-tab)</div>
+      <div class="demo-stage">
+        <div class="tab-row">
+          <div class="tab-mini tx-tab" data-tab-group="t">交易</div>
+          <div class="tab-mini tx-tab is-active" data-tab-group="t">升级</div>
+        </div>
+      </div>
+      <div class="demo-meta">160ms ease-out · 选中调背色 + 下边线 hairline</div>
+    </div>
+
+    <!-- 8 loading spinner -->
+    <div class="demo-card">
+      <div class="demo-title">⑧ 异步 loading (spinDot)</div>
+      <div class="demo-stage">
+        <div class="spinner-demo"><span></span><span></span><span></span></div>
+      </div>
+      <div class="demo-meta">3 点 1.2s · 供 AsyncWaitModal (卖车 0068 等待) 使用</div>
+    </div>
+
+  </div>
+
+  <h3>应用映射</h3>
+  <table class="asset-table">
+    <thead><tr><th>交互</th><th>token</th><th>位置</th></tr></thead>
+    <tbody>
+      <tr><td>modal enter / exit</td><td><code>.a-modal-enter .a-modal-exit + .a-scrim-in/out</code></td><td>ModalShell · 8 共享 modal</td></tr>
+      <tr><td>按钮按下</td><td><code>.tx-press</code></td><td>所有 CTA / button / icon-btn</td></tr>
+      <tr><td>选中 ring</td><td><code>.tx-select.is-selected</code></td><td>OptionPickerModal / sub-tab</td></tr>
+      <tr><td>tab 切换</td><td><code>.tx-tab.is-active</code></td><td>BottomTabBar / sub-tab</td></tr>
+      <tr><td>角标弹出</td><td><code>.a-pop</code></td><td>红 ! 刚变生 / 潫满庆祝</td></tr>
+      <tr><td>未读红点脉动</td><td><code>.a-pulse</code></td><td>Tab 3/6 · 设置通知</td></tr>
+      <tr><td>数值飘字</td><td><code>.a-num-tick</code></td><td>获得銅钱 / 心境+5 / 进步提升</td></tr>
+      <tr><td>拒绝抖动</td><td><code>.a-shake</code></td><td>资金不足 / 要求未满足 / CD</td></tr>
+      <tr><td>升级 overlay</td><td><code>popIn .5s ease-pop</code></td><td>UpgradeOverlay (0014)</td></tr>
+      <tr><td>cinematic 过场</td><td>默认 2.5s timeout</td><td>CinematicScene (0077)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>强约束</h3>
+  <ul style="font-size:16px;line-height:1.9;padding-left:20px">
+    <li>禁用 transition: all·只动明确列出的属性 (transform/opacity/box-shadow)</li>
+    <li>默认 GPU 加速走 transform/opacity，避免 width/top/left 动画</li>
+    <li>不多于 2 层动画同时发生在同一元素上 (丝滑劣化)</li>
+    <li>prefers-reduced-motion 减到 80ms (Phase B 补上)</li>
+    <li>宋朝美学 = 含蓄·全局动效克制，避免圣诞树闪烁风</li>
+  </ul>
+
+  <!-- Demo styles -->
+  <style>
+    .demo-card {
+      background: var(--paper-2);
+      border: 1px solid var(--paper-edge);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .demo-title {
+      background: var(--celadon-3);
+      color: var(--paper-1);
+      padding: 10px 14px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: .04em;
+    }
+    .demo-stage {
+      padding: 24px;
+      background: var(--paper-1);
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+      min-height: 140px;
+      position: relative;
+    }
+    .demo-meta {
+      padding: 10px 14px;
+      background: var(--paper-2);
+      border-top: 1px dashed var(--paper-edge);
+      font-family: var(--font-num);
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.5;
+    }
+    .btn-demo {
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 17px;
+      cursor: pointer;
+      border: 1.5px solid var(--ink-1);
+    }
+    .btn-demo.cta {
+      background: var(--jade); color: var(--paper-1);
+      box-shadow: 0 3px 0 var(--ink-1);
+    }
+    .btn-demo.cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+    .btn-demo.ghost { background: var(--paper-1); color: var(--ink-1); }
+
+    .opt-demo {
+      display: block;
+      padding: 10px 14px;
+      background: var(--paper-2);
+      border: 1.5px solid var(--paper-edge);
+      border-radius: 6px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      width: 100%;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .mock-modal-scrim {
+      position: absolute; inset: 0;
+      background: rgba(31,27,20,.55);
+      backdrop-filter: blur(4px);
+      display: grid; place-items: center;
+      animation: fadeIn var(--dur-base) var(--ease-out) both;
+    }
+    .mock-modal-scrim.exit { animation: fadeOut var(--dur-fast) var(--ease-in) both; }
+    .mock-modal {
+      width: 80%; min-width: 200px;
+      background: var(--paper-1);
+      border: 1.5px solid var(--paper-edge);
+      border-radius: 8px;
+      overflow: hidden;
+      animation: modalEnter var(--dur-modal) var(--ease-pop) both;
+    }
+    .mock-modal.exit { animation: modalExit var(--dur-fast) var(--ease-in) both; }
+    .mock-modal-bar {
+      background: var(--celadon-3); color: var(--paper-1);
+      padding: 8px 12px;
+      font-family: var(--font-display); font-size: 15px;
+    }
+    .mock-modal-body { padding: 14px; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
+    .badge-pulse-wrap {
+      position: relative;
+      width: 60px; height: 60px;
+      background: var(--celadon-2);
+      border: 1.5px solid var(--celadon-3);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+    }
+    .badge-bang-demo {
+      position: absolute;
+      top: -6px; right: -6px;
+      width: 22px; height: 22px;
+      background: var(--cinnabar-1);
+      color: var(--paper-1);
+      border: 2px solid var(--paper-1);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: var(--font-display);
+      font-size: 14px;
+    }
+    .badge-bang-demo.spawn { animation: popIn var(--dur-modal) var(--ease-pop) both; }
+
+    .num-floater {
+      position: absolute;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--cur-coin);
+      animation: numTick 1s var(--ease-out) forwards;
+      pointer-events: none;
+    }
+
+    .tab-row {
+      display: flex; gap: 6px;
+      background: var(--paper-2);
+      padding: 4px;
+      border-radius: 6px;
+      border: 1px solid var(--paper-edge);
+    }
+    .tab-mini {
+      flex: 1;
+      padding: 8px 16px;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--ink-3);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+    }
+    .tab-mini.is-active {
+      background: var(--paper-1);
+      color: var(--ink-1);
+      box-shadow: inset 0 -2px 0 var(--cinnabar-1);
+    }
+
+    .spinner-demo {
+      display: flex; gap: 8px;
+      font-size: 36px;
+    }
+    .spinner-demo span {
+      width: 12px; height: 12px;
+      background: var(--ink-3);
+      border-radius: 50%;
+      animation: spinDot 1.2s var(--ease-soft) infinite;
+    }
+    .spinner-demo span:nth-child(2) { animation-delay: .2s; }
+    .spinner-demo span:nth-child(3) { animation-delay: .4s; }
+  </style>
+
+  <script>
+    // Demo interactions
+    document.querySelectorAll('[data-select-group]').forEach(el => {
+      el.addEventListener('click', () => {
+        const g = el.dataset.selectGroup;
+        document.querySelectorAll(`[data-select-group="${g}"]`).forEach(e => e.classList.remove('is-selected'));
+        el.classList.add('is-selected');
+      });
+    });
+    document.querySelectorAll('[data-tab-group]').forEach(el => {
+      el.addEventListener('click', () => {
+        const g = el.dataset.tabGroup;
+        document.querySelectorAll(`[data-tab-group="${g}"]`).forEach(e => e.classList.remove('is-active'));
+        el.classList.add('is-active');
+      });
+    });
+    let modalOpen = false;
+    function toggleModal() {
+      const scrim = document.getElementById('mockScrim');
+      const modal = document.getElementById('mockModal');
+      if (!modalOpen) {
+        scrim.style.display = 'grid';
+        scrim.classList.remove('exit');
+        modal.classList.remove('exit');
+        modalOpen = true;
+      } else {
+        scrim.classList.add('exit');
+        modal.classList.add('exit');
+        setTimeout(() => { scrim.style.display = 'none'; }, 200);
+        modalOpen = false;
+      }
+    }
+    function spawnBadge(btn) {
+      const wrap = btn.parentElement.querySelector('.badge-pulse-wrap');
+      const bang = wrap.querySelector('.badge-bang-demo');
+      bang.classList.remove('spawn'); void bang.offsetWidth; bang.classList.add('spawn');
+    }
+    function floatNum(btn) {
+      const stage = btn.parentElement;
+      const f = document.createElement('div');
+      f.className = 'num-floater';
+      f.textContent = '+500';
+      const r = btn.getBoundingClientRect();
+      const sr = stage.getBoundingClientRect();
+      f.style.left = (r.left - sr.left + r.width/2 - 30) + 'px';
+      f.style.top = (r.top - sr.top - 6) + 'px';
+      stage.appendChild(f);
+      setTimeout(() => f.remove(), 1100);
+    }
+    function shakeIt(btn) {
+      btn.classList.remove('a-shake'); void btn.offsetWidth; btn.classList.add('a-shake');
+    }
+  </script>
 
   <hr class="flourish"/>
 
@@ -737,7 +1105,7 @@
 
   <hr class="flourish"/>
 
-  <p style="text-align:center;font-family:var(--font-display);font-size:14px;color:var(--ink-3);letter-spacing:.2em">
+  <p style="text-align:center;font-family:var(--font-display);font-size: 16px;color:var(--ink-3);letter-spacing:.2em">
     — Phase A 风格定档 · 待用户验收 —
   </p>
 
