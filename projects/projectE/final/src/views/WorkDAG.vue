@@ -14,6 +14,7 @@ import { useRouter } from 'vue-router'
 import HudBar       from '../components/HudBar.vue'
 import BottomTabBar from '../components/BottomTabBar.vue'
 import { useModalStore } from '../stores/useModalStore'
+import { mergeHud } from '../utils/mergeHud'
 import mainMenu from '../data/mainMenu.json'
 import workData from '../data/workList.json'
 
@@ -39,13 +40,7 @@ interface Job {
 const jobs   = workData.jobs as Record<string, Job>
 const levels = workData.dagLevels
 
-const hud = computed(() => ({
-  ...mainMenu.hud,
-  coin:      workData.screen.hudOverrides.coin      ?? mainMenu.hud.coin,
-  mood:      workData.screen.hudOverrides.mood      ?? mainMenu.hud.mood,
-  moodDelta: workData.screen.hudOverrides.moodDelta ?? mainMenu.hud.moodDelta,
-  date:      workData.screen.date
-}))
+const hud = computed(() => mergeHud(mainMenu.hud, workData.screen.hudOverrides, workData.screen.date))
 
 function pickJob (jobKey: string) {
   const j = jobs[jobKey]

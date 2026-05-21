@@ -12,6 +12,8 @@ import { useRouter } from 'vue-router'
 import HudBar       from '../components/HudBar.vue'
 import BottomTabBar from '../components/BottomTabBar.vue'
 import { useModalStore } from '../stores/useModalStore'
+import { mergeHud } from '../utils/mergeHud'
+import type { BankInfoMsg } from '../types/modalPayloads'
 import mainMenu  from '../data/mainMenu.json'
 import invData   from '../data/investments.json'
 
@@ -20,24 +22,11 @@ const store  = useModalStore()
 
 const active = ref<'bank' | 'stock' | 'lock'>('bank')
 
-const hud = computed(() => ({
-  ...mainMenu.hud,
-  coin:       invData.screen.hudOverrides.coin       ?? mainMenu.hud.coin,
-  mood:       invData.screen.hudOverrides.mood       ?? mainMenu.hud.mood,
-  moodDelta:  invData.screen.hudOverrides.moodDelta  ?? mainMenu.hud.moodDelta,
-  health:     invData.screen.hudOverrides.health     ?? mainMenu.hud.health,
-  healthDelta:invData.screen.hudOverrides.healthDelta?? mainMenu.hud.healthDelta,
-  coinDelta:  invData.screen.hudOverrides.coinDelta  ?? mainMenu.hud.coinDelta,
-  date:       invData.screen.date
-}))
+const hud = computed(() => mergeHud(mainMenu.hud, invData.screen.hudOverrides, invData.screen.date))
 
-function info(msg: 'cashback' | 'freebie' | 'premium' | 'broker', e?: Event) {
+function info (msg: BankInfoMsg, e?: Event) {
   e?.stopPropagation()
   store.open('bank-info', { msg })
-}
-function setTab(key: 'bank' | 'stock' | 'lock') {
-  // lock 段不让切,但仍允许用户点 → 进 lock pane 看说明
-  active.value = key
 }
 </script>
 
@@ -59,7 +48,7 @@ function setTab(key: 'bank' | 'stock' | 'lock') {
           :key="t.key"
           class="sub-tab"
           :class="{ 'is-active': active === t.key, 'is-lock': t.locked }"
-          @click="setTab(t.key as any)"
+          @click="active = t.key as 'bank' | 'stock' | 'lock'"
           v-html="t.label"
         ></div>
       </div>

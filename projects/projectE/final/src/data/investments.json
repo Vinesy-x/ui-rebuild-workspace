@@ -1,7 +1,6 @@
 {
   "_source": "fps_0058 (钱庄) + fps_0059 (信息 modal) + fps_0061 (票号) + fps_0062 (商號 list) · canonical = design-brief/flows/screen-details.md L463-510",
-  "_canonical": "3 sub-tab 投资屏: 钱庄 (cashback 2% + 3 寄銀 cards) / 票号 (你之庫本 + 自动经纪IAP + 免费贈本 + 商號 list 9 家) / 🔒 锁档",
-  "_naming": "古风化: 投资→投資 / 银行→錢莊 / 股票→票號 / cashback→回返銀 / 公司→商號 / 高级卡→上戶銀牌 / 自动交易→自動經紀 / 投资组合→你之庫本 / 股息→紅利",
+  "_canonical": "3 sub-tab 投资屏: 钱庄 (cashback 2% + 3 寄銀 cards) / 票号 (你之庫本 + 自动经纪IAP + 免费贈本 + 商號 list 9 家) / 🔒 锁档 · 古风化对照见 PROGRESS.md Style Lock 27 项",
 
   "screen": {
     "title": "投　資",

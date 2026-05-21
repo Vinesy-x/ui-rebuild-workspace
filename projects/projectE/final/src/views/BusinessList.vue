@@ -11,22 +11,14 @@ import { useRouter } from 'vue-router'
 import HudBar       from '../components/HudBar.vue'
 import BottomTabBar from '../components/BottomTabBar.vue'
 import { useModalStore } from '../stores/useModalStore'
+import { mergeHud } from '../utils/mergeHud'
 import mainMenu from '../data/mainMenu.json'
 import bizData from '../data/businessList.json'
 
 const router = useRouter()
 const store  = useModalStore()
 
-const hud = computed(() => ({
-  ...mainMenu.hud,
-  coin:       bizData.screen.hudOverrides.coin       ?? mainMenu.hud.coin,
-  mood:       bizData.screen.hudOverrides.mood       ?? mainMenu.hud.mood,
-  moodDelta:  bizData.screen.hudOverrides.moodDelta  ?? mainMenu.hud.moodDelta,
-  health:     bizData.screen.hudOverrides.health     ?? mainMenu.hud.health,
-  healthDelta:bizData.screen.hudOverrides.healthDelta?? mainMenu.hud.healthDelta,
-  coinDelta:  bizData.screen.hudOverrides.coinDelta  ?? mainMenu.hud.coinDelta,
-  date:       bizData.screen.date
-}))
+const hud = computed(() => mergeHud(mainMenu.hud, bizData.screen.hudOverrides, bizData.screen.date))
 
 function openUpgrade (biz: any) {
   if (!biz.owned || biz.locked) return

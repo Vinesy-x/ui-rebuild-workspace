@@ -7,11 +7,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useModalStore } from '../stores/useModalStore'
+import type { ShopTab } from '../types/modalPayloads'
 const store = useModalStore()
-interface Props { tab?: 'money' | 'jade' }
+interface Props { tab?: ShopTab }
 const props = withDefaults(defineProps<Props>(), { tab: 'money' })
 
-const tab = ref<'money' | 'jade'>(props.tab)
+const tab = ref<ShopTab>(props.tab)
 
 const moneyOptions = [
   { n: '四千五',    p: '看广告' },

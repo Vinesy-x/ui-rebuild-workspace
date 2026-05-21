@@ -12,22 +12,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useModalStore } from '../stores/useModalStore'
+import type { BankInfoMsg } from '../types/modalPayloads'
+import invData from '../data/investments.json'
 
-interface Props {
-  msg?: 'cashback' | 'freebie' | 'premium' | 'broker' | string
-  customMsg?: string
-}
+interface Props { msg?: BankInfoMsg }
 const props = withDefaults(defineProps<Props>(), { msg: 'cashback' })
 const store = useModalStore()
 
-const MSG_LIB: Record<string, string> = {
-  cashback: '所有支出皆得回返。<br/>花得越多，返得越多。',
-  freebie:  '每番贈本，皆隨機商號股本一组。',
-  premium:  '上戶銀牌一旦持有，X2 諸般收益。',
-  broker:   '自動經紀代你買賣，安坐喫茶而望市。'
-}
-
-const body = computed(() => props.customMsg || MSG_LIB[props.msg] || MSG_LIB.cashback)
+const messages = invData.infoMessages as Record<BankInfoMsg, string>
+const body = computed(() => messages[props.msg] ?? messages.cashback)
 </script>
 
 <template>
