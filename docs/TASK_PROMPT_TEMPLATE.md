@@ -1,6 +1,6 @@
 # task prompt 模板 · Phase B 每屏
 
-> 复制此文件到 `projects/<name>/tasks/T-B{{n}}.md`,改 `{{...}}` 占位符。
+> 复制此文件到 `projects/<name>/handoff/tasks/T-B{{n}}.md`,改 `{{...}}` 占位符。
 > 跟 KICKOFF 不同 — 这是 Phase B 各屏推进的标准 task。
 >
 > ⚠️ **v2 强约束**(2026-05 后):两阶段交付 + 文件白名单 + `_design-notes.md` 强 deliverable。
@@ -14,30 +14,31 @@ fps_{{帧号}} {{短描述}}
 
 > **两阶段交付** · audit 先,实现后 · 严格白名单 + `_design-notes.md` deliverable
 
-## ⚠️ 沙箱目录结构(同 PROGRESS.md 顶部 callout)
+## ⚠️ 沙箱目录结构(2026-05 refactor v2 · handoff/ 强隔离)
 
 - repo 根 = `{{repo-name}}/`(多游戏 workspace · 同根还有 `projects/projectX/` 等)
-- **你的项目根 = `projects/{{name}}/`** · 所有相对路径以此为根 · 产出必须在此目录之内
+- **你的边界 = `projects/{{name}}/handoff/`** · 所有相对路径以 handoff/ 为根 · 产出必须在此之内
+- ⚠️ 禁止写到 repo 根 / `projects/` 根 / `{{name}}/` 根 / `{{name}}/_internal/`(后者是 user/Claude 内部)
 
 ## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
 
 raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
 
 **全局状态 + 永久流程(2 份 · 每个 task 必拉)**
-- `projects/{{name}}/PROGRESS.md`(项目快照 / 当前阶段 / 已废清单 / 共享 modal 状态)
-- `projects/{{name}}/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
+- `projects/{{name}}/handoff/PROGRESS.md`(项目快照 / 当前阶段 / 已废清单 / 共享 modal 状态)
+- `projects/{{name}}/handoff/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
 
 **canonical 真值 N 文档**(design-brief/flows/ · ⚠️ 不拉这些必出错)
-- `projects/{{name}}/design-brief/flows/info-architecture.md`
-- `projects/{{name}}/design-brief/flows/interaction-spec.md`
-- `projects/{{name}}/design-brief/flows/screen-details.md`
-- `projects/{{name}}/design-brief/flows/screen-details-extras.md`(如有)
-- `projects/{{name}}/design-brief/flows/topology.html`(如有)
+- `projects/{{name}}/handoff/spec/info-architecture.md`
+- `projects/{{name}}/handoff/spec/interaction-spec.md`
+- `projects/{{name}}/handoff/spec/screen-details.md`
+- `projects/{{name}}/handoff/spec/screen-details-extras.md`(如有)
+- `projects/{{name}}/handoff/spec/topology.html`(如有)
 
 **视觉真值 + 工程层**
-- `projects/{{name}}/preview/{{游戏名}}.html`(canonical 全集)
-- `projects/{{name}}/preview/Style Lock · 风格定档.html`(风格速查)
-- `projects/{{name}}/final/src/`(递归 · Vue 工程层)
+- `projects/{{name}}/handoff/preview/{{游戏名}}.html`(canonical 全集)
+- `projects/{{name}}/handoff/preview/Style Lock · 风格定档.html`(风格速查)
+- `projects/{{name}}/handoff/final/src/`(递归 · Vue 工程层)
 
 **Pre-flight checklist · 拉完打勾再开干**
 - [ ] PROGRESS.md + AUDIT_PROTOCOL.md ✓
@@ -50,7 +51,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
 【阶段 1 · audit-pre-design 报告(必先 · 不出代码/HTML)】
 ====================================================================
 
-照 `projects/{{name}}/AUDIT_PROTOCOL.md` 跑两件 audit:
+照 `projects/{{name}}/handoff/AUDIT_PROTOCOL.md` 跑两件 audit:
 
 **A. HTML 真值 ↔ Vue 工程层 alignment**
 - 视觉:字号走 `var(--fs-*)` 8 阶 / 颜色走 N 色 var(项目自定)
@@ -99,7 +100,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
 - `final/src/components/ModalShell.vue` ← map 注册(同上)
 
 **视觉真值**(可选 · 顺手)
-- `projects/{{name}}/preview/{{游戏名}}.html` ← 补本 task 屏段
+- `projects/{{name}}/handoff/preview/{{游戏名}}.html` ← 补本 task 屏段
 
 **绝对禁止**触:
 - 其他 view 文件(不是本 task 范围内的)
@@ -174,13 +175,13 @@ raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
 打开本文件,复制 ``` 块整段(替换 `{{...}}` 占位符),发给 design 沙箱。
 
 ### 方式 B — 短指令 + raw URL(轻量,推荐)
-1. 复制本模板到 `projects/<name>/tasks/T-B{{n}}.md`
+1. 复制本模板到 `projects/<name>/handoff/tasks/T-B{{n}}.md`
 2. 填 `{{...}}` 占位符
 3. commit + push
 4. 给 design 发短指令:
    ```
    {{游戏名}} T-B{{n}} {{屏名}} 设计。拉:
-   https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/tasks/T-B{{n}}.md
+   https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/handoff/tasks/T-B{{n}}.md
 
    按里面 步骤 1 pull list 拉完 PROGRESS.md + AUDIT_PROTOCOL.md +
    canonical N 份 + preview HTML + final/src/
@@ -199,4 +200,4 @@ raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
 | 永久流程 | inline 在每个 task prompt | 抽 `AUDIT_PROTOCOL.md` 项目根 · task prompt ref |
 
 > 模板演进史:v1 简单 4 步同步(2026-04)→ v2 强约束(2026-05 · T-B5 踩坑后)。
-> 实例参考:`projects/projectE/tasks/T-B6.md` 是 v2 最新落地版本。
+> 实例参考:`projects/projectE/handoff/tasks/T-B6.md` 是 v2 最新落地版本。

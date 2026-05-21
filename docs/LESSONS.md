@@ -68,7 +68,7 @@
 
 每个项目独立维护自己的"共享 modal 清单"(在该项目 `PROGRESS.md`),Phase A 锁定后不允许各屏单独写 modal(除非 useModalStore 已有 name 占位)。
 
-projectE 实际的 9 共享 modal 清单见 `projects/projectE/PROGRESS.md` "共享 modal 组件清单" 段。
+projectE 实际的 9 共享 modal 清单见 `projects/projectE/handoff/PROGRESS.md` "共享 modal 组件清单" 段。
 
 ### L11:中文 UI 字号 ≥ 18px(v3.1)
 **经验**:v1/v2 用 10-30px 字号梯度,中文 14px 太小手机看不清。v3.1 升级到 8 档 14-40px,最小正文 18px。

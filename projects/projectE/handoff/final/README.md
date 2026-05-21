@@ -1,6 +1,6 @@
-# final/ · 大掌柜 Vite Vue 3 工程层
+# handoff/final/ · 大掌柜 Vite Vue 3 工程层
 
-> ⚠️ **项目级文档看 `../README.md` 和 `../PROGRESS.md`**。本文件只描述 `src/` 内部结构。
+> ⚠️ **项目级文档看 `../../README.md`(projectE 根)和 `../PROGRESS.md`(handoff 根)**。本文件只描述 `src/` 内部结构。
 > 状态 / 当前阶段 / canonical 演进 / 共享 modal 清单 / 已废清单 → 全在 `../PROGRESS.md`。
 
 ## 启动

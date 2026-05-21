@@ -18,7 +18,7 @@
    - 不要复制粘贴沙箱里的旧版到新产出
 
 3. **canonical 演进**
-   - canonical 文档(`projects/<name>/design-brief/flows/*`)Claude 维护,push GitHub
+   - canonical 文档(`projects/<name>/handoff/spec/*`)Claude 维护,push GitHub
    - 每次新 task **主动从 raw URL 拉 canonical 最新版**作为依据
    - 看到 ⚠️ "校正 / 作废 / 废弃" 严格遵循
 
@@ -37,21 +37,21 @@ raw URL 模板 = https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
 主动从 GitHub 拉下列文件最新版,覆盖你沙箱里对应文件:
 
   ⭐ 进度跟踪(每次必拉):
-  - projects/<name>/PROGRESS.md
+  - projects/<name>/handoff/PROGRESS.md
 
   canonical(项目级,design 沙箱视角根):
-  - projects/<name>/design-brief/flows/info-architecture.md
-  - projects/<name>/design-brief/flows/interaction-spec.md
-  - projects/<name>/design-brief/flows/screen-details.md
-  - projects/<name>/design-brief/flows/screen-details-extras.md
-  - projects/<name>/design-brief/flows/screen-details-extras2.md
-  - projects/<name>/design-brief/flows/topology.html
+  - projects/<name>/handoff/spec/info-architecture.md
+  - projects/<name>/handoff/spec/interaction-spec.md
+  - projects/<name>/handoff/spec/screen-details.md
+  - projects/<name>/handoff/spec/screen-details-extras.md
+  - projects/<name>/handoff/spec/screen-details-extras2.md
+  - projects/<name>/handoff/spec/topology.html
 
   HTML 真值(在 preview/,不要放沙箱根):
-  - projects/<name>/preview/(整个目录)
+  - projects/<name>/handoff/preview/(整个目录)
 
   Vue 工程层:
-  - projects/<name>/final/(整个目录递归)
+  - projects/<name>/handoff/final/(整个目录递归)
 
   workspace 级规约(可选,如需查约定):
   - docs/COLLABORATION_PROTOCOL.md
@@ -76,11 +76,11 @@ git status -s
 git diff --stat projects/<name>/
 
 # 2. grep 已废清单(应该 0)
-#    清单 = projects/<name>/PROGRESS.md 顶部的"已知废弃项"
+#    清单 = projects/<name>/handoff/PROGRESS.md 顶部的"已知废弃项"
 #    具体 grep pattern 按当时清单调整
 
 # 3. vite build 验工程
-cd projects/<name>/final && npx vite build && cd -
+cd projects/<name>/handoff/final && npx vite build && cd -
 
 # 4. 校对新增 view / component / data 跟 canonical 一致
 ```

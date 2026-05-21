@@ -15,8 +15,8 @@ https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/<path>
 
 例(项目名 = `projectE`,repo = `ui-rebuild-workspace`):
 ```
-https://raw.githubusercontent.com/<owner>/ui-rebuild-workspace/main/projects/projectE/design-brief/flows/info-architecture.md
-https://raw.githubusercontent.com/<owner>/ui-rebuild-workspace/main/projects/projectE/preview/Phase A · 主菜单 大掌柜.html
+https://raw.githubusercontent.com/<owner>/ui-rebuild-workspace/main/projects/projectE/handoff/spec/info-architecture.md
+https://raw.githubusercontent.com/<owner>/ui-rebuild-workspace/main/projects/projectE/handoff/preview/Phase A · 主菜单 大掌柜.html
 ```
 
 ---
@@ -61,7 +61,7 @@ design 沙箱**不要把 HTML 真值放沙箱根**,统一放 `preview/`:
 ## ⭐ 关键约定:PROGRESS.md 必拉
 
 每个 task / 每次开工:
-1. 主动 fetch `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/PROGRESS.md`
+1. 主动 fetch `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/handoff/PROGRESS.md`
 2. 看"当前阶段 / 已完成 / canonical 版本 / 5 条已废清单 / 待办"
 3. 不要凭沙箱里的旧版猜进度
 

@@ -2,9 +2,10 @@
 
 > ⚠️ **design 沙箱开工前必拉这一份**(每个 task 都要)。一文知全局:项目快照 + 当前阶段 + 5 条已废清单 + 9 共享 modal 状态。
 >
-> raw URL: `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/projectE/PROGRESS.md`
+> raw URL: `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/projectE/handoff/PROGRESS.md`
 >
-> ⚠️ **沙箱目录结构**:repo 根 = `ui-rebuild-workspace/`(多游戏 workspace · 同根下还会有 `projects/projectF/` 等);**你的项目根 = `projects/projectE/`** — 任何项目内相对路径(`design-brief/` / `final/` / `preview/`)以此为根 · 一切产出必须在 `projects/projectE/` 之内 · 不要在 repo 根或 `projects/` 根创建文件
+> ⚠️ **沙箱目录结构(2026-05 refactor v2)**:repo 根 = `ui-rebuild-workspace/`(多游戏 workspace);**你的边界 = `projects/projectE/handoff/`** — 一切产出必须在此目录之内 · 项目内相对路径(`spec/` / `final/` / `preview/` / `tasks/`)以 `handoff/` 为根 · 不要在 repo 根 / `projects/` 根 / `projectE/` 根 / `projectE/_internal/` 创建文件
+> · `projectE/_internal/`(bugs / input / frames / analysis)= user/Claude 内部 · design **绝对不碰**
 
 ---
 
@@ -19,7 +20,7 @@
 | **风格定档** | `preview/Style Lock · 风格定档.html`(15 色 / 8 字阶 v3.1 / 9 货币印章 / 7 角标 / 27 古风对照 / motion 体系)— Phase A 锁定不再变 |
 | **工程栈** | Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router |
 | **Modal 模式** | 9 共享 modal + `useModalStore` + `<ModalShell>` + router.afterEach 自动 reset |
-| **完整 KICKOFF 文档** | `projects/projectE/KICKOFF.md`(只 Phase A 启动时需要,Phase B 各屏看本文即可)|
+| **完整 KICKOFF 文档** | `projects/projectE/handoff/KICKOFF.md`(只 Phase A 启动时需要,Phase B 各屏看本文即可)|
 
 文字内容**全部古风化**(详见 Style Lock 27 项对照,例:John Doyle → 王掌櫃 / 汽车修理工 → 馬車工匠 / 投资股票 → 票號商號股本 / 等)。
 
@@ -98,14 +99,14 @@
 
 ## 视觉真值锁定(Phase A)
 
-放在 `projects/projectE/preview/`:
+放在 `projects/projectE/handoff/preview/`:
 - `Phase A · 主菜单 大掌柜.html` — fps_0035 主菜单完整视觉
 - `Style Lock · 风格定档.html` — 15 色 + 8 字阶 v3.1 + 9 货币印章 + 7 角标 + 27 古风对照
 - `大掌柜.html` — Phase A + T-B1~T-B4 合并 HTML 真值预演
 
 ---
 
-## 工程层(`projects/projectE/final/`)
+## 工程层(`projects/projectE/handoff/final/`)
 
 - ✅ Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router
 - ✅ `npm install && npm run dev` 可起

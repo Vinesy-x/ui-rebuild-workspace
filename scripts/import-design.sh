@@ -64,8 +64,9 @@ if [ ! -d "$PROJ_DIR" ]; then
 fi
 
 PROJ_NAME="$(basename "$PROJ_DIR")"
-FINAL_DIR="$PROJ_DIR/final"
-PREVIEW_DIR="$PROJ_DIR/preview"
+# 2026-05 refactor v2:工程层 + HTML 真值都在 handoff/ 下(design 边界)
+FINAL_DIR="$PROJ_DIR/handoff/final"
+PREVIEW_DIR="$PROJ_DIR/handoff/preview"
 mkdir -p "$PREVIEW_DIR"
 
 echo "==> Fetching design tarball"
@@ -92,13 +93,15 @@ echo "    Got: $SIZE"
 echo "==> Extracting"
 tar -xzf "$TARBALL" -C "$WORK_DIR"
 
-# ---------- 3. 定位 final/ ----------
+# ---------- 3. 定位 final/(2026-05 refactor v2:design 沙箱端 handoff/final/)----------
 SRC_FINAL=""
 for candidate in \
+  "$WORK_DIR/$PROJ_NAME/project/handoff/final" \
   "$WORK_DIR/$PROJ_NAME/project/final" \
-  "$WORK_DIR/projecte/project/final" \
-  "$WORK_DIR/projectb/project/final" \
+  "$WORK_DIR/project/handoff/final" \
   "$WORK_DIR/project/final" \
+  "$WORK_DIR/projects/$PROJ_NAME/handoff/final" \
+  "$WORK_DIR/handoff/final" \
   "$WORK_DIR/final"
 do
   if [ -d "$candidate" ]; then
@@ -190,5 +193,5 @@ fi
 echo ""
 echo "Next steps:"
 echo "  1. Review:  git diff projects/$PROJ_NAME/"
-echo "  2. Run it:  cd projects/$PROJ_NAME/final && npm install && npm run dev"
+echo "  2. Run it:  cd projects/$PROJ_NAME/handoff/final && npm install && npm run dev"
 echo "  3. Commit:  git add projects/$PROJ_NAME/ && git commit -m 'design: import <task>'"

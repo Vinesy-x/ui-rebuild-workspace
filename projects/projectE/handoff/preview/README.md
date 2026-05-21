@@ -1,6 +1,6 @@
-# preview/ · HTML 真值
+# handoff/preview/ · HTML 真值
 
-design 沙箱产出的 HTML 真值放这里(不要放沙箱根 / 项目根)。
+design 沙箱产出的 HTML 真值放这里(在 `handoff/` 下 · 不要放沙箱根或 `projectE/` 根)。
 
 ## link 相对路径
 
@@ -8,7 +8,7 @@ design 沙箱产出的 HTML 真值放这里(不要放沙箱根 / 项目根)。
 <link rel="stylesheet" href="../final/src/styles/tokens.css" />
 ```
 
-从 `preview/` 引用 `final/`,用 `../final/`。
+从 `handoff/preview/` 引用 `handoff/final/`,用 `../final/`(兄弟目录,不变)。
 
 ## 当前文件
 

@@ -15,11 +15,11 @@
 - 跑 `./scripts/new-project.sh <name>` 开新项目
 
 ### Claude
-- 维护 canonical(`projects/<name>/design-brief/flows/*.md`)— GitHub 唯一真值
-- 维护 `projects/<name>/PROGRESS.md`(实时进度,design 必拉)
-- 起草 task prompt(`projects/<name>/tasks/T-B*.md`,瘦身 + 自包含)
+- 维护 canonical(`projects/<name>/handoff/spec/*.md`)— GitHub 唯一真值
+- 维护 `projects/<name>/handoff/PROGRESS.md`(实时进度,design 必拉)
+- 起草 task prompt(`projects/<name>/handoff/tasks/T-B*.md`,瘦身 + 自包含)
 - import 后跑 grep checklist 防漂移 + `vite build` 验工程
-- 起 bug 报告(`projects/<name>/bugs/*.md`)
+- 起 bug 报告(`projects/<name>/_internal/bugs/*.md`)
 - Phase B 工程填充可直接做(不走 design,节省 4 回合 ceremony)
 
 ### design(沙箱独立 AI 实例)
@@ -59,7 +59,7 @@
 - **B** — 短指令 + raw URL,design 自己拉 prompt:
   ```
   继续做 T-Bx。拉:
-  https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/tasks/T-Bx.md
+  https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/handoff/tasks/T-Bx.md
   完成出 link
   ```
 
@@ -71,14 +71,14 @@
 |---|---|---|---|
 | 通用规约 | `docs/` | Claude | 用户 + Claude + design 拉到沙箱 |
 | 通用工具 | `scripts/` | Claude | 用户跑 |
-| canonical | `projects/<name>/design-brief/flows/*` | Claude | design 必读 |
-| 工程产出 | `projects/<name>/final/` | design + Claude verify | `npm install` 跑 |
-| HTML 真值 | `projects/<name>/preview/` | design 产出 | design 看 + 用户预览 |
-| 实时进度 | `projects/<name>/PROGRESS.md` | Claude 每 task 更新 | design 每次必拉 |
-| 任务 prompt | `projects/<name>/tasks/T-B*.md` | Claude | design 拉(可选)|
-| bug 报告 | `projects/<name>/bugs/*.md` | Claude | 用户中转给 design |
-| 视频原料 | `projects/<name>/input/` | 用户 | — |
-| 抽帧 | `projects/<name>/frames/` | ffmpeg + 用户筛 | — |
+| canonical | `projects/<name>/handoff/spec/*` | Claude | design 必读 |
+| 工程产出 | `projects/<name>/handoff/final/` | design + Claude verify | `npm install` 跑 |
+| HTML 真值 | `projects/<name>/handoff/preview/` | design 产出 | design 看 + 用户预览 |
+| 实时进度 | `projects/<name>/handoff/PROGRESS.md` | Claude 每 task 更新 | design 每次必拉 |
+| 任务 prompt | `projects/<name>/handoff/tasks/T-B*.md` | Claude | design 拉(可选)|
+| bug 报告 | `projects/<name>/_internal/bugs/*.md` | Claude | 用户中转给 design |
+| 视频原料 | `projects/<name>/_internal/input/` | 用户 | — |
+| 抽帧 | `projects/<name>/_internal/frames/` | ffmpeg + 用户筛 | — |
 
 ⭐ design 沙箱视角 = `projects/<name>/` 是它的项目根。raw URL 模板:
 ```
@@ -102,11 +102,11 @@ git status -s
 git diff --stat projects/<name>/
 
 # 2. grep 已废清单(应该全 0,只允许"作废注释")
-#    具体废弃清单 = projects/<name>/PROGRESS.md 里的"已知废弃项"段
+#    具体废弃清单 = projects/<name>/handoff/PROGRESS.md 里的"已知废弃项"段
 #    每个项目独立维护,Claude 按当时清单 grep
 
 # 3. vite build 验工程能跑
-cd projects/<name>/final && npx vite build && cd -
+cd projects/<name>/handoff/final && npx vite build && cd -
 
 # 4. 看新增 view / component / json,对照 canonical 验证数据
 ```
@@ -118,8 +118,8 @@ cd projects/<name>/final && npx vite build && cd -
 ## 6 · 沟通节奏(每屏 1 task)
 
 ```
-1. Claude 起草 projects/<name>/tasks/T-Bx.md(瘦身 + 自包含)
-2. Claude 更新 projects/<name>/PROGRESS.md(标记当前 task)
+1. Claude 起草 projects/<name>/handoff/tasks/T-Bx.md(瘦身 + 自包含)
+2. Claude 更新 projects/<name>/handoff/PROGRESS.md(标记当前 task)
 3. Claude commit + push GitHub
 4. 用户发短指令 + raw URL 给 design(或整段复制 prompt)
 5. design 主动拉 GitHub canonical + PROGRESS + 必拉清单

@@ -2,7 +2,7 @@
 
 > ⚠️ **design 沙箱开工前必拉这一份**(每个 task 都要)。一文知全局:项目快照 + 当前阶段 + 已废清单 + 共享 modal 状态。
 >
-> raw URL: `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/PROGRESS.md`
+> raw URL: `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/handoff/PROGRESS.md`
 
 ---
 
@@ -17,7 +17,7 @@
 | **风格定档** | `preview/Style Lock · 风格定档.html` — Phase A 锁定不再变 |
 | **工程栈** | Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router |
 | **Modal 模式** | N 共享 modal + `useModalStore` + `<ModalShell>` + router.afterEach 自动 reset |
-| **完整 KICKOFF** | `projects/{{name}}/KICKOFF.md`(只 Phase A 首次启动需要)|
+| **完整 KICKOFF** | `projects/{{name}}/handoff/KICKOFF.md`(只 Phase A 首次启动需要)|
 
 文字内容**全部 {{语境}} 化**(详见 Style Lock N 项对照)。
 
@@ -72,12 +72,12 @@
 
 ## 视觉真值锁定(Phase A 通过后)
 
-`projects/{{name}}/preview/`:
+`projects/{{name}}/handoff/preview/`:
 - {{HTML 文件清单}}
 
 ---
 
-## 工程层(`projects/{{name}}/final/`)
+## 工程层(`projects/{{name}}/handoff/final/`)
 
 - ✅ {{stack}}
 - `npm install && npm run dev` 可起 / `vite build` 通过

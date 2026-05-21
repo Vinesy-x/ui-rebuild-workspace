@@ -3,31 +3,32 @@
 > **两阶段交付** · audit 先,实现后 · 严格白名单 + `_design-notes.md` deliverable
 > 上一轮 T-B5 经验沉淀(scope creep / 漏 audit / 无变更说明)→ 本任务强约束
 
-## ⚠️ 沙箱目录结构(同 PROGRESS.md 顶部 callout)
+## ⚠️ 沙箱目录结构(2026-05 refactor v2 · handoff/ 强隔离)
 
 - repo 根 = `ui-rebuild-workspace/`(多游戏 · 同根还有 `projects/projectF/` 等)
-- **你的项目根 = `projects/projectE/`** · 所有相对路径以此为根 · 产出必须在此目录之内
+- **你的边界 = `projects/projectE/handoff/`** · 所有相对路径以 handoff/ 为根 · 产出必须在此之内
+- ⚠️ 禁止写到 repo 根 / `projects/` 根 / `projectE/` 根 / `projectE/_internal/`(后者是 user/Claude 内部 · design 不碰)
 
 ## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
 
 raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/`
 
 **全局状态 + 永久流程(2 份 · 每个 task 必拉)**
-- `projects/projectE/PROGRESS.md`(项目快照 / 当前阶段 / 5 已废 / 13 modal 状态)
-- `projects/projectE/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
+- `projects/projectE/handoff/PROGRESS.md`(项目快照 / 当前阶段 / 5 已废 / 13 modal 状态)
+- `projects/projectE/handoff/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
 
 **canonical 真值 6 文档**(design-brief/flows/ · ⚠️ 不拉这 6 份必出错)
-- `projects/projectE/design-brief/flows/info-architecture.md`
-- `projects/projectE/design-brief/flows/interaction-spec.md`
-- `projects/projectE/design-brief/flows/screen-details.md`
-- `projects/projectE/design-brief/flows/screen-details-extras.md`
-- `projects/projectE/design-brief/flows/screen-details-extras2.md`
-- `projects/projectE/design-brief/flows/topology.html`
+- `projects/projectE/handoff/spec/info-architecture.md`
+- `projects/projectE/handoff/spec/interaction-spec.md`
+- `projects/projectE/handoff/spec/screen-details.md`
+- `projects/projectE/handoff/spec/screen-details-extras.md`
+- `projects/projectE/handoff/spec/screen-details-extras2.md`
+- `projects/projectE/handoff/spec/topology.html`
 
 **视觉真值 + 工程层**
-- `projects/projectE/preview/大掌柜.html`(canonical 全集)
-- `projects/projectE/preview/Style Lock · 风格定档.html`(15 色 / 8 字阶 / 9 货币 / 7 角标 / 27 古风对照)
-- `projects/projectE/final/src/`(递归 · 已有 13 共享 modal + 7 filled view + tokens.css + components.css)
+- `projects/projectE/handoff/preview/大掌柜.html`(canonical 全集)
+- `projects/projectE/handoff/preview/Style Lock · 风格定档.html`(15 色 / 8 字阶 / 9 货币 / 7 角标 / 27 古风对照)
+- `projects/projectE/handoff/final/src/`(递归 · 已有 13 共享 modal + 7 filled view + tokens.css + components.css)
 
 **Pre-flight checklist · 拉完打勾再开干**
 - [ ] PROGRESS.md ✓
@@ -39,7 +40,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspac
 
 # 阶段 1:audit-pre-design 报告(必先 · 不出代码/HTML)
 
-照 `projects/projectE/AUDIT_PROTOCOL.md` 跑两件 audit(注意是 project root 不是 tasks/):
+照 `projects/projectE/handoff/AUDIT_PROTOCOL.md` 跑两件 audit(handoff/ 根 · 不是 tasks/):
 
 **A. HTML 真值 ↔ Vue 工程层 alignment**(7 个 filled view + 13 共享 modal)
 - 视觉:字号走 `var(--fs-*)` 8 阶 / 颜色走 15 色 var
@@ -88,7 +89,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspac
 - `final/src/components/ModalShell.vue` ← map 注册(同上)
 
 **视觉真值**(可选 · 顺手)
-- `projects/projectE/preview/大掌柜.html` ← 补 T-B6 物品屏段(参照 T-B3/T-B4 段的格式)
+- `projects/projectE/handoff/preview/大掌柜.html` ← 补 T-B6 物品屏段(参照 T-B3/T-B4 段的格式)
 
 **绝对禁止**触:
 - 其他 view(MainMenu / SkillList / MeetList / RelationDetail / WorkDAG / BusinessList / InvestBank)

@@ -2,34 +2,52 @@
 
 > 现代版 BitLife 类放置养成游戏视频帧 → 宋朝古风(江南水乡水墨彩绘)Vue 工程重建。
 
+## 目录边界(2 区强隔离 · 2026-05 refactor)
+
+```
+projects/projectE/
+├── README.md           ← 本文件 · user 视角入口
+│
+├── handoff/            ⭐⭐⭐ design 唯一边界(拉 + 出 都在这)
+│   ├── PROGRESS.md           ⭐ 实时进度(design 每次必拉)
+│   ├── AUDIT_PROTOCOL.md     ⭐ 设计前 audit 协议(design 每次必拉)
+│   ├── KICKOFF.md            Phase A 启动 prompt(已锁定)
+│   ├── spec/                 canonical 6 文档(屏映射/交互/拓扑等)
+│   ├── tasks/                各屏一次性 task prompt + archive
+│   ├── preview/              ⭐ design 出的 HTML 真值(大掌柜.html + Style Lock)
+│   └── final/                ⭐ Vite + Vue 3 工程层(design 改 + Claude verify)
+│
+└── _internal/          ⬅ design 不碰 · user/Claude 内部用
+    ├── analysis/             Claude 分析用 PNG(png/extras/style-reference)
+    ├── bugs/                 bug 报告 + archive
+    ├── frames/               ffmpeg 抽帧三层(raw/dedup/selected)
+    └── input/                视频原料
+```
+
+`handoff/` = design 沙箱镜像的全部 · 100% 隔离 user 内部档案。
+
 ## 当前阶段
 
-看 [`PROGRESS.md`](PROGRESS.md)。Phase B T-B1~T-B5 ✅ / T-B6 待启动。
+看 [`handoff/PROGRESS.md`](handoff/PROGRESS.md)。Phase B T-B1~T-B5 ✅ / T-B6 待启动。
 
 ## 跑工程
 
 ```bash
-cd final && npm install && npm run dev
+cd handoff/final && npm install && npm run dev
 # 浏览器打开 http://localhost:5173
 ```
 
-## 视觉真值参考
+## 给 design 的精简 prompt
 
-`preview/`:
-- `大掌柜.html` — ⭐ canonical 全集(Phase A + T-B1~T-B5)
-- `Style Lock · 风格定档.html` — 风格速查(15 色 / 8 字阶 / 9 货币 / 7 角标 / 27 古风对照)
+```
+projectE T-B6 物品 Tab 6 设计。拉:
+https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/projects/projectE/handoff/tasks/T-B6.md
 
-## 入口(project-level docs)
-
-- `PROGRESS.md` — 项目快照 / 当前阶段 / 5 已废 / 13 modal 状态(design 每次必拉)
-- `AUDIT_PROTOCOL.md` — 永久流程文档 · 每次设计前的 audit 协议(design 每次必拉)
-- `KICKOFF.md` — Phase A 首次启动 prompt(已过 Phase A 锁定)
-- `README.md` — 本文件
-- `tasks/` — 各屏一次性 task prompt(README + T-B6 当前 + archive/ 历史)
-- `bugs/` — bug 报告(README + archive/ 历史 · 当前无未修)
-- `design-brief/flows/` — canonical 屏映射 / 交互 / 拓扑(6 份 · design 每次必拉)
-- `design-brief/analysis/` — 50 张 PNG 抽帧高清
-- `design-brief/style-reference/` — 归档:Phase A 启动时的视觉参考底图(2.7MB · 已被 Style Lock 取代)
+按里面 步骤 1 pull list 拉完 PROGRESS.md + AUDIT_PROTOCOL.md + canonical 6 份
++ preview HTML + final/src/
+两阶段交付:阶段 1 = audit 报告 → 停 → 等放行
+阶段 2 = T-B6 实现 · 严格白名单 · 必带 _design-notes.md
+```
 
 ## workspace 级文档
 

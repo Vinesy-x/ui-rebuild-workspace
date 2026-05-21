@@ -1,11 +1,11 @@
-# tasks/ · 各屏一次性 task prompt
+# handoff/tasks/ · 各屏一次性 task prompt
 
-> ⚠️ **本目录是 Phase B 一次性 task 累积**(每屏 1 文件)。永久流程文档不在这里 → 看 projectE 根:
+> ⚠️ **本目录是 Phase B 一次性 task 累积**(每屏 1 文件)。永久流程文档不在这里 → 看 `handoff/` 根:
 > - `../PROGRESS.md` — 项目状态(每次 task 必拉)
 > - `../AUDIT_PROTOCOL.md` — 设计前 audit 协议(每次 task 必拉)
 > - `../KICKOFF.md` — Phase A 首次启动 prompt
 >
-> 模板:`docs/TASK_PROMPT_TEMPLATE.md`(v2 两阶段 + 文件白名单 + `_design-notes.md` 强约束)
+> 模板:`docs/TASK_PROMPT_TEMPLATE.md`(workspace 级 · v2 两阶段 + 文件白名单 + `_design-notes.md` 强约束)
 
 ## 当前
 
