@@ -10,7 +10,7 @@
 
 | 项目 | 状态 | 风格 | 说明 |
 |---|---|---|---|
-| [projects/projectE/](projects/projectE/) | Phase B T-B2 ✅ / T-B3 待启动 | 宋朝古风(江南水乡水墨彩绘)| 大掌柜 — BitLife 类放置养成,448×960 |
+| [projects/projectE/](projects/projectE/) | Phase B T-B1~T-B5 ✅ / T-B6 待启动 | 宋朝古风(江南水乡水墨彩绘)| 大掌柜 — BitLife 类放置养成,448×960 |
 
 ## workspace 结构
 
@@ -39,15 +39,16 @@ ui-rebuild-workspace/
 └── projects/                # 具体项目(可多个)
     └── projectE/            # 当前项目
         ├── README.md
-        ├── PROGRESS.md      # ⭐ 实时进度(design 必拉)
-        ├── KICKOFF.md       # 首次启动 prompt
-        ├── design-brief/    # 给 design 的资料
-        ├── preview/         # design HTML 真值产出
-        ├── final/           # Vite Vue 3 工程
-        ├── frames/          # ffmpeg 抽帧三层
-        ├── input/           # 视频原料
-        ├── tasks/           # 各屏 task prompt
-        └── bugs/            # bug 报告
+        ├── PROGRESS.md          # ⭐ 实时进度(design 每次 task 必拉)
+        ├── AUDIT_PROTOCOL.md    # ⭐ 设计前 audit 协议(design 每次 task 必拉)
+        ├── KICKOFF.md           # 首次启动 prompt
+        ├── design-brief/        # 给 design 的资料(flows / analysis)
+        ├── preview/             # design HTML 真值产出
+        ├── final/               # Vite Vue 3 工程
+        ├── frames/              # ffmpeg 抽帧三层
+        ├── input/               # 视频原料
+        ├── tasks/               # 各屏一次性 task prompt
+        └── bugs/                # bug 报告
 ```
 
 ## 入口文档(读这些)
@@ -80,19 +81,23 @@ git add projects/projectF/ && git commit -m "feat(projectF): 新项目脚手架"
 # 在 design 沙箱整段复制粘贴 KICKOFF.md 的 ``` 块
 ```
 
-## Phase B 各屏推进(每屏 1 task)
+## Phase B 各屏推进(每屏 1 task · v2 两阶段强约束)
 
 ```bash
-# 复制 task 模板
-cp docs/TASK_PROMPT_TEMPLATE.md projects/projectE/tasks/T-B3.md
-$EDITOR projects/projectE/tasks/T-B3.md   # 填 {{...}}
+# 1. 复制 v2 task 模板(两阶段 + 白名单 + _design-notes.md 强约束)
+cp docs/TASK_PROMPT_TEMPLATE.md projects/projectE/tasks/T-B<N>.md
+$EDITOR projects/projectE/tasks/T-B<N>.md   # 填 {{...}}
 
-# commit + push
-git add -A && git commit -m "feat(projectE): T-B3 task prompt" && git push
+# 2. commit + push
+git add -A && git commit -m "feat(projectE): T-B<N> task prompt" && git push
 
-# 给 design 发短指令 + raw URL,或者整段复制粘贴
-# design 出 link → 拉本地
+# 3. 给 design 发短指令(只需 1 个 raw URL,task prompt 里已含 PROGRESS + AUDIT_PROTOCOL pull list)
+# 阶段 1: design 出 audit 报告 → 停 → 用户验收
+# 阶段 2: design 出 design link + 沙箱根 _design-notes.md → 用户 import
+
+# 4. 拉本地 + verify
 ./scripts/import-design.sh "https://api.anthropic.com/v1/design/h/XXX"
+# Claude verify(对照 _design-notes.md · grep 已废清单 · vite build)→ commit
 
-# Claude verify(grep 已废清单 + vite build)→ commit
+# 参考实例:projects/projectE/tasks/T-B6.md(v2 最新落地版)
 ```
