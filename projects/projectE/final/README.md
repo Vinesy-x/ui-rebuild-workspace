@@ -1,98 +1,82 @@
-# final/ · 大掌柜 Vite Vue 3 工程
+# final/ · 大掌柜 Vite Vue 3 工程层
 
-Phase A 已交付。`npm install && npm run dev` 可起。
+> ⚠️ **项目级文档看 `../README.md` 和 `../PROGRESS.md`**。本文件只描述 `src/` 内部结构。
+> 状态 / 当前阶段 / canonical 演进 / 共享 modal 清单 / 已废清单 → 全在 `../PROGRESS.md`。
 
-## 目录
+## 启动
 
-```
-final/
-├── README.md                          本说明
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-├── index.html                         Vite 入口
-└── src/
-    ├── main.ts                        boot · createApp + Pinia + router
-    ├── App.vue                        根 layout · router-view + ModalShell
-    ├── styles/
-    │   └── tokens.css                 全局 token · 色板 / 字号 / 工具类 · 锁定
-    ├── stores/
-    │   └── useModalStore.ts           Pinia modal store
-    ├── router.ts                      Vue Router · Tab 6 路由占位
-    ├── data/
-    │   └── mainMenu.json              fps_0035 提取数据
-    ├── views/
-    │   ├── MainMenu.vue               ⭐ Phase A 锁定屏 (fps_0035)
-    │   ├── SkillList.vue              Phase B 占位 (0001)
-    │   ├── MeetList.vue               Phase B 占位 (0012)
-    │   ├── WorkDAG.vue                Phase B 占位 (0036)
-    │   ├── BusinessList.vue           Phase B 占位 (0046)
-    │   ├── InvestBank.vue             Phase B 占位 (0058)
-    │   └── ShopItems.vue              Phase B 占位 (0073/0080)
-    └── components/
-        ├── HudBar.vue                 双行 HUD
-        ├── BottomTabBar.vue           底栏 6 Tab
-        ├── ModalShell.vue             modal 根容器 · 3 档尺寸 · scrim+blur
-        ├── ProgressListDialog.vue     ← 共享 1: 心境 + 體魄
-        ├── OptionPickerModal.vue      ← 共享 2: 礼物 + 约会
-        ├── PurchaseConfirmModal.vue   ← 共享 3: 食 + 居 + 大件
-        ├── AsyncWaitModal.vue         ← 共享 4: 卖车 3 步
-        ├── CinematicScene.vue         ← 共享 5: 大件过场
-        ├── UpgradeOverlay.vue         ← 共享 6: 亲疏度升级
-        ├── JobPromoSplash.vue         ← 共享 7: 工作促销
-        └── JobDetailModal.vue         ← 共享 8 (v2 新增): 工作详情 0037+0040
+```bash
+npm install && npm run dev
+# http://localhost:5173/
+npm run build          # 生产构建
 ```
 
-## v2 canonical 校正 (2026-05)
+## src/ 目录结构
 
-### fps_0037 归属
-- **旧推测**：主菜单 NPC (红巾娘子) tap → 焊工要求 modal
-- **v2 校正**：0037 是工作 Tab → 工作 list → 点工作卡 → **JobDetailModal**「焊工」（与 0040 汽车修理工、0041 promo 同 widget 不同工种）
-- **作废**：主菜单 NPC tap 边。NPC 改为纯装饰，无交互
-- **新增**：`JobDetailModal.vue` 作 7 共享组件之 8
+```
+src/
+├── main.ts                    boot · createApp + Pinia + router + 导入 tokens/components.css
+├── App.vue                    根 layout · router-view + ModalShell
+├── router.ts                  Vue Router · 6 Tab + main 路由
+│
+├── styles/
+│   ├── tokens.css             ⭐ 锁定:15 色 / 8 字阶 / 9 货币 / motion / 8 sp / 6 r / 等 var
+│   └── components.css         ⭐ canonical 全局 class(.sub-tabs / .modal-pane / .pane-cta /
+│                                .star / .ic-seal+9 货币 / .screen / .screen-bar /
+│                                .npc-card / .red-bang / .set-row / .toggle / .reputation /
+│                                .goal-row / .tx-press)
+│
+├── stores/
+│   └── useModalStore.ts       Pinia · ModalName union + open/close + props
+│
+├── types/
+│   └── modalPayloads.ts       共享 modal props union(BankInfoMsg / ShopTab / ...)
+│
+├── utils/
+│   └── mergeHud.ts            hud overrides 合并 utility(各 view 复用)
+│
+├── data/                      ⭐ 每屏一份 JSON 数据层
+│   ├── mainMenu.json          fps_0035 主菜单
+│   ├── skillList.json         T-B1 技能(13 项 + 2 booster)
+│   ├── relations.json         T-B2 关系(4 NPC + 5 actions + 礼物/约会库)
+│   ├── workList.json          T-B3 工作 DAG(13 岗位 + 父子关系)
+│   ├── businessList.json      T-B4 商號(5 业务 + IAP banner)
+│   └── investments.json       T-B5 投资(3 sub-tab + 9 商號 + infoMessages)
+│
+├── views/                     一屏一文件(router 对应)
+│   ├── MainMenu.vue           ⭐ Phase A 锁定 · 街景 hub
+│   ├── SkillList.vue          T-B1 ✅
+│   ├── MeetList.vue           T-B2 ✅(list)
+│   ├── RelationDetail.vue     T-B2 ✅(详情 · 路由参数)
+│   ├── WorkDAG.vue            T-B3 ✅(13 岗 DAG)
+│   ├── BusinessList.vue       T-B4 ✅(5 业务)
+│   ├── InvestBank.vue         T-B5 ✅(3 sub-tab)
+│   └── ShopItems.vue          T-B6 待启动(占位)
+│
+└── components/                共享组件
+    ├── HudBar.vue             双行 HUD(9 资源 cell + 头像 + 日历 + 齿轮)
+    ├── BottomTabBar.vue       底栏 6 Tab(技/缘/工/商/票/物)
+    ├── ModalShell.vue         modal 根容器 · 3 档尺寸 sm/md/lg · scrim+blur
+    └── <N>Modal.vue           N 共享 modal(数量看 PROGRESS.md)
+```
 
-### 删除的字段
-- `mainMenu.json` 删 `npcJobRequirement`
-- `useModalStore.ts` 删 `'npc-req'` modal name
-- `MainMenu.vue` NPC `@click` 处理删
+## 强约束(Phase A 锁定 · Phase B 各 task 不重写)
 
-## Modal 尺寸 3 档 (锁定)
+1. tokens.css = 唯一颜色 / 字号源 · 字号必走 `var(--fs-*)` 8 阶
+2. 共享 modal 走 `useModalStore` + `ModalShell` map · 不重复 implement
+3. 印章 + 汉字 = 货币 icon 标准 · 复用全局 `.ic-seal.ic-*` class
+4. modal scrim 锁定 `rgba(0,0,0,.65) + backdrop-filter blur(8px)`
+5. 中文正文 ≥18px(v3.1)
+6. canonical 跟 PNG 冲突时 PNG 优先,然后更新 canonical
+7. 已废弃项(PROGRESS.md 已废清单)不要重新引入
+
+## Modal 尺寸 3 档
 
 | 档 | 高 | 用途 |
 |---|---|---|
 | `.modal--sm` | 420px | 短列表 / 信息 modal |
-| `.modal--md` | 560px | hero+6 行 / req 列表 (默认) |
+| `.modal--md` | 560px | hero+6 行 / req 列表(default)|
 | `.modal--lg` | 740px | 长列表 / 商店 / 设置 / 人物卷 |
 
-- 锚点：`top: 64px` · `left/right: 16px` · 居中偏上
-- 默认 `overflow: hidden`，仅列表型 modal 加 `.modal-body.scroll`
-
-## 字号体系 8 档 v3.1 (锁定)
-
-```
---fs-overlay  40  · UpgradeOverlay 段位大字
---fs-display  32  · HUD 主数据 / hero / 大数字
---fs-h1       26  · modal title / 屏标题
---fs-h2       20  · section / NPC 名 / 卡片标题
---fs-body     18  · 正文 / list / 价格 (最小)
---fs-label    17  · tab / button / pill
---fs-meta     15  · cost / cd / sub-info
---fs-mono     14  · placeholder 监督
-```
-
-工具类：`.t-overlay / .t-display / .t-h1 / .t-h2 / .t-body / .t-name / .t-num / .t-label / .t-meta / .t-mono`
-
-## 强约束 (Phase A 锁定)
-
-1. tokens.css 是唯一颜色 / 字号源 — 不允许各屏写死 hex
-2. 8 个共享组件必须复用 — 不允许各屏新写 modal
-3. 印章 + 汉字 = 货币 icon 标准 — Phase B 替换为 SVG 切片
-4. modal scrim = `rgba(0,0,0,.65) + backdrop-filter:blur(8px)` 锁定
-5. 中文正文最小 16px，禁 inline `style="font-size:Npx"`
-
-## Phase B 进入条件
-
-✓ npm run dev 跑出 Phase A 主菜单（fps_0035）= HTML 原型视觉等价
-✓ 8 共享组件 SFC 全在位
-✓ Pinia modal store 走通
-✓ canonical 屏映射对齐 info-architecture.md
+锚点:`top: 64px` · `left/right: 16px` · 居中偏上。
+默认 `overflow: hidden`,仅列表型 modal 加 `.modal-body.scroll`。

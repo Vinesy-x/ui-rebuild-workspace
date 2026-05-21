@@ -25,10 +25,11 @@ cd final && npm install && npm run dev
 - `AUDIT_PROTOCOL.md` — 永久流程文档 · 每次设计前的 audit 协议(design 每次必拉)
 - `KICKOFF.md` — Phase A 首次启动 prompt(已过 Phase A 锁定)
 - `README.md` — 本文件
-- `tasks/` — 各屏一次性 task prompt(T-B1/T-B2/T-B6 累积 · 完成后可归档)
-- `bugs/` — bug 报告(累积)
+- `tasks/` — 各屏一次性 task prompt(README + T-B6 当前 + archive/ 历史)
+- `bugs/` — bug 报告(README + archive/ 历史 · 当前无未修)
 - `design-brief/flows/` — canonical 屏映射 / 交互 / 拓扑(6 份 · design 每次必拉)
 - `design-brief/analysis/` — 50 张 PNG 抽帧高清
+- `design-brief/style-reference/` — 归档:Phase A 启动时的视觉参考底图(2.7MB · 已被 Style Lock 取代)
 
 ## workspace 级文档
 
