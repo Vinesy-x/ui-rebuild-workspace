@@ -284,13 +284,13 @@ function actClick (key: string) {
 .rel-act.is-cd  { background: var(--ink-4); cursor: not-allowed; }
 .rel-act.is-cd  .cd-pill { font-family: var(--font-num); font-size: var(--fs-meta); letter-spacing: 0; }
 .rel-act.is-ad  { background: var(--amber); color: var(--ink-1); }
-.rel-act.is-ad  .ad-tri { margin-left: 4px; font-size: 12px; }
+.rel-act.is-ad  .ad-tri { margin-left: 4px; font-size: var(--fs-mono); }
 
 /* 飘心粒子 */
 .floater-layer { position: absolute; inset: 0; pointer-events: none; }
 .floater {
   position: absolute;
-  font-size: 24px;
+  font-size: var(--fs-h1);
   color: var(--cinnabar-1);
   text-shadow: 0 0 6px rgba(168, 95, 69, 0.4);
   animation: heart-float 1.4s ease-out;
@@ -353,7 +353,7 @@ function actClick (key: string) {
 }
 .t-lbl { font-family: var(--font-serif); font-size: var(--fs-body); color: var(--ink-1); }
 .t-num { font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-3); margin-left: 6px; }
-.t-ok  { color: var(--jade); font-size: 18px; font-weight: bold; }
+.t-ok  { color: var(--jade); font-size: var(--fs-body); font-weight: bold; }
 .t-go  {
   background: var(--azure); color: var(--paper-1);
   border: 1.5px solid var(--ink-1); border-radius: 50%;

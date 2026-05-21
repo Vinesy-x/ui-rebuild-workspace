@@ -159,7 +159,7 @@ function purchase (biz: any, e: Event) {
   border-radius: var(--r-pill);
   padding: 8px 16px;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--fs-h2);
   margin: 4px auto 14px;
   width: fit-content;
   border: 1.5px solid var(--gold-1);
@@ -188,7 +188,7 @@ function purchase (biz: any, e: Event) {
   background: var(--cinnabar-1);
   color: var(--paper-1);
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: var(--fs-label);
   letter-spacing: .2em;
   padding: 6px 12px;
   text-align: center;
@@ -230,7 +230,7 @@ function purchase (biz: any, e: Event) {
 .bz-iap-buffs li {
   list-style: none;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   color: var(--ink-1);
   display: inline-flex; align-items: center; gap: 6px;
   line-height: 1.3;
@@ -253,7 +253,7 @@ function purchase (biz: any, e: Event) {
   border-radius: var(--r-pill);
   padding: 8px;
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: var(--fs-label);
   letter-spacing: .1em;
   cursor: pointer;
   box-shadow: 0 3px 0 var(--ink-1);
@@ -326,7 +326,7 @@ function purchase (biz: any, e: Event) {
 .bz-card-name.lock-name { color: var(--ink-3); }
 .bz-card-income {
   font-family: var(--font-num);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   color: var(--ink-1);
   display: inline-flex; align-items: center; gap: 4px;
   background: var(--paper-1);
@@ -341,7 +341,7 @@ function purchase (biz: any, e: Event) {
   display: grid; place-items: center;
   font-family: var(--font-display);
 }
-.bz-card-lv { font-family: var(--font-num); font-size: 13px; color: var(--ink-3); }
+.bz-card-lv { font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-3); }
 .bz-card-upgrade {
   background: var(--jade);
   color: var(--paper-1);
@@ -349,7 +349,7 @@ function purchase (biz: any, e: Event) {
   border-radius: 6px;
   padding: 5px;
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: var(--fs-meta);
   letter-spacing: .08em;
   box-shadow: 0 2px 0 var(--ink-1);
   text-align: center;
@@ -374,7 +374,7 @@ function purchase (biz: any, e: Event) {
   border: 1.5px solid var(--paper-edge);
   display: grid; place-items: center;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--fs-body);
   color: var(--ink-2);
   background-image: repeating-linear-gradient(45deg, transparent 0 5px, rgba(139,111,71,.16) 5px 7px);
 }
@@ -383,7 +383,7 @@ function purchase (biz: any, e: Event) {
   background-image: none;
   border-style: dashed;
   color: var(--ink-3);
-  font-size: 26px;
+  font-size: var(--fs-h1);
   cursor: pointer;
 }
 .mgr-face.lock-face {
@@ -398,7 +398,7 @@ function purchase (biz: any, e: Event) {
   top: -22px; left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-num);
-  font-size: 13px;
+  font-size: var(--fs-meta);
   color: var(--jade);
   font-weight: 700;
   display: inline-flex; align-items: center; gap: 3px;
@@ -427,7 +427,7 @@ function purchase (biz: any, e: Event) {
   border-radius: 8px;
   padding: 6px 14px;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   cursor: pointer;
   box-shadow: 0 2px 0 var(--ink-1);
   display: inline-flex; align-items: center; gap: 4px;
@@ -452,7 +452,7 @@ function purchase (biz: any, e: Event) {
   border-radius: var(--r-pill);
   padding: 7px 16px;
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: var(--fs-label);
   letter-spacing: .12em;
   cursor: pointer;
   box-shadow: 0 3px 0 var(--ink-1);

@@ -73,7 +73,7 @@ const tabs = [
 
 .tab .lab {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-2);
     letter-spacing: .04em;
   }
@@ -87,7 +87,7 @@ const tabs = [
     border: 1.5px solid var(--paper-1);
     border-radius: 50%;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     display: grid; place-items: center;
     line-height: 1;
     z-index: 5;

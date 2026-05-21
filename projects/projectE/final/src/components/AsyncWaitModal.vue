@@ -46,7 +46,7 @@ function search() { step.value = 'loading'; setTimeout(() => step.value = 'offer
 </template>
 
 <style scoped>
-.lead { font-family: var(--font-display); font-size: 18px; color: var(--ink-1); text-align: center; margin: 12px 0; }
+.lead { font-family: var(--font-display); font-size: var(--fs-body); color: var(--ink-1); text-align: center; margin: 12px 0; }
 .lead.muted { color: var(--ink-3); }
 .item-illu, .buyer-illu {
   height: 200px;
@@ -56,7 +56,7 @@ function search() { step.value = 'loading'; setTimeout(() => step.value = 'offer
   margin: 12px 0;
   display: grid; place-items: center;
   font-family: ui-monospace, monospace;
-  font-size: 14px;
+  font-size: var(--fs-mono);
   color: var(--ink-3);
   background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
 }
@@ -78,7 +78,7 @@ function search() { step.value = 'loading'; setTimeout(() => step.value = 'offer
   background: var(--paper-1); color: var(--fail-red);
   border: 1.5px solid var(--fail-red);
   padding: 10px; border-radius: 8px;
-  font-family: var(--font-display); font-size: 18px;
+  font-family: var(--font-display); font-size: var(--fs-body);
   cursor: pointer;
 }
 .accept-cta.inline { flex: 1; }

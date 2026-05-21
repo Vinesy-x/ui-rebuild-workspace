@@ -55,20 +55,20 @@ const sealGlyph = { coin: '銅', jade: '玉', brick: '磚' }[props.currency]
   display: grid; place-items: center;
   background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
 }
-.purchase-illu .ph { font-family: ui-monospace, monospace; font-size: 14px; color: var(--ink-3); }
+.purchase-illu .ph { font-family: ui-monospace, monospace; font-size: var(--fs-mono); color: var(--ink-3); }
 .price-row {
   display: flex; align-items: center; gap: 10px;
   margin: 0 0 12px;
 }
-.price-row .num { font-family: var(--font-display); font-size: 28px; color: var(--ink-1); font-weight: 700; }
+.price-row .num { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--ink-1); font-weight: 700; }
 .bonuses {
   list-style: none; padding: 0; margin: 0 0 14px;
   display: flex; flex-direction: column; gap: 6px;
 }
 .bonuses li {
   display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-display); font-size: 16px; color: var(--jade);
+  font-family: var(--font-display); font-size: var(--fs-label); color: var(--jade);
 }
 .bonuses li.negative { color: var(--fail-red); }
-.bonuses .pic { font-family: var(--font-display); font-size: 18px; }
+.bonuses .pic { font-family: var(--font-display); font-size: var(--fs-body); }
 </style>

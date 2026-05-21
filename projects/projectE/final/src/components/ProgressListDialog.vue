@@ -51,7 +51,7 @@ const store = useModalStore()
     display: grid; place-items: center;
     color: var(--ink-3);
     font-family: ui-monospace, monospace;
-    font-size: 16px;
+    font-size: var(--fs-label);
     background:
       repeating-linear-gradient(45deg,
         transparent 0 10px,
@@ -64,7 +64,7 @@ const store = useModalStore()
     background: var(--jade);
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     padding: 6px 14px;
     border-radius: 999px;
     border: 1.5px solid var(--ink-1);
@@ -92,17 +92,17 @@ const store = useModalStore()
     border-radius: 4px;
     display: grid; place-items: center;
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-1);
   }
 
-.prow .name { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
+.prow .name { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
 
-.prow .cost { font-family: var(--font-num); font-size: 17px; color: var(--ink-3); }
+.prow .cost { font-family: var(--font-num); font-size: var(--fs-label); color: var(--ink-3); }
 
 .prow .gain {
     font-family: var(--font-num);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--paper-1);
     background: var(--cur-mood);
     border: 1px solid var(--ink-1);
@@ -120,6 +120,6 @@ const store = useModalStore()
     padding: 3px 10px;
     border-radius: var(--r-pill);
     font-family: var(--font-num);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
 </style>

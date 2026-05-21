@@ -1,0 +1,122 @@
+{
+  "_source": "fps_0058 (钱庄) + fps_0059 (信息 modal) + fps_0061 (票号) + fps_0062 (商號 list) · canonical = design-brief/flows/screen-details.md L463-510",
+  "_canonical": "3 sub-tab 投资屏: 钱庄 (cashback 2% + 3 寄銀 cards) / 票号 (你之庫本 + 自动经纪IAP + 免费贈本 + 商號 list 9 家) / 🔒 锁档",
+  "_naming": "古风化: 投资→投資 / 银行→錢莊 / 股票→票號 / cashback→回返銀 / 公司→商號 / 高级卡→上戶銀牌 / 自动交易→自動經紀 / 投资组合→你之庫本 / 股息→紅利",
+
+  "screen": {
+    "title": "投　資",
+    "date": { "era": "崇寧", "day": "十二", "m": "仲" },
+    "hudOverrides": { "coin": 1580, "mood": 63, "moodDelta": "−5.2/月", "health": 76, "healthDelta": "+0.4/月", "coinDelta": "+1.1k/月" }
+  },
+
+  "subtabs": [
+    { "key": "bank",  "label": "錢　莊", "active": true  },
+    { "key": "stock", "label": "票　號", "active": false },
+    { "key": "lock",  "label": "🔒",     "locked": true  }
+  ],
+
+  "lockPane": {
+    "msg": "未　啟\n第　三　道　業",
+    "cond": "需 ★ 廿 · 當前 五"
+  },
+
+  "bank": {
+    "iap": {
+      "name": "上　戶　銀　牌",
+      "ribbon": "最　佳　選　擇",
+      "illu": "上戶 銀牌\n四〇〇〇 一二三四 五六七八 九〇一〇",
+      "buffs": ["X2 回返銀", "X2 紅利", "X2 田產收益", "X2 寄銀收入"],
+      "cost": "三十",
+      "currency": "玉"
+    },
+
+    "cashback": {
+      "head": "回　返　銀",
+      "ratePct": 2,
+      "pop": "+651",
+      "progressCur": 1,
+      "progressTotal": 3000,
+      "progressLabel": "一／三千",
+      "tagline": "每番花費，皆得回返",
+      "canClaim": false,
+      "infoMsg": "cashback"
+    },
+
+    "deposits": [
+      {
+        "key": "slot1",
+        "kind": "timer-lock",
+        "icon": "⏰",
+        "label": "寄銀將於以下時辰可取：",
+        "timer": "三 時 ：四十八 刻",
+        "_note": "fps_0058 闹钟卡 · 已寄银未到期"
+      },
+      {
+        "key": "d20k",
+        "kind": "fixed",
+        "tag": "一　日",
+        "iconChar": "銅",
+        "value": "20k",
+        "timer": "十九 時 ：四十八 刻",
+        "_note": "fps_0058 钞票堆卡 · 20k 1天定存 · 19:48 倒计时"
+      },
+      {
+        "key": "d100",
+        "kind": "ad",
+        "tag": "一　日",
+        "iconChar": "袋",
+        "bonus": "+100%",
+        "cta": "投　資",
+        "_note": "fps_0058 钱袋卡 · 1天 +100% · 红'投资'CTA + ▶ 看广告"
+      }
+    ]
+  },
+
+  "stock": {
+    "portfolio": {
+      "head": "你　之　庫　本",
+      "hourlyGainLabel": "三時辰內之利:",
+      "hourlyGain": "+219",
+      "valueLabel": "庫本之值:",
+      "value": "965",
+      "valuePct": "0.00%",
+      "valuePctDir": "down",
+      "dividendLabel": "紅利派發:",
+      "dividendPct": 25,
+      "cta": "認　購"
+    },
+    "iap": {
+      "name": "自　動　經　紀",
+      "illu": "經紀\n─ 喫 茶 而 望 市 ─",
+      "buffs": ["每時辰得一百隨機股本", "免手續費", "全市最優費率"],
+      "cost": "三十",
+      "currency": "玉"
+    },
+    "freebie": {
+      "head": "免　費　贈　本",
+      "text": "免費得一组随机股本",
+      "cta": "領",
+      "isAd": true
+    },
+    "stocksHead": "商　號"
+  },
+
+  "stocks": [
+    { "key": "xingming",  "name": "星　茗",       "brand": "STARBUX",      "glyph": "星", "color": "jade",     "lv": "十四", "owned": 175, "ownedPct": 60, "income": "+43" },
+    { "key": "liuying",   "name": "流　影",       "brand": "STREAMLIX",    "glyph": "流", "color": "cinnabar", "lv": "十",   "owned": 303, "ownedPct": 45, "income": "+59" },
+    { "key": "mailu",     "name": "麥　盧",       "brand": "MCDONNALD'S",  "glyph": "麥", "color": "gold",     "lv": "十三", "owned": 487, "ownedPct": 75, "income": "+117" },
+    { "key": "keke",      "name": "可　口",       "brand": "COKA-KOALA",   "glyph": "可", "color": "cinnabar-2","lv": "—",   "owned": 0,   "ownedPct": 0,  "income": "+0"  },
+    { "key": "taiwei",    "name": "臺　微　作",   "brand": "TMSC",         "glyph": "微", "color": "celadon",  "lv": "—",    "owned": 0,   "ownedPct": 0,  "income": "+0"  },
+    { "key": "tesiluo",   "name": "特　斯　駱",   "brand": "TESLO",        "glyph": "駱", "color": "azure",    "lv": "—",    "owned": 0,   "ownedPct": 0,  "income": "+0"  },
+    { "key": "fanshang",  "name": "蘩　商",       "brand": "AMAZOON",      "glyph": "蘩", "color": "amber",    "lv": "—",    "owned": 0,   "ownedPct": 0,  "income": "+0"  },
+    { "key": "masesi",    "name": "馬　瑟　驛",   "brand": "MERCE-DEEZ",   "glyph": "馬", "color": "ink",      "lv": "—",    "owned": 0,   "ownedPct": 0,  "income": "+0"  },
+    { "key": "weiying",   "name": "微　硬　閣",   "brand": "MICROHARD",    "glyph": "硬", "color": "wood",     "lv": "—",    "owned": 0,   "ownedPct": 0,  "income": "+0"  }
+  ],
+
+  "infoMessages": {
+    "cashback": "所有支出皆得回返。花得越多，返得越多。",
+    "freebie":  "每番贈本，皆隨機商號股本一组。",
+    "premium":  "上戶銀牌一旦持有，X2 諸般收益。",
+    "broker":   "自動經紀代你買賣，安坐喫茶而望市。"
+  }
+}

@@ -161,7 +161,7 @@ function progressPct (j: Job) {
 .wk-level-lab {
   align-self: center;
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: var(--fs-meta);
   color: var(--ink-3);
   background: var(--paper-2);
   border: 1px solid var(--paper-edge);
@@ -193,7 +193,7 @@ function progressPct (j: Job) {
 .wk-card:active { transform: scale(.97); }
 .wk-card-name {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: var(--fs-meta);
   color: var(--ink-2);
   line-height: 1.1;
   margin-bottom: 2px;
@@ -212,7 +212,7 @@ function progressPct (j: Job) {
 }
 .wk-card-price {
   font-family: var(--font-num);
-  font-size: 13px;
+  font-size: var(--fs-meta);
   color: var(--ink-1);
   display: inline-flex; align-items: center; gap: 3px;
   margin-bottom: 3px;
@@ -233,17 +233,17 @@ function progressPct (j: Job) {
   border: 1px solid var(--ink-1);
   border-radius: 4px;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: var(--fs-mono);
   letter-spacing: .04em;
   line-height: 1.3;
 }
 
 /* 5 状态卡 */
 .wk-card.is-locked { opacity: .6; background: var(--paper-3); }
-.wk-card.is-locked .wk-card-illu { background: var(--ink-4); color: var(--paper-1); font-size: 26px; }
+.wk-card.is-locked .wk-card-illu { background: var(--ink-4); color: var(--paper-1); font-size: var(--fs-h1); }
 .wk-card.is-locked .wk-card-price { color: var(--ink-4); }
 .wk-card.is-locked .wk-card-cta { display: none; }
-.wk-card-lock-q { font-family: var(--font-display); font-size: 13px; color: var(--ink-4); margin-top: 4px; }
+.wk-card-lock-q { font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-4); margin-top: 4px; }
 
 .wk-card.is-done { background: var(--celadon-3); border-color: var(--wood-2); color: var(--paper-1); }
 .wk-card.is-done .wk-card-name { color: var(--paper-1); }
@@ -262,7 +262,7 @@ function progressPct (j: Job) {
 
 .wk-card.is-fail .wk-card-illu {
   background: var(--fail-red); color: var(--paper-1);
-  font-family: var(--font-display); font-weight: 700; font-size: 16px;
+  font-family: var(--font-display); font-weight: 700; font-size: var(--fs-label);
   letter-spacing: -.02em;
 }
 .wk-card.is-fail .wk-card-cta { background: var(--paper-1); color: var(--fail-red); border-color: var(--fail-red); }

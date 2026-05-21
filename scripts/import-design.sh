@@ -120,6 +120,10 @@ fi
 echo "    Found final/: ${SRC_FINAL#$WORK_DIR/}"
 
 # ---------- 4. rsync final/ ----------
+# 注意:design 沙箱通常只动 src/ 下的 .vue/.ts/.json,不带 Vite scaffold。
+# rsync --delete 会把 final/ 根的 package.json / tsconfig.json / vite.config.ts /
+# index.html / README.md 全部 wipe(已踩坑 1 次,2026-05-21)。
+# 解法:--exclude 把 Vite scaffold 全列上,设计沙箱即使没带这些文件也不会误删。
 echo "==> Syncing final/ to $FINAL_DIR/"
 mkdir -p "$FINAL_DIR"
 rsync -a --delete \
@@ -127,6 +131,15 @@ rsync -a --delete \
   --exclude='dist/' \
   --exclude='.vite/' \
   --exclude='package-lock.json' \
+  --exclude='package.json' \
+  --exclude='tsconfig.json' \
+  --exclude='tsconfig.*.json' \
+  --exclude='vite.config.ts' \
+  --exclude='vite.config.js' \
+  --exclude='index.html' \
+  --exclude='README.md' \
+  --exclude='.gitignore' \
+  --exclude='env.d.ts' \
   "$SRC_FINAL/" "$FINAL_DIR/"
 
 # ---------- 4.5. rsync HTML 真值 to preview/ ----------

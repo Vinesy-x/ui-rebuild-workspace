@@ -90,7 +90,7 @@
 }
 .star::before {
   content: "★";
-  font-size: 18px;
+  font-size: var(--fs-body);
   color: var(--ink-4);
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
 }
@@ -105,11 +105,11 @@
   -webkit-text-fill-color: transparent;
 }
 .star--sm { width: 14px; height: 14px; }
-.star--sm::before { font-size: 14px; }
+.star--sm::before { font-size: var(--fs-meta); }
 .star--md { width: 22px; height: 22px; }
-.star--md::before { font-size: 22px; }
+.star--md::before { font-size: var(--fs-h2); }
 .star--lg { width: 28px; height: 28px; }
-.star--lg::before { font-size: 28px; }
+.star--lg::before { font-size: var(--fs-h1); }
 
 /* ─── .screen 5 view 共享布局(80 HUD + 44 屏标 + 1fr 内容 + 90 底栏)─── */
 .screen {

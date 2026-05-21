@@ -37,17 +37,17 @@
 
 ---
 
-## 当前阶段:**Phase B 进行中**(T-B1/T-B2/T-B3/T-B4 完成,T-B5 待启动)
+## 当前阶段:**Phase B 进行中**(T-B1/T-B2/T-B3/T-B4/T-B5 完成,T-B6 待启动)
 
 | 阶段 | 状态 | 备注 |
 |---|---|---|
 | Phase A T-A1(fps_0035 主菜单 + 风格定档)| ✅ 完成 | Style Lock 锁定:15 色 + 8 字阶 v3.1 + 9 货币 + 7 角标 + 27 古风对照 + motion 体系 |
 | Phase B T-B1(fps_0001/02/07 技能 Tab 1)| ✅ 完成 | SkillList.vue 468 行 + SkillAccelerateModal 209 行 + skillList.json 13 技能 |
 | Phase B T-B2(fps_0012-0025 关系 Tab 2) | ✅ 完成 | MeetList + RelationDetail 5 按钮 + 飘心 + 约会 overlay + relations.json |
-| **Phase B T-B3(fps_0036+0037+0040+0041 工作 DAG)**| ✅ **完成** | WorkDAG.vue 13 岗位 5 状态 + DAG 拓扑 + JobDetail/Promo 挂入口 + workList.json |
-| **Phase B T-B4(fps_0046-0053 业务 Tab 4)** | ✅ **完成** | BusinessList.vue 5 业务 + IAP banner + mgr 环形 widget + BizHire/BizUpgrade modal + businessList.json |
-| Phase B T-B5(fps_0058-0062 投资 Tab 5)| ⏳ **待启动** | Bank info modal |
-| Phase B T-B6(fps_0065-0088 物品 Tab 6)| 待 | PurchaseConfirm / AsyncWait / Cinematic 联动 |
+| Phase B T-B3(fps_0036+0037+0040+0041 工作 DAG)| ✅ 完成 | WorkDAG.vue 13 岗位 5 状态 + DAG 拓扑 + JobDetail/Promo 挂入口 + workList.json |
+| Phase B T-B4(fps_0046-0053 业务 Tab 4) | ✅ 完成 | BusinessList.vue 5 业务 + IAP banner + mgr 环形 widget + BizHire/BizUpgrade modal + businessList.json |
+| **Phase B T-B5(fps_0058-0062 投资 Tab 5)**| ✅ **完成** | InvestBank.vue 3 sub-tab(錢莊/票號/🔒)+ 上戶銀牌 IAP + 回返銀 chip + 3 寄銀卡 + 庫本 portfolio + 自動經紀 IAP + 免費贈本 + 9 商號 list + InvestInfoModal + StockListModal + investments.json |
+| Phase B T-B6(fps_0065-0088 物品 Tab 6)| ⏳ **待启动** | PurchaseConfirm / AsyncWait / Cinematic 联动 |
 | Phase B T-B7+(全局 modal:字符/目标/设置/幸福/健康/事件/商店货币)| 待 | 复用既有共享 modal |
 
 ---
@@ -76,7 +76,7 @@
 
 ---
 
-## 11 共享 modal 组件(全部就位)
+## 13 共享 modal 组件(全部就位)
 
 | # | 组件 | 用途 | 复用屏 |
 |---|---|---|---|
@@ -91,6 +91,8 @@
 | 9 | `SkillAccelerateModal` | 技能加速(每技能各一实例)| fps_0007 |
 | 10 | `BizHireModal` | 雇掌櫃 | fps_0050(花坊 +) |
 | 11 | `BizUpgradeModal` | 興擴 (升级) | fps_0053(茶肆/客棧/香鋪/花坊)|
+| 12 | `InvestInfoModal` | 投资 ⓘ 信息(cashback/freebie/premium/broker 4 文案) | fps_0059 |
+| 13 | `StockListModal` | 票號 認購 → 9 商號 list | fps_0062 |
 
 ---
 
@@ -107,10 +109,10 @@
 
 - ✅ Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router
 - ✅ `npm install && npm run dev` 可起
-- ✅ `vite build` 实测通过(MainMenu 15kB / BusinessList 10.4kB / SkillList 8.5kB / RelationDetail 7.9kB / WorkDAG 6.6kB · 102 modules)
-- ✅ 8 view(MainMenu / SkillList / MeetList / RelationDetail / **WorkDAG / BusinessList** / 2 占位 InvestBank+ShopItems)
-- ✅ 13 共享 component(11 modal + HudBar + BottomTabBar + ModalShell)
-- ✅ 5 data(mainMenu.json / skillList.json / relations.json / **workList.json / businessList.json**)
+- ✅ `vite build` 实测通过(MainMenu 15kB / InvestBank 10.2kB / BusinessList 9.3kB / SkillList 7.7kB / RelationDetail 7kB / WorkDAG 5.7kB · **123 modules**)
+- ✅ 8 view(MainMenu / SkillList / MeetList / RelationDetail / WorkDAG / BusinessList / **InvestBank** / 1 占位 ShopItems)
+- ✅ 17 共享 component(13 modal + HudBar + BottomTabBar + ModalShell)
+- ✅ 6 data(mainMenu.json / skillList.json / relations.json / workList.json / businessList.json / **investments.json**)
 - ✅ router 7 路由(/main /skill /meet /meet/:npcKey /work /business /invest /items)
 
 ---
@@ -139,10 +141,17 @@
 
 ## 下一步
 
-**T-B5 投资 Tab 5**(`fps_0058-0062`):
-- Vue:InvestBank.vue 填实(当前 15 行占位)
-- 新增 modal:bank-info(储户对账/利息说明)
-- 数据:investments.json(若干银号 + 利率档位 + 当前余额)
+**T-B6 物品 Tab 6**(`fps_0065-0088`):
+- Vue:ShopItems.vue 填实(当前 15 行占位 · 衣服/食物/居所/车马/大件 5 sub-tab)
+- 联动既有 PurchaseConfirmModal / AsyncWaitModal(卖车 3 步链)/ CinematicScene(大件购买过场)
+- 数据:itemsList.json(各分类商品 + 价格 + tier)
+
+> T-B5 完成于 2026-05-21:
+> - InvestBank.vue 3 sub-tab(錢莊 / 票號 / 🔒 未啟第三道業)
+> - 錢莊:上戶銀牌 IAP 三十玉 + 回返銀 chip 2% + 3 寄銀卡(timer-lock / fixed 20k / ad +100%)
+> - 票號:你之庫本 portfolio + 自動經紀 IAP 三十玉 + 免費贈本 + 9 商號 list(StockListModal 認購)
+> - InvestInfoModal 4 古风文案(cashback / freebie / premium / broker)
+> - 古风化:投资→投資 / 银行→錢莊 / 股票→票號 / cashback→回返銀 / 公司→商號 / 高级卡→上戶銀牌 / 自动交易→自動經紀 / 投资组合→你之庫本 / 股息→紅利
 
 > T-B3 + T-B4 完成于 2026-05-20:
 > - WorkDAG.vue 13 岗位 5 状态 + DAG 拓扑 + JobDetail/Promo 挂入口

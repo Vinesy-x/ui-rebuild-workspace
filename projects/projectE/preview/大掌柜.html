@@ -94,7 +94,7 @@
     bottom: -3px; left: 50%; transform: translateX(-50%);
     background: var(--ink-1); color: var(--paper-1);
     font-family: var(--font-num);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     padding: 1px 6px;
     border-radius: var(--r-pill);
     border: 1px solid var(--gold-1);
@@ -116,7 +116,7 @@
     align-items: center;
     gap: 4px;
     font-family: var(--font-num);
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-1);
     line-height: 1;
     cursor: pointer;
@@ -126,11 +126,11 @@
   }
   .hud-cell .num { font-weight: var(--fw-medium); letter-spacing: -.02em; }
   .hud-cell .sub {
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--ink-3);
     font-family: var(--font-num);
   }
-  .pill { white-space: nowrap; padding: 1px 6px; font-size: 15px; }
+  .pill { white-space: nowrap; padding: 1px 6px; font-size: var(--fs-meta); }
 
   /* ── 货币印章 icon ── */
   .ic { width: 22px; height: 22px; display: inline-grid; place-items: center; flex: none; }
@@ -141,7 +141,7 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
     color: var(--paper-1);
-    font-size: 17px;
+    font-size: var(--fs-label);
     line-height: 1;
     position: relative;
     flex: none;
@@ -206,9 +206,9 @@
     justify-content: center;
     align-items: center;
   }
-  .cal .y { font-size: 14px; color: var(--ink-3); letter-spacing:.05em; line-height:1; }
-  .cal .d { font-size: 20px; font-weight: var(--fw-bold); color: var(--ink-1); line-height:1; margin: 2px 0; white-space: nowrap; letter-spacing: -.05em; }
-  .cal .m { font-size: 14px; color: var(--cinnabar-1); font-weight: var(--fw-bold); letter-spacing:.05em; line-height:1; }
+  .cal .y { font-size: var(--fs-meta); color: var(--ink-3); letter-spacing:.05em; line-height:1; }
+  .cal .d { font-size: var(--fs-h2); font-weight: var(--fw-bold); color: var(--ink-1); line-height:1; margin: 2px 0; white-space: nowrap; letter-spacing: -.05em; }
+  .cal .m { font-size: var(--fs-meta); color: var(--cinnabar-1); font-weight: var(--fw-bold); letter-spacing:.05em; line-height:1; }
 
   /* 牌坊 (顶部装饰) */
   .archway { display: none; }
@@ -328,7 +328,7 @@
     padding: 5px 12px 5px 12px;
     border-radius: var(--r-pill);
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     letter-spacing: .08em;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
     cursor: pointer;
@@ -336,7 +336,7 @@
   }
   .name-pill .edit {
     font-family: var(--font-serif);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     opacity: .85;
     border-left: 1px solid rgba(255,255,255,.3);
     padding-left: 6px;
@@ -345,7 +345,7 @@
   }
   .name-meta {
     font-family: var(--font-num);
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     line-height: 1.2;
     white-space: nowrap;
@@ -388,7 +388,7 @@
     border-radius: 4px 4px 28px 28px / 4px 4px 18px 18px;
     border: 1.5px solid var(--gold-1);
     color: var(--gold-2);
-    font-size: 32px;
+    font-size: var(--fs-display);
     display: grid;
     place-items: center;
     position: relative;
@@ -409,7 +409,7 @@
     display: inline-block;
     background: var(--ink-1);
     color: var(--gold-2);
-    font-size: 16px;
+    font-size: var(--fs-label);
     padding: 1px 6px;
     border-radius: var(--r-pill);
     border: 1px solid var(--gold-1);
@@ -502,7 +502,7 @@
     border: 1px solid var(--wood-2);
     font-family: var(--font-display);
     color: var(--paper-1);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     text-align: center;
     writing-mode: vertical-rl;
     padding: 4px 0;
@@ -588,7 +588,7 @@
     background: rgba(31,27,20,.78);
     color: var(--paper-1);
     font-family: ui-monospace, "SF Mono", monospace;
-    font-size: 14px;
+    font-size: var(--fs-mono);
     padding: 2px 6px;
     border: 1px dashed var(--gold-2);
     white-space: nowrap;
@@ -645,7 +645,7 @@
     background: rgba(31,27,20,.7);
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: var(--fs-label);
     padding: 1px 8px;
     border-radius: var(--r-pill);
     white-space: nowrap;
@@ -684,7 +684,7 @@
     display: grid; place-items: center;
     color: var(--gold-2);
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: var(--fs-h1);
     border: 1px solid var(--gold-1);
     border-radius: 4px;
   }
@@ -742,7 +742,7 @@
     background: rgba(31,27,20,.5);
     color: var(--paper-1);
     font-family: ui-monospace, "SF Mono", monospace;
-    font-size: 14px;
+    font-size: var(--fs-mono);
     padding: 2px 6px;
     letter-spacing: .02em;
     z-index: 6;
@@ -770,7 +770,7 @@
     display: grid; place-items: center;
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     box-shadow: inset 0 -3px 0 rgba(0,0,0,.2);
     position: relative;
   }
@@ -810,7 +810,7 @@
   }
   .task-card .label {
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-1);
     line-height: 1.1;
     display: flex; align-items: center; gap: 4px;
@@ -832,7 +832,7 @@
   }
   .task-card .ratio {
     font-family: var(--font-num);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--ink-3);
     margin-top: 2px;
   }
@@ -861,7 +861,7 @@
     border: 1.5px solid var(--paper-1);
     border-radius: 50%;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     display: grid; place-items: center;
     line-height: 1;
     box-shadow: 0 0 0 1px var(--cinnabar-3);
@@ -917,7 +917,7 @@
   }
   .tab .lab {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-2);
     letter-spacing: .04em;
   }
@@ -930,7 +930,7 @@
     border: 1.5px solid var(--paper-1);
     border-radius: 50%;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     display: grid; place-items: center;
     line-height: 1;
     z-index: 5;
@@ -989,7 +989,7 @@
     align-items: center;
     justify-content: space-between;
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     border-bottom: 1px solid var(--wood-2);
     position: relative;
   }
@@ -1007,7 +1007,7 @@
     border-radius: 50%;
     display: grid; place-items: center;
     cursor: pointer;
-    font-size: 18px;
+    font-size: var(--fs-body);
     background: transparent;
     color: var(--paper-1);
   }
@@ -1037,7 +1037,7 @@
     display: grid; place-items: center;
     color: var(--ink-3);
     font-family: ui-monospace, monospace;
-    font-size: 16px;
+    font-size: var(--fs-label);
     background:
       repeating-linear-gradient(45deg,
         transparent 0 10px,
@@ -1049,7 +1049,7 @@
     background: var(--jade);
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     padding: 6px 14px;
     border-radius: 999px;
     border: 1.5px solid var(--ink-1);
@@ -1073,14 +1073,14 @@
     border-radius: 4px;
     display: grid; place-items: center;
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-1);
   }
-  .prow .name { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-  .prow .cost { font-family: var(--font-num); font-size: 17px; color: var(--ink-3); }
+  .prow .name { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .prow .cost { font-family: var(--font-num); font-size: var(--fs-label); color: var(--ink-3); }
   .prow .gain {
     font-family: var(--font-num);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--paper-1);
     background: var(--cur-mood);
     border: 1px solid var(--ink-1);
@@ -1096,7 +1096,7 @@
     padding: 3px 10px;
     border-radius: var(--r-pill);
     font-family: var(--font-num);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
 
   /* ── 工作要求 modal ── */
@@ -1109,18 +1109,18 @@
     position: relative;
     display: grid; place-items: center;
     font-family: ui-monospace, monospace;
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
   }
   .req-title {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     color: var(--ink-1);
     text-align: center;
     margin-bottom: 6px;
   }
-  .req-sub { text-align: center; font-size: 16px; color: var(--ink-3); margin-bottom: 10px; }
+  .req-sub { text-align: center; font-size: var(--fs-label); color: var(--ink-3); margin-bottom: 10px; }
   .reqs { display: flex; flex-direction: column; gap: 6px; }
   .req {
     display: grid;
@@ -1139,17 +1139,17 @@
     border-radius: 4px;
     display: grid; place-items: center;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
-  .req .name { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-  .req .name .num { font-family: var(--font-num); color: var(--ink-3); margin-left: 6px; font-size: 16px; }
+  .req .name { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .req .name .num { font-family: var(--font-num); color: var(--ink-3); margin-left: 6px; font-size: var(--fs-label); }
   .req .state-ok {
     width: 22px; height: 22px;
     background: var(--jade);
     color: var(--paper-1);
     border-radius: 50%;
     display: grid; place-items: center;
-    font-size: 17px; line-height: 1;
+    font-size: var(--fs-label); line-height: 1;
   }
   .req .state-go {
     background: var(--azure);
@@ -1157,7 +1157,7 @@
     font-family: var(--font-display);
     padding: 3px 12px;
     border-radius: var(--r-pill);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
   .accept-cta {
     margin-top: 12px;
@@ -1168,7 +1168,7 @@
     padding: 10px;
     border-radius: 8px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     cursor: pointer;
     box-shadow: 0 3px 0 var(--ink-1);
   }
@@ -1185,12 +1185,12 @@
   }
   .reputation .repnum {
     font-family: var(--font-display);
-    font-size: 32px;
+    font-size: var(--fs-display);
     color: var(--cinnabar-1);
     line-height: 1;
   }
-  .reputation .replab { font-family: var(--font-display); font-size: 17px; color: var(--ink-3); margin-top: 2px; }
-  .reputation .repprog { font-family: var(--font-num); font-size: 18px; color: var(--ink-1); }
+  .reputation .replab { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-3); margin-top: 2px; }
+  .reputation .repprog { font-family: var(--font-num); font-size: var(--fs-body); color: var(--ink-1); }
   .goal-tabs {
     display: flex;
     gap: 6px;
@@ -1203,7 +1203,7 @@
     text-align: center;
     padding: 6px;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     border-bottom: 2px solid transparent;
     cursor: pointer;
@@ -1226,13 +1226,13 @@
   }
   .goal-row.done { opacity: .6; }
   .goal-row .gicon { width: 28px; height: 28px; }
-  .goal-row .gname { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-  .goal-row .greward { font-family: var(--font-num); font-size: 16px; color: var(--ink-3); margin-top: 2px; }
+  .goal-row .gname { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .goal-row .greward { font-family: var(--font-num); font-size: var(--fs-label); color: var(--ink-3); margin-top: 2px; }
   .goal-row .gact {
     background: var(--amber);
     color: var(--ink-1);
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     padding: 5px 14px;
     border-radius: var(--r-pill);
     border: 1px solid var(--ink-1);
@@ -1252,7 +1252,7 @@
     color: var(--paper-1);
     border-radius: 50%;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     display: grid; place-items: center;
     border: 1.5px solid var(--paper-1);
     z-index: 4;
@@ -1266,7 +1266,7 @@
     padding: 12px 10px;
     border-bottom: 1px solid var(--paper-edge);
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-1);
   }
   .set-row .ico {
@@ -1276,7 +1276,7 @@
     border-radius: 4px;
     display: grid; place-items: center;
     margin-right: 8px;
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-1);
   }
   .toggle {
@@ -1298,7 +1298,7 @@
   }
   .toggle.off { background: var(--ink-4); }
   .toggle.off::after { right: auto; left: 1px; }
-  .ver { text-align: center; font-family: var(--font-num); font-size: 15px; color: var(--ink-4); padding: 12px 8px; line-height: 1.6; }
+  .ver { text-align: center; font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-4); padding: 12px 8px; line-height: 1.6; }
 
   /* ============================================================
    *  Phase B T-B1 · 技能 list (fps_0001 / 0002 / 0007)
@@ -1329,7 +1329,7 @@
     width: 60%; height: 6px; background: var(--wood-1);
     clip-path: polygon(0 0, 10% 100%, 90% 100%, 100% 0);
   }
-  .sb-title { font-family: var(--font-display); font-size: 22px; letter-spacing: .35em; text-align: center; padding-left: .35em; }
+  .sb-title { font-family: var(--font-display); font-size: var(--fs-h2); letter-spacing: .35em; text-align: center; padding-left: .35em; }
   .sb-close {
     width: 28px; height: 28px;
     border: 1.5px solid var(--paper-1); border-radius: 50%;
@@ -1357,7 +1357,7 @@
     position: relative; cursor: pointer; box-shadow: var(--sh-card);
   }
   .booster .b-seal {
-    width: 32px; height: 32px; font-size: 20px;
+    width: 32px; height: 32px; font-size: var(--fs-h2);
     background: var(--jade); color: var(--paper-1);
     border-radius: 3px;
     display: grid; place-items: center;
@@ -1411,7 +1411,7 @@
   .tone-amber    { background: var(--amber); }
   .tone-celadon  { background: var(--celadon-1); }
   .tone-wood     { background: var(--wood-1); }
-  .ic-col .lv { font-family: var(--font-display); font-size: 14px; color: inherit; opacity: .85; letter-spacing: .04em; }
+  .ic-col .lv { font-family: var(--font-display); font-size: var(--fs-meta); color: inherit; opacity: .85; letter-spacing: .04em; }
 
   .sk-mid { min-width: 0; }
   .sk-name-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
@@ -1431,10 +1431,10 @@
     width: 36px; height: 36px; border-radius: 6px;
     background: var(--paper-1); border: 1.5px solid var(--azure);
     color: var(--azure);
-    font-family: var(--font-display); font-size: 18px;
+    font-family: var(--font-display); font-size: var(--fs-body);
     cursor: pointer; display: grid; place-items: center;
   }
-  .sk-play.pause { color: var(--ink-1); border-color: var(--ink-1); font-size: 13px; letter-spacing: -.04em; }
+  .sk-play.pause { color: var(--ink-1); border-color: var(--ink-1); font-size: var(--fs-meta); letter-spacing: -.04em; }
 
   .accel-btn {
     position: relative;
@@ -1445,7 +1445,7 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 2px; cursor: pointer; box-shadow: var(--sh-card);
   }
-  .accel-btn .lab { font-family: var(--font-display); font-size: 12px; color: var(--ink-2); letter-spacing: .05em; line-height: 1; }
+  .accel-btn .lab { font-family: var(--font-display); font-size: var(--fs-mono); color: var(--ink-2); letter-spacing: .05em; line-height: 1; }
   .dial-mini {
     position: relative; width: 32px; height: 18px; border-radius: 16px 16px 0 0;
     background: conic-gradient(from 270deg, var(--jade) 0deg 30deg, var(--amber) 30deg 60deg, var(--cinnabar-1) 60deg 90deg, transparent 90deg 360deg);
@@ -1459,7 +1459,7 @@
     width: 38px; height: 38px; background: var(--ink-4); color: var(--paper-1);
     border: 1.5px solid var(--ink-3); border-radius: 50%;
     display: grid; place-items: center;
-    font-family: var(--font-display); font-size: 18px;
+    font-family: var(--font-display); font-size: var(--fs-body);
     justify-self: center;
   }
   .sk-card.locked .sk-name { color: var(--ink-3); }
@@ -1487,7 +1487,7 @@
   .upgrade-pop .lv-up {
     margin-top: -6px;
     background: var(--cinnabar-1); color: var(--paper-1);
-    font-family: var(--font-display); font-size: 14px;
+    font-family: var(--font-display); font-size: var(--fs-meta);
     padding: 1px 8px; border-radius: var(--r-pill);
     border: 1.5px solid var(--paper-1);
     letter-spacing: .05em;
@@ -1495,7 +1495,7 @@
   .upgrade-pop .ribbon {
     margin-top: 8px;
     background: var(--jade); color: var(--paper-1);
-    font-family: var(--font-display); font-size: 15px;
+    font-family: var(--font-display); font-size: var(--fs-meta);
     padding: 3px 14px; border-radius: var(--r-pill);
     border: 1.5px solid var(--paper-1);
     box-shadow: 0 4px 8px rgba(0,0,0,.25);
@@ -1547,7 +1547,7 @@
     padding: 10px;
     border-radius: 8px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     letter-spacing: .12em;
     cursor: pointer;
     display: inline-flex;
@@ -1561,7 +1561,7 @@
   .accel-btn-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
   .accel-btn-cta.ghost   { background: var(--paper-1); color: var(--azure); }
   .accel-btn-cta.primary { background: var(--jade);    color: var(--paper-1); }
-  .accel-btn-cta.primary .num { font-family: var(--font-num); font-size: 20px; letter-spacing: 0; }
+  .accel-btn-cta.primary .num { font-family: var(--font-num); font-size: var(--fs-h2); letter-spacing: 0; }
   .accel-btn-cta.primary .ic-seal {
     background: var(--cur-jade); color: var(--paper-1);
     width: 22px; height: 22px; font-size: 14px;
@@ -1588,7 +1588,7 @@
     text-align: center;
     padding: 8px 10px;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     cursor: pointer;
     border-radius: 6px;
@@ -1639,7 +1639,7 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
     color: var(--ink-2);
-    font-size: 26px;
+    font-size: var(--fs-h1);
     box-shadow: inset 0 0 0 1px var(--paper-1);
   }
   .nl-info { min-width: 0; position: static; }
@@ -1701,7 +1701,7 @@
     display: inline-flex; align-items: center; gap: 4px;
   }
   .rel-bar-row .heart-num::before {
-    content: "❤"; color: var(--cur-heart); font-size: 14px;
+    content: "❤"; color: var(--cur-heart); font-size: var(--fs-meta);
   }
   .rel-bar {
     flex: 1; height: 10px;
@@ -1727,14 +1727,14 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
     color: var(--paper-1);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     margin: 0 auto;
     position: relative;
   }
   .rel-mile .seal::before { content:""; position:absolute; inset:1px; border:1px solid rgba(255,255,255,.3); border-radius:3px; }
   .rel-mile.is-locked .seal { background: var(--ink-4); opacity: .8; }
   .rel-mile.is-unlocked .seal { background: var(--jade); }
-  .rel-mile .tip { font-family: var(--font-num); font-size: 13px; color: var(--ink-3); margin-top: 3px; line-height: 1.1; }
+  .rel-mile .tip { font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-3); margin-top: 3px; line-height: 1.1; }
   .rel-mile.is-unlocked .tip { color: var(--jade); }
 
   .rel-main {
@@ -1756,7 +1756,7 @@
     background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.12) 10px 12px);
     display: grid; place-items: center;
     font-family: ui-monospace, monospace;
-    font-size: 13px;
+    font-size: var(--fs-mono);
     color: var(--ink-3);
     padding: 6px;
     text-align: center;
@@ -1769,7 +1769,7 @@
     border-radius: 6px;
     padding: 10px;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     letter-spacing: .04em;
     cursor: pointer;
     box-shadow: 0 3px 0 var(--ink-1);
@@ -1817,8 +1817,8 @@
   .rel-task .pic.gift  { background: var(--cur-mood); color: var(--ink-1); }
   .rel-task .pic.brain { background: var(--celadon-3); color: var(--paper-1); }
   .rel-task .pic.job   { background: var(--wood-1); color: var(--paper-1); }
-  .rel-task .lbl { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-  .rel-task .lbl .num { font-family: var(--font-num); color: var(--ink-3); margin-left: 6px; font-size: 15px; }
+  .rel-task .lbl { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .rel-task .lbl .num { font-family: var(--font-num); color: var(--ink-3); margin-left: 6px; font-size: var(--fs-meta); }
   .rel-task .state-ok {
     width: 24px; height: 24px; background: var(--jade);
     color: var(--paper-1); border-radius: 50%;
@@ -1872,14 +1872,14 @@
     position: absolute;
     font-family: var(--font-display);
     color: var(--gold-2);
-    font-size: 28px;
+    font-size: var(--fs-h1);
     z-index: 2;
     text-shadow: 0 0 8px rgba(212,170,90,.8);
     animation: popIn var(--dur-modal) var(--ease-pop) both;
   }
   .upgrade-overlay-stage .spark.s1 { top: 30%; left: 22%; animation-delay: .12s; }
-  .upgrade-overlay-stage .spark.s2 { top: 18%; right: 18%; animation-delay: .22s; font-size: 22px; }
-  .upgrade-overlay-stage .spark.s3 { bottom: 24%; left: 30%; animation-delay: .32s; font-size: 18px; }
+  .upgrade-overlay-stage .spark.s2 { top: 18%; right: 18%; animation-delay: .22s; font-size: var(--fs-h2); }
+  .upgrade-overlay-stage .spark.s3 { bottom: 24%; left: 30%; animation-delay: .32s; font-size: var(--fs-body); }
   .upgrade-overlay-stage .stage-name {
     margin-top: 18px;
     font-family: var(--font-display);
@@ -1942,7 +1942,7 @@
     padding: 12px;
     border-radius: 8px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     letter-spacing: .12em;
     cursor: pointer;
     box-shadow: 0 3px 0 var(--ink-1);
@@ -1977,7 +1977,7 @@
   .wk-level-lab {
     align-self: center;
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: var(--fs-meta);
     color: var(--ink-3);
     background: var(--paper-2);
     border: 1px solid var(--paper-edge);
@@ -2009,7 +2009,7 @@
   .wk-card:active { transform: scale(.97); }
   .wk-card-name {
     font-family: var(--font-display);
-    font-size: 13px;
+    font-size: var(--fs-meta);
     color: var(--ink-2);
     line-height: 1.1;
     margin-bottom: 2px;
@@ -2028,7 +2028,7 @@
   }
   .wk-card-price {
     font-family: var(--font-num);
-    font-size: 13px;
+    font-size: var(--fs-meta);
     color: var(--ink-1);
     display: inline-flex; align-items: center; gap: 3px;
     margin-bottom: 3px;
@@ -2050,7 +2050,7 @@
     border: 1px solid var(--ink-1);
     border-radius: 4px;
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: var(--fs-mono);
     letter-spacing: .04em;
     line-height: 1.3;
   }
@@ -2060,11 +2060,11 @@
     opacity: .6;
     background: var(--paper-3);
   }
-  .wk-card.is-locked .wk-card-illu { background: var(--ink-4); color: var(--paper-1); font-size: 26px; }
+  .wk-card.is-locked .wk-card-illu { background: var(--ink-4); color: var(--paper-1); font-size: var(--fs-h1); }
   .wk-card.is-locked .wk-card-price { color: var(--ink-4); }
   .wk-card.is-locked .wk-card-cta { display: none; }
   .wk-card.is-locked .wk-card-lock-q {
-    font-family: var(--font-display); font-size: 13px; color: var(--ink-4); margin-top: 4px;
+    font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-4); margin-top: 4px;
   }
   .wk-card.is-done {
     background: var(--celadon-3);
@@ -2086,7 +2086,7 @@
   }
   .wk-card.is-fail .wk-card-illu {
     background: var(--fail-red); color: var(--paper-1);
-    font-family: var(--font-display); font-weight: 700; font-size: 16px;
+    font-family: var(--font-display); font-weight: 700; font-size: var(--fs-label);
     letter-spacing: -.02em;
   }
   .wk-card.is-fail .wk-card-cta { background: var(--paper-1); color: var(--fail-red); border-color: var(--fail-red); }
@@ -2188,7 +2188,7 @@
     background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
     color: var(--ink-3);
     font-family: ui-monospace, monospace;
-    font-size: 13px;
+    font-size: var(--fs-mono);
     text-align: center;
     padding: 8px;
   }
@@ -2229,7 +2229,7 @@
     border: 1.5px solid var(--ink-1);
     box-shadow: 0 3px 0 var(--ink-1);
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     cursor: pointer;
     letter-spacing: .15em;
     transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
@@ -2267,7 +2267,7 @@
   }
   .jp-title {
     font-family: var(--font-display);
-    font-size: 40px;
+    font-size: var(--fs-overlay);
     color: var(--amber);
     letter-spacing: .12em;
     text-shadow: 0 4px 12px rgba(0,0,0,.5);
@@ -2321,14 +2321,14 @@
   }
   .jp-wage-col .lbl {
     font-family: var(--font-display);
-    font-size: 13px;
+    font-size: var(--fs-meta);
     color: var(--ink-3);
     letter-spacing: .08em;
     margin-bottom: 2px;
   }
   .jp-wage-col .val {
     font-family: var(--font-num);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     color: var(--ink-1);
     font-weight: 700;
     display: inline-flex; align-items: center; gap: 4px;
@@ -2344,7 +2344,7 @@
   .jp-arrow {
     font-family: var(--font-display);
     color: var(--ink-3);
-    font-size: 16px;
+    font-size: var(--fs-label);
     text-align: center;
   }
   .jp-delta {
@@ -2388,7 +2388,7 @@
     border-radius: var(--r-pill);
     padding: 8px 16px;
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     margin: 4px auto 14px;
     width: fit-content;
     border: 1.5px solid var(--gold-1);
@@ -2417,7 +2417,7 @@
     background: var(--cinnabar-1);
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     letter-spacing: .2em;
     padding: 6px 12px;
     text-align: center;
@@ -2459,7 +2459,7 @@
   .bz-iap-buffs li {
     list-style: none;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--ink-1);
     display: inline-flex; align-items: center; gap: 6px;
     line-height: 1.3;
@@ -2482,7 +2482,7 @@
     border-radius: var(--r-pill);
     padding: 8px;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     letter-spacing: .1em;
     cursor: pointer;
     box-shadow: 0 3px 0 var(--ink-1);
@@ -2518,7 +2518,7 @@
   }
   .star::before {
     content: "★";
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-4);
     text-shadow: 0 1px 0 rgba(0,0,0,.1);
   }
@@ -2533,11 +2533,11 @@
     -webkit-text-fill-color: transparent;
   }
   .star--sm { width: 14px; height: 14px; }
-  .star--sm::before { font-size: 14px; }
+  .star--sm::before { font-size: var(--fs-meta); }
   .star--md { width: 22px; height: 22px; }
-  .star--md::before { font-size: 22px; }
+  .star--md::before { font-size: var(--fs-h2); }
   .star--lg { width: 28px; height: 28px; }
-  .star--lg::before { font-size: 28px; }
+  .star--lg::before { font-size: var(--fs-h1); }
 
   /* ─── canonical .modal-pane (统一模板:flex column + CTAs 置底) ─── */
   .modal-pane {
@@ -2556,7 +2556,7 @@
     padding: 13px;
     border-radius: 10px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     letter-spacing: .12em;
     cursor: pointer;
     border: 1.5px solid var(--ink-1);
@@ -2612,7 +2612,7 @@
   .bz-card-name { font-family: var(--font-display); font-size: var(--fs-h2); color: var(--ink-1); }
   .bz-card-income {
     font-family: var(--font-num);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--ink-1);
     display: inline-flex; align-items: center; gap: 4px;
     background: var(--paper-1);
@@ -2627,7 +2627,7 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
   }
-  .bz-card-lv { font-family: var(--font-num); font-size: 13px; color: var(--ink-3); }
+  .bz-card-lv { font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-3); }
   .bz-card-upgrade {
     background: var(--jade);
     color: var(--paper-1);
@@ -2635,7 +2635,7 @@
     border-radius: 6px;
     padding: 5px;
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: var(--fs-meta);
     letter-spacing: .08em;
     box-shadow: 0 2px 0 var(--ink-1);
     text-align: center;
@@ -2649,7 +2649,7 @@
     display: flex; flex-direction: column; align-items: center; gap: 4px;
     text-align: center;
   }
-  .mgr-buff { font-family: var(--font-num); font-size: 14px; color: var(--ink-1); display: inline-flex; align-items: center; gap: 4px; }
+  .mgr-buff { font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-1); display: inline-flex; align-items: center; gap: 4px; }
   .mgr-buff .ic-seal {
     background: var(--jade); color: var(--paper-1);
     width: 14px; height: 14px; font-size: 10px;
@@ -2681,7 +2681,7 @@
     border: 1.5px solid var(--paper-edge);
     display: grid; place-items: center;
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-2);
     background-image: repeating-linear-gradient(45deg, transparent 0 5px, rgba(139,111,71,.16) 5px 7px);
   }
@@ -2690,7 +2690,7 @@
     background-image: none;
     border-style: dashed;
     color: var(--ink-3);
-    font-size: 26px;
+    font-size: var(--fs-h1);
   }
   /* mgr-buff 改飘字 (C3: 不再常驻,只在 ring 满时弹) */
   .mgr-coin-pop {
@@ -2698,7 +2698,7 @@
     top: -22px; left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-num);
-    font-size: 13px;
+    font-size: var(--fs-meta);
     color: var(--jade);
     font-weight: 700;
     display: inline-flex; align-items: center; gap: 3px;
@@ -2729,7 +2729,7 @@
     border-radius: 3px;
     padding: 1px 5px;
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: var(--fs-mono);
     letter-spacing: 0;
     display: inline-grid; place-items: center;
     line-height: 1.2;
@@ -2743,7 +2743,7 @@
     border-radius: 8px;
     padding: 6px 14px;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     cursor: pointer;
     box-shadow: 0 2px 0 var(--ink-1);
     display: inline-flex; align-items: center; gap: 4px;
@@ -2762,7 +2762,7 @@
     border-radius: 5px;
     padding: 3px 8px;
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: var(--fs-mono);
     color: var(--ink-1);
     cursor: pointer;
     display: inline-flex; align-items: center; gap: 3px;
@@ -2787,7 +2787,7 @@
     border-radius: var(--r-pill);
     padding: 7px 16px;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     letter-spacing: .12em;
     cursor: pointer;
     box-shadow: 0 3px 0 var(--ink-1);
@@ -2802,6 +2802,114 @@
     font-family: var(--font-display);
   }
 
+  /* ─── 投資 (fps_0058 + 0061 + 0062) · .iv-* 命名空间 ─── */
+  .iv-page { overflow-y: auto; padding: 12px 12px 24px; background: var(--paper-1); }
+  .iv-pane { display: flex; flex-direction: column; gap: 14px; }
+  .iv-pane[hidden] { display: none; }   /* [hidden] vs display:flex 优先级修正 */
+
+  .iv-iap { background: linear-gradient(180deg, #E6B677 0%, #C49255 100%); border: 1.5px solid var(--wood-2); border-radius: 10px; padding-bottom: 12px; position: relative; overflow: hidden; }
+  .iv-iap-broker { background: linear-gradient(180deg, #C9B57E 0%, #A89055 100%); }
+  .iv-iap-ribbon { position: absolute; top: 0; right: 0; background: var(--cinnabar-1); color: var(--paper-1); font-family: var(--font-display); font-size: var(--fs-meta); letter-spacing: .18em; padding: 3px 12px; border-bottom-left-radius: 8px; z-index: 2; }
+  .iv-iap-head { background: var(--cinnabar-1); color: var(--paper-1); font-family: var(--font-display); font-size: var(--fs-label); letter-spacing: .2em; padding: 6px 12px; text-align: center; position: relative; }
+  .iv-iap-head .info { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; background: rgba(255,255,255,.18); color: var(--paper-1); border: 1px solid var(--paper-1); border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-size: 13px; cursor: pointer; }
+  .iv-iap-body { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 12px 12px 0; align-items: center; }
+  .iv-iap-illu { width: 96px; height: 84px; background: var(--paper-2); border: 1.5px solid var(--paper-edge); border-radius: 8px; background-image: repeating-linear-gradient(45deg, transparent 0 8px, rgba(139,111,71,.18) 8px 10px); display: grid; place-items: center; color: var(--ink-3); font-family: ui-monospace, monospace; font-size: 11px; text-align: center; padding: 4px; line-height: 1.3; white-space: pre-line; }
+  .iv-iap-buffs { display: flex; flex-direction: column; gap: 4px; padding: 0; margin: 0; }
+  .iv-iap-buffs li { list-style: none; font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-1); display: inline-flex; align-items: center; gap: 6px; line-height: 1.3; }
+  .iv-iap-buffs li::before { content: "✓"; width: 16px; height: 16px; background: var(--jade); color: var(--paper-1); border-radius: 50%; display: inline-grid; place-items: center; font-size: 11px; flex: none; }
+  .iv-iap-cta { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px 14px 0; background: var(--jade); color: var(--paper-1); border: 1.5px solid var(--ink-1); border-radius: var(--r-pill); padding: 8px; font-family: var(--font-display); font-size: var(--fs-label); letter-spacing: .12em; cursor: pointer; box-shadow: 0 3px 0 var(--ink-1); width: calc(100% - 28px); }
+  .iv-iap-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+  .iv-iap-cta .ic-seal { width: 22px; height: 22px; font-size: 13px; }
+
+  .iv-cashback { background: var(--paper-2); border: 1.5px solid var(--paper-edge); border-radius: 10px; padding: 10px 12px; box-shadow: var(--sh-card); }
+  .iv-cashback-head { font-family: var(--font-display); font-size: var(--fs-h2); color: var(--ink-1); letter-spacing: .15em; display: flex; align-items: center; gap: 10px; position: relative; }
+  .iv-cashback-head .rate-pill { background: var(--jade); color: var(--paper-1); font-family: var(--font-num); font-size: var(--fs-meta); padding: 1px 8px; border-radius: var(--r-pill); letter-spacing: 0; }
+  .iv-cashback-head .info { position: absolute; right: 0; width: 20px; height: 20px; background: var(--paper-1); border: 1.5px solid var(--azure); color: var(--azure); border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-size: 13px; cursor: pointer; }
+  .iv-cashback-line { margin: 10px 0 6px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+  .iv-cashback-bar { position: relative; height: 16px; background: var(--paper-3); border: 1px solid var(--paper-edge); border-radius: var(--r-pill); overflow: hidden; }
+  .iv-cashback-bar .bar-fg { position: absolute; inset: 0 auto 0 0; background: linear-gradient(180deg, var(--jade), #4a6d56); border-radius: var(--r-pill); }
+  .iv-cashback-bar .bar-label { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-1); letter-spacing: .04em; }
+  .iv-cashback-pop { display: inline-flex; align-items: center; gap: 4px; background: var(--cur-brick); color: var(--paper-1); font-family: var(--font-num); font-weight: 700; font-size: var(--fs-label); padding: 4px 10px; border-radius: var(--r-pill); border: 1px solid var(--ink-1); }
+  .iv-cashback-pop .ic-seal { width: 16px; height: 16px; font-size: 11px; background: rgba(255,255,255,.22); }
+  .iv-cashback-tag { font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-3); letter-spacing: .08em; text-align: center; }
+
+  .iv-deposits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .iv-dep { background: var(--paper-2); border: 1.5px solid var(--paper-edge); border-radius: 10px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; min-height: 138px; box-shadow: var(--sh-card); }
+  .iv-dep-tag { background: var(--ink-1); color: var(--paper-1); font-family: var(--font-display); font-size: var(--fs-meta); padding: 1px 8px; border-radius: var(--r-pill); letter-spacing: .04em; }
+  .iv-dep-stack { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .iv-dep-stack .ic-seal { width: 28px; height: 28px; font-size: var(--fs-label); }
+  .iv-dep-val { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--ink-1); font-weight: 700; letter-spacing: -.02em; }
+  .iv-dep-bonus { font-family: var(--font-display); font-size: var(--fs-h2); color: var(--cinnabar-1); font-weight: 700; }
+  .iv-dep-timer { font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-3); line-height: 1.3; white-space: nowrap; }
+  .iv-dep-icon { font-size: 28px; color: var(--ink-3); }
+  .iv-dep-label { font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-2); line-height: 1.3; flex: 1; }
+  .iv-dep-cta { background: var(--cinnabar-1); color: var(--paper-1); border: 1.5px solid var(--ink-1); border-radius: 6px; padding: 5px 12px; font-family: var(--font-display); font-size: var(--fs-label); letter-spacing: .1em; cursor: pointer; box-shadow: 0 2px 0 var(--ink-1); display: inline-flex; align-items: center; gap: 6px; }
+  .iv-dep-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+  .iv-dep-cta .ad-tri { font-size: var(--fs-mono); }
+
+  .iv-port { background: var(--paper-2); border: 1.5px solid var(--paper-edge); border-radius: 10px; padding: 12px; box-shadow: var(--sh-card); }
+  .iv-port-head { font-family: var(--font-display); font-size: var(--fs-h2); color: var(--ink-1); letter-spacing: .15em; text-align: center; margin-bottom: 10px; }
+  .iv-port-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-family: var(--font-display); font-size: var(--fs-label); }
+  .iv-port-row.dividend { margin-top: 4px; }
+  .iv-port-lab { color: var(--ink-3); letter-spacing: .08em; }
+  .iv-port-val { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-num); color: var(--ink-1); }
+  .iv-port-val.c-jade { color: var(--jade); font-weight: 700; }
+  .iv-port-val .ic-seal.mini { width: 16px; height: 16px; font-size: 11px; }
+  .iv-port-pct { font-family: var(--font-num); font-size: var(--fs-meta); margin-left: 4px; }
+  .iv-port-pct.is-down { color: var(--fail-red); }
+  .iv-port-pct.is-up   { color: var(--jade); }
+  .iv-port-pie { width: 36px; height: 36px; border-radius: 50%; background: conic-gradient(var(--jade) 0 25%, var(--paper-3) 25% 100%); border: 1.5px solid var(--ink-1); position: relative; }
+  .iv-port-pie::after { content: ""; position: absolute; inset: 7px; background: var(--paper-2); border-radius: 50%; }
+  .iv-port-cta { display: block; width: 100%; margin-top: 10px; background: var(--jade); color: var(--paper-1); border: 1.5px solid var(--ink-1); border-radius: 8px; padding: 10px; font-family: var(--font-display); font-size: var(--fs-h2); letter-spacing: .2em; cursor: pointer; box-shadow: 0 3px 0 var(--ink-1); }
+  .iv-port-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+
+  .iv-freebie { background: var(--paper-2); border: 1.5px solid var(--jade); border-radius: 10px; padding: 10px 12px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; box-shadow: var(--sh-card); }
+  .iv-freebie-head { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); letter-spacing: .15em; display: inline-flex; align-items: center; gap: 8px; }
+  .iv-freebie-head .info { width: 18px; height: 18px; background: var(--paper-1); border: 1px solid var(--azure); color: var(--azure); border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-size: 12px; cursor: pointer; }
+  .iv-freebie-text { font-family: var(--font-display); font-size: var(--fs-meta); color: var(--ink-3); margin-top: 4px; }
+  .iv-freebie-cta { background: var(--jade); color: var(--paper-1); border: 1.5px solid var(--ink-1); border-radius: 8px; padding: 10px 18px; font-family: var(--font-display); font-size: var(--fs-h2); letter-spacing: .15em; cursor: pointer; box-shadow: 0 3px 0 var(--ink-1); display: inline-flex; align-items: center; gap: 6px; }
+  .iv-freebie-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink-1); }
+  .iv-freebie-cta .ad-tri { font-size: var(--fs-mono); }
+
+  .iv-section-head { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-3); letter-spacing: .25em; text-align: center; margin: 4px 0 6px; position: relative; }
+  .iv-section-head::before, .iv-section-head::after { content: ""; position: absolute; top: 50%; width: 80px; height: 1px; background: var(--paper-edge); }
+  .iv-section-head::before { left: calc(50% - 110px); }
+  .iv-section-head::after  { right: calc(50% - 110px); }
+
+  .iv-stocks { display: flex; flex-direction: column; gap: 6px; }
+  .iv-stock-card { background: var(--paper-2); border: 1.5px solid var(--paper-edge); border-radius: 8px; padding: 8px 10px; display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; box-shadow: var(--sh-card); cursor: pointer; }
+  .iv-stock-card:active { transform: scale(.99); }
+  .iv-stock-card.is-empty { opacity: .85; }
+  .iv-stock-glyph { width: 40px; height: 40px; border-radius: 4px; display: grid; place-items: center; font-family: var(--font-display); font-size: var(--fs-h2); color: var(--paper-1); }
+  .iv-stock-glyph.tone-jade       { background: var(--jade); }
+  .iv-stock-glyph.tone-cinnabar   { background: var(--cinnabar-1); }
+  .iv-stock-glyph.tone-cinnabar-2 { background: var(--cinnabar-2); }
+  .iv-stock-glyph.tone-gold       { background: var(--gold-2); color: var(--ink-1); }
+  .iv-stock-glyph.tone-azure      { background: var(--azure); }
+  .iv-stock-glyph.tone-amber      { background: var(--amber); color: var(--ink-1); }
+  .iv-stock-glyph.tone-celadon    { background: var(--celadon-3); }
+  .iv-stock-glyph.tone-ink        { background: var(--ink-1); }
+  .iv-stock-glyph.tone-wood       { background: var(--wood-1); }
+  .iv-stock-mid { min-width: 0; }
+  .iv-stock-name { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .iv-stock-brand { font-family: ui-monospace, monospace; font-size: var(--fs-mono); color: var(--ink-3); letter-spacing: .08em; }
+  .iv-stock-meta { display: flex; align-items: center; gap: 6px; margin-top: 2px; font-family: var(--font-num); font-size: var(--fs-meta); color: var(--ink-2); }
+  .iv-stock-meta.is-mute { color: var(--ink-4); letter-spacing: .15em; }
+  .iv-stock-bar { flex: 1; height: 5px; background: var(--paper-3); border: 1px solid var(--paper-edge); border-radius: 3px; overflow: hidden; max-width: 80px; }
+  .iv-stock-bar i { display: block; height: 100%; background: var(--jade); }
+  .iv-stock-own { color: var(--ink-1); font-weight: 700; }
+  .iv-stock-income { font-family: var(--font-num); font-size: var(--fs-meta); white-space: nowrap; display: inline-flex; align-items: center; gap: 3px; }
+  .iv-stock-income.c-jade  { color: var(--jade); }
+  .iv-stock-income.c-muted { color: var(--ink-4); }
+  .iv-stock-income .ic-seal.mini { width: 14px; height: 14px; font-size: 10px; }
+
+  .sub-tab.is-lock { color: var(--ink-4); }
+  .sub-tab.is-lock.is-active { color: var(--ink-2); background: var(--paper-2); }
+  .iv-lock { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 60px 24px; color: var(--ink-3); text-align: center; }
+  .iv-lock-icon { font-size: 64px; opacity: .6; }
+  .iv-lock-msg { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--ink-2); letter-spacing: .25em; line-height: 1.6; white-space: pre-line; }
+  .iv-lock-cond { font-family: var(--font-num); font-size: var(--fs-label); color: var(--cinnabar-1); letter-spacing: .1em; }
+
   /* ─── BizHire modal (fps_0050) ─── */
   .mg-hero {
     height: 220px;
@@ -2813,7 +2921,7 @@
     background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
     color: var(--ink-3);
     font-family: ui-monospace, monospace;
-    font-size: 13px;
+    font-size: var(--fs-mono);
     text-align: center;
     padding: 8px;
   }
@@ -2834,7 +2942,7 @@
     padding: 12px;
     border-radius: 8px;
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     letter-spacing: .12em;
     cursor: pointer;
     border: 1.5px solid var(--ink-1);
@@ -2852,7 +2960,7 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
   }
-  .mg-cta.primary .num { font-family: var(--font-num); letter-spacing: 0; font-size: 18px; }
+  .mg-cta.primary .num { font-family: var(--font-num); letter-spacing: 0; font-size: var(--fs-body); }
 
   /* ─── BizUpgrade modal (fps_0053) · 重设 1:1 复刻 ─── */
   .up-pane .up-illu {
@@ -2923,7 +3031,7 @@
     transform: translateY(-50%);
     color: var(--paper-1);
     font-family: var(--font-num);
-    font-size: 14px;
+    font-size: var(--fs-meta);
     display: inline-flex; align-items: center; gap: 4px;
     text-shadow: 0 1px 0 rgba(0,0,0,.3);
   }
@@ -2961,7 +3069,7 @@
   }
   .up-income .val {
     font-family: var(--font-num);
-    font-size: 24px;
+    font-size: var(--fs-h1);
     color: var(--cinnabar-1);
     font-weight: 700;
     text-align: right;
@@ -2969,7 +3077,7 @@
   }
   .up-income .val small {
     display: block;
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--jade);
     font-family: var(--font-num);
     font-weight: 700;
@@ -2985,7 +3093,7 @@
     padding: 14px;
     border-radius: 10px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     letter-spacing: .12em;
     cursor: pointer;
     border: 1.5px solid var(--ink-1);
@@ -3002,7 +3110,7 @@
     display: grid; place-items: center;
     font-family: var(--font-display);
   }
-  .up-cta .num { font-family: var(--font-num); letter-spacing: 0; font-size: 20px; }
+  .up-cta .num { font-family: var(--font-num); letter-spacing: 0; font-size: var(--fs-h2); }
 
   /* === Tweaks panel === */
   .tw-toggle {
@@ -3014,7 +3122,7 @@
     padding: 8px 14px;
     border-radius: var(--r-pill);
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     cursor: pointer;
     z-index: 9999;
     box-shadow: 0 4px 12px rgba(0,0,0,.4);
@@ -3028,16 +3136,16 @@
     border-radius: 8px;
     padding: 12px;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-1);
     z-index: 9998;
     display: none;
     box-shadow: var(--sh-modal);
   }
   .tw-panel.open { display: block; }
-  .tw-panel h4 { margin: 0 0 8px; font-family: var(--font-display); font-size: 17px; color: var(--cinnabar-1); }
+  .tw-panel h4 { margin: 0 0 8px; font-family: var(--font-display); font-size: var(--fs-label); color: var(--cinnabar-1); }
   .tw-row { display: flex; justify-content: space-between; align-items: center; margin: 6px 0; gap: 8px; }
-  .tw-row label { flex: 1; font-size: 16px; }
+  .tw-row label { flex: 1; font-size: var(--fs-label); }
   .tw-row input[type=range] { width: 90px; }
 
   /* hint banner */
@@ -3047,7 +3155,7 @@
     text-align: center;
     color: var(--gold-2);
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     letter-spacing: .2em;
   }
 </style>
@@ -3210,7 +3318,7 @@
 
         <div class="task-card" data-act="open:work-detail">
           <div class="play"></div>
-          <div class="label">覓得正八品差事 <span style="color:var(--cur-coin);font-size: 15px">銅</span></div>
+          <div class="label">覓得正八品差事 <span style="color:var(--cur-coin);font-size: var(--fs-meta)">銅</span></div>
           <div class="bar"></div>
           <div class="ratio">0／1</div>
         </div>
@@ -3232,7 +3340,7 @@
           <div class="glyph">工</div><div class="lab">工作</div>
         </div>
         <div class="tab" data-act="switch:biz"><div class="glyph">商</div><div class="lab">业务</div></div>
-        <div class="tab"><div class="glyph">票</div><div class="lab">投资</div></div>
+        <div class="tab" data-act="switch:invest"><div class="glyph">票</div><div class="lab">投资</div></div>
         <div class="tab">
           <span class="bang">!</span>
           <div class="glyph active">物</div><div class="lab">物品</div>
@@ -3368,10 +3476,10 @@
         <!-- 底栏 (技 active) -->
         <nav class="tabbar">
           <div class="tab" data-act="switch:skill"><div class="glyph active">技</div><div class="lab">技能</div></div>
-          <div class="tab"><div class="glyph">緯</div><div class="lab">遇见</div></div>
+          <div class="tab" data-act="switch:meet"><div class="glyph">緣</div><div class="lab">遇见</div></div>
           <div class="tab" data-act="switch:work"><span class="bang">!</span><div class="glyph">工</div><div class="lab">工作</div></div>
           <div class="tab" data-act="switch:biz"><div class="glyph">商</div><div class="lab">业务</div></div>
-          <div class="tab"><div class="glyph">票</div><div class="lab">投资</div></div>
+          <div class="tab" data-act="switch:invest"><div class="glyph">票</div><div class="lab">投资</div></div>
           <div class="tab" data-act="switch:main"><span class="bang">!</span><div class="glyph">物</div><div class="lab">物品</div></div>
         </nav>
       </div>
@@ -3452,7 +3560,7 @@
           <div class="tab" data-act="switch:meet"><div class="glyph active">緣</div><div class="lab">遇见</div></div>
           <div class="tab" data-act="switch:work"><span class="bang">!</span><div class="glyph">工</div><div class="lab">工作</div></div>
           <div class="tab" data-act="switch:biz"><div class="glyph">商</div><div class="lab">业务</div></div>
-          <div class="tab"><div class="glyph">票</div><div class="lab">投资</div></div>
+          <div class="tab" data-act="switch:invest"><div class="glyph">票</div><div class="lab">投资</div></div>
           <div class="tab" data-act="switch:main"><span class="bang">!</span><div class="glyph">物</div><div class="lab">物品</div></div>
         </nav>
       </div>
@@ -3548,7 +3656,7 @@
           <div class="tab" data-act="switch:meet"><div class="glyph active">緣</div><div class="lab">遇见</div></div>
           <div class="tab" data-act="switch:work"><span class="bang">!</span><div class="glyph">工</div><div class="lab">工作</div></div>
           <div class="tab" data-act="switch:biz"><div class="glyph">商</div><div class="lab">业务</div></div>
-          <div class="tab"><div class="glyph">票</div><div class="lab">投资</div></div>
+          <div class="tab" data-act="switch:invest"><div class="glyph">票</div><div class="lab">投资</div></div>
           <div class="tab" data-act="switch:main"><span class="bang">!</span><div class="glyph">物</div><div class="lab">物品</div></div>
         </nav>
       </div>
@@ -3769,7 +3877,7 @@
           <div class="tab" data-act="switch:meet"><div class="glyph">緣</div><div class="lab">遇见</div></div>
           <div class="tab" data-act="switch:work"><div class="glyph active">工</div><div class="lab">工作</div></div>
           <div class="tab" data-act="switch:biz"><div class="glyph">商</div><div class="lab">业务</div></div>
-          <div class="tab"><div class="glyph">票</div><div class="lab">投资</div></div>
+          <div class="tab" data-act="switch:invest"><div class="glyph">票</div><div class="lab">投资</div></div>
           <div class="tab" data-act="switch:main"><span class="bang">!</span><div class="glyph">物</div><div class="lab">物品</div></div>
         </nav>
       </div>
@@ -3964,11 +4072,205 @@
           <div class="tab" data-act="switch:meet"><div class="glyph">緣</div><div class="lab">遇见</div></div>
           <div class="tab" data-act="switch:work"><span class="bang">!</span><div class="glyph">工</div><div class="lab">工作</div></div>
           <div class="tab" data-act="switch:biz"><div class="glyph active">商</div><div class="lab">业务</div></div>
-          <div class="tab"><div class="glyph">票</div><div class="lab">投资</div></div>
+          <div class="tab" data-act="switch:invest"><div class="glyph">票</div><div class="lab">投资</div></div>
           <div class="tab" data-act="switch:main"><span class="bang">!</span><div class="glyph">物</div><div class="lab">物品</div></div>
         </nav>
       </div>
     </div><!-- /.screen-biz -->
+
+    <!-- ============================================================
+         Phase B T-B5 · 投資 list (fps_0058 + 0061 + 0062)
+         3 sub-tab: 錢莊 / 票號 / 🔒
+         ⓘ → openModal('bank-info', { msg: 'cashback'|'freebie'|'premium'|'broker' })
+         ============================================================ -->
+    <div class="screen screen-invest" data-screen-id="invest">
+      <div class="skill" data-screen-label="投資 · fps_0058">
+
+        <header class="hud">
+          <div class="avatar-wrap" data-act="open:character">
+            <div class="avatar-frame">王</div>
+            <div class="avatar-dot"></div>
+            <div class="avatar-lv">Lv 22</div>
+          </div>
+          <div class="hud-cell" data-act="open:shop:money"><div class="ic-seal ic-coin">銅</div><span class="num">1,580</span></div>
+          <div class="hud-cell" data-act="open:income"><div class="ic-seal ic-mood">心</div><span class="num">63</span><span class="pill pill--loss">−5.2/月</span></div>
+          <div class="hud-cell" data-act="open:shop:jade"><div class="ic-seal ic-jade">玉</div><span class="num">19</span></div>
+          <button class="gear-btn" data-act="open:settings" aria-label="设置"></button>
+          <div class="hud-cell"><div class="ic-seal ic-coin2">寳</div><span class="pill pill--income">+1.1k/旬</span></div>
+          <div class="hud-cell" data-act="open:health"><div class="ic-seal ic-heart">壽</div><span class="num">76</span><span class="pill pill--income">+0.4/月</span></div>
+          <div class="hud-cell" data-act="open:star"><div class="ic-seal ic-star">星</div><span class="num">0</span></div>
+          <div class="cal" data-act="open:date" style="width: 36px; height: 37px">
+            <div class="y">崇寧</div><div class="d">十二</div><div class="m">仲</div>
+          </div>
+        </header>
+
+        <div class="screen-bar">
+          <div></div>
+          <div class="sb-title">投&nbsp;&nbsp;資</div>
+          <button class="sb-close" data-act="switch:main">✕</button>
+        </div>
+
+        <div class="iv-page">
+          <!-- 3 sub-tab -->
+          <div class="sub-tabs" role="tablist">
+            <div class="sub-tab is-active" data-tab-group="invest" data-pane="bank">錢　莊</div>
+            <div class="sub-tab"           data-tab-group="invest" data-pane="stock">票　號</div>
+            <div class="sub-tab is-lock"   data-tab-group="invest" data-pane="lock">🔒</div>
+          </div>
+
+          <!-- ============= 錢莊 pane ============= -->
+          <div class="iv-pane" data-pane-of="invest" data-pane-id="bank">
+
+            <!-- 上戶銀牌 IAP -->
+            <div class="iv-iap">
+              <div class="iv-iap-ribbon">最&nbsp;佳&nbsp;選&nbsp;擇</div>
+              <div class="iv-iap-head">
+                上&nbsp;戶&nbsp;銀&nbsp;牌
+                <span class="info" data-act="open:bank-info:premium">i</span>
+              </div>
+              <div class="iv-iap-body">
+                <div class="iv-iap-illu">上戶 銀牌
+四〇〇〇 一二三四
+五六七八 九〇一〇</div>
+                <ul class="iv-iap-buffs">
+                  <li>X2 回返銀</li>
+                  <li>X2 紅利</li>
+                  <li>X2 田產收益</li>
+                  <li>X2 寄銀收入</li>
+                </ul>
+              </div>
+              <button class="iv-iap-cta tx-press">
+                <span class="ic-seal ic-jade">玉</span>三&nbsp;十
+              </button>
+            </div>
+
+            <!-- 回返銀 -->
+            <div class="iv-cashback">
+              <div class="iv-cashback-head">
+                回&nbsp;返&nbsp;銀
+                <span class="rate-pill">2%</span>
+                <span class="info" data-act="open:bank-info:cashback">i</span>
+              </div>
+              <div class="iv-cashback-line">
+                <div class="iv-cashback-bar">
+                  <div class="bar-fg" style="width:0.033%"></div>
+                  <span class="bar-label">一／三千</span>
+                </div>
+                <span class="iv-cashback-pop">
+                  <span class="ic-seal ic-brick">磚</span>+651
+                </span>
+              </div>
+              <div class="iv-cashback-tag">每番花費，皆得回返</div>
+            </div>
+
+            <!-- 3 寄銀 grid -->
+            <div class="iv-deposits">
+              <!-- timer-lock -->
+              <div class="iv-dep iv-dep-lock">
+                <div class="iv-dep-icon">⏰</div>
+                <div class="iv-dep-label">寄銀將於以下時辰可取：</div>
+                <div class="iv-dep-timer">三 時 ：四十八 刻</div>
+              </div>
+              <!-- fixed 20k -->
+              <div class="iv-dep iv-dep-fixed">
+                <div class="iv-dep-tag">一　日</div>
+                <div class="iv-dep-stack">
+                  <span class="ic-seal ic-coin">銅</span>
+                  <span class="iv-dep-val">20k</span>
+                </div>
+                <div class="iv-dep-timer">⏰ 十九 時 ：四十八 刻</div>
+              </div>
+              <!-- ad +100% -->
+              <div class="iv-dep iv-dep-ad">
+                <div class="iv-dep-tag">一　日</div>
+                <div class="iv-dep-stack">
+                  <span class="ic-seal" style="background:var(--wood-1)">袋</span>
+                  <span class="iv-dep-bonus">+100%</span>
+                </div>
+                <button class="iv-dep-cta tx-press">投&nbsp;資 <span class="ad-tri">▶</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============= 票號 pane ============= -->
+          <div class="iv-pane" data-pane-of="invest" data-pane-id="stock" hidden>
+
+            <!-- 你之庫本 portfolio -->
+            <div class="iv-port">
+              <div class="iv-port-head">你&nbsp;之&nbsp;庫&nbsp;本</div>
+              <div class="iv-port-row">
+                <span class="iv-port-lab">三時辰內之利:</span>
+                <span class="iv-port-val c-jade">+219<span class="ic-seal ic-brick mini">磚</span></span>
+              </div>
+              <div class="iv-port-row">
+                <span class="iv-port-lab">庫本之值:</span>
+                <span class="iv-port-val">
+                  965<span class="ic-seal ic-brick mini">磚</span>
+                  <span class="iv-port-pct is-down">0.00%</span>
+                </span>
+              </div>
+              <div class="iv-port-row dividend">
+                <span class="iv-port-lab">紅利派發:</span>
+                <span class="iv-port-pie"></span>
+              </div>
+              <button class="iv-port-cta tx-press" data-act="open:stock-list">認&nbsp;購</button>
+            </div>
+
+            <!-- 自動經紀 IAP -->
+            <div class="iv-iap iv-iap-broker">
+              <div class="iv-iap-head">
+                自&nbsp;動&nbsp;經&nbsp;紀
+                <span class="info" data-act="open:bank-info:broker">i</span>
+              </div>
+              <div class="iv-iap-body">
+                <div class="iv-iap-illu">經紀
+─ 喫 茶 而 望 市 ─</div>
+                <ul class="iv-iap-buffs">
+                  <li>每時辰得一百隨機股本</li>
+                  <li>免手續費</li>
+                  <li>全市最優費率</li>
+                </ul>
+              </div>
+              <button class="iv-iap-cta tx-press">
+                <span class="ic-seal ic-jade">玉</span>三&nbsp;十
+              </button>
+            </div>
+
+            <!-- 免費贈本 -->
+            <div class="iv-freebie">
+              <div class="iv-freebie-l">
+                <div class="iv-freebie-head">
+                  免&nbsp;費&nbsp;贈&nbsp;本
+                  <span class="info" data-act="open:bank-info:freebie">i</span>
+                </div>
+                <div class="iv-freebie-text">免費得一组随机股本</div>
+              </div>
+              <button class="iv-freebie-cta tx-press">領 <span class="ad-tri">▶</span></button>
+            </div>
+
+          </div>
+
+          <!-- ============= 🔒 pane ============= -->
+          <div class="iv-pane iv-lock" data-pane-of="invest" data-pane-id="lock" hidden>
+            <div class="iv-lock-icon">🔒</div>
+            <div class="iv-lock-msg">未　啟
+第　三　道　業</div>
+            <div class="iv-lock-cond">需 ★ 廿 · 當前 五</div>
+          </div>
+
+          <div style="height:24px"></div>
+        </div>
+
+        <nav class="tabbar">
+          <div class="tab" data-act="switch:skill"><div class="glyph">技</div><div class="lab">技能</div></div>
+          <div class="tab" data-act="switch:meet"><div class="glyph">緣</div><div class="lab">遇见</div></div>
+          <div class="tab" data-act="switch:work"><span class="bang">!</span><div class="glyph">工</div><div class="lab">工作</div></div>
+          <div class="tab" data-act="switch:biz"><div class="glyph">商</div><div class="lab">业务</div></div>
+          <div class="tab" data-act="switch:invest"><div class="glyph active">票</div><div class="lab">投资</div></div>
+          <div class="tab" data-act="switch:main"><span class="bang">!</span><div class="glyph">物</div><div class="lab">物品</div></div>
+        </nav>
+      </div>
+    </div><!-- /.screen-invest -->
 
     <!-- ============================================================
          JobPromoSplash (fps_0041) · 重定义为「換職事」确认 (income delta)
@@ -4101,12 +4403,12 @@ const MODALS = {
       <div class="set-row"><span style="display:flex;align-items:center"><span class="ico">樂</span>音乐</span><span class="toggle"></span></div>
       <div class="set-row"><span style="display:flex;align-items:center"><span class="ico">震</span>触觉</span><span class="toggle"></span></div>
       <div class="set-row"><span style="display:flex;align-items:center"><span class="ico">語</span>语言</span><span style="font-family:var(--font-display);color:var(--ink-3)">中文 ✏</span></div>
-      <div class="set-row"><span style="display:flex;align-items:center"><span class="ico">D</span>江湖（Discord）</span><span style="background:var(--cur-jade);color:var(--paper-1);padding:4px 12px;border-radius:var(--r-pill);font-size: 18px">加入</span></div>
+      <div class="set-row"><span style="display:flex;align-items:center"><span class="ico">D</span>江湖（Discord）</span><span style="background:var(--cur-jade);color:var(--paper-1);padding:4px 12px;border-radius:var(--r-pill);font-size: var(--fs-body)">加入</span></div>
       <div style="display:flex;flex-direction:column;gap:8px;padding:10px 0">
-        <button style="padding:8px;background:var(--paper-1);border:1px solid var(--azure);color:var(--azure);font-family:var(--font-display);font-size: 15px;border-radius:6px;cursor:pointer">私隐文契</button>
-        <button style="padding:8px;background:var(--paper-1);border:1px solid var(--azure);color:var(--azure);font-family:var(--font-display);font-size: 15px;border-radius:6px;cursor:pointer">使用条款</button>
-        <button style="padding:8px;background:var(--paper-1);border:1px solid var(--azure);color:var(--azure);font-family:var(--font-display);font-size: 15px;border-radius:6px;cursor:pointer">取消订阅</button>
-        <button style="padding:10px;background:var(--azure);color:var(--paper-1);border:1.5px solid var(--ink-1);font-family:var(--font-display);font-size: 17px;border-radius:8px;cursor:pointer;margin-top:6px">新开一局（重置）</button>
+        <button style="padding:8px;background:var(--paper-1);border:1px solid var(--azure);color:var(--azure);font-family:var(--font-display);font-size: var(--fs-meta);border-radius:6px;cursor:pointer">私隐文契</button>
+        <button style="padding:8px;background:var(--paper-1);border:1px solid var(--azure);color:var(--azure);font-family:var(--font-display);font-size: var(--fs-meta);border-radius:6px;cursor:pointer">使用条款</button>
+        <button style="padding:8px;background:var(--paper-1);border:1px solid var(--azure);color:var(--azure);font-family:var(--font-display);font-size: var(--fs-meta);border-radius:6px;cursor:pointer">取消订阅</button>
+        <button style="padding:10px;background:var(--azure);color:var(--paper-1);border:1.5px solid var(--ink-1);font-family:var(--font-display);font-size: var(--fs-label);border-radius:8px;cursor:pointer;margin-top:6px">新开一局（重置）</button>
       </div>
       <div class="ver">大掌柜 · v1.9.540 11.2_STAGE<br/>UUID CC9A37BB-97DA-45D0-B322-FBC97F3FDB48</div>
     `
@@ -4234,10 +4536,10 @@ const MODALS = {
             ['运', '气运', '一'],
           ].map(([g,n,v]) => `
             <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px">
-              <div style="width:28px;height:28px;background:var(--celadon-3);color:var(--paper-1);border-radius:4px;display:grid;place-items:center;font-family:var(--font-display);font-size: 17px;flex:none">${g}</div>
+              <div style="width:28px;height:28px;background:var(--celadon-3);color:var(--paper-1);border-radius:4px;display:grid;place-items:center;font-family:var(--font-display);font-size: var(--fs-label);flex:none">${g}</div>
               <div style="flex:1;display:flex;justify-content:space-between;align-items:baseline">
-                <span style="font-family:var(--font-display);font-size: 16px;color:var(--ink-1)">${n}</span>
-                <span style="font-family:var(--font-num);font-size: 18px;color:var(--cinnabar-1);font-weight:700">${v}</span>
+                <span style="font-family:var(--font-display);font-size: var(--fs-label);color:var(--ink-1)">${n}</span>
+                <span style="font-family:var(--font-num);font-size: var(--fs-body);color:var(--cinnabar-1);font-weight:700">${v}</span>
               </div>
             </div>
           `).join('')}
@@ -4245,8 +4547,8 @@ const MODALS = {
             <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--paper-2);border:1px dashed var(--ink-4);border-radius:6px;opacity:.55">
               <div style="width:28px;height:28px;background:var(--ink-4);color:var(--paper-1);border-radius:4px;display:grid;place-items:center;font-family:var(--font-display);font-size: 16px;flex:none">鎖</div>
               <div style="flex:1;display:flex;justify-content:space-between;align-items:baseline">
-                <span style="font-family:var(--font-display);font-size: 15px;color:var(--ink-3)">未启</span>
-                <span style="font-family:var(--font-num);font-size: 16px;color:var(--ink-4)">??</span>
+                <span style="font-family:var(--font-display);font-size: var(--fs-meta);color:var(--ink-3)">未启</span>
+                <span style="font-family:var(--font-num);font-size: var(--fs-label);color:var(--ink-4)">??</span>
               </div>
             </div>
           `).join('')}
@@ -4258,29 +4560,29 @@ const MODALS = {
             <div style="text-align:center;margin-bottom:8px">
               <div style="display:inline-block;width:28px;height:28px;background:var(--cur-coin);color:var(--paper-1);border-radius:4px;font-family:var(--font-display);font-size: 16px;display:grid;place-items:center">銅</div>
             </div>
-            <div style="font-family:var(--font-num);font-size: 18px;color:var(--ink-2);line-height:1.7">
+            <div style="font-family:var(--font-num);font-size: var(--fs-body);color:var(--ink-2);line-height:1.7">
               <div>+ 工 1.4k</div><div>+ 寳 664</div><div>+ 膂 1</div>
               <div>- 鞋 100</div><div>- 膳 60</div><div>- 飨 450</div>
             </div>
-            <div style="border-top:1px solid var(--paper-edge);margin-top:6px;padding-top:6px;text-align:center;font-family:var(--font-display);color:var(--jade);font-size: 17px">+1.5k</div>
+            <div style="border-top:1px solid var(--paper-edge);margin-top:6px;padding-top:6px;text-align:center;font-family:var(--font-display);color:var(--jade);font-size: var(--fs-label)">+1.5k</div>
           </div>
           <div style="background:var(--paper-2);border:1px solid var(--paper-edge);padding:10px 8px;border-radius:6px">
             <div style="text-align:center;margin-bottom:8px">
               <div style="display:inline-block;width:28px;height:28px;background:var(--cur-mood);color:var(--ink-1);border-radius:4px;font-family:var(--font-display);font-size: 16px;display:grid;place-items:center">心</div>
             </div>
-            <div style="font-family:var(--font-num);font-size: 18px;color:var(--ink-2);line-height:1.7">
+            <div style="font-family:var(--font-num);font-size: var(--fs-body);color:var(--ink-2);line-height:1.7">
               <div>+ 车 5</div><div>+ 寳 1</div><div>- 膳 2</div>
             </div>
-            <div style="border-top:1px solid var(--paper-edge);margin-top:6px;padding-top:6px;text-align:center;font-family:var(--font-display);color:var(--jade);font-size: 17px">+2</div>
+            <div style="border-top:1px solid var(--paper-edge);margin-top:6px;padding-top:6px;text-align:center;font-family:var(--font-display);color:var(--jade);font-size: var(--fs-label)">+2</div>
           </div>
           <div style="background:var(--paper-2);border:1px solid var(--paper-edge);padding:10px 8px;border-radius:6px">
             <div style="text-align:center;margin-bottom:8px">
               <div style="display:inline-block;width:28px;height:28px;background:var(--cur-heart);color:var(--paper-1);border-radius:4px;font-family:var(--font-display);font-size: 16px;display:grid;place-items:center">壽</div>
             </div>
-            <div style="font-family:var(--font-num);font-size: 18px;color:var(--ink-2);line-height:1.7">
+            <div style="font-family:var(--font-num);font-size: var(--fs-body);color:var(--ink-2);line-height:1.7">
               <div>+ 膳 3</div><div>+ 膳 5</div><div>- 膳 2</div><div>- 膳 4</div>
             </div>
-            <div style="border-top:1px solid var(--paper-edge);margin-top:6px;padding-top:6px;text-align:center;font-family:var(--font-display);color:var(--jade);font-size: 17px">+4</div>
+            <div style="border-top:1px solid var(--paper-edge);margin-top:6px;padding-top:6px;text-align:center;font-family:var(--font-display);color:var(--jade);font-size: var(--fs-label)">+4</div>
           </div>
         </div>
       </div>
@@ -4297,12 +4599,12 @@ const MODALS = {
           ['緣', '相识加速', '0／3', '+20% / 級', 5],
         ].map(([g,n,prog,gain,price]) => `
           <div style="display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;padding:10px;background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;margin-bottom:6px">
-            <div style="width:28px;height:28px;background:var(--cur-jade);color:var(--paper-1);border-radius:4px;display:grid;place-items:center;font-family:var(--font-display);font-size: 17px">${g}</div>
+            <div style="width:28px;height:28px;background:var(--cur-jade);color:var(--paper-1);border-radius:4px;display:grid;place-items:center;font-family:var(--font-display);font-size: var(--fs-label)">${g}</div>
             <div>
-              <div style="font-family:var(--font-display);font-size: 17px;color:var(--ink-1)">${n} <span style="font-family:var(--font-num);font-size: 14px;color:var(--ink-3);margin-left:4px">${prog}</span></div>
-              <div style="font-family:var(--font-num);font-size: 14px;color:var(--jade);margin-top:2px">${gain}</div>
+              <div style="font-family:var(--font-display);font-size: var(--fs-label);color:var(--ink-1)">${n} <span style="font-family:var(--font-num);font-size: var(--fs-meta);color:var(--ink-3);margin-left:4px">${prog}</span></div>
+              <div style="font-family:var(--font-num);font-size: var(--fs-meta);color:var(--jade);margin-top:2px">${gain}</div>
             </div>
-            <button class="tx-press" style="background:var(--jade);color:var(--paper-1);border:1.5px solid var(--ink-1);box-shadow:0 3px 0 var(--ink-1);padding:6px 12px;border-radius:6px;font-family:var(--font-display);font-size: 17px;display:inline-flex;align-items:center;gap:4px;cursor:pointer">
+            <button class="tx-press" style="background:var(--jade);color:var(--paper-1);border:1.5px solid var(--ink-1);box-shadow:0 3px 0 var(--ink-1);padding:6px 12px;border-radius:6px;font-family:var(--font-display);font-size: var(--fs-label);display:inline-flex;align-items:center;gap:4px;cursor:pointer">
               <span style="width:18px;height:18px;background:var(--cur-jade);color:var(--paper-1);border-radius:2px;display:grid;place-items:center;font-size: 12px;font-family:var(--font-display)">玉</span>${price}
             </button>
           </div>
@@ -4345,15 +4647,15 @@ const MODALS = {
     scroll: true,
     title: '银号 · 銅錢',
     html: () => `
-      <div style="padding:12px;background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;margin-bottom:12px;font-family:var(--font-display);font-size: 15px">
+      <div style="padding:12px;background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;margin-bottom:12px;font-family:var(--font-display);font-size: var(--fs-meta)">
         Phase A demo: 商店 modal 占位<br/>
-        <span style="font-family:var(--font-num);font-size: 15px;color:var(--ink-3)">完整 4 分区（金钱 / 门票 / 水 / 芯片）由 Phase B 补</span>
+        <span style="font-family:var(--font-num);font-size: var(--fs-meta);color:var(--ink-3)">完整 4 分区（金钱 / 门票 / 水 / 芯片）由 Phase B 补</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
         ${[['四千五','看广告'],['三万五','¥2.99'],['九万','¥6.99'],['廿二万','¥13.99'],['一百廿万','¥59.99'],['三百万','¥49.99']].map(([n,p])=>`
           <div style="padding:10px;background:var(--paper-1);border:1px solid var(--gold-1);border-radius:6px;text-align:center;font-family:var(--font-display)">
-            <div style="font-size: 20px;color:var(--cur-coin)">${n}</div>
-            <div style="font-size: 15px;color:var(--ink-3);margin-top:4px">${p}</div>
+            <div style="font-size: var(--fs-h2);color:var(--cur-coin)">${n}</div>
+            <div style="font-size: var(--fs-meta);color:var(--ink-3);margin-top:4px">${p}</div>
           </div>
         `).join('')}
       </div>
@@ -4430,7 +4732,7 @@ const MODALS = {
           <div class="pane-cta-row">
             <button class="pane-cta ghost" data-act="close">罷&nbsp;了</button>
             <button class="pane-cta primary" data-act="close">
-              <span class="ic-seal" style="background:var(--cur-jade);width:22px;height:22px;font-size:14px;border-radius:3px;display:grid;place-items:center;font-family:var(--font-display);color:var(--paper-1)">玉</span><span style="font-family:var(--font-num);font-size:18px;letter-spacing:0">${data.hireCost}</span>
+              <span class="ic-seal" style="background:var(--cur-jade);width:22px;height:22px;font-size:14px;border-radius:3px;display:grid;place-items:center;font-family:var(--font-display);color:var(--paper-1)">玉</span><span style="font-family:var(--font-num);font-size: var(--fs-body);letter-spacing:0">${data.hireCost}</span>
             </button>
           </div>
         </div>
@@ -4468,7 +4770,7 @@ const MODALS = {
               <span class="ad-tag">廣</span><span style="letter-spacing:.08em">免&nbsp;費&nbsp;升</span>
             </button>
             <button class="pane-cta primary" data-act="biz:upgrade-step">
-              <span class="ic-seal" style="background:var(--cur-coin);width:22px;height:22px;font-size:14px;border-radius:3px;display:grid;place-items:center;font-family:var(--font-display);color:var(--paper-1)">銅</span><span style="font-family:var(--font-num);font-size:18px;letter-spacing:0">${data.upgradeCost}</span>
+              <span class="ic-seal" style="background:var(--cur-coin);width:22px;height:22px;font-size:14px;border-radius:3px;display:grid;place-items:center;font-family:var(--font-display);color:var(--paper-1)">銅</span><span style="font-family:var(--font-num);font-size: var(--fs-body);letter-spacing:0">${data.upgradeCost}</span>
             </button>
           </div>
         </div>
@@ -4509,6 +4811,129 @@ const MODALS = {
           `).join('')}
         </div>
         ${ctaHtml}
+      `;
+    }
+  },
+  /* ===== T-B5 StockList (fps_0062 · 票號 認購 → 商號 list) ===== */
+  'stock-list': {
+    size: 'lg',
+    scroll: true,
+    title: '商&nbsp;&nbsp;號',
+    html: () => `
+      <div class="iv-stocks">
+<div class="iv-stock-card" data-stock="xingming">
+    <div class="iv-stock-glyph tone-jade">星</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">星　茗</div>
+      <div class="iv-stock-brand">STARBUX</div>
+      <div class="iv-stock-meta">
+        <span class="iv-stock-lv">級 十四</span>
+        <span class="iv-stock-bar"><i style="width:60%"></i></span>
+        <span class="iv-stock-own">175</span>
+      </div>
+    </div>
+    <div class="iv-stock-income c-jade">+43<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card" data-stock="liuying">
+    <div class="iv-stock-glyph tone-cinnabar">流</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">流　影</div>
+      <div class="iv-stock-brand">STREAMLIX</div>
+      <div class="iv-stock-meta">
+        <span class="iv-stock-lv">級 十</span>
+        <span class="iv-stock-bar"><i style="width:45%"></i></span>
+        <span class="iv-stock-own">303</span>
+      </div>
+    </div>
+    <div class="iv-stock-income c-jade">+59<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card" data-stock="mailu">
+    <div class="iv-stock-glyph tone-gold">麥</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">麥　盧</div>
+      <div class="iv-stock-brand">MCDONNALD'S</div>
+      <div class="iv-stock-meta">
+        <span class="iv-stock-lv">級 十三</span>
+        <span class="iv-stock-bar"><i style="width:75%"></i></span>
+        <span class="iv-stock-own">487</span>
+      </div>
+    </div>
+    <div class="iv-stock-income c-jade">+117<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card is-empty" data-stock="keke">
+    <div class="iv-stock-glyph tone-cinnabar-2">可</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">可　口</div>
+      <div class="iv-stock-brand">COKA-KOALA</div>
+      <div class="iv-stock-meta is-mute">未　持　有</div>
+    </div>
+    <div class="iv-stock-income c-muted">+0<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card is-empty" data-stock="taiwei">
+    <div class="iv-stock-glyph tone-celadon">微</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">臺　微　作</div>
+      <div class="iv-stock-brand">TMSC</div>
+      <div class="iv-stock-meta is-mute">未　持　有</div>
+    </div>
+    <div class="iv-stock-income c-muted">+0<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card is-empty" data-stock="tesiluo">
+    <div class="iv-stock-glyph tone-azure">駱</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">特　斯　駱</div>
+      <div class="iv-stock-brand">TESLO</div>
+      <div class="iv-stock-meta is-mute">未　持　有</div>
+    </div>
+    <div class="iv-stock-income c-muted">+0<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card is-empty" data-stock="fanshang">
+    <div class="iv-stock-glyph tone-amber">蘩</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">蘩　商</div>
+      <div class="iv-stock-brand">AMAZOON</div>
+      <div class="iv-stock-meta is-mute">未　持　有</div>
+    </div>
+    <div class="iv-stock-income c-muted">+0<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card is-empty" data-stock="masesi">
+    <div class="iv-stock-glyph tone-ink">馬</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">馬　瑟　驛</div>
+      <div class="iv-stock-brand">MERCE-DEEZ</div>
+      <div class="iv-stock-meta is-mute">未　持　有</div>
+    </div>
+    <div class="iv-stock-income c-muted">+0<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+  <div class="iv-stock-card is-empty" data-stock="weiying">
+    <div class="iv-stock-glyph tone-wood">硬</div>
+    <div class="iv-stock-mid">
+      <div class="iv-stock-name">微　硬　閣</div>
+      <div class="iv-stock-brand">MICROHARD</div>
+      <div class="iv-stock-meta is-mute">未　持　有</div>
+    </div>
+    <div class="iv-stock-income c-muted">+0<span class="ic-seal ic-brick mini">磚</span>／月</div>
+  </div>
+      </div>
+    `
+  },
+    /* ===== T-B5 BankInfo (fps_0059 · 信息 popup) ===== */
+  'bank-info': {
+    size: 'sm',
+    title: '信&nbsp;息',
+    html: (props) => {
+      const lib = {
+        cashback: '所有支出皆得回返。<br/>花得越多，返得越多。',
+        freebie:  '每番贈本，皆隨機商號股本一组。',
+        premium:  '上戶銀牌一旦持有，X2 諸般收益。',
+        broker:   '自動經紀代你買賣，安坐喫茶而望市。'
+      };
+      const msg = (props && lib[props.msg]) || lib.cashback;
+      return `
+        <div style="text-align:center;padding:24px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;height:100%">
+          <p style="font-family:var(--font-display);font-size:var(--fs-body);color:var(--ink-1);line-height:1.8;margin:0;letter-spacing:.04em">${msg}</p>
+          <button class="tx-press" data-act="close" style="background:var(--jade);color:var(--paper-1);border:1.5px solid var(--ink-1);border-radius:8px;padding:10px 36px;font-family:var(--font-display);font-size:var(--fs-h2);letter-spacing:.2em;cursor:pointer;box-shadow:0 3px 0 var(--ink-1)">接&nbsp;受</button>
+        </div>
       `;
     }
   }
@@ -4766,6 +5191,10 @@ document.addEventListener('click', (e) => {
   if (act.startsWith('switch:')) return switchScreen(act.slice(7));
   if (act.startsWith('open:')) {
     const key = act.slice(5);
+    // T-B5 投資 ⓘ: open:bank-info:cashback|freebie|premium|broker → bank-info modal + props
+    if (key.startsWith('bank-info:')) {
+      return openModal('bank-info', { msg: key.slice('bank-info:'.length) });
+    }
     const map = {
       'settings':'settings',
       // 'npc-req' 路由表项作废 (canonical v2): fps_0037 实为工作详情 modal
@@ -4781,7 +5210,8 @@ document.addEventListener('click', (e) => {
       'bonus':'goals',
       'cur-pouch':'goals',
       'shop:money':'shop:money',
-      'shop:jade':'shop:money'
+      'shop:jade':'shop:money',
+      'stock-list':'stock-list'
     };
     const target = map[key] || 'settings';
     openModal(target);

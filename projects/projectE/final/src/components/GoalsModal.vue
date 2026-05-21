@@ -77,6 +77,6 @@ const goals: Goal[] = [
   padding: 40px 16px;
   font-family: var(--font-display);
   color: var(--ink-3);
-  font-size: 17px;
+  font-size: var(--fs-label);
 }
 </style>

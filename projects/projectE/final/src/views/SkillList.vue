@@ -207,7 +207,7 @@ function fmtTime (sec: number) {
 }
 
 .ic-col { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.ic-col .seal { font-size: 22px; }
+.ic-col .seal { font-size: var(--fs-h2); }
 .tone-cinnabar { background: var(--cinnabar-1) !important; }
 .tone-jade     { background: var(--jade) !important; }
 .tone-azure    { background: var(--azure) !important; }
@@ -215,7 +215,7 @@ function fmtTime (sec: number) {
 .tone-celadon  { background: var(--celadon-1) !important; }
 .tone-wood     { background: var(--wood-1) !important; }
 .ic-col .lv {
-  font-family: var(--font-display); font-size: 14px;
+  font-family: var(--font-display); font-size: var(--fs-meta);
   color: inherit; opacity: .85; letter-spacing: .04em;
 }
 
@@ -277,7 +277,7 @@ function fmtTime (sec: number) {
   border: 1.5px solid var(--azure);
   color: var(--azure);
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--fs-body);
   cursor: pointer;
   display: grid; place-items: center;
 }
@@ -285,7 +285,7 @@ function fmtTime (sec: number) {
   background: var(--paper-1);
   color: var(--ink-1);
   border-color: var(--ink-1);
-  font-size: 13px;
+  font-size: var(--fs-meta);
   letter-spacing: -.04em;
 }
 
@@ -303,7 +303,7 @@ function fmtTime (sec: number) {
 }
 .accel-btn .lab {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: var(--fs-mono);
   color: var(--ink-2);
   letter-spacing: .05em;
   line-height: 1;
@@ -359,7 +359,7 @@ function fmtTime (sec: number) {
   border: 1.5px solid var(--ink-3);
   border-radius: 50%;
   display: grid; place-items: center;
-  font-family: var(--font-display); font-size: 18px;
+  font-family: var(--font-display); font-size: var(--fs-body);
   justify-self: center;
 }
 .card.locked .name {
@@ -397,7 +397,7 @@ function fmtTime (sec: number) {
   background: var(--cinnabar-1);
   color: var(--paper-1);
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: var(--fs-meta);
   padding: 1px 8px;
   border-radius: var(--r-pill);
   border: 1.5px solid var(--paper-1);
@@ -408,7 +408,7 @@ function fmtTime (sec: number) {
   background: var(--jade);
   color: var(--paper-1);
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   padding: 3px 14px;
   border-radius: var(--r-pill);
   border: 1.5px solid var(--paper-1);

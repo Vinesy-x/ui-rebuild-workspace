@@ -28,6 +28,8 @@ import SettingsModal        from './SettingsModal.vue'
 import CharacterModal       from './CharacterModal.vue'
 import GoalsModal           from './GoalsModal.vue'
 import ShopModal            from './ShopModal.vue'
+import InvestInfoModal      from './InvestInfoModal.vue'
+import StockListModal       from './StockListModal.vue'
 
 const store = useModalStore()
 const open = computed(() => store.currentModal !== null)
@@ -46,6 +48,8 @@ const map: Record<string, any> = {
   'skill-accelerate': SkillAccelerateModal,// T-B1 fps_0007 · 每技能各自一个实例
   'biz-hire':         BizHireModal,        // T-B4 fps_0050 · 雇掌櫃
   'biz-upgrade':      BizUpgradeModal,     // T-B4 fps_0053 · 興擴
+  'bank-info':        InvestInfoModal,     // T-B5 fps_0059 · 银行 ⓘ 信息
+  'stock-list':       StockListModal,      // T-B5 fps_0062 · 票號 認購 → 9 商號 list
   // Phase A globals · HudBar + MainMenu 触发
   'settings':         SettingsModal,       // ⚙ 齿轮
   'character':        CharacterModal,      // 王掌柜头像 · 心 / 玉 cell · 名条 (alias: rename / income)
@@ -117,7 +121,7 @@ const current = computed(() => store.currentModal ? map[store.currentModal] : nu
     align-items: center;
     justify-content: space-between;
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     border-bottom: 1px solid var(--wood-2);
     position: relative;
   }
@@ -137,7 +141,7 @@ const current = computed(() => store.currentModal ? map[store.currentModal] : nu
     border-radius: 50%;
     display: grid; place-items: center;
     cursor: pointer;
-    font-size: 18px;
+    font-size: var(--fs-body);
     background: transparent;
     color: var(--paper-1);
   }

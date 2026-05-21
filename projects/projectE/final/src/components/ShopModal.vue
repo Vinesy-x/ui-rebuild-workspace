@@ -66,12 +66,12 @@ const jadeOptions = [
   border-radius: 6px;
   margin-bottom: 12px;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   color: var(--ink-2);
 }
 .phase-notice-sub {
   font-family: var(--font-num);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   color: var(--ink-3);
 }
 
@@ -89,8 +89,8 @@ const jadeOptions = [
   text-align: center;
   font-family: var(--font-display);
 }
-.shop-amt { font-size: 20px; }
+.shop-amt { font-size: var(--fs-h2); }
 .amt-coin { color: var(--cur-coin); }
 .amt-jade { color: var(--cur-jade); }
-.shop-price { font-size: 15px; color: var(--ink-3); margin-top: 4px; }
+.shop-price { font-size: var(--fs-meta); color: var(--ink-3); margin-top: 4px; }
 </style>

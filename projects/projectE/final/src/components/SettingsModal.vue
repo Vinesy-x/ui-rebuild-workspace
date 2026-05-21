@@ -52,7 +52,7 @@ const rows = [
 .set-row .lang-val { font-family: var(--font-display); color: var(--ink-3); }
 .set-row .discord-cta {
   background: var(--cur-jade); color: var(--paper-1);
-  padding: 4px 12px; border-radius: var(--r-pill); font-size: 18px;
+  padding: 4px 12px; border-radius: var(--r-pill); font-size: var(--fs-body);
   font-family: var(--font-display);
 }
 .btn-col {
@@ -65,7 +65,7 @@ const rows = [
   border: 1px solid var(--azure);
   color: var(--azure);
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--fs-meta);
   border-radius: 6px;
   cursor: pointer;
 }
@@ -75,7 +75,7 @@ const rows = [
   color: var(--paper-1);
   border: 1.5px solid var(--ink-1);
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: var(--fs-label);
   border-radius: 8px;
   cursor: pointer;
   margin-top: 6px;

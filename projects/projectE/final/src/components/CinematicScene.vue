@@ -33,5 +33,5 @@ onMounted(() => { setTimeout(() => store.close(), props.duration) })
 .bg { width: 100%; height: 100%; object-fit: cover; }
 .placeholder { text-align: center; }
 .title { font-family: var(--font-display); font-size: 36px; color: var(--gold-2); margin: 0; }
-.ph { font-family: monospace; font-size: 14px; color: var(--ink-4); margin-top: 12px; }
+.ph { font-family: monospace; font-size: var(--fs-mono); color: var(--ink-4); margin-top: 12px; }
 </style>

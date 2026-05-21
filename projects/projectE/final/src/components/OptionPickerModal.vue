@@ -46,9 +46,9 @@ function accept() { emit('accept', selected.value); store.close() }
   cursor: pointer;
 }
 .opt.active { border-color: var(--cinnabar-1); box-shadow: 0 0 0 1px var(--cinnabar-1); }
-.opt .pic { font-family: var(--font-display); font-size: 20px; }
-.opt .name { font-family: var(--font-display); font-size: 18px; color: var(--ink-1); }
-.opt .price { font-family: var(--font-num); font-size: 16px; color: var(--cur-coin); }
+.opt .pic { font-family: var(--font-display); font-size: var(--fs-h2); }
+.opt .name { font-family: var(--font-display); font-size: var(--fs-body); color: var(--ink-1); }
+.opt .price { font-family: var(--font-num); font-size: var(--fs-label); color: var(--cur-coin); }
 .opt .rec {
   width: 22px; height: 22px;
   background: var(--jade); color: var(--paper-1);

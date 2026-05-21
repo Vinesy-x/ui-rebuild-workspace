@@ -58,7 +58,8 @@ const store = useModalStore()
       <span class="ic-seal ic-star">星</span>
       <span class="num">{{ star }}</span>
     </div>
-    <div class="cal" @click="store.open('date')">
+    <!-- cal · HTML 真值原名 'open:date' → Vue 统一走 GoalsModal (见 useModalStore.ts) -->
+    <div class="cal" @click="store.open('goals')">
       <div class="y">{{ date.era }}</div>
       <div class="d">{{ date.day }}</div>
       <div class="m">{{ date.m }}</div>
@@ -109,7 +110,7 @@ const store = useModalStore()
     bottom: -3px; left: 50%; transform: translateX(-50%);
     background: var(--ink-1); color: var(--paper-1);
     font-family: var(--font-num);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     padding: 1px 6px;
     border-radius: var(--r-pill);
     border: 1px solid var(--gold-1);
@@ -131,7 +132,7 @@ const store = useModalStore()
     align-items: center;
     gap: 4px;
     font-family: var(--font-num);
-    font-size: 18px;
+    font-size: var(--fs-body);
     color: var(--ink-1);
     line-height: 1;
     cursor: pointer;
@@ -143,7 +144,7 @@ const store = useModalStore()
 .hud-cell .num { font-weight: var(--fw-medium); letter-spacing: -.02em; }
 
 .hud-cell .sub {
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--ink-3);
     font-family: var(--font-num);
   }
@@ -207,9 +208,9 @@ const store = useModalStore()
     align-items: center;
   }
 
-.cal .y { font-size: 14px; color: var(--ink-3); letter-spacing:.05em; line-height:1; }
+.cal .y { font-size: var(--fs-meta); color: var(--ink-3); letter-spacing:.05em; line-height:1; }
 
-.cal .d { font-size: 20px; font-weight: var(--fw-bold); color: var(--ink-1); line-height:1; margin: 2px 0; white-space: nowrap; letter-spacing: -.05em; }
+.cal .d { font-size: var(--fs-h2); font-weight: var(--fw-bold); color: var(--ink-1); line-height:1; margin: 2px 0; white-space: nowrap; letter-spacing: -.05em; }
 
-.cal .m { font-size: 14px; color: var(--cinnabar-1); font-weight: var(--fw-bold); letter-spacing:.05em; line-height:1; }
+.cal .m { font-size: var(--fs-meta); color: var(--cinnabar-1); font-weight: var(--fw-bold); letter-spacing:.05em; line-height:1; }
 </style>

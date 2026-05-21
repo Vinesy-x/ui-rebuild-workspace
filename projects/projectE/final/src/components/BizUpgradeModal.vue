@@ -111,7 +111,7 @@ const gainPct = computed(() => Math.min(100, Math.round(props.gain * 2)))
   right: 8px; top: 50%; transform: translateY(-50%);
   color: var(--paper-1);
   font-family: var(--font-num);
-  font-size: 14px;
+  font-size: var(--fs-meta);
   display: inline-flex; align-items: center; gap: 4px;
   text-shadow: 0 1px 0 rgba(0,0,0,.3);
 }
@@ -139,7 +139,7 @@ const gainPct = computed(() => Math.min(100, Math.round(props.gain * 2)))
 }
 .up-income .val {
   font-family: var(--font-num);
-  font-size: 24px;
+  font-size: var(--fs-h1);
   color: var(--cinnabar-1);
   font-weight: 700;
   text-align: right;
@@ -147,7 +147,7 @@ const gainPct = computed(() => Math.min(100, Math.round(props.gain * 2)))
 }
 .up-income .val small {
   display: block;
-  font-size: 15px;
+  font-size: var(--fs-meta);
   color: var(--jade);
   font-family: var(--font-num);
   font-weight: 700;
@@ -163,7 +163,7 @@ const gainPct = computed(() => Math.min(100, Math.round(props.gain * 2)))
   border-radius: 3px;
   padding: 1px 5px;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: var(--fs-mono);
   letter-spacing: 0;
   display: inline-grid; place-items: center;
   line-height: 1.2;

@@ -55,20 +55,20 @@ const store = useModalStore()
     position: relative;
     display: grid; place-items: center;
     font-family: ui-monospace, monospace;
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
   }
 
 .req-title {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     color: var(--ink-1);
     text-align: center;
     margin-bottom: 6px;
   }
 
-.req-sub { text-align: center; font-size: 16px; color: var(--ink-3); margin-bottom: 10px; }
+.req-sub { text-align: center; font-size: var(--fs-label); color: var(--ink-3); margin-bottom: 10px; }
 
 .reqs { display: flex; flex-direction: column; gap: 6px; }
 
@@ -90,12 +90,12 @@ const store = useModalStore()
     border-radius: 4px;
     display: grid; place-items: center;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
 
-.req .name { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
+.req .name { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
 
-.req .name .num { font-family: var(--font-num); color: var(--ink-3); margin-left: 6px; font-size: 16px; }
+.req .name .num { font-family: var(--font-num); color: var(--ink-3); margin-left: 6px; font-size: var(--fs-label); }
 
 .req .state-ok {
     width: 22px; height: 22px;
@@ -103,7 +103,7 @@ const store = useModalStore()
     color: var(--paper-1);
     border-radius: 50%;
     display: grid; place-items: center;
-    font-size: 17px; line-height: 1;
+    font-size: var(--fs-label); line-height: 1;
   }
 
 .req .state-go {
@@ -112,7 +112,7 @@ const store = useModalStore()
     font-family: var(--font-display);
     padding: 3px 12px;
     border-radius: var(--r-pill);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
 .accept-cta {
     margin-top: 12px;
@@ -123,7 +123,7 @@ const store = useModalStore()
     padding: 10px;
     border-radius: 8px;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--fs-h2);
     cursor: pointer;
     box-shadow: 0 3px 0 var(--ink-1);
   }

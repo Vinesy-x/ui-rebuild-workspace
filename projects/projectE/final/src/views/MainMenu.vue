@@ -238,7 +238,7 @@ const store = useModalStore()
     padding: 5px 12px 5px 12px;
     border-radius: var(--r-pill);
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     letter-spacing: .08em;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
     cursor: pointer;
@@ -247,7 +247,7 @@ const store = useModalStore()
 
 .name-pill .edit {
     font-family: var(--font-serif);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     opacity: .85;
     border-left: 1px solid rgba(255,255,255,.3);
     padding-left: 6px;
@@ -257,7 +257,7 @@ const store = useModalStore()
 
 .name-meta {
     font-family: var(--font-num);
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     line-height: 1.2;
     white-space: nowrap;
@@ -303,7 +303,7 @@ const store = useModalStore()
     border-radius: 4px 4px 28px 28px / 4px 4px 18px 18px;
     border: 1.5px solid var(--gold-1);
     color: var(--gold-2);
-    font-size: 32px;
+    font-size: var(--fs-display);
     display: grid;
     place-items: center;
     position: relative;
@@ -327,7 +327,7 @@ const store = useModalStore()
     display: inline-block;
     background: var(--ink-1);
     color: var(--gold-2);
-    font-size: 16px;
+    font-size: var(--fs-label);
     padding: 1px 6px;
     border-radius: var(--r-pill);
     border: 1px solid var(--gold-1);
@@ -425,7 +425,7 @@ const store = useModalStore()
     border: 1px solid var(--wood-2);
     font-family: var(--font-display);
     color: var(--paper-1);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     text-align: center;
     writing-mode: vertical-rl;
     padding: 4px 0;
@@ -518,7 +518,7 @@ const store = useModalStore()
     background: rgba(31,27,20,.78);
     color: var(--paper-1);
     font-family: ui-monospace, "SF Mono", monospace;
-    font-size: 14px;
+    font-size: var(--fs-mono);
     padding: 2px 6px;
     border: 1px dashed var(--gold-2);
     white-space: nowrap;
@@ -582,7 +582,7 @@ const store = useModalStore()
     background: rgba(31,27,20,.7);
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: var(--fs-label);
     padding: 1px 8px;
     border-radius: var(--r-pill);
     white-space: nowrap;
@@ -623,7 +623,7 @@ const store = useModalStore()
     display: grid; place-items: center;
     color: var(--gold-2);
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: var(--fs-h1);
     border: 1px solid var(--gold-1);
     border-radius: 4px;
   }
@@ -689,7 +689,7 @@ const store = useModalStore()
     background: rgba(31,27,20,.5);
     color: var(--paper-1);
     font-family: ui-monospace, "SF Mono", monospace;
-    font-size: 14px;
+    font-size: var(--fs-mono);
     padding: 2px 6px;
     letter-spacing: .02em;
     z-index: 6;
@@ -715,7 +715,7 @@ const store = useModalStore()
     display: grid; place-items: center;
     color: var(--paper-1);
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: var(--fs-h2);
     box-shadow: inset 0 -3px 0 rgba(0,0,0,.2);
     position: relative;
   }
@@ -759,7 +759,7 @@ const store = useModalStore()
 
 .task-card .label {
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-1);
     line-height: 1.1;
     display: flex; align-items: center; gap: 4px;
@@ -784,7 +784,7 @@ const store = useModalStore()
 
 .task-card .ratio {
     font-family: var(--font-num);
-    font-size: 15px;
+    font-size: var(--fs-meta);
     color: var(--ink-3);
     margin-top: 2px;
   }
@@ -818,7 +818,7 @@ const store = useModalStore()
     border: 1.5px solid var(--paper-1);
     border-radius: 50%;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     display: grid; place-items: center;
     line-height: 1;
     box-shadow: 0 0 0 1px var(--cinnabar-3);

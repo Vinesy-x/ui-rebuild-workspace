@@ -41,7 +41,7 @@ onMounted(() => { setTimeout(() => store.close(), props.autoMs) })
 }
 .label {
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: var(--fs-overlay);
   color: var(--paper-1);
   letter-spacing: .2em;
   margin-top: 28px;

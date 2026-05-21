@@ -54,12 +54,12 @@ function tap() {
 .badge {
   background: var(--ink-1); color: var(--amber);
   padding: 6px 18px; border-radius: 4px;
-  font-family: var(--font-display); letter-spacing: .3em; font-size: 17px;
+  font-family: var(--font-display); letter-spacing: .3em; font-size: var(--fs-label);
 }
 h1 {
   font-family: var(--font-display);
   color: var(--amber);
-  font-size: 40px; margin: 0;
+  font-size: var(--fs-overlay); margin: 0;
   text-shadow: 0 2px 0 var(--ink-1);
 }
 .illu {
@@ -69,13 +69,13 @@ h1 {
   display: grid; place-items: center;
   background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(139,111,71,.1) 10px 12px);
 }
-.illu .ph { font-family: monospace; font-size: 14px; color: var(--ink-3); }
+.illu .ph { font-family: monospace; font-size: var(--fs-mono); color: var(--ink-3); }
 .wage { display: flex; align-items: baseline; gap: 8px; }
 .wage .seal {
   background: var(--cur-coin); color: var(--paper-1);
   padding: 4px 10px; border-radius: 3px;
-  font-family: var(--font-display); font-size: 22px;
+  font-family: var(--font-display); font-size: var(--fs-h2);
 }
 .wage .num { font-family: var(--font-display); font-size: 44px; color: var(--ink-1); font-weight: 700; }
-.wage .unit { color: var(--ink-3); font-size: 17px; }
+.wage .unit { color: var(--ink-3); font-size: var(--fs-label); }
 </style>

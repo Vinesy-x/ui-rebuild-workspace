@@ -41,7 +41,7 @@
   }
   .seal-title h1 {
     font-family: var(--font-display);
-    font-size: 40px;
+    font-size: var(--fs-overlay);
     margin: 0;
     color: var(--ink-1);
     letter-spacing: .08em;
@@ -52,7 +52,7 @@
   .seal-title h1 small {
     display: block;
     font-family: var(--font-serif);
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     letter-spacing: .08em;
     margin-top: 6px;
@@ -61,7 +61,7 @@
 
   h2 {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: var(--fs-h1);
     margin: 48px 0 4px;
     color: var(--ink-1);
     border-bottom: 1px solid var(--paper-edge);
@@ -70,15 +70,15 @@
   }
   h2 small {
     font-family: var(--font-serif);
-    font-size: 16px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     margin-left: 12px;
     letter-spacing: .04em;
     font-weight: var(--fw-normal);
   }
-  h3 { font-family: var(--font-display); font-size: 18px; margin: 24px 0 8px; color: var(--celadon-3); letter-spacing: .06em; }
-  p, li { font-size: 16px; color: var(--ink-2); line-height: 1.8; }
-  code { font-family: ui-monospace, "SF Mono", monospace; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; font-size: 16px; color: var(--ink-1); }
+  h3 { font-family: var(--font-display); font-size: var(--fs-body); margin: 24px 0 8px; color: var(--celadon-3); letter-spacing: .06em; }
+  p, li { font-size: var(--fs-label); color: var(--ink-2); line-height: 1.8; }
+  code { font-family: ui-monospace, "SF Mono", monospace; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; font-size: var(--fs-label); color: var(--ink-1); }
 
   /* ─── color grid ─── */
   .swatch-grid {
@@ -96,9 +96,9 @@
   }
   .sw .chip { height: 60px; }
   .sw .meta { padding: 6px 8px 8px; }
-  .sw .name { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-  .sw .hex  { font-size: 15px; color: var(--ink-3); margin-top: 2px; }
-  .sw .var  { font-size: 17px; color: var(--ink-4); }
+  .sw .name { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .sw .hex  { font-size: var(--fs-meta); color: var(--ink-3); margin-top: 2px; }
+  .sw .var  { font-size: var(--fs-label); color: var(--ink-4); }
 
   /* ─── tier ─── */
   .tier-row { display: flex; gap: 10px; margin: 12px 0 24px; flex-wrap: wrap; }
@@ -111,7 +111,7 @@
     font-family: var(--font-display);
     border: 1.5px solid var(--ink-1);
   }
-  .tier small { display: block; font-family: var(--font-serif); font-size: 15px; margin-top: 4px; opacity: .85; }
+  .tier small { display: block; font-family: var(--font-serif); font-size: var(--fs-meta); margin-top: 4px; opacity: .85; }
 
   /* ─── type scale ─── */
   .type-row {
@@ -122,7 +122,7 @@
     border-bottom: 1px dashed var(--paper-edge);
     align-items: baseline;
   }
-  .type-row .meta { font-family: ui-monospace, monospace; font-size: 15px; color: var(--ink-3); }
+  .type-row .meta { font-family: ui-monospace, monospace; font-size: var(--fs-meta); color: var(--ink-3); }
   .type-row .sample { /* color 跟随 .t-X 工具类，不强制覆盖 */ }
 
   /* ─── currency rail ─── */
@@ -153,8 +153,8 @@
     position: relative;
   }
   .cur-cell .cseal::after { content:""; position:absolute; inset:2px; border:1px solid rgba(245,235,214,.35); border-radius:3px; }
-  .cur-cell .cname { font-family: var(--font-display); font-size: 17px; color: var(--ink-1); }
-  .cur-cell .cuse  { font-size: 17px; color: var(--ink-3); line-height: 1.4; font-family: var(--font-num); }
+  .cur-cell .cname { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
+  .cur-cell .cuse  { font-size: var(--fs-label); color: var(--ink-3); line-height: 1.4; font-family: var(--font-num); }
 
   /* ─── badge gallery ─── */
   .badges {
@@ -193,9 +193,9 @@
   .b-warn { background: var(--amber); color: var(--ink-1); }
   .b-ok   { background: var(--jade); }
   .b-lock { background: var(--ink-3); }
-  .b-fail { background: var(--fail-red); width: auto; padding: 0 6px; border-radius: 6px; font-size: 17px; }
-  .badge-demo small { font-size: 17px; color: var(--ink-3); font-family: var(--font-num); }
-  .badge-demo .lab  { font-family: var(--font-display); font-size: 16px; color: var(--ink-1); }
+  .b-fail { background: var(--fail-red); width: auto; padding: 0 6px; border-radius: 6px; font-size: var(--fs-label); }
+  .badge-demo small { font-size: var(--fs-label); color: var(--ink-3); font-family: var(--font-num); }
+  .badge-demo .lab  { font-family: var(--font-display); font-size: var(--fs-label); color: var(--ink-1); }
 
   /* ─── component frame ─── */
   .comp-grid {
@@ -215,16 +215,16 @@
     color: var(--paper-1);
     padding: 8px 12px;
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: var(--fs-label);
     letter-spacing: .06em;
     display: flex; justify-content: space-between; align-items: center;
   }
   .comp .hd code { background: rgba(255,255,255,.18); color: var(--gold-2); }
   .comp .body { padding: 12px; }
-  .comp .body p { margin: 0 0 6px; font-size: 16px; color: var(--ink-2); }
+  .comp .body p { margin: 0 0 6px; font-size: var(--fs-label); color: var(--ink-2); }
   .comp .body .frames {
     font-family: var(--font-num);
-    font-size: 17px;
+    font-size: var(--fs-label);
     color: var(--ink-3);
     background: var(--paper-2);
     padding: 4px 8px;
@@ -235,7 +235,7 @@
   /* ─── asset checklist ─── */
   .asset-table {
     width: 100%; border-collapse: collapse;
-    font-size: 16px;
+    font-size: var(--fs-label);
     margin: 12px 0;
   }
   .asset-table th, .asset-table td {
@@ -255,7 +255,7 @@
     padding: 1px 6px;
     border-radius: 3px;
     font-family: var(--font-num);
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
   .asset-table .tag-svg { background: var(--celadon-2); color: var(--celadon-3); }
   .asset-table .tag-png { background: var(--gold-2); color: var(--ink-1); }
@@ -266,7 +266,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 6px 18px;
     margin: 12px 0;
-    font-size: 17px;
+    font-size: var(--fs-label);
   }
   .glossary .from { color: var(--ink-3); font-family: var(--font-num); }
   .glossary .from::after { content: " →"; color: var(--ink-4); }
@@ -290,7 +290,7 @@
     margin: -40px -6vw 24px;
     display: flex; gap: 16px; flex-wrap: wrap;
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: var(--fs-label);
     z-index: 50;
     box-shadow: 0 2px 8px rgba(0,0,0,.04);
   }
@@ -327,7 +327,7 @@
     </h1>
   </header>
 
-  <p style="font-size: 17px;color:var(--ink-3);line-height:1.8">
+  <p style="font-size: var(--fs-label);color:var(--ink-3);line-height:1.8">
     本页是 fps_0035 主菜单同期产出的风格定档（Style Lock）。
     Phase A 通过后 → Phase B 49 张屏沿用，不再变。
     色 / 字 / 角标 / 货币 / 组件 命名 = canonical。<br/>
@@ -344,30 +344,30 @@
   <h2 id="keywords">五字定调 <small>v2 · 江南水乡版·以参考图为准</small></h2>
   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0">
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--celadon-1);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 24px;color:var(--celadon-1);letter-spacing:.1em">雾天起青</div>
-      <p style="font-size: 15px;margin-top:6px;color:var(--ink-3)">冷调背景天青 / 远山薄雾 / 低饱和、不于鲜艳</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h1);color:var(--celadon-1);letter-spacing:.1em">雾天起青</div>
+      <p style="font-size: var(--fs-meta);margin-top:6px;color:var(--ink-3)">冷调背景天青 / 远山薄雾 / 低饱和、不于鲜艳</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--celadon-3);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 24px;color:var(--celadon-3);letter-spacing:.1em">江南黑瓦</div>
-      <p style="font-size: 15px;margin-top:6px;color:var(--ink-3)">白粉墙 + 冷靛灰飞檐 / 取代茶褐木框</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h1);color:var(--celadon-3);letter-spacing:.1em">江南黑瓦</div>
+      <p style="font-size: var(--fs-meta);margin-top:6px;color:var(--ink-3)">白粉墙 + 冷靛灰飞檐 / 取代茶褐木框</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--cinnabar-1);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 24px;color:var(--cinnabar-1);letter-spacing:.1em">印泥赭收</div>
-      <p style="font-size: 15px;margin-top:6px;color:var(--ink-3)">主红 = 书画印泥 #8A4533 / 杀死亮朱砂 / 极克制</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h1);color:var(--cinnabar-1);letter-spacing:.1em">印泥赭收</div>
+      <p style="font-size: var(--fs-meta);margin-top:6px;color:var(--ink-3)">主红 = 书画印泥 #8A4533 / 杀死亮朱砂 / 极克制</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--gold-1);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 24px;color:var(--gold-1);letter-spacing:.1em">細金均线</div>
-      <p style="font-size: 15px;margin-top:6px;color:var(--ink-3)">金棕 hairline 边 / 不用宽木框 / 轻盈透</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h1);color:var(--gold-1);letter-spacing:.1em">細金均线</div>
+      <p style="font-size: var(--fs-meta);margin-top:6px;color:var(--ink-3)">金棕 hairline 边 / 不用宽木框 / 轻盈透</p>
     </div>
     <div style="padding:14px 10px;background:var(--paper-2);border:1px solid var(--ink-2);border-radius:6px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 24px;color:var(--ink-1);letter-spacing:.1em">水墨留白</div>
-      <p style="font-size: 15px;margin-top:6px;color:var(--ink-3)">大留白 / 远近暍望 / 克制阴影、拒纯白、拒渐变</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h1);color:var(--ink-1);letter-spacing:.1em">水墨留白</div>
+      <p style="font-size: var(--fs-meta);margin-top:6px;color:var(--ink-3)">大留白 / 远近暍望 / 克制阴影、拒纯白、拒渐变</p>
     </div>
   </div>
 
-  <div style="background:var(--paper-2);border:1px dashed var(--gold-1);border-radius:6px;padding:12px 14px;margin:12px 0;font-size: 16px;color:var(--ink-2);line-height:1.7">
+  <div style="background:var(--paper-2);border:1px dashed var(--gold-1);border-radius:6px;padding:12px 14px;margin:12px 0;font-size: var(--fs-label);color:var(--ink-2);line-height:1.7">
     <strong style="color:var(--cinnabar-1)">v1 → v2 重点变动</strong>：
-    <ul style="margin:4px 0 0;padding-left:18px;font-size: 16px">
+    <ul style="margin:4px 0 0;padding-left:18px;font-size: var(--fs-label)">
       <li>主 CTA / 角标红 <code>#C0392B</code> → 印泥赭 <code>#8A4533</code></li>
       <li>深调 / 屋顶色 茶褐木 <code>#5C4630</code> → 江南瓦 <code>#3D4A52</code>（冷靛灰）</li>
       <li>背景 暖米黄 → 雾天青 + 米黄 + 麻紙 三段渐变</li>
@@ -454,14 +454,14 @@
   <h2 id="type">字号体系 <small>4 字族 · 8 档 · v3.1 · 锁定（最小正文 18px）</small></h2>
 
   <h3>字族</h3>
-  <p style="font-size: 18px">
+  <p style="font-size: var(--fs-body)">
     <strong style="font-family:var(--font-serif);font-weight:700">Noto Serif SC</strong>（正文，宋體类 serif）+
     <strong style="font-family:var(--font-ui)">ZCOOL XiaoWei</strong>（UI 标签 / 数字，仿宋窄）+
     <strong style="font-family:var(--font-display)">Ma Shan Zheng</strong>（装饰大标题，毛笔楷）。<br/>
     数字（HUD / 价 / 进度）默认仿宋阿拉伯。
   </p>
 
-  <div style="background:var(--paper-2);border:1px dashed var(--gold-1);border-radius:6px;padding:14px;margin:16px 0;font-size: 17px;line-height:1.7">
+  <div style="background:var(--paper-2);border:1px dashed var(--gold-1);border-radius:6px;padding:14px;margin:16px 0;font-size: var(--fs-label);line-height:1.7">
     <strong style="color:var(--cinnabar-1)">v2 → v3 校准：游戏 UI 不是软件 UI</strong><br/>
     - 删档：<code>--fs-h3 / --fs-num / --fs-num-bold / --fs-micro</code><br/>
     - 整体上调 +2~4px：<code>body 14→18 · h1 18→26 · display 22→32 · overlay 30→40</code><br/>
@@ -495,7 +495,7 @@
   </table>
 
   <h3>排版强约束</h3>
-  <ul style="font-size: 18px;line-height:1.9;padding-left:20px">
+  <ul style="font-size: var(--fs-body);line-height:1.9;padding-left:20px">
     <li><strong>能用 <code>.t-X / .c-X</code> 就用</strong> — 不要在 HTML 写 <code>style="font-size:NNpx"</code></li>
     <li>中文正文最小 = <code>--fs-body 18px</code>（再小看不清）</li>
     <li>仿宋窄字 (tab / 标签 / 装饰) 加 letter-spacing .04-.06em</li>
@@ -505,29 +505,29 @@
   </ul>
 
   <h3>Modal 尺寸 3 档 (锁定)</h3>
-  <p style="font-size: 18px">
+  <p style="font-size: var(--fs-body)">
     弹框走 3 档固定尺寸，<strong>不随内容自适应</strong>。锚点统一：<code>.modal-root.open</code> 走 <code>display:flex · align-items:center · padding:60px 16px 120px</code> → 视觉中心 ≈ 47% (居中偏上)，sm / md / lg 三档均自动垂直居中。
     默认 <code>overflow: hidden</code>，仅列表型加 <code>.scroll</code>。
     <br/><strong style="color:var(--cinnabar-1)">v2 校准 · 2026-05-20</strong>：旧 <code>top: 64px</code> 顶 HUD 写法作废（PNG fps_0007 真实弹框视觉中心 ≈ 50%）。
   </p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0">
     <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:16px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 20px;color:var(--ink-1)">.modal--sm</div>
-      <div style="font-family:var(--font-num);font-size: 32px;color:var(--cinnabar-1);margin:8px 0;font-weight:700">420 px</div>
-      <p style="font-size: 16px;margin:0">短列表 · 信息 modal</p>
-      <p style="font-size: 17px;color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">银行 ⓘ / 改名 / 日期 / 倍数奖励</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h2);color:var(--ink-1)">.modal--sm</div>
+      <div style="font-family:var(--font-num);font-size: var(--fs-display);color:var(--cinnabar-1);margin:8px 0;font-weight:700">420 px</div>
+      <p style="font-size: var(--fs-label);margin:0">短列表 · 信息 modal</p>
+      <p style="font-size: var(--fs-label);color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">银行 ⓘ / 改名 / 日期 / 倍数奖励</p>
     </div>
     <div style="background:var(--paper-2);border:1.5px solid var(--cinnabar-1);border-radius:6px;padding:16px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 20px;color:var(--ink-1)">.modal--md <span style="color:var(--cinnabar-1);font-size: 17px">默认</span></div>
-      <div style="font-family:var(--font-num);font-size: 32px;color:var(--cinnabar-1);margin:8px 0;font-weight:700">560 px</div>
-      <p style="font-size: 16px;margin:0">hero + 6 行 · req 列表</p>
-      <p style="font-size: 17px;color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">心境 / 體魄 / NPC 要求 / 购买确认</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h2);color:var(--ink-1)">.modal--md <span style="color:var(--cinnabar-1);font-size: var(--fs-label)">默认</span></div>
+      <div style="font-family:var(--font-num);font-size: var(--fs-display);color:var(--cinnabar-1);margin:8px 0;font-weight:700">560 px</div>
+      <p style="font-size: var(--fs-label);margin:0">hero + 6 行 · req 列表</p>
+      <p style="font-size: var(--fs-label);color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">心境 / 體魄 / NPC 要求 / 购买确认</p>
     </div>
     <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:16px;text-align:center">
-      <div style="font-family:var(--font-display);font-size: 20px;color:var(--ink-1)">.modal--lg <span style="font-size: 17px;color:var(--ink-3)">+ .scroll 可选</span></div>
-      <div style="font-family:var(--font-num);font-size: 32px;color:var(--cinnabar-1);margin:8px 0;font-weight:700">740 px</div>
-      <p style="font-size: 16px;margin:0">长列表 · 商店 · 设置</p>
-      <p style="font-size: 17px;color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">商店 / 设置 / 人物卷 / 目标</p>
+      <div style="font-family:var(--font-display);font-size: var(--fs-h2);color:var(--ink-1)">.modal--lg <span style="font-size: var(--fs-label);color:var(--ink-3)">+ .scroll 可选</span></div>
+      <div style="font-family:var(--font-num);font-size: var(--fs-display);color:var(--cinnabar-1);margin:8px 0;font-weight:700">740 px</div>
+      <p style="font-size: var(--fs-label);margin:0">长列表 · 商店 · 设置</p>
+      <p style="font-size: var(--fs-label);color:var(--ink-3);margin-top:8px;font-family:var(--font-num)">商店 / 设置 / 人物卷 / 目标</p>
     </div>
   </div>
 
@@ -537,7 +537,7 @@
        货币体系
        ============================================================ -->
   <h2 id="currency">货币 8 类 + USD 占位 <small>朱砂方印 + 楷书汉字</small></h2>
-  <p style="font-size: 17px">
+  <p style="font-size: var(--fs-label)">
     规则：emoji / unicode 禁用 → 全部货币以"印章 + 汉字"方块表达。
     Phase A 用 CSS 实现，Phase B 替换为 SVG 切片以保证 retina 清晰。
   </p>
@@ -588,12 +588,12 @@
       <small>工作失败 · 可重来</small>
     </div>
     <div class="badge-demo">
-      <div class="pic">42<span class="b-bang" style="font-size: 17px;width:24px;height:18px;border-radius:6px">42%</span></div>
+      <div class="pic">42<span class="b-bang" style="font-size: var(--fs-label);width:24px;height:18px;border-radius:6px">42%</span></div>
       <span class="lab">折扣 %</span>
       <small>红折扣角标</small>
     </div>
     <div class="badge-demo">
-      <div class="pic">物<span class="b-bang" style="font-family:var(--font-num);font-size: 15px">+3</span></div>
+      <div class="pic">物<span class="b-bang" style="font-family:var(--font-num);font-size: var(--fs-meta)">+3</span></div>
       <span class="lab">"+" 库存</span>
       <small>商品库存倒计</small>
     </div>
@@ -605,15 +605,15 @@
        动效规范
        ============================================================ -->
   <h2 id="motion">动效规范 <small>5 token · 8 模式 · live demo</small></h2>
-  <p style="font-size:16px">
+  <p style="font-size:var(--fs-label)">
     原则：游戏 UI 要 <strong>snappy</strong>，不要 candy 过度。短交互 160-200ms，中等 240-280ms，反馈类用 overshoot。
     下面的 demo 都可以 hover/click 实际触发。
   </p>
 
   <h3>时长 · 昂函 token</h3>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:16px 0;font-size: 17px">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:16px 0;font-size: var(--fs-label)">
     <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px">
-      <h4 style="margin:0 0 8px;font-family:var(--font-display);font-size:17px;color:var(--cinnabar-1)">时长 (duration)</h4>
+      <h4 style="margin:0 0 8px;font-family:var(--font-display);font-size: var(--fs-label);color:var(--cinnabar-1)">时长 (duration)</h4>
       <ul style="margin:0;padding-left:18px;line-height:1.9">
         <li><code>--dur-instant 80ms</code> · 微反馈</li>
         <li><code>--dur-fast 160ms</code> · button / tab / hover</li>
@@ -623,7 +623,7 @@
       </ul>
     </div>
     <div style="background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:6px;padding:14px">
-      <h4 style="margin:0 0 8px;font-family:var(--font-display);font-size:17px;color:var(--cinnabar-1)">昂函 (easing)</h4>
+      <h4 style="margin:0 0 8px;font-family:var(--font-display);font-size: var(--fs-label);color:var(--cinnabar-1)">昂函 (easing)</h4>
       <ul style="margin:0;padding-left:18px;line-height:1.9">
         <li><code>--ease-out</code> · enter · 走路入场</li>
         <li><code>--ease-in</code> · exit · 退场</li>
@@ -700,7 +700,7 @@
       <div class="demo-title">⑥ 不可点抖动 (a-shake)</div>
       <div class="demo-stage">
         <button class="btn-demo cta" onclick="shakeIt(this)">接受 (未满足)</button>
-        <div class="demo-meta" style="margin:0;font-family:var(--font-num);font-size: 17px">状态 · 要求不足 心境 80</div>
+        <div class="demo-meta" style="margin:0;font-family:var(--font-num);font-size: var(--fs-label)">状态 · 要求不足 心境 80</div>
       </div>
       <div class="demo-meta">280ms · 需求不达、资金不足、CD 未冷却时点击触发</div>
     </div>
@@ -746,7 +746,7 @@
   </table>
 
   <h3>强约束</h3>
-  <ul style="font-size:16px;line-height:1.9;padding-left:20px">
+  <ul style="font-size:var(--fs-label);line-height:1.9;padding-left:20px">
     <li>禁用 transition: all·只动明确列出的属性 (transform/opacity/box-shadow)</li>
     <li>默认 GPU 加速走 transform/opacity，避免 width/top/left 动画</li>
     <li>不多于 2 层动画同时发生在同一元素上 (丝滑劣化)</li>
@@ -768,7 +768,7 @@
       color: var(--paper-1);
       padding: 10px 14px;
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: var(--fs-label);
       letter-spacing: .04em;
     }
     .demo-stage {
@@ -786,7 +786,7 @@
       background: var(--paper-2);
       border-top: 1px dashed var(--paper-edge);
       font-family: var(--font-num);
-      font-size: 16px;
+      font-size: var(--fs-label);
       color: var(--ink-3);
       line-height: 1.5;
     }
@@ -794,7 +794,7 @@
       padding: 10px 22px;
       border-radius: 8px;
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: var(--fs-label);
       cursor: pointer;
       border: 1.5px solid var(--ink-1);
     }
@@ -812,7 +812,7 @@
       border: 1.5px solid var(--paper-edge);
       border-radius: 6px;
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: var(--fs-label);
       width: 100%;
       cursor: pointer;
       box-sizing: border-box;
@@ -838,9 +838,9 @@
     .mock-modal-bar {
       background: var(--celadon-3); color: var(--paper-1);
       padding: 8px 12px;
-      font-family: var(--font-display); font-size: 17px;
+      font-family: var(--font-display); font-size: var(--fs-label);
     }
-    .mock-modal-body { padding: 14px; font-size: 17px; color: var(--ink-2); line-height: 1.6; }
+    .mock-modal-body { padding: 14px; font-size: var(--fs-label); color: var(--ink-2); line-height: 1.6; }
 
     .badge-pulse-wrap {
       position: relative;
@@ -862,14 +862,14 @@
       border-radius: 50%;
       display: grid; place-items: center;
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: var(--fs-label);
     }
     .badge-bang-demo.spawn { animation: popIn var(--dur-modal) var(--ease-pop) both; }
 
     .num-floater {
       position: absolute;
       font-family: var(--font-display);
-      font-size: 22px;
+      font-size: var(--fs-h2);
       font-weight: 700;
       color: var(--cur-coin);
       animation: numTick 1s var(--ease-out) forwards;
@@ -888,7 +888,7 @@
       padding: 8px 16px;
       text-align: center;
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: var(--fs-label);
       color: var(--ink-3);
       border-radius: 4px;
       cursor: pointer;
@@ -1106,7 +1106,7 @@
 
   <hr class="flourish"/>
 
-  <p style="text-align:center;font-family:var(--font-display);font-size: 16px;color:var(--ink-3);letter-spacing:.2em">
+  <p style="text-align:center;font-family:var(--font-display);font-size: var(--fs-label);color:var(--ink-3);letter-spacing:.2em">
     — Phase A 风格定档 · 待用户验收 —
   </p>
 

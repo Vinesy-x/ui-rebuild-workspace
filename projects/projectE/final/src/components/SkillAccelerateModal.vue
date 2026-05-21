@@ -173,7 +173,7 @@ function accept () {
   padding: 10px;
   border-radius: 8px;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: var(--fs-h2);
   letter-spacing: .12em;
   cursor: pointer;
   display: inline-flex;
@@ -197,7 +197,7 @@ function accept () {
 }
 .btn.primary .num {
   font-family: var(--font-num);
-  font-size: 20px;
+  font-size: var(--fs-h2);
   letter-spacing: 0;
 }
 .btn.primary .seal.cur {
