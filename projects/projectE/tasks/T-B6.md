@@ -12,8 +12,9 @@
 
 raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/`
 
-**全局状态(1 份)**
-- `projects/projectE/PROGRESS.md`
+**全局状态 + 永久流程(2 份 · 每个 task 必拉)**
+- `projects/projectE/PROGRESS.md`(项目快照 / 当前阶段 / 5 已废 / 13 modal 状态)
+- `projects/projectE/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
 
 **canonical 真值 6 文档**(design-brief/flows/ · ⚠️ 不拉这 6 份必出错)
 - `projects/projectE/design-brief/flows/info-architecture.md`
@@ -38,7 +39,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspac
 
 # 阶段 1:audit-pre-design 报告(必先 · 不出代码/HTML)
 
-照 `tasks/audit-pre-design.md` 跑两件 audit:
+照 `projects/projectE/AUDIT_PROTOCOL.md` 跑两件 audit(注意是 project root 不是 tasks/):
 
 **A. HTML 真值 ↔ Vue 工程层 alignment**(7 个 filled view + 13 共享 modal)
 - 视觉:字号走 `var(--fs-*)` 8 阶 / 颜色走 15 色 var
