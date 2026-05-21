@@ -37,6 +37,8 @@
    - 空 <template> ⭐⭐⭐ 注释 + 建议结构
    - 空 <style scoped> ⭐⭐⭐ 注释 + 视觉约束提示
    - 同时新建相关 store / data 文件 + 注册 modal(如需)
+   - ⭐ 同步更新 handoff/spec/scaffold-contract.md(列暴露的 binding 全表)
+     这是 design 第一拉的"binding 字典" · 不让它猜名字
 
 2. design 沙箱
    - 拉 handoff/ 整个目录
@@ -55,24 +57,26 @@
 
 ---
 
-## design 的 5 条铁规
+## design 的 6 条铁规
 
 1. **不要改 `<script setup>` 段**(Claude 会 diff · 改了 = 退回)
 2. **不要新增 .vue 文件**(scaffold 里没有的)— 有需要在 `_design-notes.md` 风险段提
 3. **不要 import 任何文件**(scaffold 都 import 好了 · 直接用变量就行)
 4. **不要碰** `ModalShell.vue` / `useModalStore.ts` / `router.ts` / `main.ts` / `App.vue`
 5. **不要写全局样式**(`styles/*.css` 是 canonical)· scoped 块里写本组件样式即可
+6. **不要猜 binding 名** — 看 `handoff/spec/scaffold-contract.md` 那是 scaffold 暴露的所有 binding 字典 · 不在里面就别用 · 缺什么写 `_design-notes.md` 风险段让 Claude 扩
 
 如果 design 觉得 scaffold 漏了什么变量 / handler · **不要私自加**,在 `_design-notes.md` 写"建议 Claude 加 X" → Claude 看到后扩 scaffold → design 第二轮再用。
 
 ---
 
-## Claude 的 4 条铁规
+## Claude 的 5 条铁规
 
 1. **scaffold 必须**给 design 留 ⭐⭐⭐ 注释 + 可用变量清单 + 建议结构(template / style 都要)
 2. **scaffold 不要 over-design** — 不强行抽 composable / utility 让 design 看不懂 · 直观就是好
 3. **verify 时不重写 design 的 template / style** — 视觉是 design 的权威 · 只反馈不直接改(除非违反 token 锁)
 4. **新增 store / utility 后**更新 `PROGRESS.md` 说"X 已就位" · design 拉 PROGRESS 时知道
+5. **scaffold 改 binding 时必须同步更新** `handoff/spec/scaffold-contract.md` · 这是 design 的字典 · 不一致 = design 猜错的根源
 
 ---
 

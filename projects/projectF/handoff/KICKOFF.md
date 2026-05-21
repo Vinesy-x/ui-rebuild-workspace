@@ -45,10 +45,14 @@ Pomodoro 番茄钟:
 注意:这是手机 viewport (448×960)· 整体往移动端 UI 走
 
 参考输入:
+- ⭐ handoff/spec/scaffold-contract.md — **scaffold 暴露的所有 binding 全表(必看)**
 - handoff/spec/screen-details.md — 屏布局 + 字段定义
 - handoff/spec/info-architecture.md — 1 屏 1 modal 拓扑
-- handoff/final/src/views/PomodoroTimer.vue — Claude 已 scaffold · 看里面 ⭐⭐⭐ 注释
+- handoff/final/src/views/PomodoroTimer.vue — Claude 已 scaffold · template/style 留空
 - handoff/final/src/components/SessionDoneModal.vue — 同上
+
+⚠️ template 里**只用** scaffold-contract.md 列出的 binding 名 · 不要猜不要假设别的。
+缺什么写到 _design-notes.md 风险段 · Claude 下一轮扩 scaffold + 更新 contract。
 
 
 【步骤 3 · 你的产出(只 4 类)】
