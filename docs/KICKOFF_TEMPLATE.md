@@ -15,12 +15,12 @@
 raw URL 模板:
 https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/<path>
 
-⭐ HTML 真值产出位置:统一放 preview/(不要放沙箱根)
-   link 相对路径: <link href="../final/src/styles/tokens.css">
+⭐ HTML 真值产出位置:统一放 handoff/preview/(不要放沙箱根)
+   link 相对路径: <link href="../handoff/final/src/styles/tokens.css">
 
-⭐ Vue 工程位置:final/src/
+⭐ Vue 工程位置:handoff/final/src/
 
-⭐ canonical 必读:design-brief/flows/*(屏映射 / 交互 / 拓扑 / 逐屏 spec)
+⭐ canonical 必读:handoff/spec/*(屏映射 / 交互 / 拓扑 / 逐屏 spec)
 
 ⭐ 进度跟踪:PROGRESS.md(每次开工前必拉,了解当前阶段 + 已废清单)
 
@@ -33,8 +33,8 @@ raw URL: https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/docs/DIRECTOR
 - 游戏名: {{游戏名}}
 - 类型: {{类型}}(例:模拟养成 / 卡牌战斗 / 等)
 - 核心机制: {{机制描述}}
-- 布局参考: {{N}} 帧视频抽帧(在 design-brief/analysis/)
-- 视觉目标: {{风格}}(参考图在 design-brief/style-reference/)
+- 布局参考: {{N}} 帧视频抽帧(在 _internal/analysis/png/)
+- 视觉目标: {{风格}}(参考图在 _internal/analysis/style-reference/)
 
 ⚠️ 双重源约定:
 - 布局结构 + 交互行为 来自现代视频抽帧 + flows canonical
@@ -47,12 +47,12 @@ raw URL: https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/docs/DIRECTOR
 Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router。
 
 产出目录结构(放在 projects/{{name}}/ 下):
-- final/src/styles/tokens.css       全局 token
-- final/src/components/*.vue         共享组件
-- final/src/views/*.vue              屏组件
-- final/src/data/*.json              真实数据
-- final/src/stores/useModalStore.ts  Pinia store 管 modal
-- final/src/router.ts                Vue Router
+- handoff/final/src/styles/tokens.css       全局 token
+- handoff/final/src/components/*.vue         共享组件
+- handoff/final/src/views/*.vue              屏组件
+- handoff/final/src/data/*.json              真实数据
+- handoff/final/src/stores/useModalStore.ts  Pinia store 管 modal
+- handoff/final/src/router.ts                Vue Router
 
 Modal 模式:
 - 全部 modal 走 Pinia store(open(name, props) / close())
@@ -66,9 +66,9 @@ Modal 模式:
 T-A1:{{锁定屏帧号}} 主屏 + 风格定档
 
 输入:
-1. design-brief/analysis/{{锁定屏 PNG}}
-2. design-brief/style-reference/*.png
-3. design-brief/flows/*(canonical)
+1. _internal/analysis/png/{{锁定屏 PNG}}
+2. _internal/analysis/style-reference/*.png
+3. handoff/spec/*(canonical)
 
 要做:
 - 布局 = {{锁定屏}}(描述关键元素)
@@ -79,9 +79,9 @@ T-A1:{{锁定屏帧号}} 主屏 + 风格定档
 - 色板 / 字号 / 字体 / 货币 icon / 角标系统 / 共享组件清单
 
 产出:
-- preview/Phase A · {{锁定屏名}}.html(HTML 视觉真值)
-- preview/Style Lock · 风格定档.html(规约文档)
-- final/src/* 完整骨架(views + components + stores + router + data)
+- handoff/handoff/preview/Phase A · {{锁定屏名}}.html(HTML 视觉真值)
+- handoff/handoff/preview/Style Lock · 风格定档.html(规约文档)
+- handoff/final/src/* 完整骨架(views + components + stores + router + data)
 - PROGRESS.md 初始化
 
 
@@ -93,7 +93,7 @@ T-A1:{{锁定屏帧号}} 主屏 + 风格定档
 4. modal scrim 锁定 rgba(0,0,0,.65) + blur(8px)
 5. 中文正文 ≥ 18px(v3.1 锁定)
 6. canonical 跟 PNG 冲突时以 PNG 为准,然后更新 canonical
-7. HTML 真值放 preview/(不要放沙箱根)
+7. HTML 真值放 handoff/preview/(不要放沙箱根)
 
 
 【完成后告诉用户】
@@ -113,7 +113,7 @@ T-A1:{{锁定屏帧号}} 主屏 + 风格定档
 
 1. 用户执行 `./scripts/new-project.sh <project-name>` 生成新项目骨架
 2. 编辑 `projects/<project-name>/KICKOFF.md` 填 `{{...}}` 占位符
-3. 上传 input/视频 + design-brief/style-reference/参考图 + 跑 ffmpeg 抽帧
+3. 上传 _internal/input/视频 + _internal/analysis/style-reference/参考图 + 跑 ffmpeg 抽帧
 4. commit + push
 5. 在 design 沙箱里整段复制粘贴 KICKOFF.md 的 ``` 块内容
 6. design 拉 raw URL,出 link

@@ -27,32 +27,45 @@ Step 4   人工筛选 ⏸           (用户介入,从 100+ 张挑 30-40 张精�
 Step 5   分类(可选)            (自动按视觉特征分类 — 战斗 vs 非战斗等)
 Step 6   调色板提取            (从精选帧统计色板事实)
 Step 7   跨屏数据归纳          (信息架构 + 动效时序,标注 REFERENCE_ONLY)
-Step 8   打包 design-brief/    (PNG + 跨屏 md + 色板 JSON + README + TASKS)
+Step 8   打包 handoff/ + _internal/  (PNG → _internal/analysis/png · 跨屏 md → handoff/spec · 色板 / KICKOFF / TASKS → handoff/)
 Step 9   交给 Claude Design    (Phase 0 风格定义 → Phase 1-N 屏实现)
 Step 10  浏览器交互测试        (preview server + viewport resize + DOM 实测)
 Step 11  反馈修复              (具体 bug 报给 Design 让它修)
 ```
 
-**关键**:Step 8 输出的 design-brief/ 只包含 **PNG + 跨屏数据 + 软参考**,**不包含**:
+**关键**:Step 8 输出的 `handoff/spec/` + `_internal/analysis/` 只包含 **PNG + 跨屏数据 + 软参考**,**不包含**:
 - 每张帧的 JSON elements 描述
 - 详细组件 md(ButtonStyles / CardStyles 等)
 - 严格任务卡序列
 
-## design-brief 标准结构
+## handoff/ + _internal/ 标准结构(2026-05 refactor v2)
 
 ```
-design-brief/
-├── README.md                # 原料包说明 + 3 条强约束
-├── TASKS.md                 # Phase 0 风格定义 + 屏映射表
-├── reference-frames/        # 6-10 张精选 PNG(每种主要界面 1 张)
-├── analysis/                # 25-35 张关键帧高清 PNG(覆盖所有屏)
-├── tokens/
-│   └── design-tokens.json   # 色板事实(标 REFERENCE_ONLY)
-├── flows/
-│   └── info-architecture.md # 屏间跳转(标参考)
-└── interactions/
-    └── animations.md        # 动效时序(标 ±50%)
+projects/<name>/
+├── README.md                          # user 视角入口
+├── handoff/                           ⭐ design 边界
+│   ├── PROGRESS.md                    # 项目状态(design 每次必拉)
+│   ├── AUDIT_PROTOCOL.md              # 设计前 audit 流程(design 每次必拉)
+│   ├── KICKOFF.md                     # 首次启动 prompt
+│   ├── spec/                          # canonical 屏映射 / 交互 / 拓扑(design 必读)
+│   │   ├── info-architecture.md
+│   │   ├── interaction-spec.md
+│   │   ├── screen-details.md
+│   │   └── topology.html
+│   ├── tasks/                         # 各屏 task prompt(T-B<N>.md + archive)
+│   ├── preview/                       # design 出的 HTML 真值
+│   └── final/                         # Vite Vue 3 工程层
+└── _internal/                         ⬅ design 不碰(user/Claude 内部)
+    ├── analysis/
+    │   ├── png/                       # 25-35 张关键帧高清 PNG
+    │   ├── extras/                    # 备份抽帧
+    │   └── style-reference/           # 风格参考底图(归档)
+    ├── bugs/                          # bug 报告 + archive
+    ├── frames/                        # ffmpeg 抽帧三层(raw / dedup / selected)
+    └── input/                         # 视频原料
 ```
+
+> 旧版(2026-04 前)用扁平 `design-brief/{flows,analysis,...}` 跟 `preview/ final/ tasks/ bugs/ frames/ input/` 各 standalone · 2026-05 重组为 handoff/_internal 双区,design 边界物理化。
 
 ## 3 条强约束(给 Design)
 
@@ -80,8 +93,8 @@ Design 收到 design-brief 后,**先做这一步**,不要直接实现屏:
 ### 1. 浏览器看产物必须起 HTTP 服务器
 SVG sprite 用 `fetch()` 注入,`file://` 协议被 CORS 阻塞。模板自带 `preview.sh`。
 
-### 2. design-brief 必须自包含
-所有相对路径引用都能解析到目录内部文件。可用脚本自动校验。
+### 2. handoff/ 必须自包含
+所有相对路径引用都能解析到 handoff/ 内部文件。可用脚本自动校验。
 
 ### 3. 不要把 Design 工具生成的 `final/uploads/` 和 `final/design-brief/` 进 repo
 那是 Design 工具内部缓存,典型 20-50 MB 冗余。`.gitignore` 模板已配置。

@@ -11,13 +11,13 @@
 #
 # 不传 project-name 时,优先用 projects/ 下唯一的项目;有多个则报错让用户指定。
 #
-# 行为:
+# 行为(2026-05 refactor v2 · handoff/ 强隔离):
 #   1. fetch design link → 拿到 tarball
 #   2. 解到临时目录
-#   3. 自动定位 tarball 里的 final/ 路径(支持 projecte/projectb/通用)
-#   4. rsync final/ → projects/<name>/final/(保留 node_modules / dist / package-lock.json)
-#   4.5. rsync 沙箱 preview/*.html → projects/<name>/preview/(HTML 真值)
-#        如果沙箱根有 *.html(老版习惯)→ 也搬到 preview/ + sed 修 link 路径
+#   3. 自动定位 tarball 里的 final/ 路径(优先 handoff/final · 兼容 legacy)
+#   4. rsync final/ → projects/<name>/handoff/final/(保留 node_modules / dist / package-lock.json)
+#   4.5. rsync 沙箱 preview/*.html → projects/<name>/handoff/preview/(HTML 真值)
+#        如果沙箱根有 *.html(老版习惯)→ 也搬到 handoff/preview/ + sed 修 link 路径
 #   5. 显示 git diff 概要,等用户 review 后手动 commit
 
 set -euo pipefail

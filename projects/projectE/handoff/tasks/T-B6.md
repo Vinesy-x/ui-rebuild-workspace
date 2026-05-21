@@ -17,7 +17,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspac
 - `projects/projectE/handoff/PROGRESS.md`(项目快照 / 当前阶段 / 5 已废 / 13 modal 状态)
 - `projects/projectE/handoff/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
 
-**canonical 真值 6 文档**(design-brief/flows/ · ⚠️ 不拉这 6 份必出错)
+**canonical 真值 6 文档**(handoff/spec/ · ⚠️ 不拉这 6 份必出错)
 - `projects/projectE/handoff/spec/info-architecture.md`
 - `projects/projectE/handoff/spec/interaction-spec.md`
 - `projects/projectE/handoff/spec/screen-details.md`

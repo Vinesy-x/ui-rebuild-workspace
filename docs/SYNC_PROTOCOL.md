@@ -47,7 +47,7 @@ raw URL 模板 = https://raw.githubusercontent.com/<owner>/<repo>/main/<path>
   - projects/<name>/handoff/spec/screen-details-extras2.md
   - projects/<name>/handoff/spec/topology.html
 
-  HTML 真值(在 preview/,不要放沙箱根):
+  HTML 真值(在 handoff/preview/,不要放沙箱根 / handoff/ 根):
   - projects/<name>/handoff/preview/(整个目录)
 
   Vue 工程层:

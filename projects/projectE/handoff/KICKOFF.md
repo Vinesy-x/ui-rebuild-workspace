@@ -1,6 +1,6 @@
 # 给 design 的 KICKOFF Prompt(projectE · 大掌柜)
 
-> ⏳ **等用户传宋朝风格参考图到 `design-brief/style-reference/` 后,把下面这段发给 design**
+> ⏳ **等用户传宋朝风格参考图到 `_internal/analysis/style-reference/` 后,把下面这段发给 design**
 
 > 本 prompt 反映 2026-05-20 canonical 最新状态(8 agent + 6 agent + 用户补图 + simplify 多轮校正后)。
 > 共 5 个 flows 文档(`info-architecture.md` + `interaction-spec.md` + `topology.html` + `screen-details.md` + `screen-details-extras.md` + `screen-details-extras2.md`)是 design 必读 canonical。
@@ -15,8 +15,8 @@ projectE · 大掌柜 — 视频 UI 重建任务
 - 游戏名:大掌柜
 - 类型:模拟、互动剧情(BitLife 类放置养成 + 经营)
 - 核心机制:文字互动情景对话 + 事件经营 + 数值养成(技能/关系/工作/业务/投资/物品 6 大系统)
-- 布局参考:现代版同类游戏 130 帧视频抽帧,深度分析 50 张高清(在 design-brief/analysis/)+ 2 张用户补图(analysis-extras/)
-- 视觉目标:中国古代宋朝古风(参考图在 design-brief/style-reference/)
+- 布局参考:现代版同类游戏 130 帧视频抽帧,深度分析 50 张高清(在 _internal/analysis/png/)+ 2 张用户补图(analysis-extras/)
+- 视觉目标:中国古代宋朝古风(参考图在 _internal/analysis/style-reference/)
 
 ⚠️ 重要双重源约定:
 - 布局结构 + 交互行为 来自现代视频抽帧 + flows canonical
@@ -28,12 +28,12 @@ projectE · 大掌柜 — 视频 UI 重建任务
 Vite + Vue 3(`<script setup>` + TS)+ Pinia + Vue Router。
 
 产出目录结构(放在仓库 `final/` 下):
-- final/src/styles/tokens.css       全局 token(宋朝色板 / 字号 / 间距 / 圆角)
-- final/src/components/*.vue         共享组件(7 个,见下)
-- final/src/views/*.vue              屏组件(每帧 1 个,跟 router 一一对应)
-- final/src/data/*.json              真实数据(从 PNG 提取)
-- final/src/stores/useModalStore.ts  Pinia store 管 modal 浮层
-- final/src/router.ts                Vue Router 路由表
+- handoff/final/src/styles/tokens.css       全局 token(宋朝色板 / 字号 / 间距 / 圆角)
+- handoff/final/src/components/*.vue         共享组件(7 个,见下)
+- handoff/final/src/views/*.vue              屏组件(每帧 1 个,跟 router 一一对应)
+- handoff/final/src/data/*.json              真实数据(从 PNG 提取)
+- handoff/final/src/stores/useModalStore.ts  Pinia store 管 modal 浮层
+- handoff/final/src/router.ts                Vue Router 路由表
 
 Modal 模式(避免嵌套 router):
 - 全部 modal 走 Pinia store(`open(name, props)` / `close()` / `currentModal`)
@@ -46,9 +46,9 @@ Modal 模式(避免嵌套 router):
 T-A1:fps_0035 主菜单(街景 hub)+ 风格定档
 
 输入:
-1. design-brief/analysis/projectE_fps_0035.png — Phase A 锁定屏布局
-2. design-brief/style-reference/*.png — 宋朝视觉风格
-3. design-brief/flows/ — canonical 5 文档(必读,见下)
+1. _internal/analysis/png/projectE_fps_0035.png — Phase A 锁定屏布局
+2. _internal/analysis/style-reference/*.png — 宋朝视觉风格
+3. handoff/spec/ — canonical 5 文档(必读,见下)
 
 要做:
 - 布局 = fps_0035(双行 HUD + 街景背景 + 2 NPC + 角色名+✏ + 中央任务卡 + 右侧黄色按钮 +
@@ -125,23 +125,23 @@ T-A1:fps_0035 主菜单(街景 hub)+ 风格定档
 1. 每个内容元素从 PNG / canonical 真实提取(布局 + 数值)
 2. 图标用 SVG / PNG(禁 emoji / unicode)
 3. 跨屏组件 + token 命名一致(Phase A 锁定后 Phase B 沿用)
-4. 交互行为按 design-brief/flows/interaction-spec.md 实现(Phase B 跟着推)
+4. 交互行为按 handoff/spec/interaction-spec.md 实现(Phase B 跟着推)
 5. 7 个共享组件必须复用,不允许各屏单独实现 modal
 6. 产出 = Vite Vue 3 SFC
 
 【先读这些再开始(优先级从高到低)】
 
 1. README.md(projectE 总览)
-2. design-brief/flows/info-architecture.md(屏映射 canonical + 顶部多份重大校正)⭐⭐⭐
-3. design-brief/flows/screen-details.md(50 selected 帧深度 spec)
-4. design-brief/flows/screen-details-extras.md(33 备用帧增量)
-5. design-brief/flows/screen-details-extras2.md(48 raw 备用帧增量,8 项重大 canonical 校正)
-6. design-brief/flows/interaction-spec.md(交互行为契约)
-7. design-brief/flows/topology.html(可视化拓扑)
-8. design-brief/analysis/projectE_fps_0035.png(Phase A 锁定屏)
-9. design-brief/analysis-extras/projectE_fps_0092_*.jpg(2 张目标 modal 补图)
-10. design-brief/style-reference/(宋朝视觉参考图)
-11. design-brief/TASKS.md(任务清单)
+2. handoff/spec/info-architecture.md(屏映射 canonical + 顶部多份重大校正)⭐⭐⭐
+3. handoff/spec/screen-details.md(50 selected 帧深度 spec)
+4. handoff/spec/screen-details-extras.md(33 备用帧增量)
+5. handoff/spec/screen-details-extras2.md(48 raw 备用帧增量,8 项重大 canonical 校正)
+6. handoff/spec/interaction-spec.md(交互行为契约)
+7. handoff/spec/topology.html(可视化拓扑)
+8. _internal/analysis/png/projectE_fps_0035.png(Phase A 锁定屏)
+9. _internal/analysis/extras/projectE_fps_0092_*.jpg(2 张目标 modal 补图)
+10. _internal/analysis/style-reference/(宋朝视觉参考图)
+11. handoff/tasks/(各屏 task prompt 累积 · T-B<N>.md)
 
 然后告诉用户:
 - 你看完 style-reference 提炼的 5 个宋朝风格关键词
@@ -156,8 +156,8 @@ T-A1:fps_0035 主菜单(街景 hub)+ 风格定档
 
 ## 给 design 之前的 Checklist(用户做)
 
-- [ ] 把宋朝风格参考图传到 `design-brief/style-reference/`(色板 / UI 框 / 字体 / 装饰元素 3-10 张)
-- [ ] `git add design-brief/style-reference/ && git commit -m "feat: 宋朝风格参考图" && git push`
+- [ ] 把宋朝风格参考图传到 `_internal/analysis/style-reference/`(色板 / UI 框 / 字体 / 装饰元素 3-10 张)
+- [ ] `git add _internal/analysis/style-reference/ && git commit -m "feat: 宋朝风格参考图" && git push`
 - [ ] 然后把上面 ``` 括起来的那段 prompt 发给 design
 - [ ] design 出 link → 用户跑 `./scripts/import-design.sh <link>` 拉本地
 
