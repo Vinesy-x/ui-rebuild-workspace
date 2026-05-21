@@ -21,7 +21,7 @@
 ```
 
 工作集 ~50 文件 · ~800KB · ~195K tokens · 含:
-- `PROGRESS.md` / `AUDIT_PROTOCOL.md` / `KICKOFF.md`(根 3 份)
+- `PROGRESS.md` / `KICKOFF.md`(根 2 份 · audit 协议已合并入 PROGRESS)
 - `spec/`(6 canonical · ⚠️ 不拉必错)
 - `tasks/T-B6.md`(本任务)+ `tasks/archive/`(历史 · 可看可不看)
 - `preview/`(大掌柜.html + Style Lock)
@@ -35,7 +35,7 @@
 
 # 阶段 1:audit-pre-design 报告(必先 · 不出代码/HTML)
 
-照 `projects/projectE/handoff/AUDIT_PROTOCOL.md` 跑两件 audit(handoff/ 根 · 不是 tasks/):
+照 `projects/projectE/handoff/PROGRESS.md(末尾 audit-pre-design 段)` 跑两件 audit(handoff/ 根 · 不是 tasks/):
 
 **A. HTML 真值 ↔ Vue 工程层 alignment**(7 个 filled view + 13 共享 modal)
 - 视觉:字号走 `var(--fs-*)` 8 阶 / 颜色走 15 色 var
@@ -113,31 +113,34 @@
 
 ## deliverable:`_design-notes.md`(沙箱根放一份)
 
-完成后必须给 + 内容:
+完成后必须给 · **3 段必填 + 3 段可选**(本 task 大屏推荐写全 6 段):
+
 ```
 # T-B6 _design-notes
 
-## audit 阶段发现(回顾)
-| # | 项 | 已修 | 跳过 + 理由 |
-
-## 本次产出清单(文件级)
+## ⭐ 产出清单(必填 · 文件级)
 | 文件 | 新增/修改/删除 | 一句话变更说明 |
 
-## 古风化对照表(T-B6 新增)
-| 现代 | 古风 |
-|---|---|
-| 衣服 | ? |
-| ... | ... |
-
-## 共享 modal 复用清单
-| modal | 用法 | 触发位置 |
-
-## 跳过未做的项(必须显式列)
+## ⭐ 跳过未做的项(必填 · 必须显式列)
 | 项 | 原因 |
 
-## 风险 / 待用户确认
+## ⭐ 风险 / 待用户确认(必填)
 | # | 项 | 建议 |
+
+---
+
+## audit 阶段发现回顾(可选 · 复杂 task 写)
+| # | 项 | 已修 | 跳过 + 理由 |
+
+## 古风化对照表(可选 · T-B6 新增词汇多时写)
+| 现代 | 古风 |
+
+## 共享 modal 复用清单(可选 · 涉及 modal 多时写)
+| modal | 用法 | 触发位置 |
 ```
+
+> 小任务(1-2 文件改动)只写 3 必填段即可。
+> T-B6 这种大屏(5 sub-tab + 多 modal 联动)推荐写全 6 段。
 
 ## 完成
 

@@ -7,9 +7,9 @@
 #
 # 行为:
 #   1. mkdir projects/<name>/{handoff/, _internal/, README.md}
-#      handoff/   = design 边界 · spec/preview/final/tasks/PROGRESS/AUDIT_PROTOCOL/KICKOFF
+#      handoff/   = design 边界 · spec/preview/final/tasks/PROGRESS/KICKOFF
 #      _internal/ = user 内部 · bugs/input/frames/analysis · design 不碰
-#   2. cp 3 个模板:KICKOFF / PROGRESS / AUDIT_PROTOCOL → handoff/
+#   2. cp 2 个模板:KICKOFF / PROGRESS → handoff/(audit 协议合并入 PROGRESS 末尾段)
 #   3. 占位符 sed 替换({{name}} → 实际项目名 · {{repo}} / {{owner}} 留给用户填)
 #   4. 初始化 README.md(2 区结构说明) + handoff/preview/README.md
 #   5. 输出下一步 checklist
@@ -46,11 +46,10 @@ _internal/{analysis/{png,extras,style-reference},bugs/archive,frames/{raw,dedup,
 }
 
 # ---------- 2. cp 3 模板 ----------
-echo "==> 初始化 KICKOFF / PROGRESS / AUDIT_PROTOCOL"
+echo "==> 初始化 KICKOFF / PROGRESS(audit 协议在 PROGRESS 末尾段)"
 for tmpl_pair in \
   "KICKOFF_TEMPLATE.md:KICKOFF.md" \
-  "PROGRESS_TEMPLATE.md:PROGRESS.md" \
-  "AUDIT_PROTOCOL_TEMPLATE.md:AUDIT_PROTOCOL.md"
+  "PROGRESS_TEMPLATE.md:PROGRESS.md"
 do
   src="${tmpl_pair%%:*}"
   dst="${tmpl_pair##*:}"
@@ -76,7 +75,6 @@ $NAME/
 ├── README.md                  ← 本文件
 ├── handoff/                   ⭐ design 唯一边界
 │   ├── PROGRESS.md            ⭐ 每次必拉
-│   ├── AUDIT_PROTOCOL.md      ⭐ 每次必拉
 │   ├── KICKOFF.md             首次启动
 │   ├── spec/                  canonical 真值
 │   ├── tasks/                 各屏 task prompt
@@ -128,6 +126,6 @@ echo "  2. 跑 ffmpeg 抽帧到 projects/$NAME/_internal/frames/raw/"
 echo "  3. 用户筛选 / dedup 到 _internal/frames/selected/ + 拷高清到 _internal/analysis/png/"
 echo "  4. 用户传风格参考图到 projects/$NAME/_internal/analysis/style-reference/"
 echo "  5. 编辑 projects/$NAME/handoff/KICKOFF.md 填 {{repo}} / {{owner}} / {{游戏名}} 等"
-echo "  6. 编辑 projects/$NAME/handoff/AUDIT_PROTOCOL.md 填 {{repo}} / {{owner}} / {{game}}"
+echo "  6. 编辑 projects/$NAME/handoff/PROGRESS.md 填项目快照(末尾的 audit 协议段已通用,不用改)"
 echo "  7. commit + push"
 echo "  8. 给 design 沙箱复制粘贴 handoff/KICKOFF.md 的 \`\`\` 块整段"

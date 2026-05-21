@@ -41,7 +41,6 @@ ui-rebuild-workspace/
         ├── README.md
         ├── handoff/             ⭐ design 唯一边界
         │   ├── PROGRESS.md           # ⭐ 实时进度(design 每次 task 必拉)
-        │   ├── AUDIT_PROTOCOL.md     # ⭐ 设计前 audit 协议(design 每次 task 必拉)
         │   ├── KICKOFF.md            # 首次启动 prompt
         │   ├── spec/                 # canonical 屏映射 / 交互 / 拓扑(design 必拉)
         │   ├── tasks/                # 各屏一次性 task prompt + archive
@@ -94,7 +93,7 @@ $EDITOR projects/projectE/handoff/tasks/T-B<N>.md   # 填 {{...}}
 # 2. commit + push
 git add -A && git commit -m "feat(projectE): T-B<N> task prompt" && git push
 
-# 3. 给 design 发短指令(只需 1 个 raw URL,task prompt 里已含 PROGRESS + AUDIT_PROTOCOL pull list)
+# 3. 给 design 发短指令(只需 1 个 raw URL,task prompt 里已含 PROGRESS pull list)
 # 阶段 1: design 出 audit 报告 → 停 → 用户验收
 # 阶段 2: design 出 design link + 沙箱根 _design-notes.md → 用户 import
 

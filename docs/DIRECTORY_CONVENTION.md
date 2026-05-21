@@ -28,7 +28,6 @@ https://raw.githubusercontent.com/<owner>/ui-rebuild-workspace/main/projects/pro
 | 子目录 / 文件 | 谁产出 | 谁读 | 内容 |
 |---|---|---|---|
 | `handoff/PROGRESS.md` | Claude 维护 + 每次更新 | ⭐ design 每次必拉 | 实时进度(当前阶段 / canonical 版本 / 已废清单 / 共享 modal 状态)|
-| `handoff/AUDIT_PROTOCOL.md` | Claude 维护 | ⭐ design 每次必拉 | 设计前 audit 协议(每个 task 共用)|
 | `handoff/KICKOFF.md` | 用户 + Claude | design 首次必读 | 本项目首次启动指令 |
 | `handoff/spec/` | Claude 维护 | ⭐ design 必读 | canonical(info-architecture / interaction-spec / screen-details / topology / extras)|
 | `handoff/tasks/` | Claude 起草 | design 拉本 task | 一次性 task prompt(T-B<N>.md + archive)|
@@ -65,26 +64,25 @@ design 沙箱**不要把 HTML 真值放沙箱根 / handoff/ 根**,统一放 `han
 
 ---
 
-## ⭐ 关键约定:PROGRESS.md + AUDIT_PROTOCOL.md 必拉(每个 task 都要)
+## ⭐ 关键约定:PROGRESS.md 必拉(每个 task 都要)
 
 每个 task / 每次开工:
-1. 主动 fetch:
-   - `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/handoff/PROGRESS.md`
-   - `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/handoff/AUDIT_PROTOCOL.md`
-2. 看"当前阶段 / 已完成 / canonical 版本 / 已废清单 / 待办"
-3. 不要凭沙箱里的旧版猜进度
+1. 主动 fetch `https://raw.githubusercontent.com/<owner>/<repo>/main/projects/<name>/handoff/PROGRESS.md`
+2. 文档含:项目快照 / 当前阶段 / canonical 版本 / 已废清单 / 13 共享 modal 状态 / 待办
+3. **末尾的 audit-pre-design 段** = 设计前必跑的 audit 协议(每个 task 阶段 1 用)
+4. 不要凭沙箱里的旧版猜进度
 
 ---
 
 ## ⭐ 关键约定:不要复制粘贴沙箱旧版到新产出
 
-design 沙箱状态默认不同步 GitHub。开工前**必须主动拉**(KICKOFF / task prompt 顶部会列必拉清单):
-- `handoff/PROGRESS.md` + `handoff/AUDIT_PROTOCOL.md`
-- `handoff/spec/*`(canonical)
-- `handoff/preview/*.html`(HTML 真值)
-- `handoff/final/src/*`(Vue 工程)
+design 沙箱状态默认不同步 GitHub。开工前**主动把 `projects/<name>/handoff/` 整个目录递归拉下来**:
+- 用 GitHub tree API 一次列所有 path
+- 过滤 `projects/<name>/handoff/` 开头的 blob
+- 每份 raw URL fetch
 
-拉完以 GitHub 为准覆盖沙箱旧版。
+工作集 ≈ 50 文件 / ~800KB / ~195K tokens。
+拉完以 GitHub 为准覆盖沙箱旧版。⚠️ 不要拉 `_internal/`。
 
 ---
 

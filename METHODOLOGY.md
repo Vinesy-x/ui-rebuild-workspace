@@ -45,7 +45,6 @@ projects/<name>/
 ├── README.md                          # user 视角入口
 ├── handoff/                           ⭐ design 边界
 │   ├── PROGRESS.md                    # 项目状态(design 每次必拉)
-│   ├── AUDIT_PROTOCOL.md              # 设计前 audit 流程(design 每次必拉)
 │   ├── KICKOFF.md                     # 首次启动 prompt
 │   ├── spec/                          # canonical 屏映射 / 交互 / 拓扑(design 必读)
 │   │   ├── info-architecture.md

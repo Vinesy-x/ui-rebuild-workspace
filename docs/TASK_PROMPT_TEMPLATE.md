@@ -32,7 +32,7 @@ fps_{{帧号}} {{短描述}}
 ```
 
 工作集含:
-- 根 3 份:`PROGRESS.md` / `AUDIT_PROTOCOL.md` / `KICKOFF.md`
+- 根 2 份:`PROGRESS.md`(含末尾 audit-pre-design 协议) / `KICKOFF.md`
 - `spec/`:N canonical(⚠️ 不拉必错)
 - `tasks/T-B{{n}}.md` 本任务 + `archive/` 历史
 - `preview/`:HTML 真值
@@ -46,7 +46,7 @@ fps_{{帧号}} {{短描述}}
 【阶段 1 · audit-pre-design 报告(必先 · 不出代码/HTML)】
 ====================================================================
 
-照 `projects/{{name}}/handoff/AUDIT_PROTOCOL.md` 跑两件 audit:
+照 `projects/{{name}}/handoff/PROGRESS.md(末尾 audit-pre-design 段)` 跑两件 audit:
 
 **A. HTML 真值 ↔ Vue 工程层 alignment**
 - 视觉:字号走 `var(--fs-*)` 8 阶 / 颜色走 N 色 var(项目自定)
@@ -127,28 +127,34 @@ fps_{{帧号}} {{短描述}}
 【deliverable · `_design-notes.md`(沙箱根放一份)】
 ====================================================================
 
-完成后必须给 · 模板:
+完成后必须给 · **3 段必填 + 3 段可选**:
+
 ```
 # T-B{{n}} _design-notes
 
-## audit 阶段发现(回顾)
-| # | 项 | 已修 | 跳过 + 理由 |
-
-## 本次产出清单(文件级)
+## ⭐ 产出清单(必填 · 文件级)
 | 文件 | 新增/修改/删除 | 一句话变更说明 |
 
-## 风格化对照表(本 task 新增)
-| 现代 | 风格化 |
-
-## 共享 modal 复用清单
-| modal | 用法 | 触发位置 |
-
-## 跳过未做的项(必须显式列)
+## ⭐ 跳过未做的项(必填 · 必须显式列)
 | 项 | 原因 |
 
-## 风险 / 待用户确认
+## ⭐ 风险 / 待用户确认(必填)
 | # | 项 | 建议 |
+
+---
+
+## audit 阶段发现回顾(可选 · 复杂 task 写)
+| # | 项 | 已修 | 跳过 + 理由 |
+
+## 风格化对照表(可选 · 新增词汇多时写)
+| 现代 | 风格化 |
+
+## 共享 modal 复用清单(可选 · 涉及 modal 多时写)
+| modal | 用法 | 触发位置 |
 ```
+
+> 小任务(1-2 文件改动)只写 3 必填段即可。
+> 大屏 task(多 sub-tab + 多 modal 联动)推荐写全 6 段。
 
 
 ====================================================================
@@ -178,7 +184,7 @@ fps_{{帧号}} {{短描述}}
    {{游戏名}} T-B{{n}} {{屏名}} 设计。拉:
    https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/projects/{{name}}/handoff/tasks/T-B{{n}}.md
 
-   按里面 步骤 1 pull list 拉完 PROGRESS.md + AUDIT_PROTOCOL.md +
+   按里面 步骤 1 pull list 拉完 PROGRESS.md(含末尾 audit-pre-design 段) +
    canonical N 份 + preview HTML + final/src/
    两阶段交付:阶段 1 = audit 报告 → 停 → 等放行
    阶段 2 = 实现 · 严格白名单 · 必带 _design-notes.md
