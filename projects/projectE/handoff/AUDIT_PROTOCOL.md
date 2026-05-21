@@ -11,42 +11,27 @@
 - ⚠️ **绝对禁止**写到 repo 根 / `projects/` 根 / `projectE/` 根 / `projectE/_internal/`
 - `projectE/_internal/`(bugs / input / frames / analysis)= user/Claude 内部用 · design 不拉不碰
 
-## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值 · 每一份都必拉)
+## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
 
-raw URL 前缀 = `https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/`
+**拉 `projects/projectE/handoff/` 整个目录递归** — 这是你的完整工作集。
 
-**全局状态(1 份 · 顶部「项目快照」一表知全局)**
-- `projects/projectE/handoff/PROGRESS.md`
+策略:GitHub tree API 列 + raw URL 逐份 fetch:
+```
+1. https://api.github.com/repos/Vinesy-x/ui-rebuild-workspace/git/trees/main?recursive=1
+2. 过滤 path 以 "projects/projectE/handoff/" 开头的 blob entries
+3. 每份 raw = https://raw.githubusercontent.com/Vinesy-x/ui-rebuild-workspace/main/<path>
+```
 
-**canonical 真值 6 文档**(`handoff/spec/` · 5 条已废清单 / 9 共享 modal / 屏映射 / 交互规范都在这里 · ⚠️ **不拉这 6 份必出错**)
-- `projects/projectE/handoff/spec/info-architecture.md`
-- `projects/projectE/handoff/spec/interaction-spec.md`
-- `projects/projectE/handoff/spec/screen-details.md`
-- `projects/projectE/handoff/spec/screen-details-extras.md`
-- `projects/projectE/handoff/spec/screen-details-extras2.md`
-- `projects/projectE/handoff/spec/topology.html`
-
-**视觉真值(2 份)**
-- `projects/projectE/handoff/preview/大掌柜.html`(HTML 全集 · 4847 行)
-- `projects/projectE/handoff/preview/Style Lock · 风格定档.html`(风格速查 · 1116 行)
-
-**Vue 工程层**(`projects/projectE/handoff/final/src/` 整个递归拉)
-- 顶层:`main.ts` / `App.vue` / `router.ts`
-- `styles/`:`tokens.css` / `components.css`
-- `components/`:13 个(HudBar / BottomTabBar / ModalShell + 11 modal)
-- `views/`:8 个(MainMenu / SkillList / MeetList / RelationDetail / WorkDAG / BusinessList / InvestBank / ShopItems 占位)
-- `stores/useModalStore.ts`
-- `types/modalPayloads.ts`
-- `utils/mergeHud.ts`
-- `data/`:5 个 json(mainMenu / skillList / relations / workList / businessList / investments)
-
-**Pre-flight checklist · 拉完逐项打勾再开干**:
-- [ ] PROGRESS.md ✓
-- [ ] 6 份 canonical 真值(`handoff/spec/`) ✓
-- [ ] 2 份 HTML(`handoff/preview/`) ✓
-- [ ] `handoff/final/src/` 递归全套 ✓
+工作集 ~50 文件 · ~800KB · ~195K tokens · 含:
+- 根 3 份:`PROGRESS.md` / `AUDIT_PROTOCOL.md` / `KICKOFF.md`
+- `spec/` 6 canonical(屏映射 / 交互 / 拓扑 · ⚠️ 不拉必错)
+- `tasks/T-B<N>.md`(本任务)+ `archive/`(历史)
+- `preview/`:大掌柜.html(全集)+ Style Lock(风格速查)
+- `final/src/`:13 共享 modal + 7 filled view + tokens.css + components.css + …
 
 沙箱与 GitHub 不一致的全部覆盖 → 以 GitHub 为准。
+
+⚠️ 不要拉 `projects/projectE/_internal/`(user/Claude 内部 · design 不碰)
 
 ## 任务 A · HTML 真值 ↔ Vue 工程层 alignment audit
 

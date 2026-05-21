@@ -22,29 +22,24 @@ fps_{{帧号}} {{短描述}}
 
 ## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
 
-raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
+**拉 `projects/{{name}}/handoff/` 整个目录递归** — 这是你的完整工作集。
 
-**全局状态 + 永久流程(2 份 · 每个 task 必拉)**
-- `projects/{{name}}/handoff/PROGRESS.md`(项目快照 / 当前阶段 / 已废清单 / 共享 modal 状态)
-- `projects/{{name}}/handoff/AUDIT_PROTOCOL.md`(设计前 audit 协议 · 跨 task 通用 · ⭐ 阶段 1 跑它)
+策略:
+```
+1. https://api.github.com/repos/{{owner}}/{{repo}}/git/trees/main?recursive=1
+2. 过滤 path 以 "projects/{{name}}/handoff/" 开头的 blob entries
+3. 每份 raw = https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/<path>
+```
 
-**canonical 真值 N 文档**(handoff/spec/ · ⚠️ 不拉这些必出错)
-- `projects/{{name}}/handoff/spec/info-architecture.md`
-- `projects/{{name}}/handoff/spec/interaction-spec.md`
-- `projects/{{name}}/handoff/spec/screen-details.md`
-- `projects/{{name}}/handoff/spec/screen-details-extras.md`(如有)
-- `projects/{{name}}/handoff/spec/topology.html`(如有)
+工作集含:
+- 根 3 份:`PROGRESS.md` / `AUDIT_PROTOCOL.md` / `KICKOFF.md`
+- `spec/`:N canonical(⚠️ 不拉必错)
+- `tasks/T-B{{n}}.md` 本任务 + `archive/` 历史
+- `preview/`:HTML 真值
+- `final/src/`:Vue 工程层
 
-**视觉真值 + 工程层**
-- `projects/{{name}}/handoff/preview/{{游戏名}}.html`(canonical 全集)
-- `projects/{{name}}/handoff/preview/Style Lock · 风格定档.html`(风格速查)
-- `projects/{{name}}/handoff/final/src/`(递归 · Vue 工程层)
-
-**Pre-flight checklist · 拉完打勾再开干**
-- [ ] PROGRESS.md + AUDIT_PROTOCOL.md ✓
-- [ ] N 份 canonical flows ✓
-- [ ] {{游戏名}}.html + Style Lock ✓
-- [ ] final/src/ 递归 ✓
+沙箱与 GitHub 不一致的全部覆盖 → 以 GitHub 为准。
+⚠️ 不要拉 `_internal/`(design 不碰)
 
 
 ====================================================================

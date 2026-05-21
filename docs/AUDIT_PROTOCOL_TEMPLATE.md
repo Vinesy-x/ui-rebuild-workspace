@@ -21,42 +21,27 @@
 - ⚠️ **绝对禁止**写到 repo 根 / `projects/` 根 / `{{name}}/` 根 / `{{name}}/_internal/`
 - `{{name}}/_internal/`(bugs / input / frames / analysis)= user/Claude 内部用 · design 不拉不碰
 
-## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值 · 每一份都必拉)
+## 步骤 1 · 同步 GitHub(沙箱状态 ≠ 真值)
 
-raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
+**拉 `projects/{{name}}/handoff/` 整个目录递归** — 这是你的完整工作集。
 
-**全局状态(1 份 · 顶部「项目快照」一表知全局)**
-- `projects/{{name}}/handoff/PROGRESS.md`
+策略:GitHub tree API 列 + raw URL 逐份 fetch:
+```
+1. https://api.github.com/repos/{{owner}}/{{repo}}/git/trees/main?recursive=1
+2. 过滤 path 以 "projects/{{name}}/handoff/" 开头的 blob entries
+3. 每份 raw = https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/<path>
+```
 
-**canonical 真值 6 文档**(`handoff/spec/` · 5 条已废清单 / 9 共享 modal / 屏映射 / 交互规范都在这里 · ⚠️ **不拉这 6 份必出错**)
-- `projects/{{name}}/handoff/spec/info-architecture.md`
-- `projects/{{name}}/handoff/spec/interaction-spec.md`
-- `projects/{{name}}/handoff/spec/screen-details.md`
-- `projects/{{name}}/handoff/spec/screen-details-extras.md`
-- `projects/{{name}}/handoff/spec/screen-details-extras2.md`
-- `projects/{{name}}/handoff/spec/topology.html`
-
-**视觉真值(2 份)**
-- `projects/{{name}}/handoff/preview/{{game}}.html`(HTML 全集)
-- `projects/{{name}}/handoff/preview/Style Lock · 风格定档.html`(风格速查)
-
-**Vue 工程层**(`projects/{{name}}/handoff/final/src/` 整个递归拉)
-- 顶层:`main.ts` / `App.vue` / `router.ts`
-- `styles/`:`tokens.css` / `components.css`
-- `components/`:多个共享 modal(含 HudBar / BottomTabBar / ModalShell)
-- `views/`:每屏 1 个 view
-- `stores/useModalStore.ts`
-- `types/modalPayloads.ts`
-- `utils/mergeHud.ts`
-- `data/`:每屏 1 份 json
-
-**Pre-flight checklist · 拉完逐项打勾再开干**:
-- [ ] PROGRESS.md ✓
-- [ ] 6 份 canonical 真值(`handoff/spec/`) ✓
-- [ ] 2 份 HTML(`handoff/preview/`) ✓
-- [ ] `handoff/final/src/` 递归全套 ✓
+工作集含:
+- 根 3 份:`PROGRESS.md` / `AUDIT_PROTOCOL.md` / `KICKOFF.md`
+- `spec/`:N 份 canonical(屏映射 / 交互 / 拓扑等 · ⚠️ 不拉必错)
+- `tasks/T-B<N>.md`(本任务)+ `archive/`(历史)
+- `preview/`:HTML 真值
+- `final/src/`:Vue 工程层(views / components / data / stores / styles / types / utils)
 
 沙箱与 GitHub 不一致的全部覆盖 → 以 GitHub 为准。
+
+⚠️ 不要拉 `projects/{{name}}/_internal/`(user/Claude 内部 · design 不碰)
 
 ## 任务 A · HTML 真值 ↔ Vue 工程层 alignment audit
 
