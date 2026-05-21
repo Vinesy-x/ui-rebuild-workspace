@@ -194,7 +194,7 @@ raw URL 前缀 = `https://raw.githubusercontent.com/{{owner}}/{{repo}}/main/`
 |---|---|---|
 | 交付方式 | 一次给 audit + 实现混在一起 | **两阶段** · audit 先 → 停 → 用户放行 → 实现 |
 | scope 边界 | 没白名单 · design 顺手"对齐" | **文件白名单** · 越界 = 退回 |
-| 变更说明 | 散在代码注释 / commit msg | 强制 `_design-notes.md` · 5 段固定结构 |
+| 变更说明 | 散在代码注释 / commit msg | 强制 `_design-notes.md` · 6 段固定结构 |
 | 拉取约束 | 目录引用("拉 design-brief/flows/") | 显式列每份 raw URL + Pre-flight checklist |
 | 永久流程 | inline 在每个 task prompt | 抽 `AUDIT_PROTOCOL.md` 项目根 · task prompt ref |
 
