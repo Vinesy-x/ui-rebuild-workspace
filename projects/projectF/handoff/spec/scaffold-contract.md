@@ -47,7 +47,7 @@
 
 | helper | 签名 | 行为 |
 |---|---|---|
-| `pipClass(i: number)` | `(i: number) => Record<string, boolean>` | 返回 `{ done: true }` 或 `{ current: true }` 或 `{}` |
+| `pipClass(i: number)` | `(i: number) => Record<string, boolean>` | 返回 `{ done: true }` / `{ current: true }` / `{}` · ⚠️ **`i` 是 1-based**(跟 Vue `v-for="i in N"` 一致 · 第 1 个 pip 传 1 · 不要传 `i - 1`)|
 
 ---
 
