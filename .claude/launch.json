@@ -2,11 +2,11 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "final-vite",
+      "name": "projectF",
+      "cwd": "/Users/jarvis/claude code/ui-rebuild-workspace/projects/projectF/handoff/final",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "final"],
-      "port": 5173,
-      "autoPort": true
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173
     }
   ]
 }

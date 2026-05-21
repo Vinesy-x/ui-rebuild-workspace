@@ -1,5 +1,4 @@
 {
-  "_design_fill": "design 调这些默认值即可 · 字段固定 · 不要改字段名",
   "focusMin": 25,
   "breakMin": 5,
   "longBreakMin": 15,

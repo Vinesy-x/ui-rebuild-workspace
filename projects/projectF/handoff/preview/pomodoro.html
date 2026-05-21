@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>projectF · Pomodoro · visual preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  /* ---------- design tokens ---------- */
+  :root{
+    --cream:        oklch(0.985 0.008 80);
+    --paper:        #ffffff;
+    --ink:          oklch(0.22 0.018 60);
+    --ink-soft:     oklch(0.45 0.015 60);
+    --ink-mute:     oklch(0.62 0.012 60);
+    --hair:         oklch(0.92 0.008 60);
+    --hair-soft:    oklch(0.95 0.006 60);
+
+    --tomato:       oklch(0.64 0.155 32);
+    --tomato-deep:  oklch(0.55 0.16 32);
+    --tomato-soft:  oklch(0.92 0.04 32);
+
+    --sage:         oklch(0.62 0.075 155);
+    --sage-deep:    oklch(0.53 0.08 155);
+    --sage-soft:    oklch(0.93 0.025 155);
+
+    --shadow-sm: 0 1px 2px rgba(40,30,20,.05), 0 1px 1px rgba(40,30,20,.04);
+    --shadow-md: 0 6px 16px -8px rgba(40,30,20,.18), 0 2px 6px -2px rgba(40,30,20,.08);
+    --shadow-lg: 0 24px 48px -16px rgba(40,30,20,.18), 0 8px 16px -8px rgba(40,30,20,.10);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: oklch(0.94 0.01 60);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---------- mobile frame ---------- */
+  .stage{
+    width: 448px;
+    height: 960px;
+    background: var(--cream);
+    border-radius: 44px;
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(40,30,20,.06);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: background .6s ease;
+  }
+  .stage[data-mode="break"]{
+    background: oklch(0.985 0.012 155);
+  }
+
+  /* status bar (mock) */
+  .statusbar{
+    height: 44px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .statusbar .icons{ display:flex; gap:6px; align-items:center; }
+  .statusbar svg{ display:block; }
+
+  /* ---------- app header ---------- */
+  .app-header{
+    padding: 8px 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .wordmark{
+    display:flex; align-items:center; gap:8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .wordmark .dot{
+    width:10px; height:10px; border-radius:50%;
+    background: var(--tomato);
+    box-shadow: 0 0 0 2px var(--tomato-soft);
+    transition: background .4s ease, box-shadow .4s ease;
+  }
+  [data-mode="break"] .wordmark .dot{
+    background: var(--sage);
+    box-shadow: 0 0 0 2px var(--sage-soft);
+  }
+  .icon-btn{
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 0;
+    background: transparent;
+    color: var(--ink-soft);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+  }
+  .icon-btn:hover{ background: var(--hair-soft); color: var(--ink); }
+
+  /* ---------- mode pill row ---------- */
+  .mode-row{
+    padding: 24px 28px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .mode-pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--tomato-soft);
+    color: var(--tomato-deep);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background .4s ease, color .4s ease;
+  }
+  [data-mode="break"] .mode-pill{
+    background: var(--sage-soft);
+    color: var(--sage-deep);
+  }
+  .mode-pill .glyph{
+    width: 6px; height: 6px; border-radius:50%;
+    background: currentColor;
+  }
+
+  .pip-row{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .pip{
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--hair);
+    transition: background .3s ease, transform .3s ease;
+  }
+  .pip.done{ background: var(--tomato); }
+  .pip.current{
+    background: var(--tomato);
+    transform: scale(1.4);
+    box-shadow: 0 0 0 3px var(--tomato-soft);
+  }
+  [data-mode="break"] .pip.done{ background: var(--sage); }
+  [data-mode="break"] .pip.current{
+    background: var(--sage);
+    box-shadow: 0 0 0 3px var(--sage-soft);
+  }
+
+  /* ---------- timer hero ---------- */
+  .timer-hero{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .ring-wrap{
+    position: relative;
+    width: 320px; height: 320px;
+  }
+  .ring-svg{
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .ring-track{
+    fill: none;
+    stroke: var(--hair-soft);
+    stroke-width: 6;
+  }
+  .ring-progress{
+    fill: none;
+    stroke: var(--tomato);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset .9s linear, stroke .4s ease;
+  }
+  [data-mode="break"] .ring-progress{ stroke: var(--sage); }
+
+  /* tick marks on ring perimeter */
+  .ring-ticks{
+    position: absolute; inset: 0;
+    pointer-events: none;
+  }
+  .tick{
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 2px; height: 6px;
+    background: var(--hair);
+    border-radius: 1px;
+    /* transform set per-tick: translate to center, rotate, then push out by radius */
+  }
+  .tick.major{ height: 10px; background: var(--ink-mute); }
+
+  .ring-center{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .digits{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 72px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: baseline;
+  }
+  .digits .sep{
+    color: var(--ink-mute);
+    margin: 0 -2px;
+    animation: blink 1s steps(2,end) infinite;
+  }
+  .stage[data-running="false"] .digits .sep{ animation: none; opacity: 1; }
+  @keyframes blink{ 50% { opacity: 0.25; } }
+
+  .ring-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ---------- action row ---------- */
+  .action-row{
+    padding: 24px 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .btn-primary{
+    height: 64px;
+    min-width: 192px;
+    padding: 0 32px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 0;
+    border-radius: 999px;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: var(--shadow-md);
+    transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-primary:hover{ transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+  .btn-primary:active{ transform: translateY(0); }
+  .btn-primary[data-running="true"]{
+    background: var(--paper);
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-primary svg{ width: 16px; height: 16px; }
+
+  .btn-ghost{
+    height: 48px;
+    width: 48px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1.5px solid var(--hair);
+    color: var(--ink-soft);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn-ghost:hover{ background: var(--paper); border-color: var(--ink-mute); color: var(--ink); }
+  .btn-ghost svg{ width: 18px; height: 18px; }
+
+  /* ---------- footer / today count ---------- */
+  .today{
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .today-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .tomato-row{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 260px;
+  }
+  .tomato{
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--tomato);
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.02);
+    position: relative;
+    transition: transform .2s ease, opacity .3s ease;
+  }
+  .tomato::before{
+    content: "";
+    position: absolute;
+    top: -2px; left: 50%;
+    transform: translateX(-50%) rotate(-12deg);
+    width: 6px; height: 3px;
+    background: var(--sage-deep);
+    border-radius: 2px 2px 0 0;
+  }
+  .tomato.empty{
+    background: transparent;
+    border: 1.5px dashed var(--hair);
+    box-shadow: none;
+  }
+  .tomato.empty::before{ display: none; }
+  .tomato.fresh{
+    animation: pop .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes pop{
+    0%   { transform: scale(0); }
+    60%  { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+  .today-count{
+    font-family: 'Inter';
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .today-count strong{ color: var(--ink); font-weight: 600; }
+
+  /* ---------- modal ---------- */
+  .modal-scrim{
+    position: absolute;
+    inset: 0;
+    background: rgba(30,22,14,.32);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 10;
+  }
+  .modal-scrim.open{
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-card{
+    width: 100%;
+    max-width: 340px;
+    background: var(--paper);
+    border-radius: 28px;
+    padding: 32px 28px 24px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    transform: scale(.94) translateY(8px);
+    opacity: 0;
+    transition: transform .35s cubic-bezier(.34,1.4,.64,1), opacity .25s ease;
+  }
+  .modal-scrim.open .modal-card{
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  .modal-icon{
+    width: 64px; height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--tomato);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 8px var(--tomato-soft);
+    position: relative;
+  }
+  .modal-icon::before{
+    content: "";
+    position: absolute;
+    top: -6px; left: 50%;
+    transform: translateX(-50%) rotate(-14deg);
+    width: 22px; height: 10px;
+    background: var(--sage-deep);
+    border-radius: 6px 6px 2px 2px;
+  }
+  .modal-icon svg{ width: 28px; height: 28px; color: var(--paper); position: relative; z-index: 1; }
+  [data-next="break"] .modal-icon{ background: var(--sage); box-shadow: 0 0 0 8px var(--sage-soft); }
+  .modal-eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .modal-title{
+    font-family: 'Inter';
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .modal-sub{
+    font-family: 'Inter';
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .modal-stats{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px 0;
+    margin-bottom: 20px;
+    border-top: 1px solid var(--hair-soft);
+    border-bottom: 1px solid var(--hair-soft);
+  }
+  .stat{ display: flex; flex-direction: column; gap: 2px; align-items: center; }
+  .stat-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .modal-actions{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .modal-actions .btn-primary{
+    width: 100%;
+    height: 52px;
+    min-width: 0;
+  }
+  .btn-text{
+    background: transparent;
+    border: 0;
+    color: var(--ink-soft);
+    font-family: 'Inter';
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .btn-text:hover{ color: var(--ink); background: var(--hair-soft); }
+
+  /* ---------- preview chrome (outside the device) ---------- */
+  .meta{
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: oklch(0.55 0.012 60);
+    letter-spacing: 0.06em;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .meta .swatch{
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .meta .swatch i{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage" data-mode="focus" data-running="false">
+
+  <!-- mock status bar -->
+  <div class="statusbar">
+    <span>9:41</span>
+    <div class="icons">
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="currentColor"><path d="M1 6h1.5v3H1zM4 4.5h1.5V9H4zM7 3h1.5v6H7zM10 1.5h1.5V9H10zM13 0h1.5v9H13z"/></svg>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 5a6 6 0 0 1 12 0"/><path d="M3 6.5a4 4 0 0 1 8 0"/><circle cx="7" cy="8.5" r=".8" fill="currentColor"/></svg>
+      <svg width="24" height="11" viewBox="0 0 24 11" fill="none"><rect x=".5" y=".5" width="20" height="10" rx="2.5" stroke="currentColor"/><rect x="2" y="2" width="14" height="7" rx="1" fill="currentColor"/><rect x="21.5" y="3.5" width="1.5" height="4" rx=".5" fill="currentColor"/></svg>
+    </div>
+  </div>
+
+  <!-- app header -->
+  <header class="app-header">
+    <div class="wordmark">
+      <span class="dot"></span>
+      <span>Pomodoro · 番茄</span>
+    </div>
+    <button class="icon-btn" aria-label="Settings">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+  </header>
+
+  <!-- mode + session pips -->
+  <div class="mode-row">
+    <div class="mode-pill" id="modePill">
+      <span class="glyph"></span>
+      <span id="modeLabel">Focus Session</span>
+    </div>
+    <div class="pip-row" id="pipRow">
+      <!-- pips injected -->
+    </div>
+  </div>
+
+  <!-- big timer ring -->
+  <main class="timer-hero">
+    <div class="ring-wrap">
+      <svg class="ring-svg" viewBox="0 0 320 320" aria-hidden="true">
+        <circle class="ring-track" cx="160" cy="160" r="142"/>
+        <circle class="ring-progress" id="ringProgress" cx="160" cy="160" r="142"
+                stroke-dasharray="892.21" stroke-dashoffset="0"/>
+      </svg>
+      <div class="ring-ticks" id="ringTicks"></div>
+      <div class="ring-center">
+        <div class="digits">
+          <span id="digMin">25</span><span class="sep">:</span><span id="digSec">00</span>
+        </div>
+        <div class="ring-label" id="ringLabel">minutes · focus</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- actions -->
+  <div class="action-row">
+    <button class="btn-ghost" id="resetBtn" aria-label="Reset">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+    </button>
+    <button class="btn-primary" id="startBtn" data-running="false">
+      <svg id="btnIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <span id="btnLabel">Start</span>
+    </button>
+    <button class="btn-ghost" id="skipBtn" aria-label="Skip session">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4l10 8-10 8z"/><path d="M19 5v14"/></svg>
+    </button>
+  </div>
+
+  <!-- today count -->
+  <div class="today">
+    <div class="today-label">Today's harvest</div>
+    <div class="tomato-row" id="tomatoRow"></div>
+    <div class="today-count"><strong id="todayNum">3</strong> of 8 focused sessions · <strong id="todayMin">75</strong>m</div>
+  </div>
+
+  <!-- session-done modal -->
+  <div class="modal-scrim" id="modal" data-next="break">
+    <div class="modal-card">
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="modal-eyebrow" id="modalEyebrow">Focus complete</div>
+      <h2 class="modal-title" id="modalTitle">Nice work.</h2>
+      <p class="modal-sub" id="modalSub">You earned a short break. Step away from the screen, stretch, breathe.</p>
+      <div class="modal-stats">
+        <div class="stat"><span class="stat-num" id="mStatToday">4</span><span class="stat-label">Today</span></div>
+        <div class="stat"><span class="stat-num" id="mStatStreak">3</span><span class="stat-label">Streak</span></div>
+        <div class="stat"><span class="stat-num" id="mStatNext">5m</span><span class="stat-label">Next</span></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-primary" id="modalContinue">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span id="modalCta">Start break</span>
+        </button>
+        <button class="btn-text" id="modalLater">Maybe later</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="meta">
+  <span>projectF · pomodoro · preview</span>
+  <span class="swatch"><i style="background:oklch(0.64 0.155 32)"></i> focus</span>
+  <span class="swatch"><i style="background:oklch(0.62 0.075 155)"></i> break</span>
+  <span>448 × 960</span>
+</div>
+
+<script>
+  // ---------- ring tick marks ----------
+  (function buildTicks(){
+    const wrap = document.getElementById('ringTicks');
+    const N = 60;
+    for (let i = 0; i < N; i++){
+      const t = document.createElement('div');
+      t.className = 'tick' + (i % 5 === 0 ? ' major' : '');
+      t.style.transform = `translate(-50%, -50%) rotate(${i * (360/N)}deg) translateY(-142px)`;
+      wrap.appendChild(t);
+    }
+  })();
+
+  // ---------- state ----------
+  const SETTINGS = {
+    focusMin: 25,
+    breakMin: 5,
+    longBreakMin: 15,
+    sessionsPerLongBreak: 4,
+  };
+
+  const state = {
+    mode: 'focus',          // 'focus' | 'break' | 'longBreak'
+    remaining: SETTINGS.focusMin * 60,
+    total:     SETTINGS.focusMin * 60,
+    running:   false,
+    currentInCycle: 1,      // 1..sessionsPerLongBreak (focus index)
+    completedToday: 3,
+    minutesToday: 75,
+    streak: 3,
+  };
+
+  const stage    = document.getElementById('stage');
+  const modePill = document.getElementById('modePill');
+  const modeLabel= document.getElementById('modeLabel');
+  const ringProg = document.getElementById('ringProgress');
+  const digMin   = document.getElementById('digMin');
+  const digSec   = document.getElementById('digSec');
+  const ringLbl  = document.getElementById('ringLabel');
+  const startBtn = document.getElementById('startBtn');
+  const btnLabel = document.getElementById('btnLabel');
+  const btnIcon  = document.getElementById('btnIcon');
+  const pipRow   = document.getElementById('pipRow');
+  const tomatoRow= document.getElementById('tomatoRow');
+  const todayNum = document.getElementById('todayNum');
+  const todayMin = document.getElementById('todayMin');
+
+  const CIRC = 2 * Math.PI * 142;  // ~892.21
+  ringProg.setAttribute('stroke-dasharray', CIRC);
+
+  function modeMinutes(m){
+    if (m === 'focus') return SETTINGS.focusMin;
+    if (m === 'break') return SETTINGS.breakMin;
+    return SETTINGS.longBreakMin;
+  }
+  function modeText(m){
+    if (m === 'focus') return 'Focus Session';
+    if (m === 'break') return 'Short Break';
+    return 'Long Break';
+  }
+
+  function render(){
+    stage.dataset.mode = (state.mode === 'focus') ? 'focus' : 'break';
+    stage.dataset.running = String(state.running);
+    modeLabel.textContent = modeText(state.mode);
+
+    const min = Math.floor(state.remaining / 60);
+    const sec = state.remaining % 60;
+    digMin.textContent = String(min).padStart(2,'0');
+    digSec.textContent = String(sec).padStart(2,'0');
+    ringLbl.textContent = (state.mode === 'focus') ? 'minutes · focus' :
+                           (state.mode === 'break') ? 'minutes · break' :
+                                                       'minutes · long break';
+
+    const pct = 1 - (state.remaining / state.total);
+    ringProg.style.strokeDashoffset = String(CIRC * pct);
+
+    btnLabel.textContent = state.running ? 'Pause' : (state.remaining === state.total ? 'Start' : 'Resume');
+    startBtn.dataset.running = String(state.running);
+    btnIcon.innerHTML = state.running
+      ? '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+
+    // pips
+    pipRow.innerHTML = '';
+    for (let i = 1; i <= SETTINGS.sessionsPerLongBreak; i++){
+      const d = document.createElement('div');
+      d.className = 'pip';
+      if (i < state.currentInCycle) d.classList.add('done');
+      else if (i === state.currentInCycle && state.mode === 'focus') d.classList.add('current');
+      else if (i === state.currentInCycle && state.mode !== 'focus') d.classList.add('done');
+      pipRow.appendChild(d);
+    }
+
+    // today's tomatoes
+    tomatoRow.innerHTML = '';
+    const SHOWN = 8;
+    for (let i = 0; i < SHOWN; i++){
+      const t = document.createElement('div');
+      t.className = 'tomato' + (i >= state.completedToday ? ' empty' : '');
+      tomatoRow.appendChild(t);
+    }
+    todayNum.textContent = String(state.completedToday);
+    todayMin.textContent = String(state.minutesToday);
+  }
+
+  // ---------- timer loop ----------
+  let tickHandle = null;
+  function startTicking(){
+    if (tickHandle) return;
+    tickHandle = setInterval(() => {
+      if (!state.running) return;
+      state.remaining -= 1;
+      if (state.remaining <= 0){
+        state.remaining = 0;
+        state.running = false;
+        clearInterval(tickHandle); tickHandle = null;
+        render();
+        onSessionComplete();
+        return;
+      }
+      render();
+    }, 1000);
+  }
+  function stopTicking(){
+    if (tickHandle){ clearInterval(tickHandle); tickHandle = null; }
+  }
+
+  function toggle(){
+    state.running = !state.running;
+    if (state.running) startTicking(); else stopTicking();
+    render();
+  }
+  function reset(){
+    state.running = false;
+    stopTicking();
+    state.remaining = state.total;
+    render();
+  }
+  function skip(){
+    state.running = false;
+    stopTicking();
+    state.remaining = 0;
+    render();
+    onSessionComplete();
+  }
+
+  // ---------- session complete + modal ----------
+  const modal       = document.getElementById('modal');
+  const modalEyebr  = document.getElementById('modalEyebrow');
+  const modalTitle  = document.getElementById('modalTitle');
+  const modalSub    = document.getElementById('modalSub');
+  const modalCta    = document.getElementById('modalCta');
+  const mStatToday  = document.getElementById('mStatToday');
+  const mStatStreak = document.getElementById('mStatStreak');
+  const mStatNext   = document.getElementById('mStatNext');
+
+  function nextMode(){
+    if (state.mode !== 'focus') return 'focus';
+    // just finished a focus session
+    const isLongBreakNext = state.currentInCycle >= SETTINGS.sessionsPerLongBreak;
+    return isLongBreakNext ? 'longBreak' : 'break';
+  }
+
+  function onSessionComplete(){
+    const next = nextMode();
+    if (state.mode === 'focus'){
+      state.completedToday += 1;
+      state.minutesToday += SETTINGS.focusMin;
+      // mark fresh tomato animation
+      setTimeout(() => {
+        const tomatoes = tomatoRow.querySelectorAll('.tomato:not(.empty)');
+        const last = tomatoes[tomatoes.length - 1];
+        if (last) last.classList.add('fresh');
+      }, 50);
+    }
+    // populate modal
+    if (state.mode === 'focus'){
+      modalEyebr.textContent = 'Focus complete';
+      modalTitle.textContent = 'Nice work.';
+      modalSub.textContent = next === 'longBreak'
+        ? "You've finished a full cycle. Take a longer rest."
+        : 'You earned a short break. Step away from the screen, stretch, breathe.';
+      modalCta.textContent = next === 'longBreak' ? 'Start long break' : 'Start break';
+    } else {
+      modalEyebr.textContent = 'Break over';
+      modalTitle.textContent = 'Ready when you are.';
+      modalSub.textContent = 'Pick one thing. Twenty-five quiet minutes.';
+      modalCta.textContent = 'Start focus';
+    }
+    modal.dataset.next = (next === 'focus') ? 'focus' : 'break';
+    mStatToday.textContent  = String(state.completedToday);
+    mStatStreak.textContent = String(state.streak);
+    mStatNext.textContent   = modeMinutes(next) + 'm';
+    modal.classList.add('open');
+    render();
+  }
+
+  function modalContinue(){
+    const next = nextMode();
+    // advance cycle index if just finished a break (returning to focus)
+    if (state.mode !== 'focus'){
+      state.currentInCycle = (state.currentInCycle >= SETTINGS.sessionsPerLongBreak)
+        ? 1
+        : state.currentInCycle + 1;
+    }
+    state.mode = next;
+    state.total = modeMinutes(next) * 60;
+    state.remaining = state.total;
+    state.running = true;
+    modal.classList.remove('open');
+    startTicking();
+    render();
+  }
+  function modalLater(){
+    const next = nextMode();
+    if (state.mode !== 'focus'){
+      state.currentInCycle = (state.currentInCycle >= SETTINGS.sessionsPerLongBreak)
+        ? 1
+        : state.currentInCycle + 1;
+    }
+    state.mode = next;
+    state.total = modeMinutes(next) * 60;
+    state.remaining = state.total;
+    state.running = false;
+    modal.classList.remove('open');
+    render();
+  }
+
+  // ---------- wire ----------
+  document.getElementById('startBtn').addEventListener('click', toggle);
+  document.getElementById('resetBtn').addEventListener('click', reset);
+  document.getElementById('skipBtn').addEventListener('click', skip);
+  document.getElementById('modalContinue').addEventListener('click', modalContinue);
+  document.getElementById('modalLater').addEventListener('click', modalLater);
+
+  // first paint
+  render();
+</script>
+
+</body>
+</html>

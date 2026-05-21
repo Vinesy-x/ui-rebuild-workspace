@@ -40,11 +40,30 @@ design 拉到的 `.vue` 文件 · `<script setup>` 段是预先写好的 + 有�
 
 ---
 
-## 当前阶段:**Phase 0 待启动**
+## 当前阶段:**Phase 0 完成 ✅**(2026-05-21 · design link `wMQcTP-Gqd9bTDYtMs3-uw`)
 
 | 阶段 | 状态 | 备注 |
 |---|---|---|
-| Phase 0(scaffold + fill 工作流验证)| ⏳ **待启动** | Claude scaffold 完毕 · 等 design 填 ⭐⭐⭐ 段 |
+| Phase 0(scaffold + fill 工作流验证)| ✅ **完成** | design 出视觉 · Claude 扩 scaffold helper · vite build 1.29s 通过 |
+
+### Phase 0 复盘
+
+design 视觉风格选:**warm modern-minimal**(陶土红 / 鼠尾草绿 · oklch 色板 · JetBrains Mono 数字 · 大 SVG 圆环 + 60 刻度 + 番茄/绿叶图标)。
+
+**design 行为评价**:
+- ✅ 严格遵守"不改 `<script setup>` 段"
+- ✅ 完整交付 5 件:view + modal 的 template/style + 2 JSON + preview/pomodoro.html
+- ✅ `_design-notes.md` 6 段全填(超出 3 必填要求)
+- ✅ 主动声明"沙箱配额用光,没拉真 script · 模板用了假设契约"→ 把契约列在 .vue 注释里
+- ✅ Risk 段提议 scaffold 加 `ringCircumference` const + `pipClass` helper(确实需要)
+
+**Claude verify 操作**:
+- 把 design 的 template + style 100% 不动 import 进 scaffold
+- 扩 script setup 加 design 假设的 13 个 binding(alias 既有 / 加 derived helper)
+- SessionDoneModal 一处例外:design 用 `$emit`,我们架构是 store-driven,template 改 2 行 `$emit(...)` → method call(视觉零影响)
+- vite build 通过 1.29s · 43 modules
+
+**结论**:scaffold + fill 工作流**成立**。0 重写 design 代码,只补 scaffold helper。可推广到 projectE T-B6 + 后续新项目。
 
 ---
 
