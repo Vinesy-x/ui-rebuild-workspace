@@ -1,0 +1,15 @@
+/* base.css · 极简全局重置 + 中性 token
+ * design 可以在自己的 .vue scoped style 里覆盖任何 token,或者新增本屏 token
+ * 这里只放 reset · 主题色 design 自由决定 */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+button { font: inherit; cursor: pointer; }
+
+:root {
+  /* 中性 fallback · design 可以在 :root 或 .pomo-screen 里覆盖 */
+  --bg: #fff;
+  --fg: #1a1a1a;
+  --accent: #ff5252;
+  --track: #e5e5e5;
+}

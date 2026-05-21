@@ -1,0 +1,4 @@
+{
+  "_design_fill": "design 可放 0-3 条示范 session · 也可空数组 · 字段固定 type/completedAt",
+  "sessions": []
+}
