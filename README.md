@@ -8,9 +8,17 @@
 
 ## 当前项目
 
-| 项目 | 状态 | 风格 | 说明 |
-|---|---|---|---|
-| [projects/projectE/](projects/projectE/) | Phase B T-B1~T-B5 ✅ / T-B6 待启动 | 宋朝古风(江南水乡水墨彩绘)| 大掌柜 — BitLife 类放置养成,448×960 |
+| 项目 | 状态 | 风格 | dev 端口 | 说明 |
+|---|---|---|---|---|
+| [projects/projectE/](projects/projectE/) | Phase B T-B1~T-B5 ✅ / T-B6 待启动 | 宋朝古风(江南水乡水墨彩绘)| 5173 | 大掌柜 — BitLife 类放置养成,448×960 |
+| [projects/projectF/](projects/projectF/) | Phase 0 ✅ scaffold+fill 工作流验证 | warm modern-minimal | 5180 | Pomodoro 番茄钟 — 单屏 demo |
+
+## 端口约定(避免多项目同时跑互相挤)
+
+每项目在 `handoff/final/vite.config.ts` 用 `server.port` + `strictPort: true` 固定:
+- projectE = **5173**(vite 默认)
+- projectF = **5180**
+- projectG+ = **5183 / 5186 / 5189 / …**(+3 递增)
 
 ## workspace 结构
 

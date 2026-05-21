@@ -31,4 +31,5 @@ projectF/
 ## 跑工程
 ```bash
 cd handoff/final && npm install && npm run dev
+# 浏览器:http://localhost:5180/(projectF 固定 5180 · 跟 projectE 5173 / 其他项目隔开)
 ```
