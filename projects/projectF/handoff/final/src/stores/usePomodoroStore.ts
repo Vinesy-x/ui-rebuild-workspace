@@ -6,6 +6,7 @@
  */
 import { defineStore } from 'pinia'
 import settings from '../data/settings.json'
+import history from '../data/history.json'
 
 export type Mode = 'focus' | 'break' | 'longBreak'
 
@@ -20,13 +21,20 @@ interface PomodoroState {
 
 const today = () => new Date().toISOString().slice(0, 10)
 
+/** 从 history.json seed 今日 focus 数(让 demo 跟设计图一致 · 不是 0)*/
+function seedTodayFocusCount (): number {
+  if (!Array.isArray(history)) return 0
+  const todayStr = today()
+  return history.filter((s: any) => s.date === todayStr && s.mode === 'focus').length
+}
+
 export const usePomodoroStore = defineStore('pomodoro', {
   state: (): PomodoroState => ({
     mode: 'focus',
     timeLeft: settings.focusMin * 60,
     running: false,
-    todayFocusCount: 0,
-    totalFocusCount: 0,
+    todayFocusCount: seedTodayFocusCount(),
+    totalFocusCount: seedTodayFocusCount(),
     intervalId: null
   }),
 
@@ -52,12 +60,19 @@ export const usePomodoroStore = defineStore('pomodoro', {
       return settings.focusMin * 60
     },
 
-    /** 显示文本:"专注中" / "休息中" / "长休息" / "暂停" */
+    /** 显示文本 · Almanac design 英文 tone(idle/running/paused × 3 mode)*/
     modeLabel (state): string {
-      if (!state.running && state.timeLeft < this.currentDurationSec) return '暂停'
-      if (state.mode === 'focus')     return '专注中'
-      if (state.mode === 'break')     return '休息中'
-      if (state.mode === 'longBreak') return '长休息'
+      const atFull = state.timeLeft === this.currentDurationSec
+      if (!state.running && atFull) {
+        if (state.mode === 'focus')     return 'ready when you are'
+        if (state.mode === 'break')     return 'time for a break'
+        if (state.mode === 'longBreak') return 'long rest ahead'
+        return ''
+      }
+      if (!state.running) return 'paused · ready to resume'
+      if (state.mode === 'focus')     return 'in focus'
+      if (state.mode === 'break')     return 'take a breather'
+      if (state.mode === 'longBreak') return 'long rest'
       return ''
     },
 

@@ -131,7 +131,7 @@ function openDoneModal () {
           <div class="ring-digits">
             <span class="num">{{ displayMin }}</span><span class="colon">:</span><span class="num">{{ displaySec }}</span>
           </div>
-          <div class="ring-foot">today's session</div>
+          <div class="ring-foot">NO.0142 · TODAY</div>
         </div>
       </div>
     </div>

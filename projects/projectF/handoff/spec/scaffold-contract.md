@@ -19,7 +19,7 @@
 | `displayMin` | `ComputedRef<string>` | "25"(从 displayTime 拆)|
 | `displaySec` | `ComputedRef<string>` | "00"(从 displayTime 拆)|
 | `progress` | `ComputedRef<number>` | 0-1 阶段进度(给 ring stroke-dashoffset)|
-| `modeLabel` | `ComputedRef<string>` | "专注中" / "休息中" / "暂停" / "长休息" |
+| `modeLabel` | `ComputedRef<string>` | 英文 · "ready when you are" / "in focus" / "paused · ready to resume" / "take a breather" / "long rest" 等(随 idle/running/paused × 3 mode 变)|
 | `ringLabel` | `ComputedRef<string>` | "FOCUS" / "BREAK" / "LONG BREAK" |
 | `ctaLabel` | `ComputedRef<string>` | "Start" / "Pause" |
 | `completedToday` | `Ref<number>` | 今日完成 focus 数 |
